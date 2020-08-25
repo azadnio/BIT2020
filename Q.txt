@@ -1,0 +1,410 @@
+I need to design a nodejs typescript API using typical OOP way with controllers and modals,
+here I am adding a code base for invoice API of the system.
+can anyone suggest best approach to design in OOP with database accessing.
+
+I need to implement this system using pure OOP.
+here is the my application for invoice CRUD
+
+**data base table structure of invoice and invoice-items**
+
+**invoice**
+
+	id: int | date: Date | custId: int | created: Date | updated: Date
+
+**invoice-items**
+
+	id: int | invoiceId: int | itemId: int | price: float | Created : Date | updated: Date
+
+
+**folder structure**
+
+
+
+
+	--modals
+		--router.class.ts
+		--base.class.ts
+		--invoice-items.class.ts
+		--invoice.class.ts		
+	--controllers
+		--invoice.controller.ts
+	--routes
+		--invoice.route.ts
+	--app.ts
+	--database.ts**
+
+**here are the files** 
+
+**base.class.ts**
+
+    //base class for the class which uses throughout the system
+    abstract class Base {
+    
+        //common properties
+        public id: number | undefined
+        public created: Date | undefined
+        public updated: Date | undefined
+    
+        constructor(base: Base) {
+            this.id = base.id
+            this.created = new Date()
+            this.updated = new Date()
+        }
+    }
+    export default Base
+
+**invoice-items.class.ts**
+
+    import Base from "./base.class"
+    import pool from "../database"
+    
+    class InvoiceItem extends Base {
+    
+        invoiceId: number | undefined
+        itemId: number | undefined
+        price: number |undefined
+    
+        constructor(item: InvoiceItem) {
+            super(item)
+            this.invoiceId = item.invoiceId
+            this.price = item.price
+        }
+    
+        async create() {
+    
+            let data = {
+                invoiceId: this.invoiceId,
+                price: this.price,
+                itemId: this.itemId,
+                created: this.created,
+                updated: this.updated
+            }
+    
+            await pool.query('insert into invoice-items set ?', data)
+    
+            return true;
+        }
+    
+        async update() {
+    
+            let data = {
+                invoiceId: this.invoiceId,
+                price: this.price,
+                itemId: this.itemId,
+                updated: this.updated
+            }
+    
+            await pool.query('update invoice-items set ? where id = ? ', [data, this.id])
+    
+            return true;
+        }
+    
+        async delete() {
+    
+            await pool.query('delete invoice-items where id = ?', [this.id])
+    
+            return true;
+        }
+    
+        
+    }
+    
+    export default InvoiceItem
+
+**invoice.class.ts**
+
+    import Base from "./base.class";
+    import pool from "../database";
+    import InvoiceItem from "./invoice-item.class";
+    
+    class Invoice extends Base {
+    
+        date: Date | undefined
+        custId: number | undefined
+        invoiceItems: InvoiceItem [] = []
+        
+        constructor(invoice: Invoice) {
+            super(invoice)
+            this.date = invoice.date
+            this.custId = invoice.custId
+        }
+    
+        async selectAll(){
+            
+            let result = await pool.query('select * from invoice')
+            return result
+        }
+    
+        async create() {
+    
+            //insert invoice data
+            let data = {
+                date: this.date,
+                custId: this.custId,
+                created: this.created,
+                updated: this.updated
+            }
+    
+            var result = await pool.query('insert into invoice set ?', data) //WHAT IF THIS FAILD
+    
+            //insert invoice items
+            this.invoiceItems.forEach(async item => {
+    
+                //add the invoice id
+                item.invoiceId = result.insertId
+    
+                //insert each items into invoice-items table
+                await item.create()
+            });
+    
+            return result;
+        }
+    
+        async update() {
+    
+            //update invoice data
+            let data = {
+                date: this.date,
+                custId: this.custId,
+                updated: this.updated
+            }
+    
+            await pool.query('update invoice set ?', data)
+    
+            //delete existing invoice items
+            await pool.query('delete invoice-items where invoiceId ?', this.id)
+    
+            //insert invoice items
+            this.invoiceItems.forEach(async item => {
+                
+                //add the invoice id
+                item.invoiceId = this.id
+    
+                //insert each items into invoice-items table
+                await item.create()
+            });
+    
+            return true;
+        }
+    
+        async delete() {
+    
+            await pool.query('delete invoice where id = ?', this.id)
+    
+            //delete existing invoice items
+            await pool.query('delete invoice-items where invoiceId ?', this.id)
+    
+            return true
+        }
+    }
+    
+    export default Invoice
+
+**invoice.controller.ts**
+
+    import { Request, Response } from 'express'
+    import Invoice from '../modals/invoice.class'
+    import InvoiceItem from '../modals/invoice-item.class'
+    
+    class InvoiceController {
+    
+        constructor() {}
+    
+        public index(req: Request, res: Response):void {
+    
+            let invoice = new Invoice(req.body || {})
+            let rslt = invoice.selectAll()
+            res.status(200).send(rslt)
+        }
+    
+        public create(req: Request, res: Response):void {
+    
+            // sample payload: {
+            //     custId: 44,
+            //     items:[{ price: 99, itemId: 5 }, { price: 99, itemId: 5 }]
+            // }
+    
+            let invoice = new Invoice(req.body || {}) 
+    
+            //create invoice items
+            req.body.items.forEach( (item : any) => {
+    
+                invoice.invoiceItems.push( new InvoiceItem(item))
+            })
+    
+            let rslt = invoice.create()
+            res.status(200).send(rslt)
+        }
+    
+        public update(req: Request, res: Response):void {
+    
+            // sample payload: {
+            //     custId: 44,
+            //     id: 5,
+            //     items:[{ price: 99, itemId: 5 }, { price: 99, itemId: 5 }]
+            // }
+            
+            let invoice = new Invoice(req.body || {})
+    
+            //create invoice items
+            req.body.items.forEach( (item : any) => {
+    
+                invoice.invoiceItems.push( new InvoiceItem(item))
+            })
+    
+            let rslt = invoice.update()
+            res.status(200).send(rslt)
+        }
+    
+        public delete(req: Request, res: Response):void {
+    
+            // sample payload: {
+            //     id: 5
+            // }
+            let invoice = new Invoice(req.body || {})
+            let rslt = invoice.delete()
+            res.status(200).send(rslt)
+        }
+    
+    }
+    
+    export const invoiceController = new InvoiceController()
+
+**invoice.route.ts**
+
+    import RouterClass from "../modals/router.class"
+    import { invoiceController } from "../controllers/invoice.controller"
+    
+     class InvoiceRoutes extends RouterClass{
+    
+        constructor() {
+            super()
+            this.config()
+        }
+    
+        //configure user related routes
+        config(): void {
+            
+            //user CRUD routes
+            this.router
+                .get('/', invoiceController.index)
+                .post('/', invoiceController.create)
+                .put('/', invoiceController.update)
+                .delete('/', invoiceController.delete)
+        }
+    }
+    
+    const invoiceRoutes =  new InvoiceRoutes()
+    export default invoiceRoutes.router
+
+**database.ts**
+
+    import mysql from 'promise-mysql'
+    
+    //application mysql connection options
+    const conectionConfig = {
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'test'
+    }
+    
+    //set the database with the nysql library
+    const pool:any = mysql.createPool(conectionConfig)
+    
+    //connect to the database
+    pool.getConnection()
+        .then((connection: any) => {
+            pool.releaseConnection(connection)
+            console.log('Database connected.')
+        })
+    
+    export default pool
+
+**app.ts**
+
+    import express, { Application, NextFunction, Response, Request } from 'express'
+    import indexRoute from './routes/index.route'
+    import { AppError } from './modals/apperror.class'
+    import invoiceRoutes from './routes/invoice.route'
+    
+    class Server {
+    
+        public app: Application
+    
+        constructor() {
+    
+            this.app = express()
+            this.config()
+            this.routes()
+        }
+    
+        config(): void {
+    
+            //set app configuration variables
+            this.app.set('port', process.env.PORT || 80)
+    
+            //set application middlewares
+    
+            this.app.use(express.json())
+            this.app.use(express.urlencoded({ extended: false }))
+        }
+    
+        //appication routes
+        routes(): void {
+    
+            this.app.use('/', indexRoute)
+            this.app.use('/invoice', invoiceRoutes)
+    
+            //handle the errors
+            this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    
+                let status = 500
+                let message = 'Something went wrong!'
+    
+                //defined exceptions
+                if (err instanceof AppError) {
+    
+                    status = err.status
+                    message = err.message
+                }
+    
+                //not defined exceptions log the stack
+                else {
+    
+                    console.log(err.stack)
+                }
+    
+                res.status(status).send({ status, message })
+            });
+        }
+    
+        start(): void {
+    
+            //listen the port
+            this.app.listen(this.app.get('port'), () => {
+                console.log('Server running on PORT', this.app.get('port'))
+            })
+        }
+    }
+    
+    //bootstrap
+    const server = new Server()
+    server.start()
+
+
+****NOTE**
+the above code base sample code base to demonstrate how I design the API as using object-oriented-pattern. there might be typos or syntax errors.
+
+I hope there must be better approach to organize the files and design classes in Object oriented API design.
+
+
+some of my confusions are:
+ - do all the modal classes should access data base for creating, deleting, updating with database tables, if so is there any best practice.
+ - invoice has invoice items, do we really need to create invoice items in create, update routes.
+ - when creating/updating invoice routes need to deal with two tables, invoice, invoice items, I think there must be better approach for this other than inserting/deleting items one by one.
+
+I need a better solution other than this, can you any one demonstrate (even with lesser code) it how deal with table in modal classes and how to create a CRUD api using OOp.
+
+Thank you, 
+
