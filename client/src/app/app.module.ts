@@ -8,6 +8,7 @@ import { ItemsComponent } from './items/items.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { ItemsModule } from '../modules/items/items.module'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AccountsComponent } from './accounts/accounts.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ItemsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
