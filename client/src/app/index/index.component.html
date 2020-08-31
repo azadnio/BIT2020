@@ -1,15 +1,54 @@
 
 <div>
-    header
+    <div class="heder-logo">
+      <img class="logo" src="./assets/images/logo.png" alt="">
+      <img class="text" src="./assets/images/header.png" alt="">
+    </div>
   </div>
   
-  <div class="nav">
-    nav bar
-    <a routerLink="admin" target="_blank" routerLinkActive="router-link-active" >admin</a>    
-    <a routerLink="account" routerLinkActive="router-link-active" >account</a>
-    <a routerLink="items" routerLinkActive="router-link-active" >items</a>
-  </div>
-  
+  <ul class="nav-bar">    
+    <li>  </li>
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active" class="home">
+         <mat-icon> home </mat-icon> 
+        </a>
+    </li>
+    <li>
+      <a routerLink="items" routerLinkActive="router-link-active">
+         <mat-icon> reorder </mat-icon> <span>Items</span> 
+        </a>
+    </li>
+    <li>
+      <a routerLink="account" routerLinkActive="router-link-active">
+         <mat-icon> menu_book </mat-icon> <span>My Account</span>
+         </a>
+    </li>
+    <li>
+      <a routerLink="admin" target="_blank" routerLinkActive="router-link-active" class="admin">
+         <mat-icon> person </mat-icon> <span>Admin</span>
+        </a>
+    </li>
+
+    <li class="middle-space"></li>
+    <li>
+      <a>
+        <span>
+          Good after noon Mr. Loser
+        </span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="admin" target="_blank" routerLinkActive="router-link-active">
+         <mat-icon> info </mat-icon> <span>About</span>
+        </a>
+    </li>
+    <li>
+      <a routerLink="admin" target="_blank" routerLinkActive="router-link-active"> 
+        <mat-icon> phone </mat-icon> <span>Contact</span>
+      </a>
+    </li>
+  </ul>
+   
   <div>
     <router-outlet></router-outlet>
   </div>

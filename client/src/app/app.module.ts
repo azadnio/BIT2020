@@ -9,6 +9,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { IndexComponent } from './index/index.component';
 import { ItemsDashboardComponent } from './index/items-dashboard/items-dashboard.component';
 import { AccountDashboardComponent } from './index/account-dashboard/account-dashboard.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AccountDashboardComponent } from './index/account-dashboard/account-das
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
