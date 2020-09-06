@@ -9,8 +9,11 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { IndexComponent } from './index/index.component';
 import { ItemsDashboardComponent } from './index/items-dashboard/items-dashboard.component';
 import { AccountDashboardComponent } from './index/account-dashboard/account-dashboard.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoginComponent } from './index/login/login.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PagenotfoundComponent,
     IndexComponent,
     ItemsDashboardComponent,
-    AccountDashboardComponent
+    AccountDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

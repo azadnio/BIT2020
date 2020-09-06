@@ -1,1 +1,91 @@
-<p>admin-home works!</p>
+<div class="admin-router-panel home h-100">
+
+    <div class="content">
+        <table>
+            <tr>
+                <td>
+                    <a matRipple routerLink="invoices" class="blue">
+                        <span>Invoices</span>
+                        <mat-icon>
+                            text_snippet
+                        </mat-icon>
+                    </a>
+                </td>
+                <td>
+                    <a matRipple routerLink="orders" class="maroon">
+                        <span>orders</span>
+                        <mat-icon>
+                            local_shipping
+                        </mat-icon>
+                    </a>
+                </td>
+                <td>
+                    <a matRipple routerLink="payments" class="blue">
+                        <span>payments</span>
+                        <mat-icon>
+                            payments
+                        </mat-icon>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a matRipple routerLink="customers" class="maroon">
+                        <span>customers</span>
+                        <mat-icon>
+                            people
+                        </mat-icon>
+                    </a>
+                </td>
+                <td class="logo">
+                    <img class="logo" src="./assets/images/logo.png" alt="">
+                </td>
+                <td>
+                    <a matRipple routerLink="items" class="maroon">
+                        <span>items</span>
+                        <mat-icon>
+                            view_module
+                        </mat-icon>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a matRipple routerLink="accounts" class="blue">
+                        <span>accounts</span>
+                        <mat-icon>
+                            menu_book
+                        </mat-icon>
+                    </a>
+                </td>
+                <td>
+                    <a matRipple routerLink="cheques" class="maroon">
+                        <span>cheques</span>
+                        <mat-icon>
+                            payment
+                        </mat-icon>
+                    </a>
+                </td>
+                <td>
+                    <a matRipple routerLink="salesreturns" class="blue">
+                        <span>
+                            sales returns
+                        </span>
+                        <mat-icon>
+                            next_plan
+                        </mat-icon>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    
+    
+        <div class="quick-options">
+    
+            <button mat-raised-button color="primary">New Items</button>
+            <button mat-raised-button color="primary">New Invoice</button>
+            <button mat-raised-button color="primary">New Payment</button>
+            <button mat-raised-button color="primary">New Customer</button>
+        </div>
+    </div>
+</div>

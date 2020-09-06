@@ -1,85 +1,86 @@
+<div class="base-page admin-dashboard">
 
-<div>
-      <div class="heder-logo">
-        <img class="text" src="./assets/images/header.png" alt="">
-      </div>
-    </div>
-    
-    <ul class="nav-bar">    
-      <li>  </li>
-      <li>
-        <a routerLinkActive="router-link-active" class="home">
-           <mat-icon> home </mat-icon> 
-          </a>
-      </li>
-      <li>
-        <a routerLink="items" routerLinkActive="router-link-active">
-           <mat-icon> reorder </mat-icon> <span>Items</span> 
-          </a>
-      </li>
-      <li>
-        <a routerLink="customers" routerLinkActive="router-link-active">
-           <mat-icon> menu_book </mat-icon> <span>Customers</span>
-           </a>
-      </li>
-      <li>
-        <a routerLink="orders"  routerLinkActive="router-link-active">
-           <mat-icon> person </mat-icon> <span>Orders</span>
-          </a>
-      </li>
-  
-      <li>
-      <a routerLink="invoices"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Invoices</span>
-            </a>
-      </li>
-      <li>
-      <a routerLink="payments"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Payments</span>
-            </a>
-      </li>
-      <li>
-      <a routerLink="accounts"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Accounts</span>
-            </a>
-      </li>
-      <li>
-      <a routerLink="cheques"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Cheques</span>
-            </a>
-      </li>
-      <li>
-      <a routerLink="salesreturns"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Sales Returns</span>
-            </a>
-      </li>
-      <li>
-      <a routerLink="reports"  routerLinkActive="router-link-active">
-            <mat-icon> person </mat-icon> <span>Reports</span>
-            </a>
-      </li>
+  <div class="heder-logo">
+    <img class="text" src="./assets/images/header.png" alt="">
+  </div>
 
-      <li class="middle-space"></li>
-      <li>
-        <a>
-          <span>
-            Good after noon Mr. Loser
-          </span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="profile" target="_blank" routerLinkActive="router-link-active">
-           <mat-icon> person </mat-icon>
-          </a>
-      </li>
-      <li>
-        <a routerLink="settings" target="_blank" routerLinkActive="router-link-active"> 
-            <mat-icon>  settings</mat-icon>
-        </a>
-      </li>
-    </ul>
-     
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-    
+  <ul class="nav-bar">
+    <li> </li>
+    <li>
+      <a [routerLinkActiveOptions]="{exact:true}" routerLink="/admin" routerLinkActive="router-link-active"
+        class="home">
+        <mat-icon> home </mat-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="items" routerLinkActive="router-link-active">
+        <mat-icon> reorder </mat-icon> <span>Items</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="customers" routerLinkActive="router-link-active">
+        <mat-icon> menu_book </mat-icon> <span>Customers</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="orders" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Orders</span>
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="invoices" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Invoices</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="payments" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Payments</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="accounts" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Accounts</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="cheques" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Cheques</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="salesreturns" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Sales Returns</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="reports" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon> <span>Reports</span>
+      </a>
+    </li>
+
+    <li class="middle-space"></li>
+    <li>
+      <a>
+        <span>
+          Good after noon Mr. Loser
+        </span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="profile" target="_blank" routerLinkActive="router-link-active">
+        <mat-icon> person </mat-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="settings" target="_blank" routerLinkActive="router-link-active">
+        <mat-icon> settings</mat-icon>
+      </a>
+    </li>
+  </ul>
+
+  <div class="page-routes">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
