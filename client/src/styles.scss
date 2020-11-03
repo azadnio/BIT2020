@@ -44,6 +44,14 @@ body {
     height: 100%;
     .filter-wrap {
         width: 20%;
+
+        .filter-field-wrap {
+            padding: 10px;
+            fieldset {
+                border: none;
+                border-top: 1px solid gray;
+            }
+        }
     }
 
     .dashboard-content-wrap {
@@ -78,7 +86,7 @@ body {
             table {
                 width: 100%;
 
-                th{
+                th {
                     font-size: 1em;
                     color: black;
                 }
