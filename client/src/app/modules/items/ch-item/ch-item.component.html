@@ -1,0 +1,8 @@
+<div class="ch-item">
+      <!-- <p class="heading">{{ item.title }}</p> -->
+      <div class="img-wrap">
+            <span>{{ item.price | currency:'Rs ':'code' }}</span>
+            <img [src]="item.imageUrls[0]" alt="item image">
+      </div>
+      <p class="description"> {{ item.description }} </p>
+</div>

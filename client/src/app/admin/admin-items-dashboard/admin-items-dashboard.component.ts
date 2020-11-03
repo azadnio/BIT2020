@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { categories, brands, items } from 'src/app/data';
 
 @Component({
   selector: 'app-admin-items-dashboard',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-items-dashboard.component.scss']
 })
 export class AdminItemsDashboardComponent implements OnInit {
+  
+  categories:any = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.categories = categories;
+    // console.log(categories)
   }
 
 }

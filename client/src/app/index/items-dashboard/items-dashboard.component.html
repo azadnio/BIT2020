@@ -1,3 +1,13 @@
-<p>items-dashboard works!</p>
-<a routerLink="category" routerLinkActive="router-link-active">category</a>
-<router-outlet></router-outlet>
+<div class="h-100 flex-row">
+
+      <div class="category-wrap" style="    width: 10em;">
+            <div *ngFor="let item of categories" class="category">
+                  <a [routerLink]="item.id">{{item.name}}</a>                  
+            </div>
+      </div>
+
+      <div class="router-wrap" style="flex: 1;">
+            <router-outlet></router-outlet>
+      </div>
+
+</div>

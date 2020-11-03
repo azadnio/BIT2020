@@ -1,0 +1,17 @@
+
+.ch-item{
+      display: inline-block;
+      width: 10em;
+      .img-wrap{
+            position: relative;
+            span {
+                  position: absolute;
+                  top: 1px;
+                  z-index: 1;
+            }
+            img{
+                  width: 140px;
+                  height: 140px;
+            }    
+      }      
+}
