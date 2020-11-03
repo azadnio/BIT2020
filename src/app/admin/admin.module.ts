@@ -18,6 +18,8 @@ import { AdminItemsDashboardComponent } from './admin-items-dashboard/admin-item
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {
@@ -63,7 +65,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatIconModule,
     MatRippleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class AdminModule { }
