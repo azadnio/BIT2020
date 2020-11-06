@@ -32,31 +32,21 @@ export class AdminPaymentsDashboardComponent implements OnInit {
     private utils: UtilsService
   ) {
 
-   this.filterParams = new FilterParams()
-
-    this.filterForm = this.formBuilder.group(this.filterParams);
+    this.filterParams = new FilterParams();
+    this.initFormBuilder();
 
     this.activatedRoute.queryParamMap
-      .subscribe((params) => {
+      .subscribe((queryParam: any) => {
 
-        // let custId = params['custId'];
+        let params = queryParam.params as FilterParams;
+        if (params) {
 
-        // this.location.go(`${this.route.url}?custId=${custId}` );
-        console.log('query params', params)
-      }
-      );
-  }
+          this.filterParams = { ...this.filterParams, ...params };
+          this.initFormBuilder();
 
-  filter(value) {
-    console.log(value)
-  }
-
-  new() {
-
-    this.filterParams.customerId = 'test';
-    this.filterParams.customerName = 'myname';
-
-    this.utils.setSearchURL(this.filterParams, this.location, this.router.url.split('?')[0] );
+          //load the list
+        }          
+      });
   }
 
   ngAfterViewInit() {
@@ -66,4 +56,22 @@ export class AdminPaymentsDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  initFormBuilder() {
+
+    this.filterForm = this.formBuilder.group({
+      customerId: ''
+    });
+  }
+
+  filter(value) {
+    console.log(value, this.filterParams);
+    let url = this.router.url.split('?');
+    this.utils.setSearchURL(value, this.location, url[0], url[1])
+  }
+
+  new() {
+
+    this.filterParams.customerId = 'test';
+    this.filterParams.customerName = 'myname';
+  }
 }

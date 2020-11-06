@@ -9,16 +9,25 @@ export class UtilsService {
 
   constructor() { }
 
-  setSearchURL(filterParams: FilterParams, location: Location, curURL: string) {
+  setSearchURL(filterParams: FilterParams, location: Location, curURL: string, curentQueryParamStr = '') {
 
     //compose query params
     let queryParamsStrList = []
     for (let [key, value] of Object.entries(filterParams))
-      if (value != undefined)
+      if (value != undefined && value != '')
         queryParamsStrList.push(key + '=' + value);
-    
+
     // set the URL
-    if (queryParamsStrList)
+    if (queryParamsStrList.length) {
+
       location.go(curURL + '?' + queryParamsStrList.join('&'));
+      return true;
+    }
+    else if (curentQueryParamStr.trim())
+      location.go(curURL);
+
+    return false;
   }
+
+
 }
