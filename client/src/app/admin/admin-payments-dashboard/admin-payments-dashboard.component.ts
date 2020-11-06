@@ -25,7 +25,7 @@ export class AdminPaymentsDashboardComponent implements OnInit {
   filterForm;
 
   constructor(
-    // private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location,
@@ -34,7 +34,7 @@ export class AdminPaymentsDashboardComponent implements OnInit {
 
    this.filterParams = new FilterParams()
 
-    // this.filterForm = this.formBuilder.group(this.filterParams);
+    this.filterForm = this.formBuilder.group(this.filterParams);
 
     this.activatedRoute.queryParamMap
       .subscribe((params) => {

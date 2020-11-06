@@ -5,5 +5,7 @@ export class FilterParams {
     type: number
     from: string
     to: string
-    includeDeleted: boolean = false
+    includeDeleted: boolean
+
+    constructor(){}
 }

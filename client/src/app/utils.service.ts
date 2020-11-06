@@ -11,12 +11,14 @@ export class UtilsService {
 
   setSearchURL(filterParams: FilterParams, location: Location, curURL: string) {
 
-    let queryParamsStr = ''
+    //compose query params
+    let queryParamsStrList = []
     for (let [key, value] of Object.entries(filterParams))
       if (value != undefined)
-        queryParamsStr += key + '=' + value;
+        queryParamsStrList.push(key + '=' + value);
     
-    if (queryParamsStr)
-      location.go(curURL + '?' + queryParamsStr);
+    // set the URL
+    if (queryParamsStrList)
+      location.go(curURL + '?' + queryParamsStrList.join('&'));
   }
 }
