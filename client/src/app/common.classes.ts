@@ -1,11 +1,11 @@
 export class FilterParams {
 
-    customerId: string 
-    customerName: string
-    type: number
-    from: string
-    to: string
-    includeDeleted: boolean
+    CustId: string 
+    CustName: string
+    Type: number | string = ''
+    From: string
+    To: string
+    IncludeDeleted: boolean
 
     constructor(){}
 }

@@ -1,19 +1,20 @@
 import { UtilsService } from './../../utils.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DASHBORAD_PAYMENTS_LIST, IPaymentsDashboard } from '../../../../../interfaces/customer.interface';
 import { FilterParams } from 'src/app/common.classes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-payments-dashboard',
   templateUrl: './admin-payments-dashboard.component.html',
   styleUrls: ['./admin-payments-dashboard.component.scss']
 })
-export class AdminPaymentsDashboardComponent implements OnInit {
+export class AdminPaymentsDashboardComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['id', 'date', 'customer', 'paymentType', 'addedBy', 'comment', 'commands'];
 
@@ -23,6 +24,8 @@ export class AdminPaymentsDashboardComponent implements OnInit {
 
   filterParams: FilterParams;
   filterForm;
+  searchId;
+  subscriptions: Subscription[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,21 +35,23 @@ export class AdminPaymentsDashboardComponent implements OnInit {
     private utils: UtilsService
   ) {
 
+    this.subscriptions = [];
     this.filterParams = new FilterParams();
-    this.initFormBuilder();
 
-    this.activatedRoute.queryParamMap
+    let sub = this.activatedRoute.queryParamMap
       .subscribe((queryParam: any) => {
 
         let params = queryParam.params as FilterParams;
         if (params) {
 
           this.filterParams = { ...this.filterParams, ...params };
-          this.initFormBuilder();
+
 
           //load the list
-        }          
+        }
       });
+
+    this.subscriptions.push(sub);
   }
 
   ngAfterViewInit() {
@@ -56,22 +61,30 @@ export class AdminPaymentsDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  initFormBuilder() {
+  ngOnDestroy() {
 
-    this.filterForm = this.formBuilder.group({
-      customerId: ''
-    });
+    this.utils.unsubscribeSubscriptions(this.subscriptions);
   }
 
-  filter(value) {
-    console.log(value, this.filterParams);
+  restFilter() {
+    
+    this.filterParams = new FilterParams();
+  }
+
+  filter() {
+    console.log( this.filterParams);
     let url = this.router.url.split('?');
-    this.utils.setSearchURL(value, this.location, url[0], url[1])
+    this.utils.setSearchURL(this.filterParams, this.location, url[0], url[1])
   }
 
   new() {
 
-    this.filterParams.customerId = 'test';
-    this.filterParams.customerName = 'myname';
+    this.filterParams.CustId = 'test';
+    this.filterParams.CustName = 'myname';
   }
+
+  searchById() {
+    console.log(this.searchId)
+  }
+
 }

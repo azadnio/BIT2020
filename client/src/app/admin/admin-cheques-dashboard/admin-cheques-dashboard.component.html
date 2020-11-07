@@ -6,6 +6,81 @@
             <button mat-flat-button color="primary">New Payment</button>
         </div>
 
+        <div>Returned Cheques: 0</div>
+        <div>To days clearences: 0</div>
+
+        <div class="filter-field-wrap">
+        
+            <fieldset>
+                <legend>Search</legend>
+                <mat-form-field appearance="outline" class="inline">
+                    <mat-label>Chque number</mat-label>
+                    <input matInput placeholder="Enter cheque number" id="chequeNumber" [(ngModel)]="chequeNumber">
+                    <mat-icon matSuffix *ngIf="chequeNumber && chequeNumber.trim()" class="clear-ipnut-icon" (click)="chequeNumber = ''"> close</mat-icon>
+                </mat-form-field>
+                <button mat-flat-button color="primary" (click)="searchById()">Search</button>
+            </fieldset>
+        
+            <fieldset>
+                <legend>Filter Cheques</legend>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer ID</mat-label>
+                    <input matInput placeholder="Enter Customer ID" id="CustId" [(ngModel)]="filterParams.CustId" (change)="filterParams.CustName = ''">
+                    <mat-icon matSuffix *ngIf="filterParams.CustId && filterParams.CustId.trim()" class="clear-ipnut-icon" (click)="filterParams.CustId = ''">close</mat-icon>
+                    <mat-hint>Search by Customer ID</mat-hint>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer Name</mat-label>
+                    <input matInput placeholder="Enter Customer Name" id="CustName" [(ngModel)]="filterParams.CustName" (change)="filterParams.CustId = ''">
+                    <mat-icon matSuffix *ngIf="filterParams.CustName && filterParams.CustName.trim()" class="clear-ipnut-icon" (click)="filterParams.CustName = ''">close</mat-icon>
+                    <mat-hint>Search by Customer Name</mat-hint>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Payment Type</mat-label>
+                    <mat-select [(value)]="filterParams.Type">
+                        <mat-option value="">All</mat-option>
+                        <mat-option value="chequeStatuses.pending">{{ utils.chequeStatusesToString(chequeStatuses.pending) }}</mat-option>
+                        <mat-option value="chequeStatuses.returned">{{ utils.chequeStatusesToString(chequeStatuses.returned) }}</mat-option>
+                    </mat-select>
+                    <mat-hint>Set the payment type</mat-hint>
+                </mat-form-field>
+        
+                <mat-form-field color="primary" appearance="outline" class="date-picker">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [(ngModel)]="filterParams.From" [max]="filterParams.To" [matDatepicker]="picker1" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.From" (click)="filterParams.From = ''">
+                        close</mat-icon>
+                    <mat-hint>Payment start date</mat-hint>
+                </mat-form-field>
+        
+                <mat-form-field color="primary" appearance="outline" class="date-picker">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [(ngModel)]="filterParams.To" [min]="filterParams.From" [matDatepicker]="picker2" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                    <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.To" (click)="filterParams.To = ''">close
+                    </mat-icon>
+                    <mat-hint>Payment end date</mat-hint>
+                </mat-form-field>
+        
+                <div>
+                    <mat-checkbox color="primary" [(ngModel)]="filterParams.IncludeDeleted">Include Deleted Customers
+                    </mat-checkbox>
+                </div>
+        
+                <div class="inline-flex-left">
+                    <button mat-flat-button class="btn-reset" (click)="restFilter()">Reset</button>
+                    <button mat-flat-button class="btn-filter" (click)="filter()">Filter</button>
+                </div>
+        
+            </fieldset>
+        </div>
+
     </div>
 
     <div class="dashboard-content-wrap">
@@ -47,7 +122,7 @@
 
                 <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                    <td mat-cell *matCellDef="let element"> {{ utils.chequeStatusesToString(element.status) }} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="paymentId">

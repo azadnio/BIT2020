@@ -16,13 +16,17 @@ import { AdminSalesReturnsDashboardComponent } from './admin-sales-returns-dashb
 import { AdminReportsDashboardComponent } from './admin-reports-dashboard/admin-reports-dashboard.component';
 import { AdminItemsDashboardComponent } from './admin-items-dashboard/admin-items-dashboard.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 const routes: Routes = [
   {
@@ -74,7 +78,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ]
 })
 export class AdminModule { }

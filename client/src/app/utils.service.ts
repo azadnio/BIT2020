@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FilterParams } from './common.classes';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { ChequeStatus } from './common.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +31,16 @@ export class UtilsService {
     return false;
   }
 
+  unsubscribeSubscriptions(subscriptions: Subscription []){
 
+    subscriptions.forEach(el => el.unsubscribe() );
+  }
+
+  chequeStatusesToString(status: ChequeStatus) {
+    
+    switch(status){
+      case ChequeStatus.pending: return 'Pending';
+      case ChequeStatus.returned: return 'Returned';
+    }
+  }
 }
