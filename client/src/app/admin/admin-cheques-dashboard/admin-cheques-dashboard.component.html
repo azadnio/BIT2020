@@ -18,7 +18,7 @@
                     <input matInput placeholder="Enter cheque number" id="chequeNumber" [(ngModel)]="chequeNumber">
                     <mat-icon matSuffix *ngIf="chequeNumber && chequeNumber.trim()" class="clear-ipnut-icon" (click)="chequeNumber = ''"> close</mat-icon>
                 </mat-form-field>
-                <button mat-flat-button color="primary" (click)="searchById()">Search</button>
+                <button mat-flat-button  class="btn-search-by-id" color="primary" (click)="searchById()">Search</button>
             </fieldset>
         
             <fieldset>
@@ -39,33 +39,33 @@
                 </mat-form-field>
         
                 <mat-form-field appearance="outline">
-                    <mat-label>Payment Type</mat-label>
+                    <mat-label>Checque status</mat-label>
                     <mat-select [(value)]="filterParams.Type">
                         <mat-option value="">All</mat-option>
                         <mat-option value="chequeStatuses.pending">{{ utils.chequeStatusesToString(chequeStatuses.pending) }}</mat-option>
                         <mat-option value="chequeStatuses.returned">{{ utils.chequeStatusesToString(chequeStatuses.returned) }}</mat-option>
                     </mat-select>
-                    <mat-hint>Set the payment type</mat-hint>
+                    <mat-hint>Set the cheque status</mat-hint>
                 </mat-form-field>
         
                 <mat-form-field color="primary" appearance="outline" class="date-picker">
-                    <mat-label>Start Date</mat-label>
+                    <mat-label>From</mat-label>
                     <input matInput [(ngModel)]="filterParams.From" [max]="filterParams.To" [matDatepicker]="picker1" readonly>
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
                     <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.From" (click)="filterParams.From = ''">
                         close</mat-icon>
-                    <mat-hint>Payment start date</mat-hint>
+                    <mat-hint>Cheques dates from</mat-hint>
                 </mat-form-field>
         
                 <mat-form-field color="primary" appearance="outline" class="date-picker">
-                    <mat-label>End Date</mat-label>
+                    <mat-label>To</mat-label>
                     <input matInput [(ngModel)]="filterParams.To" [min]="filterParams.From" [matDatepicker]="picker2" readonly>
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                     <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.To" (click)="filterParams.To = ''">close
                     </mat-icon>
-                    <mat-hint>Payment end date</mat-hint>
+                    <mat-hint>Cheque dates to</mat-hint>
                 </mat-form-field>
         
                 <div>

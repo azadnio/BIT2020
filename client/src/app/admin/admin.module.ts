@@ -1,3 +1,4 @@
+import { CustomerComponent } from './../modules/cutomer/customer/customer.component';
 import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -27,13 +28,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { CustomerModule } from 'src/app/modules/cutomer/cutomer.module'
 
 const routes: Routes = [
   {
     path: '', component: AdminDashboardComponent, children: [
       { path: '', component: AdminHomeComponent },
       { path: 'items', component: AdminItemsDashboardComponent },
-      { path: 'customers', component: AdminCustomersDashboardComponent },
+      {
+        path: 'customers', component: AdminCustomersDashboardComponent, children: [
+          { path: 'new', component: CustomerComponent},
+          // { path: 'edit/:id', component: CustomerComponent},
+          // { path: 'edit/:id', component: CustomerComponent}
+        ]
+      },
       { path: 'orders', component: AdminOrdersDashboardComponent },
       { path: 'payments', component: AdminPaymentsDashboardComponent },
       { path: 'accounts', component: AdminAccountsDashboardComponent },
@@ -70,6 +78,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+
+    CustomerModule,
+
     MatIconModule,
     MatRippleModule,
     MatButtonModule,

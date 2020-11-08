@@ -37,7 +37,8 @@ export interface ICustomerDashboard {
     phone: string
     pedingChaeques: number
     paymentBalance: number
-    status: number
+    status: number,
+    lastPayment: Date;
 }
 
 let LIST2: ICustomerDashboard[] = [];
@@ -47,10 +48,11 @@ for (let index = 1; index <= 100; index++)
         id: index,
         name: 'customer ' + index,
         city: 'city ' + index,
-        phone: 'oooo' + index,
+        phone: '077123445' + index,
         pedingChaeques: index * 1000,
         paymentBalance: index * 100,
-        status: 1
+        status: index % 3,
+        lastPayment: new Date()
     });
 
 export const DASHBORAD_CUSTOMER_LIST = LIST2;

@@ -6,12 +6,92 @@
             <button mat-flat-button color="primary">New Invoice</button>
         </div>
 
+        <div> New orders : 1 </div>
+        <div> Processing orders : 1 </div>
+        <div> Canceled orders : 1 </div>
+        <div> With hoold : 1 </div>
+
+        <div class="filter-field-wrap">
+
+            <fieldset>
+                <legend>Search</legend>
+                <mat-form-field appearance="outline" class="inline">
+                    <mat-label>Order ID</mat-label>
+                    <input matInput placeholder="Enter Order ID" id="searchId" [(ngModel)]="searchId">
+                    <span matPrefix>ORD</span>
+                    <mat-icon matSuffix *ngIf="searchId && searchId.trim()" class="clear-ipnut-icon" (click)="searchId = ''">close</mat-icon>
+                    <mat-hint>Search by Order ID</mat-hint>
+                </mat-form-field>
+                <button mat-flat-button class="btn-search-by-id" color="primary" (click)="searchById()">Search</button>
+            </fieldset>
+
+            <fieldset>
+                <legend>Filter Payments</legend>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer ID</mat-label>
+                    <input matInput placeholder="Enter Customer ID" id="CustId" [(ngModel)]="filterParams.CustId" (change)="filterParams.CustName = ''">
+                    <span matPrefix>CST</span>
+                    <mat-icon matSuffix *ngIf="filterParams.CustId && filterParams.CustId.trim()" class="clear-ipnut-icon" (click)="filterParams.CustId = ''">close</mat-icon>
+                    <mat-hint>Search by Customer ID</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer Name</mat-label>
+                    <input matInput placeholder="Enter Customer Name" id="CustName" [(ngModel)]="filterParams.CustName" (change)="filterParams.CustId = ''">
+                    <mat-icon matSuffix *ngIf="filterParams.CustName && filterParams.CustName.trim()" class="clear-ipnut-icon" (click)="filterParams.CustName = ''">close</mat-icon>
+                    <mat-hint>Search by Customer Name</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Order Status</mat-label>
+                    <mat-select [(value)]="filterParams.Type">
+                        <mat-option value="">All</mat-option>
+                        <mat-option value="orderStatuses.new">New</mat-option>
+                        <mat-option value="orderStatuses.processing">Processing</mat-option>
+                        <mat-option value="orderStatuses.deleverd">Delevered</mat-option>
+                        <mat-option value="orderStatuses.canceled">Canceled</mat-option>
+                        <mat-option value="orderStatuses.withHold">With hold</mat-option>
+                    </mat-select>
+                    <mat-hint>Set the payment type</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field color="primary" appearance="outline" class="date-picker">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [(ngModel)]="filterParams.From" [max]="filterParams.To" [matDatepicker]="picker1" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.From" (click)="filterParams.From = ''">close</mat-icon>
+                    <mat-hint>Payment start date</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field color="primary" appearance="outline" class="date-picker">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [(ngModel)]="filterParams.To" [min]="filterParams.From" [matDatepicker]="picker2" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                    <mat-icon matSuffix class="clear-ipnut-icon" *ngIf="filterParams.To" (click)="filterParams.To = ''" >close</mat-icon>
+                    <mat-hint>Payment end date</mat-hint>
+                </mat-form-field>
+
+                <div>
+                    <mat-checkbox color="primary" [(ngModel)]="filterParams.IncludeDeleted">Include Deleted Customers</mat-checkbox>
+                </div>
+
+                <div class="inline-flex-left">
+                    <button mat-flat-button class="btn-reset" (click)="restFilter()">Reset</button>
+                    <button mat-flat-button class="btn-filter" (click)="filter()">Filter</button>
+                </div>
+
+            </fieldset>
+        </div>
+
     </div>
 
     <div class="dashboard-content-wrap">
 
         <div class="header">
-            <p>Showing the list of All Orders</p>
+            <p>Showing the list of All Orders  </p>
             <small>You can view <mat-icon> remove_red_eye </mat-icon> the Order </small>
         </div>
 
@@ -22,7 +102,7 @@
 
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> ID </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    <td mat-cell *matCellDef="let element"> ORD{{element.id}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="date">
@@ -37,17 +117,17 @@
 
                 <ng-container matColumnDef="amount">
                     <th mat-header-cell *matHeaderCellDef> Amount </th>
-                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.amount | currency:'Rs. ':'code'}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                    <td mat-cell *matCellDef="let element"> {{utils.oderStatusString(element.status)}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="invoiceNo">
                     <th mat-header-cell *matHeaderCellDef> Invoice ID </th>
-                    <td mat-cell *matCellDef="let element"> {{element.invoiceNo}} </td>
+                    <td mat-cell *matCellDef="let element"> INV{{element.invoiceNo}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="commands">

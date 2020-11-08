@@ -6,6 +6,7 @@ export class FilterParams {
     From: string
     To: string
     IncludeDeleted: boolean
+    City: string = ''
 
     constructor(){}
 }

@@ -45,33 +45,36 @@ body {
 }
 
 .inline-flex-left {
-
     display: flex;
     justify-content: flex-end;
-    
+
     button + button {
         margin-left: 2%;
     }
 }
 
 .dash-board {
-
     display: flex;
     height: 100%;
 
     .filter-wrap {
-
         width: 20%;
         padding-top: 1%;
+        min-width: 24em;
 
         .filter-field-wrap {
             padding: 10px;
+
+            .btn-search-by-id {
+                top: -3px;
+            }
+
             fieldset {
                 border: none;
                 border-top: 1px solid gray;
 
                 mat-form-field + mat-form-field {
-                    margin-top: 1%;
+                    margin-top: 3%;
                 }
 
                 mat-form-field.date-picker + mat-form-field.date-picker {
@@ -107,9 +110,36 @@ body {
                         margin-right: 2px;
                     }
 
-                    mat-label {
-                        top: 3px;
-                        position: relative;
+                    //cutomizing mat input
+                    .mat-form-field-wrapper {
+                        .mat-form-field-flex {
+                            .mat-form-field-infix {
+                                border: 0;
+                                padding: 7px 0;
+                                input {
+                                    padding: 5px 0;
+                                    margin: 0;
+                                    top: 5px;
+                                    position: relative;
+                                }
+                                .mat-form-field-label-wrapper {
+                                    .mat-form-field-label {
+                                        top: 32px;
+                                        height: 18px;
+                                        &:not(.mat-empty) {
+                                            color: blue;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    mat-select[role="combobox"] {
+                        height: 20px;
+                        .mat-select-trigger {
+                            top: 5px;
+                        }
                     }
                 }
 
@@ -173,7 +203,25 @@ body {
                         }
                     }
                 }
+
+                td.deleted {
+                    color: red;
+                    font-weight: bold;
+                }
+
+                td.deleted {
+                    color: red;
+                    font-weight: bold;
+                }
             }
         }
     }
+}
+
+//mat table customizing
+
+tr.mat-header-row,
+tr.mat-row,
+tr.mat-footer-row {
+    height: 2.5em !important;
 }

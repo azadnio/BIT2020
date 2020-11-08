@@ -8,6 +8,7 @@ import { FilterParams } from 'src/app/common.classes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { OrderStatus } from 'src/app/common.enum';
 
 @Component({
   selector: 'app-admin-payments-dashboard',
@@ -22,6 +23,8 @@ export class AdminPaymentsDashboardComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  orderStatuses = OrderStatus
+
   filterParams: FilterParams;
   filterForm;
   searchId;
@@ -32,7 +35,7 @@ export class AdminPaymentsDashboardComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private utils: UtilsService
+    public utils: UtilsService
   ) {
 
     this.subscriptions = [];

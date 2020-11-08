@@ -17,7 +17,7 @@
                     <mat-icon matSuffix *ngIf="searchId && searchId.trim()" class="clear-ipnut-icon" (click)="searchId = ''">close</mat-icon>
                     <mat-hint>Search by Payment ID</mat-hint>
                 </mat-form-field>
-                <button mat-flat-button color="primary" (click)="searchById()">Search</button>
+                <button mat-flat-button class="btn-search-by-id" color="primary" (click)="searchById()">Search</button>
             </fieldset>
 
             <fieldset>
@@ -44,6 +44,7 @@
                         <mat-option value="">All</mat-option>
                         <mat-option value="1">Cheque</mat-option>
                         <mat-option value="2">Cash</mat-option>
+                        <mat-option value="3">Cash and Cheque</mat-option>
                     </mat-select>
                     <mat-hint>Set the payment type</mat-hint>
                 </mat-form-field>
@@ -111,7 +112,7 @@
 
                 <ng-container matColumnDef="paymentType">
                     <th mat-header-cell *matHeaderCellDef> Payment Type </th>
-                    <td mat-cell *matCellDef="let element"> {{element.paymentType}} </td>
+                    <td mat-cell *matCellDef="let element"> {{ utils.paymentTypeString(element.paymentType)}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="addedBy">
