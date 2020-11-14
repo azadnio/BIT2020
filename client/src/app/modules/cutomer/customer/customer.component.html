@@ -1,1 +1,122 @@
-<p>customer works!</p>
+<div class="entity customer">
+
+    <div class="panel left">
+
+    </div>
+
+    <div class="panel right">
+
+        <h2>Register New Customer</h2>
+
+        <p class="info">
+            Required fields are marked with *
+        </p>
+
+        <form action="submit()" [formGroup]="customerForm">
+
+            <div>                
+                <mat-form-field>
+                    
+                    <input matInput placeholder="Full Name" formControlName="Name" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('Name').touched || customerForm.get('Name').dirty) && customerForm.get('Name').invalid">
+                        Enater valid customer name
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+            
+                    <textarea matInput placeholder="Address" formControlName="Address" required rows="3"></textarea>
+                    <mat-error
+                        *ngIf="(customerForm.get('Address').touched || customerForm.get('Address').dirty) && customerForm.get('Address').invalid">
+                        Enater valid  address
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+            
+                    <input matInput placeholder="City" formControlName="City" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('City').touched || customerForm.get('City').dirty) && customerForm.get('City').invalid">
+                        Enater valid customer city
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <mat-form-field>
+            
+                    <input matInput placeholder="NIC Number" formControlName="NIC" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('NIC').touched || customerForm.get('NIC').dirty) && customerForm.get('NIC').invalid">
+                        Enater valid customer NIC number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Email Address" formControlName="Email" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('Email').touched || customerForm.get('Email').dirty) && customerForm.get('Email').invalid">
+                        Enater valid email address
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+            
+                    <input matInput placeholder="Mobile Number" formControlName="Mobile" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('Mobile').touched || customerForm.get('Mobile').dirty) && customerForm.get('Mobile').invalid">
+                        Enater valid customer Mobile number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+            
+                    <input matInput placeholder="Telephone number" formControlName="Telephone" >
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>            
+                    <input matInput placeholder="Credit Limit" formControlName="CreditLimit">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Password" formControlName="Password" required>
+                    <mat-error
+                        *ngIf="(customerForm.get('Password').touched || customerForm.get('Password').dirty) && customerForm.get('Password').invalid">
+                        Enater valid customer Mobile number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="Status" >
+                        <mat-option *ngFor="let status of customerstatuses" [value]="status">{{ utils.statusString(status) }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form-button-wrap">
+
+                <button></button>
+            </div>
+        </form>
+    </div>
+
+</div>

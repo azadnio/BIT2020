@@ -53,6 +53,14 @@ body {
     }
 }
 
+//mat table customizing
+
+tr.mat-header-row,
+tr.mat-row,
+tr.mat-footer-row {
+    height: 2.5em !important;
+}
+
 .dash-board {
     display: flex;
     height: 100%;
@@ -218,10 +226,14 @@ body {
     }
 }
 
-//mat table customizing
+.entity {
+    display: flex;
+    flex-direction: row;
 
-tr.mat-header-row,
-tr.mat-row,
-tr.mat-footer-row {
-    height: 2.5em !important;
+    .panel {
+
+            form {
+            }
+
+    }
 }

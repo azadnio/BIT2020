@@ -35,13 +35,8 @@ const routes: Routes = [
     path: '', component: AdminDashboardComponent, children: [
       { path: '', component: AdminHomeComponent },
       { path: 'items', component: AdminItemsDashboardComponent },
-      {
-        path: 'customers', component: AdminCustomersDashboardComponent, children: [
-          { path: 'new', component: CustomerComponent},
-          // { path: 'edit/:id', component: CustomerComponent},
-          // { path: 'edit/:id', component: CustomerComponent}
-        ]
-      },
+      { path: 'customers', component: AdminCustomersDashboardComponent },
+      { path: 'customers/new', component: CustomerComponent },
       { path: 'orders', component: AdminOrdersDashboardComponent },
       { path: 'payments', component: AdminPaymentsDashboardComponent },
       { path: 'accounts', component: AdminAccountsDashboardComponent },
