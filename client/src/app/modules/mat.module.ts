@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { ReturnPageComponent } from 'src/app/common.components'
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ReturnPageComponent
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -30,7 +32,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule    
   ],
   exports: [
     MatIconModule,
@@ -45,7 +47,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ReturnPageComponent
   ]
 })
 export class MatModule { }

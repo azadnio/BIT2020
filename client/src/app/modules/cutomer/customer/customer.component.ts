@@ -37,7 +37,8 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit() {
-    console.log('submit form')
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.customerForm.value);
   }
 }

@@ -1,7 +1,14 @@
 <div class="entity customer">
 
     <div class="panel left">
-
+        <return_page></return_page>
+        <div class="photo-wrap">
+            
+            <img src="assets/camera.png" alt="">
+        </div>
+        <button mat-stroked-button color="primary">
+            <mat-icon>attach_file</mat-icon> Upload
+        </button>
     </div>
 
     <div class="panel right">
@@ -12,11 +19,11 @@
             Required fields are marked with *
         </p>
 
-        <form action="submit()" [formGroup]="customerForm">
+        <form (ngSubmit)="onSubmit()" [formGroup]="customerForm">
 
-            <div>                
+            <div>
                 <mat-form-field>
-                    
+
                     <input matInput placeholder="Full Name" formControlName="Name" required>
                     <mat-error
                         *ngIf="(customerForm.get('Name').touched || customerForm.get('Name').dirty) && customerForm.get('Name').invalid">
@@ -27,18 +34,18 @@
 
             <div>
                 <mat-form-field>
-            
+
                     <textarea matInput placeholder="Address" formControlName="Address" required rows="3"></textarea>
                     <mat-error
                         *ngIf="(customerForm.get('Address').touched || customerForm.get('Address').dirty) && customerForm.get('Address').invalid">
-                        Enater valid  address
+                        Enater valid address
                     </mat-error>
                 </mat-form-field>
             </div>
 
             <div>
                 <mat-form-field>
-            
+
                     <input matInput placeholder="City" formControlName="City" required>
                     <mat-error
                         *ngIf="(customerForm.get('City').touched || customerForm.get('City').dirty) && customerForm.get('City').invalid">
@@ -50,7 +57,7 @@
 
             <div>
                 <mat-form-field>
-            
+
                     <input matInput placeholder="NIC Number" formControlName="NIC" required>
                     <mat-error
                         *ngIf="(customerForm.get('NIC').touched || customerForm.get('NIC').dirty) && customerForm.get('NIC').invalid">
@@ -71,7 +78,7 @@
 
             <div>
                 <mat-form-field>
-            
+
                     <input matInput placeholder="Mobile Number" formControlName="Mobile" required>
                     <mat-error
                         *ngIf="(customerForm.get('Mobile').touched || customerForm.get('Mobile').dirty) && customerForm.get('Mobile').invalid">
@@ -82,13 +89,13 @@
 
             <div>
                 <mat-form-field>
-            
-                    <input matInput placeholder="Telephone number" formControlName="Telephone" >
+
+                    <input matInput placeholder="Telephone number" formControlName="Telephone">
                 </mat-form-field>
             </div>
 
             <div>
-                <mat-form-field>            
+                <mat-form-field>
                     <input matInput placeholder="Credit Limit" formControlName="CreditLimit">
                 </mat-form-field>
             </div>
@@ -106,15 +113,17 @@
             <div>
                 <mat-form-field appearance="">
                     <mat-label>Status</mat-label>
-                    <mat-select formControlName="Status" >
-                        <mat-option *ngFor="let status of customerstatuses" [value]="status">{{ utils.statusString(status) }}</mat-option>
+                    <mat-select formControlName="Status">
+                        <mat-option *ngFor="let status of customerstatuses" [value]="status">
+                            {{ utils.statusString(status) }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
             <div class="form-button-wrap">
 
-                <button></button>
+                <button type="reset" mat-raised-button>Reset</button>
+                <button type="submit" mat-raised-button color="primary">Register</button>
             </div>
         </form>
     </div>
