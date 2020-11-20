@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Status } from 'src/app/common.enum';
 import { UtilsService } from 'src/app/utils.service';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-customer',
@@ -15,7 +16,8 @@ export class CustomerComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public utils: UtilsService
+    public utils: UtilsService,
+    private appService: AppService
   ) {
     
     //set customer form fields
@@ -40,5 +42,7 @@ export class CustomerComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.customerForm.value);
+
+    this.appService.showErrorMessage();
   }
 }

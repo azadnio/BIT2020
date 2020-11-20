@@ -9,13 +9,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { IndexComponent } from './index/index.component';
 import { ItemsDashboardComponent } from './index/items-dashboard/items-dashboard.component';
 import { AccountDashboardComponent } from './index/account-dashboard/account-dashboard.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './index/login/login.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { AppCommonModule } from './modules/common/common.module';
 
 @NgModule({
   declarations: [
@@ -31,12 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule
+    AppCommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

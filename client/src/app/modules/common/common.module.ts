@@ -1,5 +1,8 @@
+//angular modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+//material components
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,13 +14,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReturnPageComponent } from 'src/app/common.components'
+import { MatDialogModule } from '@angular/material/dialog';
 
+//custome common component
+import { ReturnPageComponent } from './return-page.component';
+import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [
-    ReturnPageComponent
-  ],
+  declarations: [ReturnPageComponent, NotificationDialogComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -32,9 +38,12 @@ import { ReturnPageComponent } from 'src/app/common.components'
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule    
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDialogModule
   ],
-  exports: [
+  exports:[
     MatIconModule,
     MatRippleModule,
     MatButtonModule,
@@ -48,7 +57,10 @@ import { ReturnPageComponent } from 'src/app/common.components'
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDialogModule,
     ReturnPageComponent
   ]
 })
-export class MatModule { }
+export class AppCommonModule { }
