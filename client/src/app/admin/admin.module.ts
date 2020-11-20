@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component'
 import { ItemsDashboardComponent } from 'src/app/index/items-dashboard/items-dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
-import { AdminCustomersDashboardComponent } from './admin-customers-dashboard/admin-customers-dashboard.component';
+// import { AdminCustomersDashboardComponent } from './admin-customers-dashboard/admin-customers-dashboard.component';
 import { AdminOrdersDashboardComponent } from './admin-orders-dashboard/admin-orders-dashboard.component';
 import { AdminInvoicesDashboardComponent } from './admin-invoices-dashboard/admin-invoices-dashboard.component';
 import { AdminPaymentsDashboardComponent } from './admin-payments-dashboard/admin-payments-dashboard.component';
@@ -29,14 +29,17 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CustomerModule } from 'src/app/modules/cutomer/cutomer.module'
+import { CustomerAdminDashboardComponent } from '../modules/cutomer/customers-admin-dashboard/customers-admin-dashboard.component';
+import { CustomerViewComponent } from '../modules/cutomer/customer-view/customer-view.component';
 
 const routes: Routes = [
   {
     path: '', component: AdminDashboardComponent, children: [
       { path: '', component: AdminHomeComponent },
       { path: 'items', component: AdminItemsDashboardComponent },
-      { path: 'customers', component: AdminCustomersDashboardComponent },
+      { path: 'customers', component: CustomerAdminDashboardComponent },
       { path: 'customers/new', component: CustomerComponent },
+      { path: 'customers/:id', component: CustomerViewComponent },
       { path: 'orders', component: AdminOrdersDashboardComponent },
       { path: 'payments', component: AdminPaymentsDashboardComponent },
       { path: 'accounts', component: AdminAccountsDashboardComponent },
@@ -60,7 +63,6 @@ const routes: Routes = [
   declarations: [
     AdminDashboardComponent,
     AdminHomeComponent,
-    AdminCustomersDashboardComponent,
     AdminOrdersDashboardComponent,
     AdminInvoicesDashboardComponent,
     AdminPaymentsDashboardComponent,

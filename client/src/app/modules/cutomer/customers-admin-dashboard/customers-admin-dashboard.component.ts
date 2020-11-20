@@ -1,21 +1,23 @@
-import { UtilsService } from './../../utils.service';
 import { Subscription } from 'rxjs';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FilterParams } from 'src/app/common.classes';
 
-import { DASHBORAD_CUSTOMER_LIST, ICustomerDashboard } from '../../../../../interfaces/customer.interface'
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { DASHBORAD_CUSTOMER_LIST, ICustomerDashboard } from '../../../../../../interfaces/customer.interface';
+import { UtilsService } from 'src/app/utils.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerModalViewComponent } from '../customer-modal-view/customer-modal-view.component';
 
 @Component({
   selector: 'app-admin-customers-dashboard',
-  templateUrl: './admin-customers-dashboard.component.html',
-  styleUrls: ['./admin-customers-dashboard.component.scss']
+  templateUrl: './customers-admin-dashboard.component.html',
+  styleUrls: ['./customers-admin-dashboard.component.scss']
 })
-export class AdminCustomersDashboardComponent implements AfterViewInit {
+export class CustomerAdminDashboardComponent implements AfterViewInit {
   
   displayedColumns: string[] = ['id', 'name', 'city', 'phone', 'pedingChaeques', 'paymentBalance', 'lastPayment', 'status', 'commands'];
 
@@ -33,7 +35,8 @@ export class AdminCustomersDashboardComponent implements AfterViewInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location,
-    public utils: UtilsService
+    public utils: UtilsService,
+    public dialog: MatDialog
   ) {
 
     this.subscriptions = [];
@@ -86,5 +89,13 @@ export class AdminCustomersDashboardComponent implements AfterViewInit {
 
   searchById() {
     console.log(this.searchId)
+  }
+
+  view(id){
+
+    return this.dialog.open(CustomerModalViewComponent, {
+      width: '50%',
+      data: { id }
+    });
   }
 }
