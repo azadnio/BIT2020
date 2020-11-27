@@ -1,0 +1,36 @@
+.customer {
+    background: #f0f0f0;
+    .panel {
+        &.panel-left {
+            border: 6px #c5bfbf solid;
+            background: #f2f1f1;
+            width: 15em;
+        }
+
+        &.panel-right {
+            flex: 1;
+            padding: 2em;
+            min-width: 20em;
+            .detail-row {
+                .label {
+                    min-width: 7em;
+                    display: inline-block;
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+
+    .deleted {
+        color: red;
+        font-weight: bold;
+    }
+
+    .contact {
+        margin-left: 7%;
+        .icon-text {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+}

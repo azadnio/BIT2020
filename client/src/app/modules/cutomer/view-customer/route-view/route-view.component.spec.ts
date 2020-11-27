@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomerModalViewComponent } from './customer-modal-view.component';
+import { RouteViewComponent } from './route-view.component';
 
-describe('CustomerModalViewComponent', () => {
-  let component: CustomerModalViewComponent;
-  let fixture: ComponentFixture<CustomerModalViewComponent>;
+describe('RouteViewComponent', () => {
+  let component: RouteViewComponent;
+  let fixture: ComponentFixture<RouteViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerModalViewComponent ]
+      declarations: [ RouteViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomerModalViewComponent);
+    fixture = TestBed.createComponent(RouteViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

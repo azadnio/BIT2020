@@ -31,28 +31,46 @@ export const CUSTOMER_LIST = LIST;
 
 export interface ICustomerDashboard {
 
-    id: number
-    name: string
-    city: string
-    phone: string
-    pedingChaeques: number
-    paymentBalance: number
-    status: number,
-    lastPayment: Date;
+    Id: number
+    Name: string
+    City: string
+    Mobile: string
+    Telephone: string
+    PedingChaeques: number
+    PaymentBalance: number
+    Status: number,
+    LastPayment: Date;
+    Address: string;
+    Email: string;
+    NIC: string;
+    CreditLimit: number
+    CreatedAt: Date,
+    Modified: Date,
+    CreatedBy: string;
+    ModifiedBy: string;
 }
 
 let LIST2: ICustomerDashboard[] = [];
 
 for (let index = 1; index <= 100; index++)
     LIST2.push({
-        id: index,
-        name: 'customer ' + index,
-        city: 'city ' + index,
-        phone: '077123445' + index,
-        pedingChaeques: index * 1000,
-        paymentBalance: index * 100,
-        status: index % 3,
-        lastPayment: new Date()
+        Id: index,
+        Name: 'customer ' + index,
+        City: 'city ' + index,
+        Mobile: '077123445' + index,
+        PedingChaeques: index * 1000,
+        PaymentBalance: index * 100,
+        Status: index % 3,
+        LastPayment: new Date(),
+        Address: 'this is a address',
+        Email: 'Email',
+        NIC: '11'+ index,
+        CreditLimit: index * 1000,
+        CreatedAt: new Date(),
+        Modified: new Date(),
+        CreatedBy: 'azad',
+        ModifiedBy: 'azad new',
+        Telephone: '0112123445' + index
     });
 
 export const DASHBORAD_CUSTOMER_LIST = LIST2;

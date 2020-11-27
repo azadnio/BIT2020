@@ -231,9 +231,24 @@ tr.mat-footer-row {
     flex-direction: row;
 
     .panel {
+        form {
+        }
+    }
+}
 
-            form {
-            }
+// .mat-dialog-container {
+//     padding: 0;
+// }
 
+.modal {
+    position: relative;
+    .close {
+        position: absolute;
+        top: -24px;
+        right: -24px;
+        cursor: pointer;
+        &:hover{
+            color: red;
+        }
     }
 }

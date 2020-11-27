@@ -16,51 +16,54 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 
-//custome common component
+//custom common component
 import { ReturnPageComponent } from './return-page.component';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
+//custom pipes
+import { CurrencyFormatPipe, DateFormatPipe, DateTimeFormatPipe, EntityStatusFormatPipe, PhoneNumberFormatPipe } from './app.pipes'
+
+const customElements = [
+  DateFormatPipe,
+  DateTimeFormatPipe,
+  CurrencyFormatPipe,
+  PhoneNumberFormatPipe,
+  NotificationDialogComponent,
+  ReturnPageComponent,
+  EntityStatusFormatPipe
+];
+
+const matModules = [
+  MatIconModule,
+  MatRippleModule,
+  MatButtonModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatFormFieldModule,
+  MatInputModule,
+  FormsModule,
+  ReactiveFormsModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatMenuModule,
+  MatDialogModule
+];
+
 @NgModule({
-  declarations: [ReturnPageComponent, NotificationDialogComponent],
+  declarations: customElements,
   imports: [
-    CommonModule,
-    MatIconModule,
-    MatRippleModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatDialogModule
+    CommonModule,    
+    ...matModules
   ],
   exports:[
     MatIconModule,
-    MatRippleModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatDialogModule,
-    ReturnPageComponent
+    ...matModules,
+    ...customElements
   ]
 })
 export class AppCommonModule { }

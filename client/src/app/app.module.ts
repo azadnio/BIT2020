@@ -14,7 +14,7 @@ import { AppCommonModule } from './modules/common/common.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,    
     HomeComponent,
     PagenotfoundComponent,
     IndexComponent,

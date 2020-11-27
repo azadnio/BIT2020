@@ -5,11 +5,11 @@ import { UtilsService } from 'src/app/utils.service';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  selector: 'app-new-customer',
+  templateUrl: './new-customer.component.html',
+  styleUrls: ['./new-customer.component.scss']
 })
-export class CustomerComponent implements OnInit {
+export class NewCustomerComponent implements OnInit {
 
   public customerForm: FormGroup;
   public customerstatuses = [Status.active, Status.deleted];
@@ -19,7 +19,7 @@ export class CustomerComponent implements OnInit {
     public utils: UtilsService,
     private appService: AppService
   ) {
-    
+
     //set customer form fields
     this.customerForm = this.formBuilder.group({
       Name: ['', Validators.minLength(4)],
@@ -45,4 +45,5 @@ export class CustomerComponent implements OnInit {
 
     this.appService.showErrorMessage();
   }
+
 }

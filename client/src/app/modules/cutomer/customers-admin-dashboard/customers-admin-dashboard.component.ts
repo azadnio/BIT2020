@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 import { DASHBORAD_CUSTOMER_LIST, ICustomerDashboard } from '../../../../../../interfaces/customer.interface';
 import { UtilsService } from 'src/app/utils.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomerModalViewComponent } from '../customer-modal-view/customer-modal-view.component';
+import { ModalViewComponent as CustomerModalViewComponent } from '../view-customer/modal-view/modal-view.component';
 
 @Component({
   selector: 'app-admin-customers-dashboard',
@@ -94,7 +94,6 @@ export class CustomerAdminDashboardComponent implements AfterViewInit {
   view(id){
 
     return this.dialog.open(CustomerModalViewComponent, {
-      width: '50%',
       data: { id }
     });
   }

@@ -1,4 +1,4 @@
-import { CustomerComponent } from './../modules/cutomer/customer/customer.component';
+
 import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -30,7 +30,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CustomerModule } from 'src/app/modules/cutomer/cutomer.module'
 import { CustomerAdminDashboardComponent } from '../modules/cutomer/customers-admin-dashboard/customers-admin-dashboard.component';
-import { CustomerViewComponent } from '../modules/cutomer/customer-view/customer-view.component';
+import { RouteViewComponent as CustomerRouteViewComponent} from '../modules/cutomer/view-customer/route-view/route-view.component';
+import { NewCustomerComponent } from '../modules/cutomer/new-customer/new-customer.component';
 
 const routes: Routes = [
   {
@@ -38,8 +39,8 @@ const routes: Routes = [
       { path: '', component: AdminHomeComponent },
       { path: 'items', component: AdminItemsDashboardComponent },
       { path: 'customers', component: CustomerAdminDashboardComponent },
-      { path: 'customers/new', component: CustomerComponent },
-      { path: 'customers/:id', component: CustomerViewComponent },
+      { path: 'customers/new', component: NewCustomerComponent },
+      { path: 'customers/:id', component: CustomerRouteViewComponent },
       { path: 'orders', component: AdminOrdersDashboardComponent },
       { path: 'payments', component: AdminPaymentsDashboardComponent },
       { path: 'accounts', component: AdminAccountsDashboardComponent },

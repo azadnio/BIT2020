@@ -26,3 +26,8 @@ export enum OrderStatus {
     deleverd = 3,
     canceled = 4
 }
+
+export enum ViewSource {
+    router,
+    modal
+}

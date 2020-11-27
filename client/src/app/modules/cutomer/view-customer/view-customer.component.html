@@ -1,0 +1,146 @@
+<div class="customer entity-view">
+
+    <div class="flex-row">
+
+        <div class="panel panel-left">
+            <div class="photo-wrap">
+                <img src="assets/camera.png" alt="">
+            </div>
+
+            <div class="contact">
+                <div>
+                    Contact
+                </div>
+                <div class="icon-text">
+                    <mat-icon>
+                        call
+                    </mat-icon>
+                    {{(customer.Mobile || customer.Telephone) | phoneNumber}}
+                </div>
+                <div class="icon-text">
+                    <mat-icon>
+                        email
+                    </mat-icon>
+                    {{customer.Email}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel panel-right">
+
+            <div class="detail-row">
+                <span class="label">
+                    Customer ID
+                </span>
+                <span class="value">
+                    : CST{{customer.Id}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Full Name
+                </span>
+                <span class="value">
+                    : {{customer.Name}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Address
+                </span>
+                <span class="value">
+                    : {{customer.Address}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    City
+                </span>
+                <span class="value">
+                    : {{customer.City}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Mobile
+                </span>
+                <span class="value">
+                    : {{customer.Mobile | phoneNumber}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Telephone
+                </span>
+                <span class="value">
+                    : {{customer.Telephone | phoneNumber}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Email
+                </span>
+                <span class="value">
+                    : {{customer.Email}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    NIC Number
+                </span>
+                <span class="value">
+                    : {{customer.NIC}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Credit Limit
+                </span>
+                <span class="value">
+                    : {{customer.CreditLimit | currencyFormat }}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Status
+                </span>
+                <span class="value" [ngClass]="{'deleted': customer.Status == 0}">
+                    : {{customer.Status | entityStatusString}}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Created At
+                </span>
+                <span class="value">
+                    : {{customer.CreatedAt | dateFormat }}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">
+                    Last Updated
+                </span>
+                <span class="value">
+                    : {{customer.Modified | dateFormat }}
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="transations">
+        Last few transations
+    </div>
+</div>
