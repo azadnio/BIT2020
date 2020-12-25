@@ -1,6 +1,7 @@
 //angular modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 //material components
 import { MatIconModule } from '@angular/material/icon';
@@ -44,6 +45,7 @@ const matModules = [
   MatFormFieldModule,
   MatInputModule,
   FormsModule,
+  RouterModule,
   ReactiveFormsModule,
   MatSelectModule,
   MatDatepickerModule,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { AppCommonModule } from '../common/common.module';
 import { CustomerAdminDashboardComponent } from './customers-admin-dashboard/customers-admin-dashboard.component';
@@ -20,7 +19,6 @@ import { NewCustomerComponent } from './new-customer/new-customer.component'
   ],
   imports: [
     CommonModule,
-    RouterModule,
     AppCommonModule
   ]
 })
