@@ -24,13 +24,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
 //custom pipes
-import { CurrencyFormatPipe, DateFormatPipe, DateTimeFormatPipe, EntityStatusFormatPipe, PhoneNumberFormatPipe } from './app.pipes'
+import { 
+  ChequeStatusesToStringPipe,
+  CurrencyFormatPipe, 
+  DateFormatPipe, 
+  DateTimeFormatPipe, 
+  EntityStatusFormatPipe, 
+  OderStatusStringPipe, 
+  PaymentTypeStringPipe, 
+  PhoneNumberFormatPipe 
+} from './app.pipes'
 
 const customElements = [
   DateFormatPipe,
   DateTimeFormatPipe,
   CurrencyFormatPipe,
   PhoneNumberFormatPipe,
+  PaymentTypeStringPipe,
+  OderStatusStringPipe,
+  ChequeStatusesToStringPipe,
+  
   NotificationDialogComponent,
   ReturnPageComponent,
   EntityStatusFormatPipe

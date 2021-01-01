@@ -1,32 +1,34 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterParams } from 'src/app/common.classes';
+import { OrderStatus } from 'src/app/common.enum';
 import { UtilsService } from 'src/app/utils.service';
-import { ChequeStatus } from 'src/app/common.enum';
-import { DASHBORAD_CHEQUE_LIST, IDashboardCheque } from '../../../../../interfaces/cheques.interface';
 import { Location } from '@angular/common';
+import { DASHBORAD_PAYMENTS_LIST, IPaymentsDashboard } from '../../../../../../interfaces/customer.interface';
 
 @Component({
-  selector: 'app-admin-cheques-dashboard',
-  templateUrl: './admin-cheques-dashboard.component.html',
-  styleUrls: ['./admin-cheques-dashboard.component.scss']
+  selector: 'app-payments-admin-dashboard',
+  templateUrl: './payments-admin-dashboard.component.html',
+  styleUrls: ['./payments-admin-dashboard.component.scss']
 })
-export class AdminChequesDashboardComponent implements OnInit {
+export class PaymentsAdminDashboardComponent implements OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['id', 'number', 'date', 'amount', 'customer', 'status', 'paymentId', 'commands'];
+  displayedColumns: string[] = ['id', 'date', 'customer', 'paymentType', 'addedBy', 'comment', 'commands'];
 
-  dataSource = new MatTableDataSource<IDashboardCheque>(DASHBORAD_CHEQUE_LIST);
+  dataSource = new MatTableDataSource<IPaymentsDashboard>(DASHBORAD_PAYMENTS_LIST);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  chequeStatuses = ChequeStatus;
+
+  orderStatuses = OrderStatus
 
   filterParams: FilterParams;
   filterForm;
-  chequeNumber;
+  searchId;
   subscriptions: Subscription[];
 
   constructor(
@@ -68,6 +70,10 @@ export class AdminChequesDashboardComponent implements OnInit {
     this.utils.unsubscribeSubscriptions(this.subscriptions);
   }
 
+  view(id) {
+    
+  }
+
   restFilter() {
 
     this.filterParams = new FilterParams();
@@ -86,7 +92,8 @@ export class AdminChequesDashboardComponent implements OnInit {
   }
 
   searchById() {
-    console.log(this.chequeNumber)
+    console.log(this.searchId)
   }
 
 }
+

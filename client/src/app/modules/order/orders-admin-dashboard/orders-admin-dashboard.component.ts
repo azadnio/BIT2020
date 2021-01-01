@@ -1,21 +1,21 @@
-import { UtilsService } from 'src/app/utils.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { FilterParams } from './../../common.classes';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { DASHBORAD_ORDER_LIST, IOrderDashboard } from '../../../../../interfaces/orders.interface';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { FilterParams } from 'src/app/common.classes';
+import { UtilsService } from 'src/app/utils.service';
 import { Location } from '@angular/common';
+import { DASHBORAD_ORDER_LIST, IOrderDashboard } from '../../../../../../interfaces/orders.interface';
 
 @Component({
-  selector: 'app-admin-orders-dashboard',
-  templateUrl: './admin-orders-dashboard.component.html',
-  styleUrls: ['./admin-orders-dashboard.component.scss']
+  selector: 'app-orders-admin-dashboard',
+  templateUrl: './orders-admin-dashboard.component.html',
+  styleUrls: ['./orders-admin-dashboard.component.scss']
 })
-export class AdminOrdersDashboardComponent implements OnInit {
+export class OrdersAdminDashboardComponent implements OnInit {
+
 
   displayedColumns: string[] = ['id', 'date', 'customer', 'amount', 'status', 'invoiceNo', 'commands'];
 
@@ -68,12 +68,12 @@ export class AdminOrdersDashboardComponent implements OnInit {
   }
 
   restFilter() {
-    
+
     this.filterParams = new FilterParams();
   }
 
   filter() {
-    console.log( this.filterParams);
+    console.log(this.filterParams);
     let url = this.router.url.split('?');
     this.utils.setSearchURL(this.filterParams, this.location, url[0], url[1])
   }
@@ -87,6 +87,4 @@ export class AdminOrdersDashboardComponent implements OnInit {
   searchById() {
     console.log(this.searchId)
   }
-
-
 }

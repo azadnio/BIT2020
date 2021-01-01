@@ -79,11 +79,12 @@ export const DASHBORAD_CUSTOMER_LIST = LIST2;
 export interface IPaymentsDashboard {
 
     id: number
-    date: string
+    date: Date,
     customer: string
     paymentType: number
     addedBy: string
-    comment: string
+    comment: string,
+    custId: number
 }
 
 let LIST3: IPaymentsDashboard[] = [];
@@ -91,8 +92,9 @@ let LIST3: IPaymentsDashboard[] = [];
 for (let index = 1; index <= 100; index++)
     LIST3.push({
         id: index,
-        date: index + '/12/2020',
+        date: new Date(),
         customer: 'customer ' + index,
+        custId: index,
         paymentType: 1,
         addedBy: 'addedby ' + 1,
         comment: 'this is a comment'
