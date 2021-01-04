@@ -9,7 +9,6 @@ import { ItemsDashboardComponent } from 'src/app/index/items-dashboard/items-das
 
 
 import { AdminAccountsDashboardComponent } from './admin-accounts-dashboard/admin-accounts-dashboard.component';
-import { AdminSalesReturnsDashboardComponent } from './admin-sales-returns-dashboard/admin-sales-returns-dashboard.component';
 import { AdminReportsDashboardComponent } from './admin-reports-dashboard/admin-reports-dashboard.component';
 import { AdminItemsDashboardComponent } from './admin-items-dashboard/admin-items-dashboard.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
@@ -30,9 +29,10 @@ const routes: Routes = [
       { path: 'invoices', loadChildren: () => import('src/app/modules/invoice/invoice.module').then(m => m.InvoiceModule)},
       { path: 'orders', loadChildren: () => import('src/app/modules/order/order.module').then(m => m.OrderModule) },
       { path: 'cheques', loadChildren:() => import('src/app/modules/cheques/cheques.module').then(m => m.ChequesModule) },
+      { path: 'salesreturns', loadChildren: () => import('src/app/modules/salesreturn/salesreturn.module').then( m => m.SalesreturnModule) },
 
       { path: 'accounts', component: AdminAccountsDashboardComponent },
-      { path: 'salesreturns', component: AdminSalesReturnsDashboardComponent },
+      
       { path: 'reports', component: AdminReportsDashboardComponent },
 
       { path: 'settings', component: AdminSettingsComponent },
@@ -52,7 +52,6 @@ const routes: Routes = [
     AdminDashboardComponent,
     AdminHomeComponent,
     AdminAccountsDashboardComponent,
-    AdminSalesReturnsDashboardComponent,
     AdminReportsDashboardComponent,
     AdminItemsDashboardComponent
   ],

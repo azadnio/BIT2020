@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ViewSalesreturnComponent } from './view-salesreturn.component';
+
+describe('ViewSalesreturnComponent', () => {
+  let component: ViewSalesreturnComponent;
+  let fixture: ComponentFixture<ViewSalesreturnComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ViewSalesreturnComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ViewSalesreturnComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
