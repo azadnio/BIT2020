@@ -1,0 +1,30 @@
+.reports {
+    background-color: #f8f8f8;
+    .filter-wrap {
+        width: 10%;
+        padding-top: 2%;
+        min-width: 12em;
+
+        div {
+            text-transform: uppercase;
+            padding: 2px;
+            padding-left: 1em;
+            outline: none;
+            cursor: pointer;
+
+            &.router-link-active {
+                background-color: white;
+            }
+
+            &:hover:not(.router-link-active){
+                background-color: #e9f0f6;
+            }
+        }
+    }
+
+    .dashboard-content-wrap {
+        margin-top: 0;
+        padding: 1%;
+        background-color: white;
+    }
+}

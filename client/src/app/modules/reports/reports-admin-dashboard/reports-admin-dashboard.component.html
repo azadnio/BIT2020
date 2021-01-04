@@ -1,0 +1,25 @@
+<div class="dash-board reports">
+
+    <div class="filter-wrap">
+
+        <div routerLink="sales" routerLinkActive="router-link-active" >sales</div>
+        <div routerLink="customer" routerLinkActive="router-link-active">customer</div>
+        <div routerLink="payments" routerLinkActive="router-link-active">payments</div>
+        <div routerLink="accounts" routerLinkActive="router-link-active">accounts</div>
+        <div routerLink="cheques" routerLinkActive="router-link-active">cheques</div>
+        <div routerLink="other" routerLinkActive="router-link-active">other</div>
+
+    </div>
+
+    <div class="dashboard-content-wrap">
+
+        <div class="header">
+        </div>
+
+        <div class="list">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</div>
