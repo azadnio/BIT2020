@@ -6,4 +6,5 @@ https://medium.com/@rahulguptalive/create-crud-apis-in-nodejs-express-and-mysql-
 
 http://documents.ucsc.lk/jspui/bitstream/123456789/4105/1/1411799.pdf
 
-teset
+clic proxy
+https://medium.com/better-programming/setup-a-proxy-for-api-calls-for-your-angular-cli-app-6566c02a8c4d

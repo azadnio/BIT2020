@@ -30,8 +30,8 @@ class Server {
     //appication routes
     routes(): void {
 
-        this.app.use('/', indexRoute)
-        this.app.use('/invoice', invoiceRoutes)
+        this.app.use('/api/', indexRoute)
+        this.app.use('/api/invoice', invoiceRoutes)
 
         //handle the errors
         this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -64,14 +64,14 @@ class Server {
 
 
 
-                setTimeout(() => {
-                    indexController.test();
+                // setTimeout(() => {
+                //     indexController.test();
 
-                    setTimeout(() => {
-                        indexController.test()
-                    }, 5000);
+                //     setTimeout(() => {
+                //         indexController.test()
+                //     }, 5000);
 
-                }, 1500);
+                // }, 1500);
         })
     }
 }

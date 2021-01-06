@@ -34,6 +34,7 @@ import {
   PaymentTypeStringPipe, 
   PhoneNumberFormatPipe 
 } from './app.pipes'
+import { HttpClientModule } from '@angular/common/http';
 
 const customElements = [
   DateFormatPipe,
@@ -59,6 +60,7 @@ const matModules = [
   MatInputModule,
   FormsModule,
   RouterModule,
+  HttpClientModule,
   ReactiveFormsModule,
   MatSelectModule,
   MatDatepickerModule,
