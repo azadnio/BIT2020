@@ -16,6 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 //custom common component
 import { ReturnPageComponent } from './return-page.component';
@@ -50,6 +52,13 @@ const customElements = [
   EntityStatusFormatPipe
 ];
 
+const angularModules = [
+  FormsModule,
+  RouterModule,
+  HttpClientModule,
+  ReactiveFormsModule  
+];
+
 const matModules = [
   MatIconModule,
   MatRippleModule,
@@ -57,28 +66,28 @@ const matModules = [
   MatTableModule,
   MatPaginatorModule,
   MatFormFieldModule,
-  MatInputModule,
-  FormsModule,
-  RouterModule,
-  HttpClientModule,
-  ReactiveFormsModule,
+  MatInputModule,  
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatCheckboxModule,
   MatToolbarModule,
   MatMenuModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @NgModule({
   declarations: customElements,
   imports: [
-    CommonModule,    
-    ...matModules
+    CommonModule,
+    ...angularModules,   
+    ...matModules    
   ],
   exports:[
     MatIconModule,
+    ...angularModules,
     ...matModules,
     ...customElements
   ]

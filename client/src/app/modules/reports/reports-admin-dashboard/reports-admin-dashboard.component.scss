@@ -5,10 +5,8 @@
         padding-top: 2%;
         min-width: 12em;
 
-        div {
+        mat-list-item {
             text-transform: uppercase;
-            padding: 2px;
-            padding-left: 1em;
             outline: none;
             cursor: pointer;
 
