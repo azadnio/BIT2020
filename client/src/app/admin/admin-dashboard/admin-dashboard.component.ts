@@ -14,8 +14,8 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.http
-      .get("/api/ver", { responseType: 'text' }).toPromise().then( res => console.log('API call', res));
+    // this.http
+    //   .get("/api/ver", { responseType: 'text' }).toPromise().then( res => console.log('API call', res));
   }
 
 }

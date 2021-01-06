@@ -1,5 +1,15 @@
-<div>
-      <!-- <div > -->
+<div class="dash-board">
+
+      <div class="filter-wrap">
+            <div>
+                  <a mat-flat-button color="primary" routerLink="/admin/items/brand">Brands</a>
+            </div>
+            category
+      </div>
+
+      <div class="dashboard-content-wrap">
+            <return-page></return-page>
+            category items
             <app-ch-item *ngFor="let item of items" [item]=item></app-ch-item>
-      <!-- </div> -->
+      </div>
 </div>
