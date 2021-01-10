@@ -1,10 +1,10 @@
-export abstract class Base {
+export abstract class Entity {
 
     Id: number;
 
     CreateAt: Date;
 
-    LasteUpdated: Date;
+    UpdatedAt: Date;
 
     CreatedBy: number;
 

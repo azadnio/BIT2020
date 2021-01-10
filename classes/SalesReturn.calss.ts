@@ -1,6 +1,6 @@
-import { Base } from "./base.class";
+import { Entity } from "./base.class";
 
-export class SalesReturn extends Base {
+export class SalesReturn extends Entity {
 
     CustId: number;
     Remarks: string;

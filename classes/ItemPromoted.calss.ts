@@ -1,6 +1,6 @@
-import { Base } from "./base.class";
+import { Entity } from "./base.class";
 
-export class ItemPromoted extends Base {
+export class ItemPromoted extends Entity {
 
     ItemId: number;
     PromotionalText: string;

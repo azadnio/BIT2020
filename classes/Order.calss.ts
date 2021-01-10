@@ -1,6 +1,6 @@
-import { Base } from "./base.class";
+import { Entity } from "./base.class";
 
-export class Order extends Base {
+export class Order extends Entity {
 
     CustId: number;
     Remarks: string;

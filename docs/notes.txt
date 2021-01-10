@@ -8,3 +8,9 @@ http://documents.ucsc.lk/jspui/bitstream/123456789/4105/1/1411799.pdf
 
 clic proxy
 https://medium.com/better-programming/setup-a-proxy-for-api-calls-for-your-angular-cli-app-6566c02a8c4d
+
+CREATE TABLE `capital`.`system_user` ( `Id` INT NOT NULL AUTO_INCREMENT , `Name` VARCHAR(50) NOT NULL , `Address` VARCHAR(100) NOT NULL , `Role` TINYINT NOT NULL , `Mobile` VARCHAR(10) NOT NULL , `Email` VARCHAR(50) NOT NULL , `password` VARCHAR(255) NOT NULL , `Status` TINYINT NOT NULL , `CreatedBy` INT NOT NULL , `CreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `UpdatedBy` INT NOT NULL , `UpdatedAt` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`Id`)) ENGINE = MyISAM;
+
+
+
+CREATE TABLE `capital`.`invoice` ( `Id` INT NOT NULL AUTO_INCREMENT , `CustId` INT NOT NULL , `InoviceDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `DIscount` DOUBLE NOT NULL DEFAULT '0' , `Remark` TEXT NOT NULL , `CreatedBy` INT NOT NULL , `CreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `UpdatedBy` INT NOT NULL , `UpdatedAt` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`Id`)) ENGINE = InnoDB;

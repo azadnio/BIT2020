@@ -13,3 +13,23 @@ export class AppErrNotFound extends AppError {
     }
 }
 
+export class AppErrInvalidRequest extends AppError {
+
+    constructor(public message: string = 'Invalid Request') {
+        super(500, message);
+    }
+}
+
+export class AppErrDatabaseError extends AppError {
+
+    constructor(sqlErr) {
+        super(501, sqlErr.sqlMessage);
+    }
+}
+
+export class AppErrUnAuthorized extends AppError {
+
+    constructor(public message: string = 'UnAuthorized') {
+        super(403, message);
+    }
+}

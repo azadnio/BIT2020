@@ -1,7 +1,11 @@
-import { Base } from "./base.class";
+import { InvoiceItem } from './InvoiceItem.calss';
+import { Entity } from "./base.class";
 
-export class Invoice extends Base {
+export class Invoice extends Entity {
 
-    CustId:number;
-    Remark:string;
+    CustId: number
+    InoviceDate: Date
+    Discount: number
+    Remark: string
+    Items: InvoiceItem[]
 }

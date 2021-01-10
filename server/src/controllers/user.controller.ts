@@ -1,32 +1,35 @@
+import { IRequestExtended } from './../global.interfaces';
+import { AppErrNotFound } from './../modals/apperror.class';
 import { Request, Response } from 'express'
-import pool from '../database'
+import { AppErrInvalidRequest } from '../modals/apperror.class';
+import { ValidationController } from './validator.controller'
+import db from '../database';
 
 class UserController {
 
-    constructor() {}
+    //select or search a system_user
+    public async select(req: Request) {
 
-    public index(req: Request, res: Response):void {
-
-        // pool.query('selection asdfasd');
-        res.send('selec t* users')
+        //select operation on system_user table
+        return await db.select(req, 'system_user');
     }
 
-    public create(req: Request, res: Response):void {
+    public async create(req: IRequestExtended) {
 
-        // pool.query('selection asdfasd');
-        res.send('create a user')
+        //create operation on system_user
+        return await db.create(req, 'system_user');
     }
 
-    public update(req: Request, res: Response):void {
+    public async update(req: IRequestExtended) {
 
-        // pool.query('selection asdfasd');
-        res.send('updat a user')
+        //update system_user
+        return await db.update(req, 'system_user', 'User')
     }
 
-    public delete(req: Request, res: Response):void {
+    public async delete(req: IRequestExtended) {
 
-        // pool.query('selection asdfasd');
-        res.send('delete a user')
+        //delete system_user
+        return await db.delete(req, 'system_user', 'User')
     }
 
 }

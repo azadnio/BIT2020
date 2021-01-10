@@ -1,6 +1,4 @@
-import { Base } from "./base.class";
-
-export class InvoiceItem extends Base {
+export class InvoiceItem {
 
     ItemId: number;
     InvoiceId: number;

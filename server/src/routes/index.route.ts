@@ -1,4 +1,4 @@
-import RouterClass from "../modals/router.class"
+import RouterClass from "./router.class"
 import { indexController } from "../controllers/index.controller"
 
  class IndexRoutes extends RouterClass{
