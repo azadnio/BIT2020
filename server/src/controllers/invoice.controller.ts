@@ -62,9 +62,8 @@ class InvoiceController {
             throw new AppErrInvalidRequest();
 
         let resolve, reject,
-            result = new Promise((_res, _rej) => { resolve = _res; reject = _rej; });
-
-        let invoice: Invoice = req.body;
+            result = new Promise((_res, _rej) => { resolve = _res; reject = _rej; }), 
+            invoice: Invoice = req.body;
         //TO DO VALIDATE INVOICE
 
         //seperate invoice items
@@ -84,9 +83,10 @@ class InvoiceController {
             //set invoice id into invoice items
             inoviceItems = inoviceItems.map( (inv: InvoiceItem) => ({ ...inv, InvoiceId : InvoiceInsertRslt.insertId }));
 
-            let sqlParams = [];
-            let sql = 'INSERT INTO invoice_items (InvoiceId, ItemId, Price, Quantity) VALUES ';
-            let paramsPlaceHolders = [];
+            let sqlParams = []
+            , sql = 'INSERT INTO invoice_items (InvoiceId, ItemId, Price, Quantity) VALUES '
+            , paramsPlaceHolders = [];
+
             inoviceItems.forEach( (inv: InvoiceItem) => {
                 paramsPlaceHolders.push('(?, ?, ?, ?)');
                 sqlParams.push(inv.InvoiceId, inv.ItemId, inv.Price, inv.Quantity);
