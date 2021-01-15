@@ -247,8 +247,15 @@ tr.mat-footer-row {
         top: -24px;
         right: -24px;
         cursor: pointer;
-        &:hover{
+        &:hover {
             color: red;
         }
     }
+}
+
+.register-new {
+
+    display: flex;
+    height: 100%;
+    flex-direction: column;
 }

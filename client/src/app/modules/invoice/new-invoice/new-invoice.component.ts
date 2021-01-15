@@ -12,4 +12,7 @@ export class NewInvoiceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectCustomer() {
+    alert('select customer')
+  }
 }
