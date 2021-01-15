@@ -58,68 +58,50 @@ class InvoiceController {
 
     public async create(req: IRequestExtended) {
 
-        if (!ValidationController.validatePostRequest(req))
-            throw new AppErrInvalidRequest();
+        let InvoiceInsertRslt,
+            invoice: Invoice = req.body,
+            inoviceItems: InvoiceItem[] = invoice.Items;
 
-        let resolve, reject,
-            result = new Promise((_res, _rej) => { resolve = _res; reject = _rej; }), 
-            invoice: Invoice = req.body;
         //TO DO VALIDATE INVOICE
 
-        //seperate invoice items
-        let inoviceItems: InvoiceItem[] = invoice.Items;
-        delete invoice.Id;
         delete invoice.Items;
-        //set updating and creating user
-        invoice.UpdatedBy = invoice.CreatedBy = req.decoded.id;
+        req.body = invoice;
 
-        //insert invoice master data
-        db.pool.query('INSERT INTO invoice SET ?', [invoice], (error, InvoiceInsertRslt : IInsertionDBResults) => {
+        try {
 
-            //catch db error
-            if (error)
-                return reject(new AppErrDatabaseError(error));
-            
-            //set invoice id into invoice items
-            inoviceItems = inoviceItems.map( (inv: InvoiceItem) => ({ ...inv, InvoiceId : InvoiceInsertRslt.insertId }));
+            //insert invoice master data           
+            InvoiceInsertRslt = <IInsertionDBResults>await db.insertSingleRecord(req, 'invoice');
 
-            let sqlParams = []
-            , sql = 'INSERT INTO invoice_items (InvoiceId, ItemId, Price, Quantity) VALUES '
-            , paramsPlaceHolders = [];
+            //insert invoice items
+            if (InvoiceInsertRslt.insertId) {
 
-            inoviceItems.forEach( (inv: InvoiceItem) => {
-                paramsPlaceHolders.push('(?, ?, ?, ?)');
-                sqlParams.push(inv.InvoiceId, inv.ItemId, inv.Price, inv.Quantity);
-            });
-            
-            //merge sql params placeholder strings with commas into sql string
-            sql += paramsPlaceHolders.join(',')
+                //set invoice id into invoice items
+                inoviceItems = inoviceItems.map((inv: InvoiceItem) => ({ ...inv, InvoiceId: InvoiceInsertRslt.insertId }));
 
-            //insert inovice items
-            db.pool.query(sql, sqlParams, (error, result) => {
+                //bulk insertion invoice items
+                await db.insertBulkData(inoviceItems, 'invoice_items');
 
-                //catch db error
-                if (error)
-                    return reject(new AppErrDatabaseError(error))
+                //return the invoice master data inserted result
+                return InvoiceInsertRslt;
+            }
+            else
+                throw new AppErrDatabaseError('Cannot insert the invoice!');
 
-                //resolve the promis with invoice insertion result
-                resolve(InvoiceInsertRslt);
-            })
-        });
-
-        return result;
+        } catch (error) {
+            throw error;
+        }
     }
 
     public async update(req: IRequestExtended) {
 
         //update invoice
-        return await db.update(req, 'invoice', 'Invoice')
+        return await db.updateSingleRecord(req, 'invoice', 'Invoice')
     }
 
     public async delete(req: IRequestExtended) {
 
         //delete invoice
-        return await db.delete(req, 'invoice', 'Invoice')
+        return await db.setStatusDeleted(req, 'invoice', 'Invoice')
     }
 
 }

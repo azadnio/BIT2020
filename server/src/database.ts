@@ -26,20 +26,20 @@ class Db {
                 //catch error
                 if (error)
                     return reject(new AppErrDatabaseError(error))
-                
+
                 resolve(results)
             });
         })
     }
 
     //common CRRUD operations on tables
-    async select(req: Request, tableName: string) {
+    async selectRecords(req: Request, tableName: string) {
 
         //no id
         if (!req.query.id || !req.query.id.toString().trim())
             throw new AppErrInvalidRequest();
 
-        let sql = `SELECT * from ${ tableName } WHERE Id = ?`
+        let sql = `SELECT * from ${tableName} WHERE Id = ?`
             , params = [req.query.id];
 
         //show only active Items unless it requested by externally
@@ -53,7 +53,7 @@ class Db {
         }
     }
 
-    public async create(req: IRequestExtended, tableName: string) {
+    public async insertSingleRecord(req: IRequestExtended, tableName: string) {
 
         if (!ValidationController.validatePostRequest(req))
             throw new AppErrInvalidRequest();
@@ -73,12 +73,12 @@ class Db {
         }
     }
 
-    public async update(req: IRequestExtended, tableName: string, entityName: string) {
+    public async updateSingleRecord(req: IRequestExtended, tableName: string, entityName: string) {
 
         if (!ValidationController.validatePostRequest(req))
             throw new AppErrInvalidRequest();
 
-        let entity: Entity = req.body;        
+        let entity: Entity = req.body;
 
         //has id
         if (entity.Id == undefined)
@@ -103,7 +103,7 @@ class Db {
         }
     }
 
-    public async delete(req: IRequestExtended, tableName: string, entityName: string) {
+    public async setStatusDeleted(req: IRequestExtended, tableName: string, entityName: string) {
 
         if (!ValidationController.validatePostRequest(req))
             throw new AppErrInvalidRequest();
@@ -116,11 +116,47 @@ class Db {
             throw new AppErrInvalidRequest("Invalid " + entityName);
 
         try {
-            return await db.executeQuery(`UPDATE ${tableName} SET Status = ${Status.deleted} WHERE Id = ?`, [entity.Id]);            
+            return await db.executeQuery(`UPDATE ${tableName} SET Status = ${Status.deleted} WHERE Id = ?`, [entity.Id]);
         } catch (error) {
             throw error
         }
     }
+
+    //insert the bulk data into table
+    public async insertBulkData(entities: any[], tableName) {
+
+        if (!entities.length)
+            throw new AppErrInvalidRequest(`${tableName} entries NOT found!`);
+
+        //set the column names from object data
+        let tableColumns = Object.keys(entities[0]),
+            paramsPlaceHolders = [],
+            sqlParams = [];
+
+        //TO DO object serialization, with null values
+
+        //go through entity records
+        for (let entiy of entities) {
+
+            //add the params
+            sqlParams.push(...Object.values(entiy));
+
+            paramsPlaceHolders.push(`( ${new Array(tableColumns.length).fill('?').join(',')} )`) //'(?, ?, ?, ?)'
+        }
+        
+        try {
+            return await db.executeQuery(`INSERT INTO ${tableName} ( ${tableColumns.join(' , ')} ) VALUES ${paramsPlaceHolders.join(' , ')}`, sqlParams);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    //delete records permenantly from table
+    public async delete() {
+
+    }
+
+
 }
 
 const db = new Db();

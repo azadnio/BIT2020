@@ -15,25 +15,25 @@ class CustomerController {
     public async select(req: Request) {
 
         //select operation on item table
-        return await db.select(req, 'customer');
+        return await db.selectRecords(req, 'customer');
     }
 
     public async create(req: IRequestExtended) {
 
         //create operation on customer
-        return await db.create(req, 'customer');
+        return await db.insertSingleRecord(req, 'customer');
     }
 
     public async update(req: IRequestExtended) {
 
         //update customer
-        return await db.update(req, 'customer', 'Customer')
+        return await db.updateSingleRecord(req, 'customer', 'Customer')
     }
 
     public async delete(req: IRequestExtended) {
 
         //delete customer
-        return await db.delete(req, 'customer', 'Customer')
+        return await db.setStatusDeleted(req, 'customer', 'Customer')
     }
 }
 

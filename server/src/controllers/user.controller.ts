@@ -11,25 +11,25 @@ class UserController {
     public async select(req: Request) {
 
         //select operation on system_user table
-        return await db.select(req, 'system_user');
+        return await db.selectRecords(req, 'system_user');
     }
 
     public async create(req: IRequestExtended) {
 
         //create operation on system_user
-        return await db.create(req, 'system_user');
+        return await db.insertSingleRecord(req, 'system_user');
     }
 
     public async update(req: IRequestExtended) {
 
         //update system_user
-        return await db.update(req, 'system_user', 'User')
+        return await db.updateSingleRecord(req, 'system_user', 'User')
     }
 
     public async delete(req: IRequestExtended) {
 
         //delete system_user
-        return await db.delete(req, 'system_user', 'User')
+        return await db.setStatusDeleted(req, 'system_user', 'User')
     }
 
 }

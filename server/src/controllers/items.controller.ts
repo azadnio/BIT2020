@@ -15,25 +15,25 @@ class ItemController {
     public async select(req: Request) {
 
         //select operation on item table
-        return await db.select(req, 'item');
+        return await db.selectRecords(req, 'item');
     }
 
     public async create(req: IRequestExtended) {
 
         //create operation on item
-        return await db.create(req, 'item');
+        return await db.insertSingleRecord(req, 'item');
     }
 
     public async update(req: IRequestExtended) {
 
         //update item
-        return await db.update(req, 'item', 'Item')
+        return await db.updateSingleRecord(req, 'item', 'Item')
     }
 
     public async delete(req: IRequestExtended) {
 
         //delete item
-        return await db.delete(req, 'item', 'Item')
+        return await db.setStatusDeleted(req, 'item', 'Item')
     }
 }
 
