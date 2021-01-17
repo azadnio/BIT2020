@@ -1,9 +1,9 @@
 import { AppErrDatabaseError, AppErrInvalidRequest } from "./modals/apperror.class";
-import { Status } from './global.enums';
+import { PaymentStatus, Status } from './global.enums';
 import { Request } from "express";
 import { ValidationController } from "./controllers/validator.controller";
 import { Entity } from '../../classes/Base.class';
-import { IRequestExtended } from "./global.interfaces";
+import { IInsertionDBResults, IRequestExtended } from "./global.interfaces";
 
 const mysql = require('mysql');
 class Db {
@@ -17,9 +17,9 @@ class Db {
         port: 3308
     });
 
-    executeQuery(sql: string, params: any[] = []) {
+    executeQuery<T>(sql: string, params: any[] = []): Promise<T> {
 
-        return new Promise((resolve, reject) => {
+        return new Promise<T>((resolve, reject) => {
 
             this.pool.query(sql, params, (error, results) => {
 
@@ -32,8 +32,8 @@ class Db {
         })
     }
 
-    //common CRRUD operations on tables
-    async selectRecords(req: Request, tableName: string) {
+    //common DB operations on tables
+    async selectRecords<T>(req: Request, tableName: string): Promise<T> {
 
         //no id
         if (!req.query.id || !req.query.id.toString().trim())
@@ -47,13 +47,13 @@ class Db {
             sql += ' AND Status = ' + Status.active;
 
         try {
-            return await db.executeQuery(sql, params);
+            return await db.executeQuery<T>(sql, params);
         } catch (error) {
             throw error
         }
     }
 
-    public async insertSingleRecord(req: IRequestExtended, tableName: string) {
+    public async insertSingleRecord<T>(req: IRequestExtended, tableName: string): Promise<T> {
 
         if (!ValidationController.validatePostRequest(req))
             throw new AppErrInvalidRequest();
@@ -66,14 +66,14 @@ class Db {
 
         try {
 
-            return await db.executeQuery(`INSERT INTO ${tableName} SET ?`, [entity]);
+            return await db.executeQuery<T>(`INSERT INTO ${tableName} SET ?`, [entity]);
 
         } catch (error) {
             throw error;
         }
     }
 
-    public async updateSingleRecord(req: IRequestExtended, tableName: string, entityName: string) {
+    public async updateSingleRecord<T>(req: IRequestExtended, tableName: string, entityName: string): Promise<T> {
 
         if (!ValidationController.validatePostRequest(req))
             throw new AppErrInvalidRequest();
@@ -97,7 +97,7 @@ class Db {
             throw new AppErrInvalidRequest();
 
         try {
-            return await db.executeQuery(`UPDATE ${tableName} SET ? WHERE Id = ?`, [entity, id]);
+            return await db.executeQuery<T>(`UPDATE ${tableName} SET ? WHERE Id = ?`, [entity, id]);
         } catch (error) {
             throw error;
         }
@@ -143,7 +143,7 @@ class Db {
 
             paramsPlaceHolders.push(`( ${new Array(tableColumns.length).fill('?').join(',')} )`) //'(?, ?, ?, ?)'
         }
-        
+
         try {
             return await db.executeQuery(`INSERT INTO ${tableName} ( ${tableColumns.join(' , ')} ) VALUES ${paramsPlaceHolders.join(' , ')}`, sqlParams);
         } catch (error) {
@@ -151,12 +151,49 @@ class Db {
         }
     }
 
-    //delete records permenantly from table
-    public async delete() {
+    //CRUD functions
+    public async delete(tableName: string, parameters: Object): Promise<IInsertionDBResults> {
 
+        if (!Object.entries(parameters).length)
+            throw new AppErrInvalidRequest();
+
+        try {
+            return await db.executeQuery<IInsertionDBResults>(`DELETE FROM ${tableName} WHERE ?`, [parameters]);
+        } catch (error) {
+            throw error
+        }
     }
 
+    public async select(tableName: string, parameters: Object): Promise<IInsertionDBResults> {
 
+        if (!Object.entries(parameters).length)
+            throw new AppErrInvalidRequest();
+
+        try {
+            return await db.executeQuery<IInsertionDBResults>(`DELETE FROM ${tableName} WHERE ?`, [parameters]);
+        } catch (error) {
+            throw error
+        }
+    }
+
+    // public async updateInvoiceStatus(invoiceId: string | number, status: PaymentStatus): Promise<IInsertionDBResults> {
+
+    //     if (!Object.entries(parameters).length)
+    //         throw new AppErrInvalidRequest();
+
+    //     let params = [],
+    //         condintions = Object.entries(parameters).map(p => {
+
+    //             params.push((typeof p[1] == 'string') ? `'${p[1]}'` : p[1]); //add the params
+    //             return `${p[0]} = ?`;
+    //         });
+
+    //     try {
+    //         return await db.executeQuery<IInsertionDBResults>(`DELETE FROM ${tableName} WHERE ${condintions.join(' AND ')}`, params);
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
 }
 
 const db = new Db();

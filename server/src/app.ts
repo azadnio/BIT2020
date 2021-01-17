@@ -9,6 +9,7 @@ import customerRoutes from './routes/customer.routes';
 import  authRoutes  from './routes/auth.route'
 import { auth } from "./controllers/auth.controller";
 import userRoutes from './routes/user.routes'
+import orderRoutes from "./routes/order.route";
 
 class Server {
 
@@ -44,6 +45,7 @@ class Server {
         this.app.use('/api/invoice', invoiceRoutes)
         this.app.use('/api/customer', customerRoutes);
         this.app.use('/api/user', userRoutes);
+        this.app.use('/api/order', orderRoutes);
 
         //handle the errors
         this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

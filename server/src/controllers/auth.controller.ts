@@ -16,7 +16,7 @@ class AuthController {
             , id = 2;
 
         //generate the token, includes user email, role, id
-        let token = jwt.sign({ email, role, id }, SECRETKEY, { expiresIn: "1h" })
+        let token = jwt.sign({ email, role, id }, SECRETKEY, { expiresIn: "12h" })
         res.send(token)
     }
 
