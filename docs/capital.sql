@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Jan 10, 2021 at 05:20 PM
+-- Generation Time: Jan 18, 2021 at 03:16 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -53,9 +53,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`Id`, `Name`, `Address`, `City`, `Telephone`, `NIC`, `Mobile`, `CreditLimit`, `Photo`, `Status`, `CreatedBy`, `CreatedAt`, `UpdatedBy`) VALUES
 (1, 'azad', '320 perecy ro', 'Matale', '', '', '', 0, NULL, 0, 0, '2021-01-09 15:05:40', 0),
-(2, 'test', '', '', '', '', '', 0, NULL, 0, 0, '2021-01-09 15:07:48', 0),
-(3, 'test', '', '', '', '', '', 0, NULL, 0, 0, '2021-01-09 15:15:46', 0),
-(4, 'test', '', '', '', '', '', 0, NULL, 1, 0, '2021-01-09 15:17:57', 0),
 (5, 'test 3', '', 'Colombo 12', '', '', '', 0, NULL, 1, 0, '2021-01-10 04:48:50', 0),
 (6, 'azad', '', '', '', '', '', 0, NULL, 1, 0, '2021-01-10 05:44:15', 0);
 
@@ -72,19 +69,29 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `InoviceDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Discount` double NOT NULL DEFAULT '0',
   `Remark` text NOT NULL,
+  `Status` tinyint(4) NOT NULL DEFAULT '0',
   `CreatedBy` int(11) NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UpdatedBy` int(11) NOT NULL,
   `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`Id`, `CustId`, `InoviceDate`, `Discount`, `Remark`, `CreatedBy`, `CreatedAt`, `UpdatedBy`) VALUES
-(4, 3, '2021-01-10 17:19:29', 10, '', 2, '2021-01-10 17:19:29', 2);
+INSERT INTO `invoice` (`Id`, `CustId`, `InoviceDate`, `Discount`, `Remark`, `Status`, `CreatedBy`, `CreatedAt`, `UpdatedBy`) VALUES
+(4, 3, '2021-01-10 17:19:29', 10, '', 0, 2, '2021-01-10 17:19:29', 2),
+(5, 3, '2021-01-15 17:06:01', 10, '', 0, 2, '2021-01-15 17:06:01', 2),
+(6, 3, '2021-01-15 17:08:30', 10, '', 0, 2, '2021-01-15 17:08:30', 2),
+(7, 3, '2021-01-15 17:13:23', 10, '', 0, 2, '2021-01-15 17:13:23', 2),
+(8, 3, '2021-01-15 17:30:27', 10, '', 0, 2, '2021-01-15 17:30:27', 2),
+(9, 3, '2021-01-15 17:32:06', 10, '', 0, 2, '2021-01-15 17:32:06', 2),
+(10, 3, '2021-01-15 17:34:18', 10, '', 0, 2, '2021-01-15 17:34:18', 2),
+(11, 3, '2021-01-15 17:34:50', 10, '', 0, 2, '2021-01-15 17:34:50', 2),
+(12, 3, '2021-01-15 17:36:20', 10, '', 2, 2, '2021-01-15 17:36:20', 2),
+(14, 3, '2021-01-17 17:21:00', 10, '', 0, 2, '2021-01-17 17:21:00', 2);
 
 -- --------------------------------------------------------
 
@@ -105,10 +112,19 @@ CREATE TABLE IF NOT EXISTS `invoice_items` (
 --
 
 INSERT INTO `invoice_items` (`InvoiceId`, `ItemId`, `Price`, `Quantity`) VALUES
-(3, 2, 100, 2),
-(3, 4, 10, 20),
-(4, 2, 100, 2),
-(4, 4, 10, 20);
+(3, 3, 3, 3),
+(14, 2, 100, 2),
+(14, 4, 10, 20),
+(0, 2, 100, 2),
+(0, 4, 10, 20),
+(0, 2, 100, 2),
+(0, 4, 10, 20),
+(0, 2, 999, 2),
+(0, 4, 9, 20),
+(0, 2, 999, 2),
+(0, 4, 9, 20),
+(4, 2, 999, 2),
+(4, 4, 9, 20);
 
 -- --------------------------------------------------------
 
@@ -131,6 +147,85 @@ CREATE TABLE IF NOT EXISTS `item` (
   `UpdatedBy` int(11) NOT NULL,
   `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CustId` int(11) NOT NULL,
+  `OrderDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Remark` text NOT NULL,
+  `Status` tinyint(4) NOT NULL DEFAULT '0',
+  `CreatedBy` int(11) NOT NULL,
+  `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedBy` int(11) NOT NULL,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Id`, `CustId`, `OrderDate`, `Remark`, `Status`, `CreatedBy`, `CreatedAt`, `UpdatedBy`) VALUES
+(14, 3, '2021-01-17 17:32:36', '', 0, 2, '2021-01-17 17:32:36', 2),
+(15, 3, '2021-01-17 17:48:37', '', 0, 2, '2021-01-17 17:48:37', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `OrderId` int(11) NOT NULL,
+  `ItemId` int(11) NOT NULL,
+  `Price` double NOT NULL,
+  `Quantity` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`OrderId`, `ItemId`, `Price`, `Quantity`) VALUES
+(0, 2, 999, 2),
+(0, 4, 10, 20),
+(15, 2, 999, 2),
+(15, 4, 10, 20),
+(0, 2, 88, 2),
+(0, 4, 10, 20),
+(0, 2, 88, 2),
+(0, 4, 10, 20),
+(0, 2, 88, 2),
+(0, 4, 10, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE IF NOT EXISTS `payments` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CustId` int(11) NOT NULL,
+  `PaymentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Cash` double NOT NULL DEFAULT '0',
+  `Remark` text NOT NULL,
+  `Type` tinyint(4) NOT NULL DEFAULT '0',
+  `CreatedBy` int(11) NOT NULL,
+  `CreatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UpdatedBy` int(11) NOT NULL,
+  `UpdatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
