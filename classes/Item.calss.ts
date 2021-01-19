@@ -9,4 +9,5 @@ export class Item extends Entity {
     Status: number;
     Brand: string;
     Unit: string;
+    images:string[]
 }

@@ -21,7 +21,7 @@ export { brands }
 
 let items = [];
 
-for(let i = 1; i < 1000; i++)
+for(let i = 1; i < 2; i++)
       items.push({
             id: i,
             categoryId: i % 10,

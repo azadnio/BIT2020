@@ -1,3 +1,4 @@
+import { Item } from './../../../../../../classes/Item.calss';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChItemComponent implements OnInit {
 
-  @Input() item;
+  @Input() item: Item;
   constructor() { }
 
   ngOnInit(): void {
