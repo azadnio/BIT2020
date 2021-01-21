@@ -18,23 +18,24 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 //custom common component
 import { ReturnPageComponent } from './return-page.component';
 import { NotificationDialogComponent } from './notification-dialog/notification-dialog.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
 
 //custom pipes
-import { 
+import {
   ChequeStatusesToStringPipe,
-  CurrencyFormatPipe, 
-  DateFormatPipe, 
-  DateTimeFormatPipe, 
-  EntityStatusFormatPipe, 
-  OderStatusStringPipe, 
-  PaymentTypeStringPipe, 
-  PhoneNumberFormatPipe 
+  CurrencyFormatPipe,
+  DateFormatPipe,
+  DateTimeFormatPipe,
+  EntityStatusFormatPipe,
+  OderStatusStringPipe,
+  PaymentTypeStringPipe,
+  PhoneNumberFormatPipe
 } from './app.pipes'
 import { HttpClientModule } from '@angular/common/http';
 
@@ -46,7 +47,7 @@ const customElements = [
   PaymentTypeStringPipe,
   OderStatusStringPipe,
   ChequeStatusesToStringPipe,
-  
+
   NotificationDialogComponent,
   ReturnPageComponent,
   EntityStatusFormatPipe
@@ -56,7 +57,7 @@ const angularModules = [
   FormsModule,
   RouterModule,
   HttpClientModule,
-  ReactiveFormsModule  
+  ReactiveFormsModule
 ];
 
 const matModules = [
@@ -66,7 +67,7 @@ const matModules = [
   MatTableModule,
   MatPaginatorModule,
   MatFormFieldModule,
-  MatInputModule,  
+  MatInputModule,
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
@@ -75,17 +76,18 @@ const matModules = [
   MatMenuModule,
   MatDialogModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatTabsModule
 ];
 
 @NgModule({
   declarations: customElements,
   imports: [
     CommonModule,
-    ...angularModules,   
-    ...matModules    
+    ...angularModules,
+    ...matModules
   ],
-  exports:[
+  exports: [
     MatIconModule,
     ...angularModules,
     ...matModules,

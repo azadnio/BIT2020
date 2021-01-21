@@ -5,6 +5,37 @@
   </div>
 </div>
 
+<nav mat-tab-nav-bar>
+
+  <!-- home router link -->
+  <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
+    (click)="activeLink = ''" [active]="activeLink == ''">
+    <mat-icon> home </mat-icon>
+  </a>
+
+  <!-- rest of the routs -->
+  <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+    [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}} 
+  </a>
+  <!-- <a mat-tab-link disabled>Disabled Link</a> -->
+
+  {{activeLink}}
+</nav>
+
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
 <ul class="nav-bar">
   <li> </li>
   <li>
@@ -28,7 +59,7 @@
     </a>
   </li>
   <li>
-    <a  [matMenuTriggerFor]="menu">Menu</a>
+    <a [matMenuTriggerFor]="menu">Menu</a>
     <mat-menu #menu="matMenu">
       <div>
         this is a adiv for testing
