@@ -1,0 +1,73 @@
+.heder-logo {
+      text-align: center;
+      img {
+            &.text {
+                  width: 35em;
+                  top: -10px;
+                  position: relative;
+            }
+            &.logo {
+                  width: 10em;
+            }
+      }
+}
+
+
+nav {
+      padding-left: 2%;
+      a {
+            font-size: 1.4em;
+            padding: 0;
+            border-radius: 10px 10px 0 0;
+      }
+}
+
+
+
+
+ul {
+      &.nav-bar {
+            border-bottom: 1px solid;
+            padding: 0;
+            margin: 0;
+            display: flex;
+
+            .middle-space {
+                  flex: 1 1 auto;
+            }
+
+            li {
+                  &:first-child {
+                        width: 2em;
+                  }
+                  display: inline-block;
+                  a {
+                        padding: 0px 5px 0 5px;
+                        height: 100%;
+                        display: block;
+                        text-decoration: none;
+                        position: relative;
+                        bottom: 1px;
+                        border: 1px solid transparent;
+
+                        &.router-link-active {
+                              border: 1px solid;
+                              border-bottom-color: white;
+                              border-radius: 5px 5px 0 0;
+                              color: red;
+                        }
+
+                        span {
+                              vertical-align: super;
+                        }
+                        &.admin {
+                              color: red;
+                              font-weight: bold;
+                        }
+                        &.home {
+                              padding: 0 1em;
+                        }
+                  }
+            }
+      }
+}

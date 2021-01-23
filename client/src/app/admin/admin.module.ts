@@ -56,6 +56,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     AppCommonModule
+  ],
+  entryComponents:[
+    AdminDashboardComponent
   ]
 })
 export class AdminModule { }
