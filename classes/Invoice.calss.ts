@@ -7,5 +7,6 @@ export class Invoice extends Entity {
     InoviceDate: Date
     Discount: number
     Remark: string
+    OrderId: number
     Items: InvoiceItem[]
 }

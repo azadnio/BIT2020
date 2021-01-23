@@ -5,4 +5,18 @@
     <div>
         <button mat-stroked-button color="primary" (click)="selectCustomer()">Select Customer</button>
     </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="invoiceForm">
+    
+        <div>
+            <mat-form-field>
+    
+                <!-- <input matInput placeholder="Full Name" formControlName="Name" required>
+                <mat-error
+                    *ngIf="(invoiceForm.get('Name').touched || invoiceForm.get('Name').dirty) && invoiceForm.get('Name').invalid">
+                    Enater valid customer name
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+    </form>
 </div>
