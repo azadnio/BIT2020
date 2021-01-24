@@ -8,7 +8,7 @@
 </div>
 
 
-<ul class="nav-bar">
+<!-- <ul class="nav-bar">
     <li> </li>
     <li>
         <a [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active" class="home">
@@ -57,16 +57,16 @@
             <mat-icon> phone </mat-icon> <span>Contact</span>
         </a>
     </li>
-</ul>
+</ul> -->
 
 
 <nav mat-tab-nav-bar>
 
     <!-- home router link -->
-    <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
+    <!-- <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
         (click)="activeLink = ''" [active]="activeLink == ''">
         <mat-icon> home </mat-icon>
-    </a>
+    </a> -->
 
     <!-- rest of the routs -->
     <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"

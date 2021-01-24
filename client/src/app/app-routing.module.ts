@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component'
 import { IndexComponent } from './index/index.component';
 import { ItemsDashboardComponent } from './index/items-dashboard/items-dashboard.component';
-import { AccountDashboardComponent } from './index/account-dashboard/account-dashboard.component';
 import { LoginComponent } from './index/login/login.component';
 
 // const routes: Routes = [
@@ -32,11 +31,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    loadChildren: () => import('./modules/items/items.module').then(m => m.ItemsModule)
+    // loadChildren: () => import('./modules/items/items.module').then(m => m.ItemsModule)
   },
 
   {
-    path: 'account', component: AccountDashboardComponent,
+    path: 'account', //component: AccountDashboardComponent,
     loadChildren: () => import('./modules/accounts/accounts.module').then(m => m.AccountsModule)
   },
 

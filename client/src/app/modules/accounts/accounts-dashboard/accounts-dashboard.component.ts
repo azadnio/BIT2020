@@ -18,14 +18,14 @@ export class AccountsDashboardComponent implements OnInit {
     {label : 'profile', path: 'profile' },
   ];
 
-  { path: 'profile', component: ProfileComponent },
-  { path: '', component: OrdersComponent },
-  { path: 'cheques', component: ChequesComponent },
-  { path: 'invoices', component: InvoicesComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'payments', component: PaymentsComponent },
-  { path: 'salesreturns', component: SalesReturnsComponent },
-  { path: 'transactions', component: TransactionsComponent }
+  // { path: 'profile', component: ProfileComponent },
+  // { path: '', component: OrdersComponent },
+  // { path: 'cheques', component: ChequesComponent },
+  // { path: 'invoices', component: InvoicesComponent },
+  // { path: 'orders', component: OrdersComponent },
+  // { path: 'payments', component: PaymentsComponent },
+  // { path: 'salesreturns', component: SalesReturnsComponent },
+  // { path: 'transactions', component: TransactionsComponent }
 
   constructor() { }
 

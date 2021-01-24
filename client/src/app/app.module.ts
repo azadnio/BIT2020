@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { IndexComponent } from './index/index.component';
 import { ItemsDashboardComponent } from './index/items-dashboard/items-dashboard.component';
-import { AccountDashboardComponent } from './index/account-dashboard/account-dashboard.component';
 import { LoginComponent } from './index/login/login.component';
 import { AppCommonModule } from './modules/common/common.module';
 
@@ -19,7 +18,6 @@ import { AppCommonModule } from './modules/common/common.module';
     PagenotfoundComponent,
     IndexComponent,
     ItemsDashboardComponent,
-    AccountDashboardComponent,
     LoginComponent
   ],
   imports: [

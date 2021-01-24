@@ -1,0 +1,37 @@
+<mat-drawer-container class="example-container mat-typography" autosize>
+  <mat-drawer #drawer (mouseenter)="isExpanded = true" (mouseleave)="isExpanded = false" mode="side" disableClose="true" opened="true">
+    <a  mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
+      <mat-icon aria-label="Menu"  routerLink="/admin" >menu</mat-icon>
+      <!-- <mat-icon aria-label="Menu"  routerLink="/admin" [routerLinkActiveOptions]="{exact:true}" >menu</mat-icon> -->
+    </a>
+
+    <mat-nav-list>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management A</h4>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management A</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management B</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>domain</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management C</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management X</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="page-routes">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
