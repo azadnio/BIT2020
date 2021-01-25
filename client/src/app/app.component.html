@@ -1,83 +1,85 @@
-<!-- <router-outlet></router-outlet> -->
-
-<div>
-    <div class="heder-logo">
-        <!-- <img class="logo" src="./assets/images/logo.png" alt="">
-        <img class="text" src="./assets/images/header.png" alt=""> -->
+<div class="app-view h-100 flex-col">
+    <!-- <router-outlet></router-outlet> -->
+    
+    <div>
+        <div class="heder-logo">
+            <!-- <img class="logo" src="./assets/images/logo.png" alt="">
+            <img class="text" src="./assets/images/header.png" alt=""> -->
+        </div>
     </div>
-</div>
-
-
-<!-- <ul class="nav-bar">
-    <li> </li>
-    <li>
-        <a [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active" class="home">
+    
+    
+    <!-- <ul class="nav-bar">
+        <li> </li>
+        <li>
+            <a [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active" class="home">
+                <mat-icon> home </mat-icon>
+            </a>
+        </li>
+        <li>
+            <a routerLink="items" routerLinkActive="router-link-active">
+                <mat-icon> reorder </mat-icon> <span>Items</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="account" routerLinkActive="router-link-active">
+                <mat-icon> menu_book </mat-icon> <span>My Account</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="admin" target="_blank" routerLinkActive="router-link-active" class="admin">
+                <mat-icon> person </mat-icon> <span>Admin</span>
+            </a>
+        </li>
+        <li>
+            <a [matMenuTriggerFor]="menu">Menu</a>
+            <mat-menu #menu="matMenu">
+                <div>
+                    this is a adiv for testing
+                </div>
+            </mat-menu>
+        </li>
+    
+        <li class="middle-space"></li>
+        <li>
+            <a>
+                <span>
+                    Good after noon Mr. Loser
+                </span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="admin" target="_blank" routerLinkActive="router-link-active">
+                <mat-icon> info </mat-icon> <span>About</span>
+            </a>
+        </li>
+        <li>
+            <a routerLink="admin" target="_blank" routerLinkActive="router-link-active">
+                <mat-icon> phone </mat-icon> <span>Contact</span>
+            </a>
+        </li>
+    </ul> -->
+    
+    
+    <nav mat-tab-nav-bar>
+    
+        <!-- home router link -->
+        <!-- <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
+            (click)="activeLink = ''" [active]="activeLink == ''">
             <mat-icon> home </mat-icon>
+        </a> -->
+    
+        <!-- rest of the routs -->
+        <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+            [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}}
         </a>
-    </li>
-    <li>
-        <a routerLink="items" routerLinkActive="router-link-active">
-            <mat-icon> reorder </mat-icon> <span>Items</span>
-        </a>
-    </li>
-    <li>
-        <a routerLink="account" routerLinkActive="router-link-active">
-            <mat-icon> menu_book </mat-icon> <span>My Account</span>
-        </a>
-    </li>
-    <li>
-        <a routerLink="admin" target="_blank" routerLinkActive="router-link-active" class="admin">
-            <mat-icon> person </mat-icon> <span>Admin</span>
-        </a>
-    </li>
-    <li>
-        <a [matMenuTriggerFor]="menu">Menu</a>
-        <mat-menu #menu="matMenu">
-            <div>
-                this is a adiv for testing
-            </div>
-        </mat-menu>
-    </li>
-
-    <li class="middle-space"></li>
-    <li>
-        <a>
-            <span>
-                Good after noon Mr. Loser
-            </span>
-        </a>
-    </li>
-    <li>
-        <a routerLink="admin" target="_blank" routerLinkActive="router-link-active">
-            <mat-icon> info </mat-icon> <span>About</span>
-        </a>
-    </li>
-    <li>
-        <a routerLink="admin" target="_blank" routerLinkActive="router-link-active">
-            <mat-icon> phone </mat-icon> <span>Contact</span>
-        </a>
-    </li>
-</ul> -->
-
-
-<nav mat-tab-nav-bar>
-
-    <!-- home router link -->
-    <!-- <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
-        (click)="activeLink = ''" [active]="activeLink == ''">
-        <mat-icon> home </mat-icon>
-    </a> -->
-
-    <!-- rest of the routs -->
-    <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
-        [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}}
-    </a>
-    <!-- <a mat-tab-link disabled>Disabled Link</a> -->
-
-    {{activeLink}}
-</nav>
-
-
-<div class="router-wrap">
-    <router-outlet></router-outlet>
+        <!-- <a mat-tab-link disabled>Disabled Link</a> -->
+    
+        {{activeLink}}
+    </nav>
+    
+    
+    <div class="router-wrap">
+        <router-outlet></router-outlet>
+    </div>
 </div>

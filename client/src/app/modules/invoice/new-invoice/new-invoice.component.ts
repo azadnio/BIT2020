@@ -36,7 +36,7 @@ export class NewInvoiceComponent implements OnInit {
       OrderId:[''],
       
 
-      // Name: ['', Validators.minLength(4)],
+      Name: ['', Validators.minLength(4)],
       // Address: ['', Validators.minLength(3)],
       // City: ['', Validators.minLength(3)],
       // NIC: ['', [Validators.minLength(10), Validators.maxLength(12)]],
