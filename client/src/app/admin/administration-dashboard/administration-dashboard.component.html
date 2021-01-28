@@ -7,27 +7,51 @@
 
     <mat-nav-list>
 
-      <mat-list-item>
-        <mat-icon mat-list-icon>person</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Management A</h4>
+      <mat-list-item routerLink="items" routerLinkActive="router-link-active">
+        <mat-icon mat-list-icon>reorder</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Items</h4>
       </mat-list-item>
 
       <mat-list-item>
-        <mat-icon mat-list-icon>person</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Management A</h4>
+        <mat-icon mat-list-icon>menu_book</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Customers</h4>
       </mat-list-item>
-      <mat-list-item>
+
+      <mat-list-item routerLink="orders" routerLinkActive="router-link-active">
         <mat-icon mat-list-icon>assignment</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Management B</h4>
+        <h4 mat-line *ngIf="isExpanded">Orders</h4>
       </mat-list-item>
-      <mat-list-item>
+
+      <mat-list-item routerLink="invoices" routerLinkActive="router-link-active">
         <mat-icon mat-list-icon>domain</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Management C</h4>
+        <h4 mat-line *ngIf="isExpanded">Invoices</h4>
       </mat-list-item>
-      <mat-list-item>
+
+      <mat-list-item routerLink="payments" routerLinkActive="router-link-active">
         <mat-icon mat-list-icon>folder_shared</mat-icon>
-        <h4 mat-line *ngIf="isExpanded">Management X</h4>
+        <h4 mat-line *ngIf="isExpanded">Payments</h4>
       </mat-list-item>
+
+      <mat-list-item routerLink="accounts" routerLinkActive="router-link-active">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Accounts</h4>
+      </mat-list-item>
+
+      <mat-list-item routerLink="cheques" routerLinkActive="router-link-active">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Cheques</h4>
+      </mat-list-item>
+
+      <mat-list-item routerLink="salesreturns" routerLinkActive="router-link-active">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Sales returns</h4>
+      </mat-list-item>
+
+      <mat-list-item routerLink="reports" routerLinkActive="router-link-active">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Reports</h4>
+      </mat-list-item>
+
     </mat-nav-list>
   </mat-drawer>
 
