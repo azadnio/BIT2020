@@ -1,0 +1,20 @@
+<div class="dash-board customer-accounts">
+
+    <div class="filter-wrap">
+
+        <div class="customer-name">Anuruddha Distributors</div>
+        <mat-list>
+            <mat-list-item *ngFor="let item of tabs" [routerLink]="item.path" routerLinkActive="router-link-active"> {{ item.label }} </mat-list-item>
+        </mat-list>
+
+    </div>
+
+    <div class="dashboard-content-wrap">
+
+        <div class="list">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</div>

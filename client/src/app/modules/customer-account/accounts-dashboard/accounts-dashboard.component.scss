@@ -1,0 +1,41 @@
+.customer-accounts {
+    background-color: #f8f8f8;
+    .filter-wrap {
+        width: 10%;
+        min-width: 20em;
+        background: #736d6d38;
+        padding: 0;
+
+        .customer-name {
+            background: black;
+            color: white;
+            font-weight: bold;
+            font-size: 2em;
+            padding: 7%;
+            line-height: 1em;
+            text-align: center;
+        }
+
+        mat-list-item {
+            outline: none;
+            cursor: pointer;
+
+            &.router-link-active {
+                background-color: #f0eeee;
+            }
+
+            &:hover:not(.router-link-active) {
+                background-color: #e9f0f6;
+            }
+        }
+    }
+
+    .dashboard-content-wrap {
+        margin-top: 0;
+        padding: 8px;
+        background-color: #f0eeee;
+        .list{
+            background-color: #f7f7f7;
+        }
+    }
+}

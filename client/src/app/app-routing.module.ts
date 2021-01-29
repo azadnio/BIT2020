@@ -35,8 +35,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'account', //component: AccountDashboardComponent,
-    loadChildren: () => import('./modules/accounts/accounts.module').then(m => m.AccountsModule)
+    path: 'account', loadChildren: () => import('./modules/customer-account/customer-account.module').then(m => m.CustomerAccountsModule)
   },
 
   {
