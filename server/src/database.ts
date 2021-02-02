@@ -12,8 +12,8 @@ class Db {
         connectionLimit: 10,
         host: 'localhost',
         user: 'root',
-        password: '',
-        database: 'capital',
+        password: config.dbPassWord,
+        database: config.database,
         port: 3308
     });
 
@@ -175,25 +175,6 @@ class Db {
             throw error
         }
     }
-
-    // public async updateInvoiceStatus(invoiceId: string | number, status: PaymentStatus): Promise<IInsertionDBResults> {
-
-    //     if (!Object.entries(parameters).length)
-    //         throw new AppErrInvalidRequest();
-
-    //     let params = [],
-    //         condintions = Object.entries(parameters).map(p => {
-
-    //             params.push((typeof p[1] == 'string') ? `'${p[1]}'` : p[1]); //add the params
-    //             return `${p[0]} = ?`;
-    //         });
-
-    //     try {
-    //         return await db.executeQuery<IInsertionDBResults>(`DELETE FROM ${tableName} WHERE ${condintions.join(' AND ')}`, params);
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
 }
 
 const db = new Db();

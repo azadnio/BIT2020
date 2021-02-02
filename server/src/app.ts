@@ -3,13 +3,18 @@ import * as express from "express";
 import { Application, NextFunction, Response, Request } from 'express'
 import indexRoute from './routes/index.route'
 import { AppError } from './modals/apperror.class'
-import invoiceRoutes from './routes/invoice.route'
-import { indexController } from './controllers/index.controller'
+import invoiceRoutes from './routes/invoice.route';
 import customerRoutes from './routes/customer.routes';
 import  authRoutes  from './routes/auth.route'
 import { auth } from "./controllers/auth.controller";
 import userRoutes from './routes/user.routes'
 import orderRoutes from "./routes/order.route";
+import itemsRoutes from "./routes/items.route";
+import generalRoutes from "./routes/general.route";
+import accountsRoutes from "./routes/accounts.route";
+import chequesRoutes from "./routes/cheques.route";
+import salesReturns from "./routes/sales_returns.route";
+import reports from "./routes/reports.route";
 
 class Server {
 
@@ -42,10 +47,18 @@ class Server {
         //authorization middleware
         this.app.use(auth.authorize)
         
-        this.app.use('/api/invoice', invoiceRoutes)
+        //authorized routes
+        this.app.use('/api/items', itemsRoutes);
+        this.app.use('/api/invoice', invoiceRoutes);
         this.app.use('/api/customer', customerRoutes);
         this.app.use('/api/user', userRoutes);
         this.app.use('/api/order', orderRoutes);
+        this.app.use('/api/general', generalRoutes);
+        this.app.use('/api/accounts', accountsRoutes);
+        this.app.use('/api/cheques', chequesRoutes);
+        this.app.use('/api/sales_returns', salesReturns);
+        this.app.use('/api/reports', reports);
+
 
         //handle the errors
         this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -63,7 +76,7 @@ class Server {
             //not defined exceptions log the stack
             else {
 
-                console.log('UNHANDLED ERROR')
+                console.log('UNHANDLED ERROR OCCURED');
                 console.log(err.stack)
             }
 
