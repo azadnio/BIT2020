@@ -17,7 +17,8 @@ export class NewCustomerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public utils: UtilsService,
-    private appService: AppService
+    private appService: AppService,
+    // prrivate customerService: CustomerService //DISSERTATION
   ) {
 
     //set customer form fields
@@ -39,11 +40,13 @@ export class NewCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.customerForm.value);
-
-    this.appService.showErrorMessage();
+  // onSubmit(values) { //DISSERTATION
+    onSubmit() {
+    
+    //DISSERTATION
+    // this.customerService.createNewCustomer(values).then(e =>{
+    //   this.appService.showSuccessMessage('Customer Successfully created')
+    // });
   }
 
 }
