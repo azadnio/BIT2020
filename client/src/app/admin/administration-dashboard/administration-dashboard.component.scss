@@ -1,3 +1,57 @@
-mat-drawer-container{
-  height: 100%;
+// mat-drawer-container{
+//   height: 100%;
+// }
+
+.admin-dashboard {
+  background-color: #eee6d1;
+
+  .nav-wrap {
+    display: flex;
+    align-items: baseline;
+    padding: 0 8px;
+    margin: auto;
+    border-bottom: 1px solid gray;
+    background-color: #9c271e;
+
+    span {
+      + span {
+        margin-left: 1.3em;
+      }
+      &.spacer {
+        flex: 1 1 auto;
+      }
+      a {
+        display: flex;
+        text-decoration: none;
+        color: white;
+        align-items: flex-end;
+        padding: 10px;
+        border-radius: 5px 5px 1px 0px;
+
+        &.home {
+          position: relative;
+          top: 4px;
+          mat-icon {
+            font-size: 1.8em;
+          }
+        }
+
+        &.router-link-active {
+          background: #eee6d1;
+          color: black;
+          font-weight: 500;
+          box-shadow: inset 0px 3px 3px 0px #b9b1b1ab;
+        }
+
+        span {
+          font-size: 1.3em;
+        }
+        mat-icon {
+          font-size: 1.6em;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
+  }
 }

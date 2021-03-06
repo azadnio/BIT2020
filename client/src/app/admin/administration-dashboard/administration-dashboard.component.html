@@ -1,8 +1,7 @@
-<mat-drawer-container class="example-container mat-typography" autosize>
+<!-- <mat-drawer-container class="example-container mat-typography" autosize>
   <mat-drawer #drawer (mouseenter)="isExpanded = true" (mouseleave)="isExpanded = false" mode="side" disableClose="true" opened="true">
     <a  mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
       <mat-icon aria-label="Menu"  routerLink="/admin" >menu</mat-icon>
-      <!-- <mat-icon aria-label="Menu"  routerLink="/admin" [routerLinkActiveOptions]="{exact:true}" >menu</mat-icon> -->
     </a>
 
     <mat-nav-list>
@@ -58,4 +57,78 @@
   <div class="page-routes h-100 ">
     <router-outlet></router-outlet>
   </div>
-</mat-drawer-container>
+</mat-drawer-container> -->
+
+<div class="admin-dashboard">
+  <div>
+    <div class="nav-wrap">
+      <span>
+        <a routerLink="/admin" routerLinkActiveOptions="{'exact':true}" class="home">
+          <mat-icon> home </mat-icon>
+          <span>Home</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="items" routerLinkActive="router-link-active">
+          <span>Items</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="customers" routerLinkActive="router-link-active">
+          <span>Customers</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="orders" class="admin" routerLinkActive="router-link-active">
+          <span>Orders</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="invoices" class="admin" routerLinkActive="router-link-active">
+          <span>Invoices</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="payments" class="admin" routerLinkActive="router-link-active">
+          <span>Payments</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="accounts" class="admin" routerLinkActive="router-link-active">
+          <span>Accounts</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="cheques" class="admin" routerLinkActive="router-link-active">
+          <span>Cheques</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="salesreturns" class="admin" routerLinkActive="router-link-active">
+          <span>Sales Return</span>
+        </a>
+      </span>
+      <span>
+        <a routerLink="reports" class="admin" routerLinkActive="router-link-active">
+          <span>Reports</span>
+        </a>
+      </span>
+
+      <span class="spacer"></span>
+      <span>
+        <a routerLink="profile" routerLinkActive="router-link-active">
+          <mat-icon> person </mat-icon>
+        </a>
+      </span>
+      <span>
+        <a routerLink="settings" style="margin-left: -3px;" routerLinkActive="router-link-active">
+          <mat-icon> settings </mat-icon>
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <div class="page-routes h-100 ">
+    <router-outlet></router-outlet>
+  </div>
+</div>

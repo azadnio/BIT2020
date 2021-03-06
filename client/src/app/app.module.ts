@@ -22,6 +22,7 @@ import { AppCommonModule } from './modules/common/common.module';
   ],
   imports: [
     BrowserModule,
+    AppCommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppCommonModule

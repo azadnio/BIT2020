@@ -1,10 +1,9 @@
 <div class="app-view h-100 flex-col">
-    <!-- <router-outlet></router-outlet> -->
     
     <div>
         <div class="heder-logo">
-            <!-- <img class="logo" src="./assets/images/logo.png" alt="">
-            <img class="text" src="./assets/images/header.png" alt=""> -->
+            <img class="logo" src="./assets/images/logo.png" alt="">
+            <img class="text" src="./assets/images/header.png" alt="">
         </div>
     </div>
     
@@ -61,7 +60,53 @@
     </ul> -->
     
     
-    <nav mat-tab-nav-bar>
+    <!-- <nav mat-tab-nav-bar> -->
+
+        <div class="nav-wrap">
+            <span>
+                <a routerLink ="" routerLinkActiveOptions ="{'exact':true}" class="home">
+                    <mat-icon> home </mat-icon>
+                </a>
+            </span>
+            <span>
+                <a routerLink ="items" routerLinkActive="router-link-active">
+                    <mat-icon> dehaze </mat-icon>
+                    <span>Items</span>
+                </a>
+            </span>
+            <span>
+                <a routerLink ="account" routerLinkActive="router-link-active">
+                    <mat-icon> person </mat-icon>
+                    <span>My Account</span>
+                </a>
+            </span>
+            <span>
+                <a routerLink="admin" class="admin" routerLinkActive="router-link-active">
+                    <mat-icon> person </mat-icon>
+                    <span>Admin</span>
+                </a>
+            </span>
+            <span class="spacer"></span>
+            <span>
+                <a routerLink ="account" routerLinkActive="router-link-active">
+                    <mat-icon> logout </mat-icon>
+                    <span>Login</span>
+                </a>
+            </span>
+            <span>
+                <a routerLink ="account" routerLinkActive="router-link-active">
+                    <mat-icon> phone </mat-icon>
+                    <span>Contact</span>
+                </a>
+            </span>
+            <span>
+                <a routerLink ="account" routerLinkActive="router-link-active">
+                    <mat-icon> priority_high </mat-icon>
+                    <span>About</span>
+                </a>
+            </span>
+        </div>
+
     
         <!-- home router link -->
         <!-- <a mat-tab-link [routerLinkActiveOptions]="{exact:true}" routerLink="" routerLinkActive="router-link-active"
@@ -70,13 +115,13 @@
         </a> -->
     
         <!-- rest of the routs -->
-        <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+        <!-- <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
             [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}}
-        </a>
+        </a> -->
         <!-- <a mat-tab-link disabled>Disabled Link</a> -->
     
-        {{activeLink}}
-    </nav>
+        <!-- {{activeLink}} -->
+    <!-- </nav> -->
     
     
     <div class="router-wrap">

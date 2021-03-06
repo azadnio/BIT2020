@@ -1,5 +1,4 @@
 .app-view {
-
       flex: 1;
 
       .heder-logo {
@@ -16,7 +15,45 @@
             }
       }
 
-      .router-wrap{
+      .nav-wrap {
+            display: flex;
+            align-items: baseline;
+            width: 50%;
+            margin: auto;
+            border-bottom: 1px solid gray;
+            padding-bottom: 5px;
+
+            span {
+                  + span {
+                        margin-left: 1.3em;
+                  }
+                  &.spacer {
+                        flex: 1 1 auto;
+                  }
+                  a {
+                        display: flex;
+                        text-decoration: none;
+                        color: #118d82;
+
+                        &.home {
+                              mat-icon {
+                                    font-size: 2.4em;
+                              }
+                        }
+
+                        span {
+                              font-size: 1.3em;
+                        }
+                        mat-icon {
+                              font-size: 1.6em;
+                              height: auto;
+                              width: auto;
+                        }
+                  }
+            }
+      }
+
+      .router-wrap {
             flex: 1;
       }
 
