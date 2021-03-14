@@ -1,4 +1,4 @@
-<div class="dash-board">
+<!-- <div class="dash-board">
 
       <div class="filter-wrap">
             <div>
@@ -11,5 +11,14 @@
             <return-page></return-page>
             category items
             <app-ch-item *ngFor="let item of items" [item]=item></app-ch-item>
+      </div>
+</div> -->
+
+<div class="dash-board">
+      <div class="filter-wrap">
+            categories
+      </div>
+      <div class="dashboard-content-wrap" style="flex: 1;">
+            <router-outlet></router-outlet>
       </div>
 </div>

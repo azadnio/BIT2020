@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChItemComponent } from './ch-item/ch-item.component';
 import { AppCommonModule } from '../common/common.module';
 import { BrandItemsComponent } from './brand-items/brand-items.component';
+import { ItemsClientDashboardComponent } from './items-client-dashboard/items-client-dashboard.component';
 
 const routes: Routes = [
   
@@ -20,6 +21,8 @@ const routes: Routes = [
   //show selected branded item
   { path: 'brand/:brandId', component: BrandItemsComponent },
   
+  { path: ':categoryId', component: CategoryItemsComponent },
+
   //show selected category item
   { path: ':categoryId/:itemId', component: CategoryItemsComponent },
   
@@ -33,7 +36,8 @@ const routes: Routes = [
     CategoryItemsComponent,
     ItemViewComponent,
     ChItemComponent,
-    BrandItemsComponent
+    BrandItemsComponent,
+    ItemsClientDashboardComponent
   ],
   imports: [
     CommonModule,
