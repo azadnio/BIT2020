@@ -9,7 +9,36 @@
         <div class="filter-field-wrap">
 
             <fieldset>
-                <legend>Search</legend>
+                <legend>Filter/Search Payments</legend>
+
+                <div class="filter-row-wrap">
+
+                    <input type="checkbox" name="" id="">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Filter by payment ID</mat-label>
+                        <input matInput type="text" [(ngModel)]="value">
+                        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="value=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <div class="filter-row-wrap">
+
+                    <input type="checkbox" name="" id="">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Filter by Customer name</mat-label>
+                        <input matInput type="text" [(ngModel)]="value">
+                        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="value=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
                 <mat-form-field appearance="outline" class="inline">
                     <mat-label>Payment ID</mat-label>
                     <input matInput placeholder="Enter Pyament ID" id="searchId" [(ngModel)]="searchId">
@@ -117,7 +146,8 @@
 
                 <ng-container matColumnDef="customer">
                     <th mat-header-cell *matHeaderCellDef> Customer </th>
-                    <td mat-cell *matCellDef="let element"> <a [routerLink]="['/admin/customers/' + element.custId]"> {{element.customer}} </a> </td>
+                    <td mat-cell *matCellDef="let element"> <a [routerLink]="['/admin/customers/' + element.custId]">
+                            {{element.customer}} </a> </td>
                 </ng-container>
 
                 <ng-container matColumnDef="paymentType">
