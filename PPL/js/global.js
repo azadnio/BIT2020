@@ -29,3 +29,5 @@ class Player {
         this.basePrice = basePrice;
     }
 }
+
+let palyers = [new Player('aasfsf', 'batting', 'sdf'), new Player('aasfsf', 'batting', 'sdf'), new Player('aasfsf', 'batting', 'sdf'), new Player('aasfsf', 'batting', 'sdf')]
