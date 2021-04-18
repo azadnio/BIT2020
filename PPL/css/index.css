@@ -1,0 +1,95 @@
+ button{
+     width: 6em;
+ }
+
+#palyer-form {
+    width: 75%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+#auction-teams-wrap,
+.tab-pane.active #teams-wrap {
+    display: flex;
+    flex-direction: row;
+    min-height: 30em;
+    justify-content: space-between;
+}
+
+#auction-teams-wrap .teams-wrap,
+#teams .teams-wrap {
+    border: 1px solid #e4e4e4;
+    width: 20px;
+    flex: 1;
+    padding: 5px;
+}
+
+.teams-wrap img {
+    width: 100%;
+}
+
+#Auction .carousel .item {
+  transition-duration: .2s;
+}
+
+#Auction .carousel-wrap {
+    display: flex;
+    padding: 1% 5%;
+}
+
+#Auction #myCarousel {
+    flex: 1;
+}
+
+#Auction #palyer-desc {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 0 10px;
+    justify-content: space-between;
+}
+
+#Auction .carousel-inner {
+    height: 100%;
+}
+
+#Auction .carousel-inner img {
+    width: 100%;
+}
+
+#Auction #next-players img{
+    width: 5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(148, 148, 148); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1a1818; 
+}
