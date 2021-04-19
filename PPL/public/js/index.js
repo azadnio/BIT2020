@@ -5,25 +5,7 @@ $(function () {
 
     // init tabs
 
-    function loadPlayers() {
-
-        $('#palyers-table tbody').empty();
-        //load payers
-        $.each(biddingPalyers, function (i, player) {
-            var $tr = $('<tr>').append(
-                $('<td>').text(player.name),
-                $('<td>').text(player.role),
-                $('<td>').text(player.team)
-            ).appendTo('#palyers-table tbody');
-
-            //selected player from list
-            $tr.click(e => {
-
-                $('#Name').val(player.name);
-                $('#role').val(player.role);
-            })
-        });
-    }
+    
 
     function loadTeams() {
 
@@ -31,7 +13,7 @@ $(function () {
 
         //TO DO LOAD TEAMS PLAYERS FROM PLAYERS LIST
 
-        $.each(teams, function (i, team) {
+        $.each(TEAMS, function (i, team) {
 
             //team tab
             let $team = $(`<div class="teams-wrap">
@@ -88,13 +70,13 @@ $(function () {
 
     function setAuctionPlayer() {
 
-        $('#auction-player-name').text(biddingPalyers[bidingPlayerIndex].name);
-        $('#auction-player-role').text(biddingPalyers[bidingPlayerIndex].role);
+        $('#auction-player-name').text(BIDDING_PLAYERS[bidingPlayerIndex].name);
+        $('#auction-player-role').text(BIDDING_PLAYERS[bidingPlayerIndex].role);
     }
 
     function initApp() {
 
-        //load teams
+        //load teams combo
         $.each(TEAMS_NAMES, function (i, team) {
             $('<option>').attr('value', team).text(team).appendTo('#palyer-team');
             $('<option>').attr('value', team).text(team).appendTo('#auction-palyer-team');
@@ -107,31 +89,7 @@ $(function () {
     }
 
     //-------------save player info
-    $("#player-photo").on("change", function (e) {
-
-        let input = this;
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#player-photo-img').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
-
-    $('#player-photo-choose').click(function () { $('#player-photo').trigger('click'); });
-
-    $("#palyer-form").submit(function () {
-
-        biddingPalyers.push(new Player($('#Name').val(), $('#role').val(), ''));
-        loadPlayers();
-        $("#palyer-form")[0].reset();
-        $('#player-photo-img').attr('src', '');
-        $('#player-photo').val("");
-        return false;
-    });
+    
 
     // -----------------save team info ---------
     $("#team-photo").on("change", function (e) {
@@ -152,7 +110,7 @@ $(function () {
 
     $("#team-form").submit(function () {
 
-        teams.push(new Team($('#team-name').val(), $('#team-captain').val(), '', ''));
+        TEAMS.push(new Team($('#team-name').val(), $('#team-captain').val(), '', ''));
         loadTeams();
         $("#team-form")[0].reset();
         $('#team-photo-img').attr('src', '');
@@ -172,33 +130,45 @@ $(function () {
 
     // ---------------auction ---------
     let tim = -1;
-    $('.prev-player').click(function(){
-        
+    $('.prev-player').click(function () {
+
         $('#myCarousel').carousel('prev');
         clearTimeout(tim);
 
-        tim = setTimeout(function(){
+        tim = setTimeout(function () {
             bidingPlayerIndex--;
             if (bidingPlayerIndex < 0)
-                bidingPlayerIndex = biddingPalyers.length - 1;
+                bidingPlayerIndex = BIDDING_PLAYERS.length - 1;
 
             setAuctionPlayer();
         }, 200);
     });
 
     $('.next-player').click(function () {
-        
+
         $('#myCarousel').carousel('next');
         clearTimeout(tim);
 
         tim = setTimeout(function () {
             bidingPlayerIndex++;
-            if (bidingPlayerIndex >= biddingPalyers.length)
+            if (bidingPlayerIndex >= BIDDING_PLAYERS.length)
                 bidingPlayerIndex = 0;
 
             setAuctionPlayer();
         }, 200);
     });
 
-    initApp();
+
+    $.get("/get", function (e) {
+       
+        BIDDING_PLAYERS = e.biddingPalyers;
+        TEAMS = e.teams;
+        TEAMS_NAMES = TEAMS.map(e => e.name);
+        
+        initApp();
+
+    }).fail(function () {
+        alert("error in initial loading");
+    });
+
 });

@@ -1,0 +1,26 @@
+[
+    {
+        "bidPrice": 0,
+        "name": "palyer 1",
+        "role": "batting",
+        "team": "sdf"
+    },
+    {
+        "bidPrice": 0,
+        "name": "palyer 2",
+        "role": "bowling",
+        "team": "sdf"
+    },
+    {
+        "bidPrice": 0,
+        "name": "palyer 3",
+        "role": "All rounder",
+        "team": "sdf"
+    },
+    {
+        "bidPrice": 0,
+        "name": "aasfsf",
+        "role": "batting",
+        "team": "sdf"
+    }
+]
