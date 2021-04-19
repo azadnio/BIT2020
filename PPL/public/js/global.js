@@ -6,10 +6,9 @@ class Team {
     palyers = [];
     totalPoints = 100000;
 
-    constructor(name, captain, sponsor, img){
+    constructor(name, captain, img){
         this.name = name;
         this.captain = captain;
-        this.sponsor = sponsor;
         this.img = img;
     }
 }
@@ -25,6 +24,9 @@ class Player {
         this.img = img;
     }
 }
+
+const NO_OF_PLAYERS = 12;
+const MIN_BID_VALUE = 1000;
 
 var BIDDING_PLAYERS = [];
 

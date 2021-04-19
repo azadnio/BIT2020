@@ -1,3 +1,4 @@
+
 function loadPlayers() {
 
     $('#palyers-table tbody').empty();
@@ -18,7 +19,7 @@ function loadPlayers() {
     });
 }
 
-$(function(){
+$(function () {
 
 
 

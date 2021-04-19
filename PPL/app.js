@@ -14,6 +14,8 @@ app.use(bodyParser.json({
 const port = 3000;
 const version = 1.0;
 
+
+
 app.use('/',express.static('public'))
 
 app.get('/ver', (req, res) => {
@@ -51,6 +53,49 @@ app.post('/save', (req, res) => {
     }
 });
 
+
+app.post('/saveteam', (req, res) => {
+
+    try {
+
+        if (req.body.teams)
+            fs.writeFileSync('/Users/joe/test.txt', JSON.stringify(req.body.teams, null, 2));
+        
+        if (req.body.biddingPalyers)
+            fs.writeFileSync('/Users/joe/test.txt', JSON.stringify(req.body.biddingPalyers, null, 2));
+
+        res.send(true);
+    }
+    catch (e) {
+        res.status(400).send(false);
+    }
+});
+
 app.listen(port, () => {
     console.log(`PPL app listening at http://localhost:${port}`)
 });
+
+
+class Team {
+
+    palyers = [];
+    totalPoints = 100000;
+
+    constructor(name, captain, img){
+        this.name = name;
+        this.captain = captain;
+        this.img = img;
+    }
+}
+
+class Player {
+
+    bidPrice = 0;
+
+    constructor(name, role, team, img) {
+        this.name = name;
+        this.role = role;
+        this.team = team;
+        this.img = img;
+    }
+}

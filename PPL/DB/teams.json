@@ -14,8 +14,8 @@
                 "team": "sdf"
             },
             {
-                "bidPrice": 0,
-                "name": "palyer 3",
+                "bidPrice": 80000,
+                "name": "Mohammed rahmathullah",
                 "role": "All rounder",
                 "team": "sdf"
             },
@@ -27,7 +27,7 @@
             }
         ],
         "totalPoints": 100000,
-        "name": "THENNA LIONS",
+        "name": "THENNA LIONS ",
         "captain": "cptTHENNA LIONS",
         "sponsor": "",
         "img": "./images/photo.jpg"
@@ -60,7 +60,7 @@
             }
         ],
         "totalPoints": 100000,
-        "name": "MALGAMANDENIYA ",
+        "name": "MALGAMANDENIYA STARS",
         "captain": "cptMALGAMANDENIYA ",
         "sponsor": "",
         "img": "./images/photo.jpg"
