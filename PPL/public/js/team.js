@@ -13,7 +13,7 @@ function loadTeams() {
             return c + val;
         }, 0);
 
-        let nextPlayersMinReqValues = (NO_OF_PLAYERS - team.palyers.length) * MIN_BID_VALUE;
+        let nextPlayersMinReqValues = (REQ_NO_OF_PLAYERS - team.palyers.length) * MIN_BID_VALUE;
         let balacePoints = team.totalPoints - playersTotalPoints;
 
         //team tab
@@ -23,6 +23,7 @@ function loadTeams() {
             <div>Captain : ${team.captain}</div>
             <table>
                 <tr> <td>Total points</td> <td>${team.totalPoints}</td> </tr>
+                <tr> <td>No of Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
                 <tr> <td>Balance points</td> <td>${balacePoints}</td> </tr>
                 <tr> <td>Nxt plyr's max bid</td> <td>${balacePoints - nextPlayersMinReqValues}</td> </tr>
             </table>              
@@ -52,6 +53,7 @@ function loadTeams() {
             <div>Captain : ${team.captain}</div>
             <table>
                 <tr> <td>Total points</td> <td>${team.totalPoints}</td> </tr>
+                <tr> <td>No of Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
                 <tr> <td>Balance points</td> <td>${balacePoints}</td> </tr>
                 <tr> <td>Nxt plyr's max bid</td> <td>${balacePoints - nextPlayersMinReqValues}</td> </tr>
             </table>               
@@ -80,29 +82,29 @@ function loadTeams() {
 
 $(function () {
 
-    $("#team-photo").on("change", function (e) {
+    // $("#team-photo").on("change", function (e) {
 
-        let input = this;
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    //     let input = this;
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#team-photo-img').attr('src', e.target.result);
-            }
+    //         reader.onload = function (e) {
+    //             $('#team-photo-img').attr('src', e.target.result);
+    //         }
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // });
 
-    $('#team-photo-choose').click(function () { $('#team-photo').trigger('click'); });
+    // $('#team-photo-choose').click(function () { $('#team-photo').trigger('click'); });
 
-    $("#team-form").submit(function () {
+    // $("#team-form").submit(function () {
 
-        TEAMS.push(new Team($('#team-name').val(), $('#team-captain').val(), '', ''));
-        loadTeams();
-        $("#team-form")[0].reset();
-        $('#team-photo-img').attr('src', '');
-        $('#team-photo').val("");
-        return false;
-    });
+    //     TEAMS.push(new Team($('#team-name').val(), $('#team-captain').val(), '', ''));
+    //     loadTeams();
+    //     $("#team-form")[0].reset();
+    //     $('#team-photo-img').attr('src', '');
+    //     $('#team-photo').val("");
+    //     return false;
+    // });
 });

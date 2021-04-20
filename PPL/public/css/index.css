@@ -26,31 +26,37 @@ button {
 
 .teams-wrap img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .teams-wrap table {
     border-collapse: collapse;
-      width: 100%;
+    width: 100%;
 }
 
 .teams-wrap .team-name {
     height: 3em;
     text-align: center;
+    font-weight: bold;
 }
 
 .teams-wrap table,
 .teams-wrap td,
 .teams-wrap th {
     border: 1px solid black;
+    padding: 4px 3px;
 }
 
 #Auction .carousel .item {
     transition-duration: 0.2s;
+    height: 100%;
 }
 
 #Auction .carousel-wrap {
     display: flex;
     padding: 1% 5%;
+    height: 42em;
 }
 
 #Auction #myCarousel {
@@ -72,10 +78,38 @@ button {
 
 #Auction .carousel-inner img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 #Auction #next-players img {
-    width: 5em;
+    width: 100%;
+    opacity: 0.4;
+}
+
+.next-palyer {
+    display: inline-flex;
+    position: relative;
+    width: 8em;
+    padding: 2px;
+}
+
+.next-palyer .next-palyer-name {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+        font-weight: bold;
+    font-size: 12px;
+}
+
+.next-palyer .next-palyer-role {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
 }
 
 /* width */

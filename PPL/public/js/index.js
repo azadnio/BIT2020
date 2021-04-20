@@ -18,7 +18,7 @@ $(function () {
 
     $.get("/get", function (e) {
        
-        BIDDING_PLAYERS = e.biddingPalyers;
+        BIDDING_PLAYERS = e.biddingPalyers.filter(e => e.team);
         TEAMS = e.teams;
         TEAMS_NAMES = TEAMS.map(e => e.name);
         

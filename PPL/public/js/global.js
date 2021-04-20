@@ -25,7 +25,7 @@ class Player {
     }
 }
 
-const NO_OF_PLAYERS = 12;
+const REQ_NO_OF_PLAYERS = 12;
 const MIN_BID_VALUE = 1000;
 
 var BIDDING_PLAYERS = [];
