@@ -2,6 +2,7 @@ function loadNextPlayers() {
 
     let noOfNextPlayers = 8;
     $('#next-players').empty();
+    
     let nextpalyerStart = bidingPlayerIndex + 1;
     let indexes = [bidingPlayerIndex];
     for(let i = 0; i < noOfNextPlayers; i++) {
@@ -25,11 +26,14 @@ function loadNextPlayers() {
 
 function setAuctionPlayer() {
 
-    $('#bid-player-index').text(`${bidingPlayerIndex + 1} of ${BIDDING_PLAYERS.length}`);
-    $('#auction-player-name').text(BIDDING_PLAYERS[bidingPlayerIndex].name);
-    $('#auction-player-role').text(BIDDING_PLAYERS[bidingPlayerIndex].role);
+    if (BIDDING_PLAYERS.length) {
 
-    loadNextPlayers();
+        $('#bid-player-index').text(`${bidingPlayerIndex + 1} of ${BIDDING_PLAYERS.length}`);
+        $('#auction-player-name').text(BIDDING_PLAYERS[bidingPlayerIndex].name);
+        $('#auction-player-role').text(BIDDING_PLAYERS[bidingPlayerIndex].role);
+
+        loadNextPlayers();
+    }    
 }
 
 $(function () {
