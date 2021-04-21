@@ -1,6 +1,14 @@
 var bidingPlayerIndex = 0;
 
+function reInitData() {
+    loadPlayers();
+    loadTeams();
+    setAuctionPlayer();
+}
+
 $(function () {
+
+    
 
     function initApp() {
 
@@ -10,10 +18,7 @@ $(function () {
             $('<option>').attr('value', team).text(team).appendTo('#auction-palyer-team');
         });
         
-        loadPlayers();
-        loadTeams();
-        setAuctionPlayer();
-        //setup auction view
+        reInitData();
     }
 
     $.get("/get", function (e) {

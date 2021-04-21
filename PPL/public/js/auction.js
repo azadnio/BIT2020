@@ -3,7 +3,7 @@ function loadNextPlayers() {
     let noOfNextPlayers = 8;
     $('#next-players').empty();
     let nextpalyerStart = bidingPlayerIndex + 1;
-    let indexes = [];
+    let indexes = [bidingPlayerIndex];
     for(let i = 0; i < noOfNextPlayers; i++) {
 
         if (nextpalyerStart >= BIDDING_PLAYERS.length)

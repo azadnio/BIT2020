@@ -20,10 +20,14 @@ function loadTeams() {
         let $team = $(`<div class="teams-wrap">
             <div><img src="${team.img}" alt=""></div>
             <div class="team-name">${team.name}</div>
+            <div>
+                <div>Captain : ${team.captain}</div>
+                <div><img src="${team.captainImg}" alt=""></div>
+            </div>
             <div>Captain : ${team.captain}</div>
             <table>
                 <tr> <td>Total points</td> <td>${team.totalPoints}</td> </tr>
-                <tr> <td>No of Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
+                <tr> <td>No of Other Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
                 <tr> <td>Balance points</td> <td>${balacePoints}</td> </tr>
                 <tr> <td>Nxt plyr's max bid</td> <td>${balacePoints - nextPlayersMinReqValues}</td> </tr>
             </table>              
@@ -50,10 +54,13 @@ function loadTeams() {
         //auction team
         let $team2 = $(`<div class="teams-wrap">
             <div class="team-name">${team.name}</div>
-            <div>Captain : ${team.captain}</div>
+            <div>
+                <div>Captain : ${team.captain}</div>
+                <div><img src="${team.captainImg}" alt="" ></div>
+            </div>
             <table>
                 <tr> <td>Total points</td> <td>${team.totalPoints}</td> </tr>
-                <tr> <td>No of Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
+                <tr> <td>No of Other Players</td> <td>${team.palyers.length} of ${REQ_NO_OF_PLAYERS}</td> </tr>
                 <tr> <td>Balance points</td> <td>${balacePoints}</td> </tr>
                 <tr> <td>Nxt plyr's max bid</td> <td>${balacePoints - nextPlayersMinReqValues}</td> </tr>
             </table>               
