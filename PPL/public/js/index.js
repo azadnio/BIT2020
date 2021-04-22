@@ -8,6 +8,8 @@ function reInitData() {
 
 function initApp(biddingPalyers, teams) {
 
+
+    ALL_PLAYERS = biddingPalyers;
     BIDDING_PLAYERS = biddingPalyers.filter(e => !e.team);
     TEAMS = teams;
     TEAMS_NAMES = TEAMS.map(e => e.name);

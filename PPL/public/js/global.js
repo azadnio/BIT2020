@@ -28,6 +28,8 @@ class Player {
 const REQ_NO_OF_PLAYERS = 12;
 const MIN_BID_VALUE = 1000;
 
+var ALL_PLAYERS = [];
+
 var BIDDING_PLAYERS = [];
 
 var TEAMS    = [];

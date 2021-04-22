@@ -3,7 +3,7 @@ function loadPlayers() {
 
     $('#palyers-table tbody').empty();
     //load payers
-    $.each(BIDDING_PLAYERS, function (i, player) {
+    $.each(ALL_PLAYERS, function (i, player) {
 
         let delButton = $('<button>Del</button>').click(function (e) {
 
@@ -35,24 +35,19 @@ function loadPlayers() {
 
             $('#Name').val(player.name);
             $('#role').val(player.role);
+            $('#player-photo-img').attr('src', `./photos/players/${player.img}`);
         })
     });
 }
 
 function addPlayer(name = '', role = '', team = '', img = '', imgName = '') {
 
+    if (img.indexOf('images/photo.jpg') > -1)
+        return alert('ENTER PLAYER PHOTO');
+
+    name = name.trim().toUpperCase();
     //check already exist by name
-
-    let bidPlayers = BIDDING_PLAYERS.map(e => e.name.replace(/ /g, '').toUpperCase());
-    let found = bidPlayers.includes(name.replace(/ /g, '').toUpperCase());
-
-    if (!found) {
-        teamPlayers = TEAMS.reduce((a, e) => {
-            a = [...a, e.palyers.map(p => p.name.replace(/ /g, '').toUpperCase())]
-            return a;
-        }, []);
-        found = teamPlayers.includes(name.replace(/ /g, '').toUpperCase());
-    }
+    let found = ALL_PLAYERS.includes(e => e.name.replace(/ /g, '') == name);
 
     if (found && !confirm(`${name} . already exists in the players list do you want replace?`))
         return;
@@ -103,8 +98,8 @@ $(function () {
         var raw_image_data = $('#player-photo-img').attr('src').replace(/^data\:image\/\w+\;base64\,/, '');
         var imgName = $('#player-photo').val().split('\\').pop();
 
-        addPlayer($('#Name').val(), $('#role').val(), '', raw_image_data, imgName);
-        
+        addPlayer($('#Name').val(), $('#role').val(), $('#palyer-team').val(), raw_image_data, imgName);
+
         return false;
     });
 

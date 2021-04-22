@@ -23,6 +23,11 @@ button {
     vertical-align: middle;
 }
 
+#palyer-form img{
+    width: 16em;
+    height: 16em;
+    object-fit: contain;
+}
 
 #auction-teams-wrap,
 .tab-pane.active #teams-wrap {
