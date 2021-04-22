@@ -50,3 +50,4 @@ Thumbs.db
 /server/node_modules
 /client/package-lock.json
 /client/node_modules
+/PPL/node_modules

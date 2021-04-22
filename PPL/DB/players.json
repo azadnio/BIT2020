@@ -1,1 +1,82 @@
-[]
+[
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "MOHAMED HUZRY",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "MOHAMED_HUZRY.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "MZM WAZEEM",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "MZM_WAZEEM.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "AAKIL AHMED",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "AAKIL_AHMED.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "SM NAZEEMDEEN",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "SM_NAZEEMDEEN.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "MGM ZILMY",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "MGM_ZILMY.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "MUM MANSHAF",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "MUM_MANSHAF.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "AZRY AHMED",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "AZRY_AHMED.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "MIM IMTHATH",
+    "role": "BATSMAN",
+    "team": "",
+    "img": "MIM_IMTHATH.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "AHMED",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "AHMED.jpg"
+  },
+  {
+    "bidPrice": 0,
+    "isCaptain": false,
+    "name": "TMGMMM FAZMY",
+    "role": "ALL ROUNDER",
+    "team": "",
+    "img": "TMGMMM_FAZMY.jpg"
+  }
+]
