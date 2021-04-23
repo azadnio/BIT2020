@@ -38,6 +38,18 @@ function loadPlayers() {
             $('#player-photo-img').attr('src', `./photos/players/${player.img}`);
         })
     });
+
+    //make sortable
+    $('#palyers-table tbody').sortable({
+        update: function(event, ui) {
+            console.log('update: ' + ui.item.index())
+        },
+        start: function(event, ui) {
+            console.log('start: ' + ui.item.index())
+        }
+    });
+
+    $("#palyers-table tbody").disableSelection();
 }
 
 function addPlayer(name = '', role = '', team = '', img = '', imgName = '') {
