@@ -51,3 +51,4 @@ Thumbs.db
 /client/package-lock.json
 /client/node_modules
 /PPL/node_modules
+node_modules
