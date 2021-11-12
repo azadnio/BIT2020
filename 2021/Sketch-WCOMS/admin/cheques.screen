@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="481" y="183" width="57" measuredWidth="57" measuredHeight="30"/>
+    <widgets xsi:type="model:WidgetGroup" id="64" x="20" y="232" measuredWidth="328" measuredHeight="569">
+      <widgets xsi:type="model:Panel" id="53" width="328" height="569" measuredWidth="328" measuredHeight="569"/>
+      <widgets xsi:type="model:Button" id="54" x="79" y="10" width="153" height="38" text="New Payment" measuredWidth="153" measuredHeight="38">
+        <font size="13px" bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:SearchField" id="55" x="168" y="64" width="76" measuredWidth="76" measuredHeight="24">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="56" x="250" y="63" text="Search" measuredWidth="55" measuredHeight="25" style="round">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Group" id="58" x="23" y="125" width="281" height="244" text="Filter cheques" measuredWidth="281" measuredHeight="244">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:SearchField" id="59" x="36" y="152" width="252" text="Customer Name" measuredWidth="252" measuredHeight="24">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="60" x="39" y="175" text="Search by customer Name" measuredWidth="142" measuredHeight="23" foreground="#999">
+        <font italic="true"/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="63" x="231" y="328" text="Filter" measuredWidth="46" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="70" x="160" y="328" text="Reset" measuredWidth="48" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:DateField" id="71" x="43" y="251" text="start Date" measuredWidth="80" measuredHeight="23"/>
+      <widgets xsi:type="model:DateField" id="72" x="160" y="251" text="End Date" measuredWidth="77" measuredHeight="23"/>
+      <widgets xsi:type="model:Label" id="74" x="39" y="273" text="Cheques dates from" measuredWidth="111" measuredHeight="23" foreground="#999">
+        <font italic="true"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="75" x="160" y="273" text="Cheques dates to" measuredWidth="97" measuredHeight="23" foreground="#999">
+        <font italic="true"/>
+      </widgets>
+      <widgets xsi:type="model:Combo" id="78" x="17" y="63" text="ChqNo/bank/Acc No" measuredWidth="140" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Checkbox" id="79" x="20" y="92" text="Include passed cheques" measuredWidth="146" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="80" x="29" y="404" text="No of clearing cheques today: 5(Rs. 20000)\nNo of cheques clearing this week: 15 (Rs. 50000)\n this months: 30 (Rs. 150000)" measuredWidth="257" measuredHeight="53">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:Label" id="65" x="363" y="232" text="Showing the list of customer cheques of their payments" measuredWidth="397" measuredHeight="28" foreground="#666">
+      <font size="15px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="66" x="363" y="259" text="you can view the cheque" measuredWidth="135" measuredHeight="23" foreground="#999">
+      <font italic="true"/>
+    </widgets>
+    <widgets xsi:type="model:Table" id="67" x="363" y="296" width="809" height="290" text="Cheque No, Date, Amount, Customer, Status, Payment ID, commands&#xD;&#xA;[000101], 11/11/2021, Rs. 1500.00, [Anurudda], Pending, [PYT1], [view]&#xD;&#xA;[000101], 11/11/2021, Rs. 1500.00, [Anurudda], Pending, [PYT1], [view]&#xD;&#xA;[000101], 11/11/2021, Rs. 1500.00, [Anurudda], Pending, [PYT1], [view]&#xD;&#xA;[000101], 11/11/2021, Rs. 1500.00, [Anurudda], Pending, [PYT1], [view]&#xD;&#xA;[000101], 11/11/2021, Rs. 1500.00, [Anurudda], Pending, [PYT1], [view]" measuredWidth="809" measuredHeight="290" alternative="#eee">
+      <font/>
+      <items x="5" y="24" width="36" height="15" text="000101"/>
+      <items x="362" y="24" width="53" height="15" text="Anurudda"/>
+      <items x="566" y="24" width="26" height="15" text="PYT1"/>
+      <items x="689" y="24" width="24" height="15" text="view"/>
+      <items x="5" y="45" width="36" height="15" text="000101"/>
+      <items x="362" y="45" width="53" height="15" text="Anurudda"/>
+      <items x="566" y="45" width="26" height="15" text="PYT1"/>
+      <items x="689" y="45" width="24" height="15" text="view"/>
+      <items x="5" y="66" width="36" height="15" text="000101"/>
+      <items x="362" y="66" width="53" height="15" text="Anurudda"/>
+      <items x="566" y="66" width="26" height="15" text="PYT1"/>
+      <items x="689" y="66" width="24" height="15" text="view"/>
+      <items x="5" y="87" width="36" height="15" text="000101"/>
+      <items x="362" y="87" width="53" height="15" text="Anurudda"/>
+      <items x="566" y="87" width="26" height="15" text="PYT1"/>
+      <items x="689" y="87" width="24" height="15" text="view"/>
+      <items x="5" y="108" width="36" height="15" text="000101"/>
+      <items x="362" y="108" width="53" height="15" text="Anurudda"/>
+      <items x="566" y="108" width="26" height="15" text="PYT1"/>
+      <items x="689" y="108" width="24" height="15" text="view"/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="68" x="387" y="616" measuredWidth="184" measuredHeight="24">
+      <screen xsi:type="model:Screen" href="../assets/paginator.screen#/"/>
+    </widgets>
+    <widgets xsi:type="model:Combo" id="81" x="65" y="443" text="Chq status Pending/Returned" measuredWidth="183" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="50" x="568" y="360" text="2 new orders" measuredWidth="72" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1064" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1064">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="58" y="720" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="433" x="73" y="240" text="Home, My Account" measuredWidth="123" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="66" height="23" text="My Account"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="438" x="58" y="280" measuredWidth="153" measuredHeight="374">
+    <widgets xsi:type="model:WidgetGroup" id="437" measuredWidth="153" measuredHeight="374">
+      <widgets xsi:type="model:Panel" id="435" width="153" height="374" measuredWidth="153" measuredHeight="374"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="434" x="36" text="My Client Name\n Distributors" measuredWidth="105" measuredHeight="42">
+      <font size="13px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:List" id="436" x="17" y="53" width="119" height="169" text="(bg:gray)|Orders&#xA;Payments&#xA;Cheques&#xA;Invoices&#xA;Sales Returns&#xA;Ledger&#xA;Profile&#xA;" measuredWidth="119" measuredHeight="169">
+      <font/>
+      <items x="0" y="2" width="119" height="21" text="(bg:gray)|Orders"/>
+      <items x="0" y="23" width="119" height="21" text="Payments"/>
+      <items x="0" y="44" width="119" height="21" text="Cheques"/>
+      <items x="0" y="65" width="119" height="21" text="Invoices"/>
+      <items x="0" y="86" width="119" height="21" text="Sales Returns"/>
+      <items x="0" y="107" width="119" height="21" text="Ledger"/>
+      <items x="0" y="128" width="119" height="21" text="Profile"/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="439" x="248" y="280" text="Showing the list of all Orders" measuredWidth="208" measuredHeight="28">
+    <font size="15px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="440" x="248" y="307" text="You can view Order" measuredWidth="104" measuredHeight="21" foreground="#444">
+    <font size="11px"/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="441" x="248" y="336" width="809" height="290" text="Order ID,Date ,Order Value, Status,(align:center). Actions&#xA;[123], 31/5/2020, Rs. 12000.00, Pending,[Edit] [View]&#xA;[122], 31/5/2020, Rs. 12000.00, Processing,[View]&#xA;[133], 31/5/2020, Rs. 12000.00, Delevered,[View]&#xA;[144], 31/5/2020, Rs. 12000.00, Delivered,[View]" measuredWidth="809" measuredHeight="290" alternative="#eee">
+    <font/>
+    <items x="5" y="24" width="18" height="15" text="123"/>
+    <items x="708" y="24" width="20" height="15" text="Edit"/>
+    <items x="731" y="24" width="25" height="15" text="View"/>
+    <items x="5" y="45" width="18" height="15" text="122"/>
+    <items x="720" y="45" width="25" height="15" text="View"/>
+    <items x="5" y="66" width="18" height="15" text="133"/>
+    <items x="720" y="66" width="25" height="15" text="View"/>
+    <items x="5" y="87" width="18" height="15" text="144"/>
+    <items x="720" y="87" width="25" height="15" text="View"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="443" x="912" y="306" text="Sort by Status: " measuredWidth="84" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="444" x="1000" y="306" text="All" measuredWidth="41" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="453" x="552" y="637" measuredWidth="184" measuredHeight="24">
+    <screen xsi:type="model:Screen" href="../assets/paginator.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1095" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1095">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="58" y="744" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="429" x="73" y="240" text="Home, privacy policy" measuredWidth="131" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="74" height="23" text="privacy policy"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="430" x="321" y="272" measuredWidth="936" measuredHeight="427">
+    <widgets xsi:type="model:Label" id="431" x="63" text="Privacy Policy" measuredWidth="114" measuredHeight="31">
+      <font size="17px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="432" y="48" width="936" height="379" text="THIS IS SOME PRIVACY POLICY OF SITE IN POINTS FORM&#xD;&#xA;Asian Group of Companies (Pvt) Ltd (hereinafter referred to as “AGC” “us” “we” or “our”) is committed to respect your privacy and to comply with any applicable data protection and privacy laws. The Privacy Policy applies to all Customers and Users (collectively referred to as “Users”). In addition this Privacy Policy applies to all products and services provided by agc.lk (hereinafter referred to as the “Site”). We at AGC are extremely proud of our commitment to protect your privacy. You can be assured that we will use your personal information only to support your continuing relationship with AGC. We are providing this Privacy Policy to help you understand how we collect, use and protect your information when you visit and/or order products through the Site. Please read the following policy to understand how your personal information will be treated as you make full use of the Site. This Privacy Policy should be read in conjunction with the terms and conditions of use for agc.lk and any separate terms and conditions issued by any other third party selling their products on the website [hereinafter referred to as the “Vendor”] whose products are listed herein. This Privacy Policy applies to our interactions with our customers including, but not limited to:&#xD;&#xA;&#xD;&#xA;Use of our websites, including mobile websites&#xD;&#xA;Use of our applications for mobile phones, tablets or other smart devices&#xD;&#xA;Phone and email communications&#xD;&#xA;Social media interactions on our websites and other third party websites or platforms like Facebook, YouTube, Pinterest, TikTok, Instagram and Twitter&#xD;&#xA;Viewing our online advertisements or emails&#xD;&#xA;Information we receive and how it is used&#xD;&#xA;&#xD;&#xA;We collect and store information about you to better enable a more intuitive and customized online retailing experience.&#xD;&#xA;&#xD;&#xA;Your information&#xD;&#xA;&#xD;&#xA;Your information is the information that’s required when you sign up for the site, as well as the information you choose to share.&#xD;&#xA;&#xD;&#xA;Registration information: When you sign up for agc.lk, you are required to provide information such as your name, email address, and phone number.&#xD;&#xA;Information you choose to share: Your information also includes the information you choose to share via social media sites such as Facebook and twitter, such as when you post a status update, upload a photo, or comment on a friend’s story.&#xD;&#xA;Information others share about you: We may receive information about you via social and offline competitions that we conduct on a regular basis. This information will be used by us to help us profile and target better offers to you." measuredWidth="936" measuredHeight="379">
+      <font/>
+      <items x="224" y="105" width="199" height="15" text="hereinafter referred to as the “Vendor”"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

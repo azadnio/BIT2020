@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="16" measuredWidth="201" measuredHeight="241">
+    <widgets xsi:type="model:WidgetGroup" id="17" width="201" height="241" measuredWidth="201" measuredHeight="241">
+      <widgets xsi:type="model:Panel" id="18" width="201" height="241" measuredWidth="201" measuredHeight="241"/>
+    </widgets>
+    <widgets xsi:type="model:Image" id="19" x="25" y="16" width="150" height="140" text="Item Image" measuredWidth="150" measuredHeight="140"/>
+    <widgets xsi:type="model:Label" id="20" x="30" y="184" text="Rs. 6,000.00" measuredWidth="73" measuredHeight="23">
+      <font bold="true" underline="false"/>
+    </widgets>
+    <widgets xsi:type="model:ButtonBar" id="21" x="20" y="206" text="+, 1, -" measuredWidth="83" measuredHeight="23" selection="0">
+      <font size="11px"/>
+      <items x="0" y="0" width="30" height="23" text="+"/>
+      <items x="30" y="0" width="27" height="23" text="1"/>
+      <items x="57" y="0" width="26" height="23" text="-"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="22" x="112" y="205" text="Add to Cart" measuredWidth="79" measuredHeight="23" style="round">
+      <font size="11px"/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="23" x="26" y="161" text="This is a promotion Item title" measuredWidth="154" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="24" x="116" y="184" text="Rs. 5,500.00" measuredWidth="73" measuredHeight="23">
+      <font bold="true" underline="false"/>
+    </widgets>
+    <widgets xsi:type="model:HLine" id="25" x="21" y="191" measuredWidth="100" measuredHeight="6"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

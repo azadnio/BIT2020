@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:LinkBar" id="1" x="944" y="16" text="About, Promotions, Contact ,Items ,My Account , Cart, Profile" measuredWidth="426" measuredHeight="23">
+    <font/>
+    <items link="../about2.screen" x="0" y="0" width="36" height="23" text="About"/>
+    <items link="../promotion2.screen" x="54" y="0" width="65" height="23" text="Promotions"/>
+    <items link="../promotion2.screen" x="137" y="0" width="48" height="23" text="Contact "/>
+    <items link="../category-item2.screen" x="203" y="0" width="35" height="23" text="Items "/>
+    <items x="256" y="0" width="71" height="23" text="My Account "/>
+    <items link="../client/cart.screen" x="345" y="0" width="25" height="23" text="Cart"/>
+    <items x="388" y="0" width="37" height="23" text="Profile"/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="3" x="400" y="16" width="481" text="Search items" measuredWidth="481" measuredHeight="24">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="4" x="24" y="3" width="303" height="50" text="LOGO" measuredWidth="303" measuredHeight="50"/>
+  <widgets xsi:type="model:HLine" id="5" x="2" y="58" width="1399" measuredWidth="1399" measuredHeight="6"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1095" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1095">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="58" y="744" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="433" x="107" y="287" measuredWidth="134" measuredHeight="154">
+    <widgets xsi:type="model:Label" id="434" y="41" text="Aluminium Rivets" measuredWidth="121" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="435" y="67" text="Doors" measuredWidth="46" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="436" y="94" text="Nails" measuredWidth="39" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="437" y="126" text="Mesh" measuredWidth="41" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="438" x="1" text="Item Categories" measuredWidth="133" measuredHeight="31">
+      <font size="17px" bold="true"/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="439" x="107" y="240" text="Home, Categories, Door Handles" measuredWidth="207" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="57" height="23" text="Categories"/>
+    <items x="131" y="0" width="73" height="23" text="Door Handles"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="476" x="320" y="328" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="477" x="560" y="328" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="478" x="800" y="328" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="479" x="1039" y="328" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

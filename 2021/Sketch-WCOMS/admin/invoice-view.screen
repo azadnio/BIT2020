@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="267" y="183" width="57" measuredWidth="57" measuredHeight="30"/>
+    <widgets xsi:type="model:Breadcrumbs" id="78" x="59" y="248" text="Home, Invoice, New" measuredWidth="141" measuredHeight="23">
+      <font/>
+      <items x="0" y="0" width="34" height="23" text="Home"/>
+      <items x="54" y="0" width="39" height="23" text="Invoice"/>
+      <items x="113" y="0" width="25" height="23" text="New"/>
+    </widgets>
+    <widgets xsi:type="model:Group" id="79" x="41" y="291" width="262" height="129" text="Customer" measuredWidth="262" measuredHeight="129">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="80" x="51" y="319" text="Name: mr. sumathipala" measuredWidth="130" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="81" x="51" y="344" text="Id: Cust200" measuredWidth="64" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="82" x="51" y="366" text="Address: abc, road,\nmatale" measuredWidth="106" measuredHeight="38">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="83" x="524" y="298" text="Invoice Number: Inv088" measuredWidth="131" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Table" id="86" x="51" y="512" width="657" text="#, Item #, Description, Quantity, Price, Discount, Amount&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2%,196&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2%,196&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2%,196&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2%,196&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2%,196&#xD;&#xA;1, ITM2, this is a description, + 1 -,100.00, 2,196" measuredWidth="657" measuredHeight="151" alternative="#eee">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="87" x="41" y="432" text="Order ID/s" measuredWidth="60" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Link" id="90" x="114" y="432" text="ORD2, ORD3" measuredWidth="69" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="93" x="627" y="672" text="2000.00" measuredWidth="45" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="94" x="545" y="672" text="Sub Total: " measuredWidth="60" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="95" x="628" y="694" text="0" measuredWidth="12" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="96" x="546" y="694" text="Transport" measuredWidth="55" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="97" x="628" y="716" text="2000.00" measuredWidth="45" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="98" x="546" y="716" text="Total" measuredWidth="31" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="99" x="660" y="792" text="Print" measuredWidth="45" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="100" x="600" y="792" text="Edit" measuredWidth="40" measuredHeight="25" link="invoice-new.screen">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="101" x="539" y="792" text="Back" measuredWidth="45" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="105" x="49" y="728" width="299" height="57" text="This is some customer NOTE:" measuredWidth="299" measuredHeight="57">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="106" x="525" y="329" text="Invoice Date : 20/2/2021" measuredWidth="132" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="107" x="524" y="360" text="Due Date : 20/3/2021" measuredWidth="115" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

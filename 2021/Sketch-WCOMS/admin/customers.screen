@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="139" y="183" width="65" measuredWidth="65" measuredHeight="30"/>
+    <widgets xsi:type="model:WidgetGroup" id="64" x="20" y="232" measuredWidth="328" measuredHeight="569">
+      <widgets xsi:type="model:Panel" id="53" width="328" height="569" measuredWidth="328" measuredHeight="569"/>
+      <widgets xsi:type="model:Button" id="54" x="79" y="10" width="153" height="38" text="Add New Customer" measuredWidth="153" measuredHeight="38">
+        <font size="13px" bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:SearchField" id="55" x="39" y="64" width="145" text="Customer Id" measuredWidth="145" measuredHeight="24">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="56" x="191" y="63" text="Search" measuredWidth="55" measuredHeight="25" style="round">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="57" x="39" y="87" text="Search by customer ID" measuredWidth="122" measuredHeight="23" foreground="#999">
+        <font italic="true"/>
+      </widgets>
+      <widgets xsi:type="model:Group" id="58" x="23" y="125" width="281" height="204" text="Filter customers" measuredWidth="281" measuredHeight="204">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:SearchField" id="59" x="36" y="152" width="252" text="Customer Name" measuredWidth="252" measuredHeight="24">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="60" x="39" y="175" text="Search by customer Name" measuredWidth="142" measuredHeight="23" foreground="#999">
+        <font italic="true"/>
+      </widgets>
+      <widgets xsi:type="model:Combo" id="61" x="39" y="208" width="233" text="All cities" measuredWidth="233" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Checkbox" id="62" x="39" y="243" text="Include Inactive customers" measuredWidth="162" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="63" x="220" y="282" text="Filter" measuredWidth="46" measuredHeight="25">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:Button" id="70" x="160" y="282" text="Reset" measuredWidth="48" measuredHeight="25">
+        <font/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:Label" id="65" x="363" y="232" text="Showing the list of Registered Customers" measuredWidth="295" measuredHeight="28" foreground="#666">
+      <font size="15px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="66" x="363" y="259" text="You can edit and view customer profile" measuredWidth="208" measuredHeight="23" foreground="#999">
+      <font italic="true"/>
+    </widgets>
+    <widgets xsi:type="model:Table" id="67" x="363" y="296" width="809" height="290" text="Customer ID, Name ,City,Mobile,Pending Cheques,Payment balance, last Payment, Status, Commands&#xA;[CST123], Anurudda, Anuradapura, 00112121, Rs. 1000.00, Rs. 5500.00, 11/11/2021, ACTIVE, [Edit] [View]&#xA;[CST123], Anurudda, Anuradapura, 00112121, Rs. 1000.00, Rs. 5500.00, 11/11/2021, ACTIVE, [Edit] [View]&#xA;[CST123], Anurudda, Anuradapura, 00112121, Rs. 1000.00, Rs. 5500.00, 11/11/2021, ACTIVE, [Edit] [View]&#xA;[CST123], Anurudda, Anuradapura, 00112121, Rs. 1000.00, Rs. 5500.00, 11/11/2021, ACTIVE, [Edit] [View]&#xA;[CST123], Anurudda, Anuradapura, 00112121, Rs. 1000.00, Rs. 5500.00, 11/11/2021, ACTIVE, [Edit] [View]" measuredWidth="809" measuredHeight="290" alternative="#eee">
+      <font/>
+      <items x="5" y="24" width="38" height="15" text="CST123"/>
+      <items x="725" y="24" width="20" height="15" text="Edit"/>
+      <items x="748" y="24" width="25" height="15" text="View"/>
+      <items x="5" y="45" width="38" height="15" text="CST123"/>
+      <items x="725" y="45" width="20" height="15" text="Edit"/>
+      <items x="748" y="45" width="25" height="15" text="View"/>
+      <items x="5" y="66" width="38" height="15" text="CST123"/>
+      <items x="725" y="66" width="20" height="15" text="Edit"/>
+      <items x="748" y="66" width="25" height="15" text="View"/>
+      <items x="5" y="87" width="38" height="15" text="CST123"/>
+      <items x="725" y="87" width="20" height="15" text="Edit"/>
+      <items x="748" y="87" width="25" height="15" text="View"/>
+      <items x="5" y="108" width="38" height="15" text="CST123"/>
+      <items x="725" y="108" width="20" height="15" text="Edit"/>
+      <items x="748" y="108" width="25" height="15" text="View"/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="68" x="387" y="616" measuredWidth="184" measuredHeight="24">
+      <screen xsi:type="model:Screen" href="../assets/paginator.screen#/"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="69" x="43" y="585" text="Total Active Customers: 100" measuredWidth="151" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="50" x="568" y="360" text="2 new orders" measuredWidth="72" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1199" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1199">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="352" x="73" y="240" text="Home, Categories, Door Handles" measuredWidth="207" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="57" height="23" text="Categories"/>
+    <items x="131" y="0" width="73" height="23" text="Door Handles"/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="413" x="1128" y="240" text="Sort" measuredWidth="48" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="415" x="73" y="288" measuredWidth="134" measuredHeight="449">
+    <screen xsi:type="model:Screen" href="../assets/categories.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="58" y="816" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="419" x="272" y="296" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="420" x="272" y="560" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="421" x="520" y="296" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="422" x="760" y="296" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="423" x="520" y="560" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-outofstock.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="424" x="760" y="560" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-rmvcart.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

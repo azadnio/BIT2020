@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="90" x="30" y="19" width="635" height="518" measuredWidth="635" measuredHeight="518"/>
+  <widgets xsi:type="model:Table" id="91" x="160" y="112" width="497" height="369" text=", Item ID, Description, Quantity, Price&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00&#xD;&#xA;1, ITM23, item description, - 5 +, Rs. 500.00" measuredWidth="497" measuredHeight="369" alternative="#eee">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="92" x="45" y="34" text="Select Item/s for Invoice" measuredWidth="177" measuredHeight="28">
+    <font size="15px" bold="true" italic="false" underline="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="93" x="560" y="496" text="Add to Invoice" measuredWidth="97" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="94" x="45" y="61" measuredWidth="100" measuredHeight="444">
+    <screen xsi:type="model:Screen" href="../assets/categories.screen#/"/>
+    <overrides>
+      <widgets ref="2">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="3">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="4">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="5">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="6">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="7">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="8">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="9">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="10">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="11">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="12">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="13">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="14">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="15">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="16">
+        <font size="12px"/>
+      </widgets>
+      <widgets ref="1" x="-76" y="-664"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="96" x="176" y="136" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
+  <widgets xsi:type="model:Icon" id="97" x="176" y="160" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
+  <widgets xsi:type="model:Icon" id="98" x="176" y="175" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
+  <widgets xsi:type="model:Icon" id="99" x="176" y="200" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

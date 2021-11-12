@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="627" y="183" width="73" measuredWidth="73" measuredHeight="30"/>
+    <widgets xsi:type="model:List" id="80" x="20" y="240" width="240" height="381" text="Sales&#xD;&#xA;Customer&#xD;&#xA;payments&#xD;&#xA;accounts&#xD;&#xA;cheques&#xD;&#xA;other" measuredWidth="240" measuredHeight="381" selection="0">
+      <font size="15px"/>
+      <items x="0" y="2" width="240" height="28" text="Sales"/>
+      <items x="0" y="30" width="240" height="28" text="Customer"/>
+      <items x="0" y="58" width="240" height="28" text="payments"/>
+      <items x="0" y="86" width="240" height="28" text="accounts"/>
+      <items x="0" y="114" width="240" height="28" text="cheques"/>
+      <items x="0" y="142" width="240" height="28" text="other"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="81" x="291" y="248" text="Generate Sales report" measuredWidth="157" measuredHeight="28">
+      <font size="15px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Group" id="82" x="264" y="281" width="756" height="72" text="Filter" measuredWidth="756" measuredHeight="72">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:DateField" id="83" x="291" y="305" text="From" measuredWidth="58" measuredHeight="23"/>
+    <widgets xsi:type="model:DateField" id="84" x="387" y="305" text="To" measuredWidth="42" measuredHeight="23"/>
+    <widgets xsi:type="model:Button" id="85" x="920" y="306" text="Generate" measuredWidth="67" measuredHeight="25" style="round">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Panel" id="86" x="264" y="400" width="756" height="369" measuredWidth="756" measuredHeight="369"/>
+    <widgets xsi:type="model:Button" id="87" x="943" y="368" text="Print" measuredWidth="45" measuredHeight="25" style="round">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="88" x="953" y="776" text="Print" measuredWidth="45" measuredHeight="25" style="round">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Image" id="89" x="299" y="410" width="711" height="79" text="Letter head" measuredWidth="711" measuredHeight="79"/>
+    <widgets xsi:type="model:Label" id="90" x="280" y="504" text="Customer sales report" measuredWidth="121" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="91" x="831" y="508" text="From: 1-9-2019    To: 30-10-2019" measuredWidth="174" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Table" id="92" x="299" y="526" width="711" text=",CUSTOMER ID, NAME &amp; CITY, PURCHASES(Rs.)&#xA;1, cu1, Anuruddha distrubutors 1; kalutara, 12580.00&#xA;2, cu1, Anuruddha distrubutors 2; kalutara, 12580.00&#xA;3, cu1, Anuruddha distrubutors 3; kalutara, 12580.00&#xA;4, cu1, Anuruddha distrubutors 4; kalutara, 12580.00&#xA;1, cu1, Anuruddha distrubutors 5; kalutara, 12580.00&#xA;2, cu1, Anuruddha distrubutors 6; kalutara, 12580.00&#xA;3, cu1, Anuruddha distrubutors 7; kalutara, 12580.00&#xA;4, cu1, Anuruddha distrubutors 8; kalutara, 12580.00&#xA;,,TOTAL, 275000.00" measuredWidth="711" measuredHeight="214" border="false" alternative="#eee">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="50" x="568" y="360" text="2 new orders" measuredWidth="72" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

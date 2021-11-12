@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="1" width="529" height="233" measuredWidth="529" measuredHeight="233"/>
+  <widgets xsi:type="model:Label" id="2" x="214" y="10" text="Pick the Customer" measuredWidth="133" measuredHeight="28">
+    <font size="15px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="3" x="16" y="37" width="497" height="156" text=", Customer ID, Customer Name, City&#xD;&#xA;1, CST1, customer 2, matale&#xD;&#xA;1, CST1, customer 2, matale&#xD;&#xA;1, CST1, customer 2, matale&#xD;&#xA;1, CST1, customer 2, matale&#xD;&#xA;1, CST1, customer 2, matale&#xD;&#xA;1, CST1, customer 2, matale" measuredWidth="497" measuredHeight="156" alternative="#eee">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="462" y="198" text="Select" measuredWidth="51" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Hotspot" id="6" x="25" y="82" width="472" height="15" measuredWidth="472" measuredHeight="15"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
