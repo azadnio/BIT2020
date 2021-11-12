@@ -10,7 +10,7 @@
         <widgets ref="6" text="sales and accounts management system"/>
       </overrides>
     </widgets>
-    <widgets xsi:type="model:Hotspot" id="51" x="30" y="181" width="46" measuredWidth="46" measuredHeight="30"/>
+    <widgets xsi:type="model:Hotspot" id="51" x="80" y="183" width="46" measuredWidth="46" measuredHeight="30"/>
     <widgets xsi:type="model:Breadcrumbs" id="52" x="59" y="240" text="Home, Items" measuredWidth="87" measuredHeight="23">
       <font/>
       <items x="0" y="0" width="34" height="23" text="Home"/>
@@ -70,6 +70,9 @@
     <widgets xsi:type="model:Icon" id="71" x="203" y="392" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
     <widgets xsi:type="model:Icon" id="72" x="203" y="416" measuredWidth="16" measuredHeight="16" icon="image (small)"/>
     <widgets xsi:type="model:Button" id="73" x="55" y="280" text="Add New Item" measuredWidth="96" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Combo" id="74" x="632" y="312" text="sort" measuredWidth="47" measuredHeight="23">
       <font/>
     </widgets>
   </widgets>

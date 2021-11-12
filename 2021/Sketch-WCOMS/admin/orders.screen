@@ -95,9 +95,6 @@
       <screen xsi:type="model:Screen" href="../assets/paginator.screen#/"/>
     </widgets>
   </widgets>
-  <widgets xsi:type="model:Label" id="50" x="568" y="360" text="2 new orders" measuredWidth="72" measuredHeight="23">
-    <font italic="true"/>
-  </widgets>
   <hRuler/>
   <vRuler/>
   <font size="12px"/>
