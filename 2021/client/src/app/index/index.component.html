@@ -1,0 +1,63 @@
+<div class="header">
+    <div><a href="/"><img src="/assets/logo.png" alt="log"></a></div>
+    <div class="search-form-wrap">
+        <form (submit)="searchItems()">
+            <mat-form-field appearance="fill">
+                <input type="text" matInput placeholder="Search Items" name= "search" [(ngModel)]= "search">
+                <button type="submit" matSuffix mat-button><mat-icon >search</mat-icon></button>
+            </mat-form-field>
+        </form>
+    </div>
+    <div>
+        <a [routerLink]="['/account']" >My Account</a>
+            <a [routerLink]="['/account/order']" >Orders history</a>
+            <a [routerLink]="['/cart']" >Orders history</a>
+            <a [routerLink]="['/account/invoice']" >Orders history</a>
+        <!-- <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+            [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}} 
+        </a> -->
+    </div>
+</div>
+
+<div class="routes-wrap">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+    <div class="col intro">
+        <img class="logo-img" src="/assets/logo.png" alt="log">
+        <img class="header-img" src="/assets/header.png" alt="log">
+        <div>
+            this is some introduction of the shop asdassdsadsd
+            sasdfasd
+             adva
+              ad adf dfdfadf fsafeffdf sfadfasfasdf adfasfsdf 
+        </div>
+    </div>
+    <div class="col">
+        <p>Account</p>
+        <ul>
+            <li><a [routerLink]="['/account']" >My Account</a></li>
+            <li><a [routerLink]="['/account/order']" >Orders history</a></li>
+            <li><a [routerLink]="['/cart']" >Orders history</a></li>
+            <li><a [routerLink]="['/account/invoice']" >Orders history</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <p>Information</p>
+        <ul>
+            <li><a [routerLink]="['/about']" >About</a></li>
+            <li><a [routerLink]="['/contact']" >Contact</a></li>
+            <li><a [routerLink]="['/privacypolicy']" >Privacy Policy</a></li>
+            <li><a [routerLink]="['/termsandcondition']" >Terms and Condition</a></li>
+            <li><a [routerLink]="['/salesandreturn']" >Sales and return</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <p>How can we help you?</p>
+        <ul>
+            <li>Hotline: 0118215632</li>
+            <li>Eamil: capitalhardware@yahoo.com</li>
+        </ul>
+    </div>
+</div>
