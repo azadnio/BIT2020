@@ -1,1 +1,11 @@
-<p>items-home works!</p>
+<div class="dash-board">
+    <div class="filter-wrap">
+        <p>Categories</p>
+        <div *ngFor="let category of categories">
+            <a [routerLink]="category.id" routerLinkActive="router-link-active" >{{category.name}}</a>
+        </div>
+    </div>
+    <div class="dashboard-content-wrap" style="flex: 1;">
+          <router-outlet></router-outlet>
+    </div>
+</div>

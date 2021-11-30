@@ -8,15 +8,11 @@
             </mat-form-field>
         </form>
     </div>
-    <div>
-        <a [routerLink]="['/account']" >My Account</a>
-            <a [routerLink]="['/account/order']" >Orders history</a>
-            <a [routerLink]="['/cart']" >Orders history</a>
-            <a [routerLink]="['/account/invoice']" >Orders history</a>
-        <!-- <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
             [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}} 
-        </a> -->
-    </div>
+        </a>
+    </nav>
 </div>
 
 <div class="routes-wrap">
@@ -37,20 +33,20 @@
     <div class="col">
         <p>Account</p>
         <ul>
-            <li><a [routerLink]="['/account']" >My Account</a></li>
-            <li><a [routerLink]="['/account/order']" >Orders history</a></li>
-            <li><a [routerLink]="['/cart']" >Orders history</a></li>
-            <li><a [routerLink]="['/account/invoice']" >Orders history</a></li>
+            <li><a [routerLink]="['/account']" (click)="activeLink = 'account'">My Account</a></li>
+            <li><a [routerLink]="['/account/order']" (click)="activeLink = 'account'" >Orders history</a></li>
+            <li><a [routerLink]="['/cart']" (click)="activeLink = 'cart'" >Orders history</a></li>
+            <li><a [routerLink]="['/account/invoice']" (click)="activeLink = 'account'" >Orders history</a></li>
         </ul>
     </div>
     <div class="col">
         <p>Information</p>
         <ul>
-            <li><a [routerLink]="['/about']" >About</a></li>
-            <li><a [routerLink]="['/contact']" >Contact</a></li>
-            <li><a [routerLink]="['/privacypolicy']" >Privacy Policy</a></li>
-            <li><a [routerLink]="['/termsandcondition']" >Terms and Condition</a></li>
-            <li><a [routerLink]="['/salesandreturn']" >Sales and return</a></li>
+            <li><a [routerLink]="['/about']" (click)="activeLink = 'about'" >About</a></li>
+            <li><a [routerLink]="['/contact']" (click)="activeLink = 'contact'" >Contact</a></li>
+            <li><a [routerLink]="['/privacypolicy']" (click)="activeLink = 'privacypolicy'" >Privacy Policy</a></li>
+            <li><a [routerLink]="['/termsandcondition']" (click)="activeLink = 'termsandcondition'" >Terms and Condition</a></li>
+            <li><a [routerLink]="['/salesandreturn']" (click)="activeLink = 'salesandreturn'" >Sales and return</a></li>
         </ul>
     </div>
     <div class="col">

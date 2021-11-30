@@ -2,6 +2,10 @@
     display: flex;
     align-items: center;
 
+    img {
+        width: 130px;
+    }
+
     .search-form-wrap {
         flex: 1;
         padding: 0 2em;

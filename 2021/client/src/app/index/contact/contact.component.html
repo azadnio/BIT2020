@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="contact">
+        <div class="col">
+            <p>Our Store</p>
+            <ul>
+                <li>207,</li>
+                <li>Old Moor Street,</li>
+                <li>Colombo 12.</li>
+                <li>Sri Lanka</li>
+            </ul>
+        </div>
+        <div class="col">
+            <p>Phone Number</p>
+            <ul>
+                <li>+9411302302</li>
+                <li>07772175588</li>
+            </ul>
+        </div>
+        <div class="col">
+            <p>Working Hours</p>
+            <ul>
+                <li>Mon - Fri 9.00 am TO 6.00 pm</li>
+                <li>Sat - 9.00 am TO 3.00pm</li>
+            </ul>
+        </div>
+    </div>
+    
+    <form (submit)="submit()">
+        <p>Send your messages!</p>
+        <mat-form-field appearance="outline">
+            <mat-label>Your Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Your Email</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field>
+
+        <div class="btn-wrap">
+            <button type="submit" mat-stroked-button color="primary">Submit</button>
+        </div>
+
+    </form>
+</div>

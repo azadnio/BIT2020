@@ -10,6 +10,12 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AppCommonModule } from './sub-modules/common/common.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AboutComponent } from './index/about/about.component';
+import { ContactComponent } from './index/contact/contact.component';
+import { PrivacyPolicyComponent } from './index/privacy-policy/privacy-policy.component';
+import { SalesReturnsDescComponent } from './index/sales-returns-desc/sales-returns-desc.component';
+import { TermsandConditionComponent } from './index/termsand-condition/termsand-condition.component';
+import { OrderCartComponent } from './index/order-cart/order-cart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     IndexComponent,
     HomeComponent,
     LoginComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AboutComponent,
+    ContactComponent,
+    PrivacyPolicyComponent,
+    SalesReturnsDescComponent,
+    TermsandConditionComponent,
+    OrderCartComponent
   ],
   imports: [
     BrowserModule,
