@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemsHomeComponent } from './items-home/items-home.component';
 import { CategoryComponent } from './items-home/category/category.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ROUTES } from '@angular/router';
 import { ChItemComponent } from './ch-item/ch-item.component';
 import { GeneralViewItemComponent } from './items-home/general-view-item/general-view-item.component';
 
@@ -17,6 +17,27 @@ const routes: Routes = [
   },
 ];
 
+const admin = false;
+
+function routesFactory() {
+
+  if (admin) 
+    return [
+      { path: '', component: ItemsHomeComponent, data: { breadcrumb: 'Category' },
+      children: [
+        { path: ':categoryId', component: CategoryComponent },
+      ]
+    }];
+
+  return [
+    { path: '', component: ItemsHomeComponent, data: { breadcrumb: 'Category' },
+    children: [
+      { path: ':categoryId', component: CategoryComponent },
+      { path: ':categoryId/:itemId', component: GeneralViewItemComponent }
+    ]
+  }]
+}
+
 @NgModule({
   declarations: [
     ItemsHomeComponent,
@@ -24,9 +45,15 @@ const routes: Routes = [
     ChItemComponent,
     GeneralViewItemComponent
   ],
+  providers: [{
+    provide: ROUTES,
+    useFactory: routesFactory,
+    multi: true,
+    deps: []
+  }],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild([])
   ]
 })
 export class ItemsModule { }

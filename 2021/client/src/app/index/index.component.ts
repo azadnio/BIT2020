@@ -15,8 +15,7 @@ export class IndexComponent implements OnInit {
     { routePath: 'contact', label: 'Contact', matIcon:''},
     { routePath: 'items', label: 'Items', matIcon: 'reorder' },
     { routePath: 'account', label: 'My Account', matIcon: 'menu_book' },
-    { routePath: 'cart', label: 'Cart', matIcon:''},
-    { routePath: 'profile', label: 'Profile', matIcon:''},
+    { routePath: 'cart', label: 'Cart', matIcon:''}
   ];
   activeLink = '';
   search = '';

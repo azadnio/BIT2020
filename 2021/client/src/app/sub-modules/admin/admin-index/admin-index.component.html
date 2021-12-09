@@ -1,1 +1,25 @@
-<p>admin-home works!</p>
+<div class="header">
+    <div class="logo-wrap">
+        <img class="header-img" src="/assets/header.png" alt="log">
+        <p>Sales And Account Management System</p>
+    </div>
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link (click)="activeLink = ''" [active]="activeLink == ''" [routerLink]="''"> Home </a>
+        <a mat-tab-link (click)="activeLink = 'items'" [active]="activeLink == 'items'" [routerLink]="'items'"> Items </a>
+        <a mat-tab-link (click)="activeLink = 'customers'" [active]="activeLink == 'customers'" [routerLink]="'customers'"> Customers </a>
+        <a mat-tab-link (click)="activeLink = 'orders'" [active]="activeLink == 'orders'" [routerLink]="'orders'"> Orders </a>
+        <a mat-tab-link (click)="activeLink = 'invoices'" [active]="activeLink == 'invoices'" [routerLink]="'invoices'"> Invoices </a>
+        <a mat-tab-link (click)="activeLink = 'payments'" [active]="activeLink == 'payments'" [routerLink]="'payments'"> Payments </a>
+        <a mat-tab-link (click)="activeLink = 'accounts'" [active]="activeLink == 'accounts'" [routerLink]="'accounts'"> Accounts </a>
+        <a mat-tab-link (click)="activeLink = 'cheques'" [active]="activeLink == 'cheques'" [routerLink]="'cheques'"> Cheques </a>
+        <a mat-tab-link (click)="activeLink = 'salesreturn'" [active]="activeLink == 'salesreturn'" [routerLink]="'salesreturn'"> Salesreturn </a>
+        <a mat-tab-link (click)="activeLink = 'reports'" [active]="activeLink == 'reports'" [routerLink]="'reports'"> Reports </a>
+        <div class="flex-spacer"></div>
+        <a (click)="activeLink = 'profile'" [routerLink]="'profile'"><mat-icon>person</mat-icon></a>
+        <a (click)="activeLink = 'settings'" [routerLink]="'settings'"><mat-icon>settings</mat-icon></a>
+    </nav>
+</div>
+
+<div class="routes-wrap">
+    <router-outlet></router-outlet>
+</div>

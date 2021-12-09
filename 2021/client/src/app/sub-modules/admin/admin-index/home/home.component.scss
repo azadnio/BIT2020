@@ -1,0 +1,33 @@
+.content {
+
+    .row {
+        display: flex;
+        justify-content: center;
+        .col {
+            min-width: 12em;
+            min-height: 8em;
+            display: inline-flex;            
+            justify-content: center;
+            align-items: center;
+            margin: 0.6em;
+            border-radius: 5px;
+            cursor: pointer;
+            &.matripple {
+                border: 1px solid gray;
+            }
+
+            img {
+                width: 8em;
+
+            }
+        }
+    }
+}
+
+.quick-buttons {
+    display: flex;
+    justify-content: center;
+    button + button {
+        margin-left: 1em;
+    }
+}

@@ -16,6 +16,7 @@ import { PrivacyPolicyComponent } from './index/privacy-policy/privacy-policy.co
 import { SalesReturnsDescComponent } from './index/sales-returns-desc/sales-returns-desc.component';
 import { TermsandConditionComponent } from './index/termsand-condition/termsand-condition.component';
 import { OrderCartComponent } from './index/order-cart/order-cart.component';
+import { ProfileComponent } from './index/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OrderCartComponent } from './index/order-cart/order-cart.component';
     PrivacyPolicyComponent,
     SalesReturnsDescComponent,
     TermsandConditionComponent,
-    OrderCartComponent
+    OrderCartComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
