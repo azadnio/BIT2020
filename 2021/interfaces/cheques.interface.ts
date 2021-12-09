@@ -8,7 +8,8 @@ export interface IDashboardCheque {
     status: number
     paymentId: number
     comments: string
-    custId:number
+    custId:number,
+    bank: string
 }
 
 let LIST: IDashboardCheque[] = [];
@@ -23,8 +24,8 @@ for (let index = 1; index <= 10; index++)
         custId: index,
         status: index % 2,
         paymentId: index,
-        comments: 'this is a comment ' + index
-        
+        comments: 'this is a comment ' + index,
+        bank: 'BOC'
     });
 
 

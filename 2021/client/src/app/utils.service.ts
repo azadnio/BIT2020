@@ -41,6 +41,7 @@ export class UtilsService {
     switch (status) {
       case ChequeStatus.pending: return 'Pending';
       case ChequeStatus.returned: return 'Returned';
+      case ChequeStatus.passed: return 'Passed';
     }
   }
 
@@ -74,5 +75,26 @@ export class UtilsService {
       case OrderStatus.processing: return 'Processing';
       case OrderStatus.withHold: return 'With Hold';
     }
+  }
+
+  convertEnumToArray(enumObj: any, toStringCallback:any = null){
+    const arrayObjects = []            
+    // Retrieve key and values using Object.entries() method. 
+    for (const [propertyKey, propertyValue] of Object.entries(enumObj)) { 
+
+      // Ignore keys that are not numbers
+      if (!Number.isNaN(Number(propertyKey))) {  
+        continue;  
+      }
+      
+      let label = '';
+      if (toStringCallback)
+        label = toStringCallback(propertyValue);
+
+      // Add keys and values to array
+      arrayObjects.push({ id: propertyValue, name: propertyKey, label });  
+    }        
+ 
+    return arrayObjects;
   }
 }

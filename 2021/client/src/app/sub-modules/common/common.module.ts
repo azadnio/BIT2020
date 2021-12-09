@@ -36,7 +36,7 @@ import {
   OderStatusStringPipe,
   PaymentTypeStringPipe,
   PhoneNumberFormatPipe
-} from './app.pipes'
+} from '../../app.pipes'
 import { HttpClientModule } from '@angular/common/http';
 
 const customElements = [

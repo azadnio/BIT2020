@@ -1,6 +1,7 @@
 export enum ChequeStatus {
     pending = 0,
-    returned = 1
+    returned = 1,
+    passed = 2
 }
 
 export enum Status {
@@ -30,4 +31,9 @@ export enum OrderStatus {
 export enum ViewSource {
     router,
     modal
+}
+
+export enum TransactionType {
+    credit,
+    debit
 }

@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { CURRENCY, DATE_FMT, DATE_TIME_FMT } from '../../app.constants';
+import { CURRENCY, DATE_FMT, DATE_TIME_FMT } from './app.constants';
 import { UtilsService } from 'src/app/utils.service';
-import { Status, PaymentStatus, OrderStatus, ChequeStatus } from './common.enum';
+import { Status, PaymentStatus, OrderStatus, ChequeStatus } from './sub-modules/common/common.enum';
 
 @Pipe({
     name: 'dateFormat'

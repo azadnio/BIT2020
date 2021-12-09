@@ -9,9 +9,26 @@
         </form>
     </div>
     <nav mat-tab-nav-bar>
-        <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+        <!-- <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
             [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}} 
+        </a> -->
+
+        <a mat-tab-link (click)="activeLink = 'about'" [active]="activeLink == 'about'" [routerLink]="'about'"> About </a>
+        <a mat-tab-link (click)="activeLink = 'promotion'" [active]="activeLink == 'promotion'" [routerLink]="'promotion'"> Promotions </a>
+        <a mat-tab-link (click)="activeLink = 'contact'" [active]="activeLink == 'about'" [routerLink]="'contact'"> Contact </a>
+        <a mat-tab-link (click)="activeLink = 'items'" [active]="activeLink == 'items'" [routerLink]="'items'"> Items </a>
+        <a mat-tab-link (click)="activeLink = 'account'" [active]="activeLink == 'account'" [routerLink]="'account'" [matMenuTriggerFor]="aboveMenu"> My Account 
+            <mat-icon>
+                expand_more
+            </mat-icon>
         </a>
+        <a mat-tab-link (click)="activeLink = 'cart'" [active]="activeLink == 'cart'" [routerLink]="'cart'"> Cart </a>
+        <a mat-tab-link (click)="activeLink = 'profile'" [active]="activeLink == 'profile'" [routerLink]="'profile'"> Profile </a>
+
+        <mat-menu #aboveMenu="matMenu" yPosition="above" xPosition="after">
+            <a mat-menu-item [routerLink]="'/account/profile'">Profile</a>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
     </nav>
 </div>
 

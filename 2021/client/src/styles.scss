@@ -47,3 +47,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         margin-top: 1%;
     }
 }
+
+.dashboard-table-wrap{
+    display: inline-block;
+    min-width: 80%;
+
+    .header-note {
+        display: flex;
+        position: relative;
+        span{
+            flex: 1 1 auto;
+            padding-bottom: 5px;
+        }
+        .table-filter-field {
+            position: absolute;
+            right: 0;
+            bottom: -1em;
+        }
+    }
+
+    table{
+        width: 100%;
+        min-height: 300px;
+        border: 1px solid #f1ecec;
+    }
+}
+
+.center-paginator{
+    display: flex !important;
+    justify-content: center;
+}
