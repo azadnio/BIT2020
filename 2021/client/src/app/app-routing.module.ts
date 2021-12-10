@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'termsandcondition', component: TermsandConditionComponent, data: { breadcrumb: 'Terms And Condtions' } },
       { path: 'cart', component: OrderCartComponent, data: { breadcrumb: 'Order Cart' } },
       { path: 'items', loadChildren: () => import('./sub-modules/items/items.module').then(m => m.ItemsModule), data: { breadcrumb: 'Items' } },
-      { path: 'account', loadChildren: () => import('./sub-modules/customer-account/customer-account.module').then(m => m.CustomerAccountModule), data: { breadcrumb: 'Account' } },
+      { path: 'account', loadChildren: () => import('./sub-modules/client-account/client-account.module').then(m => m.CustomerAccountModule), data: { breadcrumb: 'Account' } },
     ]
   },
   { path: 'admin', loadChildren: () => import('./sub-modules/admin/admin.module').then(m => m.AdminModule) },  

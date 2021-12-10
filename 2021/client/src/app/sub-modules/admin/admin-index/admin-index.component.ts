@@ -15,7 +15,7 @@ export class AdminIndexComponent implements OnInit {
 
   ngOnInit(): void {
     // get the initial route
-    let url = this.router.url.replace('/','');
+    let url = this.router.url.replace('/admin/','');
     this.links.some(e => {
       if (url.indexOf(e) == 0) {
         this.activeLink = e;

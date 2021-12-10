@@ -1,0 +1,51 @@
+.customer {
+    width: 60%;
+    margin: auto;
+    margin-top: 2%;
+    
+
+    .panel {
+        padding: 1em;
+        
+        &.left {
+            width: 30%;
+
+            .photo-wrap {
+                height: 25em;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.right {
+            padding-top: 3%;
+            flex: 1;
+
+            h2 {
+                text-align: center;
+            }
+
+            .info {
+                color: gray;
+            }
+
+            form {
+                mat-form-field {
+                    width: 16em;
+                    min-width: 100%;
+                }
+
+                .form-button-wrap {
+                    display: flex;
+                    justify-content: flex-end;
+
+                    button + button {
+                        margin-left: 1em;
+                    }
+                }
+            }
+        }
+    }
+}

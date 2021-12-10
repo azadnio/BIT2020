@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent as CustomerAccountHomeComponent } from './customer-account-home/customer-account-home.component';
+import { HomeComponent as CustomerAccountHomeComponent } from './client-account-home/client-account-home.component';
 import { Routes, RouterModule } from '@angular/router';
-import { OrdersComponent } from './customer-account-home/orders/orders.component';
-import { PaymentsComponent } from './customer-account-home/payments/payments.component';
-import { ChequesComponent } from './customer-account-home/cheques/cheques.component';
-import { InvoicesComponent } from './customer-account-home/invoices/invoices.component';
-import { SalesandreturnsComponent } from './customer-account-home/salesreturns/salesreturns.component';
-import { LedgerComponent } from './customer-account-home/ledger/ledger.component';
-import { ProfileComponent } from './customer-account-home/profile/profile.component';
-import { HomeComponent } from './customer-account-home/home/home.component';
+import { OrdersComponent } from './client-account-home/orders/orders.component';
+import { PaymentsComponent } from './client-account-home/payments/payments.component';
+import { ChequesComponent } from './client-account-home/cheques/cheques.component';
+import { InvoicesComponent } from './client-account-home/invoices/invoices.component';
+import { SalesandreturnsComponent } from './client-account-home/salesreturns/salesreturns.component';
+import { LedgerComponent } from './client-account-home/ledger/ledger.component';
+import { ProfileComponent } from './client-account-home/profile/profile.component';
+import { HomeComponent } from './client-account-home/home/home.component';
 import { AppCommonModule } from '../common/common.module';
-import { ViewOrderComponent } from './customer-account-home/orders/view-order/view-order.component';
-import { ViewPaymentComponent } from './customer-account-home/payments/view-payment/view-payment.component';
-import { ViewChequeComponent } from './customer-account-home/cheques/view-cheque/view-cheque.component';
-import { ViewInvoiceComponent } from './customer-account-home/invoices/view-invoice/view-invoice.component';
-import { ViewSalesreturnComponent } from './customer-account-home/salesreturns/view-salesreturn/view-salesreturn.component';
+import { ViewOrderComponent } from './client-account-home/orders/view-order/view-order.component';
+import { ViewPaymentComponent } from './client-account-home/payments/view-payment/view-payment.component';
+import { ViewChequeComponent } from './client-account-home/cheques/view-cheque/view-cheque.component';
+import { ViewInvoiceComponent } from './client-account-home/invoices/view-invoice/view-invoice.component';
+import { ViewSalesreturnComponent } from './client-account-home/salesreturns/view-salesreturn/view-salesreturn.component';
 
 const routes: Routes = [
   { path: '', component: CustomerAccountHomeComponent, data: { breadcrumb: 'Account' },

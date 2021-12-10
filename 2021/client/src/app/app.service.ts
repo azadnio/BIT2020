@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NotificationDialogComponent, NotificationDialogType, NotificationType } from 'src/app/modules/common/notification-dialog/notification-dialog.component';
+import { NotificationDialogComponent, NotificationDialogType, NotificationType } from './sub-modules/common/notification-dialog/notification-dialog.component';
 
 @Injectable({
   providedIn: 'root'
