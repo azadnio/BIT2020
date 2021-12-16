@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AdminIndexComponent implements OnInit {
 
-  links = ['home', 'items', 'customers', 'orders', 'invoices', 'payments', 'accounts', 'cheques', 'salesreturns', 'reports'];
+  links = ['home', 'items', 'customers', 'orders', 'invoices', 'payments', 'accounts', 'cheques', 'salesreturn', 'reports'];
   activeLink = '';
 
   constructor(private router: Router, private route: ActivatedRoute) { }
