@@ -17,7 +17,7 @@ const routes: Routes = [
   },
 ];
 
-const admin = false;
+const admin = true;
 
 function routesFactory() {
 

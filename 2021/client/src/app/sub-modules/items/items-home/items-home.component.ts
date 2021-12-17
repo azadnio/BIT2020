@@ -30,11 +30,11 @@ export class ItemsHomeComponent implements OnInit {
       {name: 'Category 6', id: 'CT6'},
       {name: 'Category 7', id: 'CT7'}
     ];
-
+    
     //navigate to first category if there is NO category selected
     var isCategorySelected = this.activeRoute.children.length;
     if (!isCategorySelected)
-      this.router.navigate([`/items/${this.categories[0].id}`])
+      this.router.navigate([ this.router.url + `/${this.categories[0].id}`])
   }
 
   ngOnDestroy() {
