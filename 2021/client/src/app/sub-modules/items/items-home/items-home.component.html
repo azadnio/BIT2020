@@ -1,5 +1,8 @@
 <div class="dash-board">
     <div class="filter-wrap">
+        <div class="flex-center add-new">
+            <button mat-flat-button color="primary" routerLink="new" >New Item</button>
+        </div>
         <p>Categories</p>
         <div *ngFor="let category of categories">
             <a [routerLink]="category.id" routerLinkActive="router-link-active" >{{category.name}}</a>

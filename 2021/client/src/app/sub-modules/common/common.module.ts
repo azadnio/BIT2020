@@ -33,6 +33,7 @@ import {
   DateFormatPipe,
   DateTimeFormatPipe,
   EntityStatusFormatPipe,
+  ItemUnitsToStringPipe,
   OderStatusStringPipe,
   PaymentTypeStringPipe,
   PhoneNumberFormatPipe
@@ -47,6 +48,7 @@ const customElements = [
   PaymentTypeStringPipe,
   OderStatusStringPipe,
   ChequeStatusesToStringPipe,
+  ItemUnitsToStringPipe,
 
   NotificationDialogComponent,
   ReturnPageComponent,

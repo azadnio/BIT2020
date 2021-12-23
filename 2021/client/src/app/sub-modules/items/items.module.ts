@@ -5,6 +5,8 @@ import { CategoryComponent } from './items-home/category/category.component';
 import { Routes, RouterModule, ROUTES } from '@angular/router';
 import { ChItemComponent } from './ch-item/ch-item.component';
 import { GeneralViewItemComponent } from './items-home/general-view-item/general-view-item.component';
+import { AppCommonModule } from '../common/common.module';
+import { NewItemComponent } from './items-home/new-item/new-item.component';
 
 
 
@@ -24,17 +26,20 @@ function routesFactory() {
   if (admin) 
     return [
       { path: '', component: ItemsHomeComponent, data: { breadcrumb: 'Category' },
-      children: [
-        { path: ':categoryId', component: CategoryComponent },
-      ]
+        children: [
+          { path: 'new', component: NewItemComponent },
+          { path: ':categoryId', component: CategoryComponent },
+          { path: ':categoryId/:itemId', component: GeneralViewItemComponent },
+          
+        ]
     }];
-
+    
   return [
     { path: '', component: ItemsHomeComponent, data: { breadcrumb: 'Category' },
-    children: [
-      { path: ':categoryId', component: CategoryComponent },
-      { path: ':categoryId/:itemId', component: GeneralViewItemComponent }
-    ]
+      children: [
+        { path: ':categoryId', component: CategoryComponent },
+        { path: ':categoryId/:itemId', component: GeneralViewItemComponent }
+      ]
   }]
 }
 
@@ -43,7 +48,8 @@ function routesFactory() {
     ItemsHomeComponent,
     CategoryComponent,
     ChItemComponent,
-    GeneralViewItemComponent
+    GeneralViewItemComponent,
+    NewItemComponent
   ],
   providers: [{
     provide: ROUTES,
@@ -52,8 +58,12 @@ function routesFactory() {
     deps: []
   }],
   imports: [
-    CommonModule,
+    CommonModule,  
+    AppCommonModule,  
     RouterModule.forChild([])
+  ],
+  exports: [
+    ChItemComponent
   ]
 })
 export class ItemsModule { }

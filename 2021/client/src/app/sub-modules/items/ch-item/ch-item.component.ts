@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ch-item',
@@ -8,10 +9,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ChItemComponent implements OnInit {
 
   @Input() item: any;
+  itemURL = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log(this.item);
+    
+    let base = '/';
+    if (this.router.url.includes('admin'))
+      base += 'admin';
+    
+    this.itemURL = base + '/items/CT' + this.item.Category + '/ITM' + this.item.Id;
   }
 
 }

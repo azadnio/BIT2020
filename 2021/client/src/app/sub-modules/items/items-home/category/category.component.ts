@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ITEMS } from 'src/app/data.service';
 
 @Component({
   selector: 'app-category',
@@ -23,18 +24,7 @@ export class CategoryComponent implements OnInit {
   loadCategoryItems(id: string | null) {
     
     if (id) {
-      this.items = [
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'},
-        {name: 'item 1', id: 'IT1'}
-      ]
+      this.items = ITEMS;
     }    
   }
 }

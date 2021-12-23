@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { FilterParams } from './sub-modules/common/common.classes';
-import { ChequeStatus, Status, PaymentStatus, PaymentType, OrderStatus } from './sub-modules/common/common.enum';
+import { ChequeStatus, Status, PaymentStatus, PaymentType, OrderStatus, ItemUnit } from './sub-modules/common/common.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,22 @@ export class UtilsService {
   unsubscribeSubscriptions(subscriptions: Subscription[]) {
 
     subscriptions.forEach(el => el.unsubscribe());
+  }
+
+  itemUnitsToString(status: ItemUnit){
+
+    switch (status) {
+      case ItemUnit.Nos: return 'Nos';
+      case ItemUnit.Kg: return 'Kg';
+      case ItemUnit.Ltr: return 'Ltr';
+      case ItemUnit.Pkt: return 'Pkt';
+      case ItemUnit.Box: return 'Box';
+      case ItemUnit.Dozn: return 'Dzn';
+      case ItemUnit.Barrel: return 'Barrel';
+      case ItemUnit.Pcs: return 'Pcs';
+      case ItemUnit.Feet: return 'Ft';
+      case ItemUnit.Roll: return 'Roll';
+    }
   }
 
   chequeStatusesToString(status: ChequeStatus) {

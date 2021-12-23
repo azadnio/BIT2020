@@ -37,7 +37,7 @@
                         <td>No Of Items</td> <td> : {{data.cart.length}}</td>
                     </tr>
                     <tr style="font-weight: bold;">
-                    <td>Total</td> <td> : {{getCartTotal() | currencyFormat}}</td>
+                    <td>Total</td> <td> : <span class="currency" [innerHtml]="getCartTotal() | currencyFormat"></span></td>
                     </tr>
                 </table>
                 <div>

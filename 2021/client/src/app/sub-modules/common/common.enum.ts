@@ -37,3 +37,16 @@ export enum TransactionType {
     credit,
     debit
 }
+
+export enum ItemUnit {
+    Nos,
+    Kg,
+    Ltr,
+    Pkt,
+    Box,
+    Dozn,
+    Barrel,
+    Pcs,
+    Feet,
+    Roll
+}

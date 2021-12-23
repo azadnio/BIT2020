@@ -5,24 +5,22 @@ import { Status } from 'src/app/sub-modules/common/common.enum';
 import { UtilsService } from 'src/app/utils.service';
 
 @Component({
-  selector: 'app-new-customer',
-  templateUrl: './new-customer.component.html',
-  styleUrls: ['./new-customer.component.scss']
+  selector: 'app-new-item',
+  templateUrl: './new-item.component.html',
+  styleUrls: ['./new-item.component.scss']
 })
-export class NewCustomerComponent implements OnInit {
+export class NewItemComponent implements OnInit {
 
-  public customerForm: FormGroup;
-  public customerstatuses:any = [];
+  public newItemForm: FormGroup;
+  public itemstatuses :any = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    public utils: UtilsService,
-    private appService: AppService,
-    // prrivate customerService: CustomerService //DISSERTATION
+    public utils: UtilsService
   ) {
 
     //set customer form fields
-    this.customerForm = this.formBuilder.group({
+    this.newItemForm = this.formBuilder.group({
       Name: ['', Validators.minLength(4)],
       Address: ['', Validators.minLength(3)],
       City: ['', Validators.minLength(3)],
@@ -36,19 +34,13 @@ export class NewCustomerComponent implements OnInit {
       Status: Status.active
     });
 
-    this.customerstatuses = this.utils.convertEnumToArray(Status, this.utils.statusString);
+    this.itemstatuses = this.utils.convertEnumToArray(Status, this.utils.statusString);
   }
 
   ngOnInit(): void {
   }
 
-  // onSubmit(values) { //DISSERTATION
-    onSubmit() {
-    
-    //DISSERTATION
-    // this.customerService.createNewCustomer(values).then(e =>{
-    //   this.appService.showSuccessMessage('Customer Successfully created')
-    // });
+  onSubmit() {
   }
 
 }

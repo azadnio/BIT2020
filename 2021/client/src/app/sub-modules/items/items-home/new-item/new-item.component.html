@@ -1,35 +1,17 @@
-<div class="entity customer flex-row">
-
-    <div class="panel left">
-
-        <return-page></return-page>
-
-        <div class="photo-wrap">
-            <img src="assets/camera.png" alt="">
-        </div>
-
-        <button mat-stroked-button color="primary">
-            <mat-icon>attach_file</mat-icon> Upload
-        </button>
-
-    </div>
-
-    <div class="panel right">
-
-        <h2>Register New Customer</h2>
+<h2>Register New Item</h2>
 
         <p class="info">
             Required fields are marked with *
         </p>
 
-        <form (ngSubmit)="onSubmit()" [formGroup]="customerForm">
+        <form (ngSubmit)="onSubmit()" [formGroup]="newItemForm">
 
             <div>
                 <mat-form-field>
 
                     <input matInput placeholder="Full Name" formControlName="Name" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('Name').touched || customerForm.get('Name').dirty) && customerForm.get('Name').invalid">
+                        *ngIf="(newItemForm.get('Name').touched || newItemForm.get('Name').dirty) && newItemForm.get('Name').invalid">
                         Enater valid customer name
                     </mat-error> -->
                 </mat-form-field>
@@ -40,7 +22,7 @@
 
                     <textarea matInput placeholder="Address" formControlName="Address" required rows="3"></textarea>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('Address').touched || customerForm.get('Address').dirty) && customerForm.get('Address').invalid">
+                        *ngIf="(newItemForm.get('Address').touched || newItemForm.get('Address').dirty) && newItemForm.get('Address').invalid">
                         Enater valid address
                     </mat-error> -->
                 </mat-form-field>
@@ -51,7 +33,7 @@
 
                     <input matInput placeholder="City" formControlName="City" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('City').touched || customerForm.get('City').dirty) && customerForm.get('City').invalid">
+                        *ngIf="(newItemForm.get('City').touched || newItemForm.get('City').dirty) && newItemForm.get('City').invalid">
                         Enater valid customer city
                     </mat-error> -->
                 </mat-form-field>
@@ -63,7 +45,7 @@
 
                     <input matInput placeholder="NIC Number" formControlName="NIC" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('NIC').touched || customerForm.get('NIC').dirty) && customerForm.get('NIC').invalid">
+                        *ngIf="(newItemForm.get('NIC').touched || newItemForm.get('NIC').dirty) && newItemForm.get('NIC').invalid">
                         Enater valid customer NIC number
                     </mat-error> -->
                 </mat-form-field>
@@ -73,7 +55,7 @@
                 <mat-form-field>
                     <input matInput placeholder="Email Address" formControlName="Email" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('Email').touched || customerForm.get('Email').dirty) && customerForm.get('Email').invalid">
+                        *ngIf="(newItemForm.get('Email').touched || newItemForm.get('Email').dirty) && newItemForm.get('Email').invalid">
                         Enater valid email address
                     </mat-error> -->
                 </mat-form-field>
@@ -84,7 +66,7 @@
 
                     <input matInput placeholder="Mobile Number" formControlName="Mobile" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('Mobile').touched || customerForm.get('Mobile').dirty) && customerForm.get('Mobile').invalid">
+                        *ngIf="(newItemForm.get('Mobile').touched || newItemForm.get('Mobile').dirty) && newItemForm.get('Mobile').invalid">
                         Enater valid customer Mobile number
                     </mat-error> -->
                 </mat-form-field>
@@ -107,7 +89,7 @@
                 <mat-form-field>
                     <input matInput placeholder="Password" formControlName="Password" required>
                     <!-- <mat-error
-                        *ngIf="(customerForm.get('Password').touched || customerForm.get('Password').dirty) && customerForm.get('Password').invalid">
+                        *ngIf="(newItemForm.get('Password').touched || newItemForm.get('Password').dirty) && newItemForm.get('Password').invalid">
                         Enater valid customer Mobile number
                     </mat-error> -->
                 </mat-form-field>
@@ -117,7 +99,7 @@
                 <mat-form-field>
                     <mat-label>Status</mat-label>
                     <mat-select formControlName="Status">
-                        <mat-option *ngFor="let item of customerstatuses" [value]="item.id">
+                        <mat-option *ngFor="let item of itemstatuses" [value]="item.id">
                             {{item.label}}
                         </mat-option>
                     </mat-select>
@@ -131,7 +113,3 @@
             </div>
 
         </form>
-
-    </div>
-
-</div>

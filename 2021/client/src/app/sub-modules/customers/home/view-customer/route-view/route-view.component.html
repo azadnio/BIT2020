@@ -15,7 +15,7 @@
             <tr *ngFor="let item of lastFewTransaction; let i = index" >
                 <td>{{ item.date ? (item.date | dateFormat) : ''}}</td>
                 <td>{{item.transactionId}}</td>
-                <td>{{item.amount | currencyFormat}}</td>
+                <td><span class="currency" [innerHtml]="item.amount | currencyFormat"></span> </td>
             </tr>
         </table>
     </div>

@@ -106,7 +106,7 @@
                     Credit Limit
                 </span>
                 <span class="value">
-                    : {{customer.CreditLimit | currencyFormat }}
+                    : <span class="currency" [innerHtml]="customer.CreditLimit | currencyFormat"></span>
                 </span>
             </div>
 

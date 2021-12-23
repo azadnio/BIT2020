@@ -17,6 +17,7 @@ import { SalesReturnsDescComponent } from './index/sales-returns-desc/sales-retu
 import { TermsandConditionComponent } from './index/termsand-condition/termsand-condition.component';
 import { OrderCartComponent } from './index/order-cart/order-cart.component';
 import { ProfileComponent } from './index/profile/profile.component';
+import { ItemsModule } from './sub-modules/items/items.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProfileComponent } from './index/profile/profile.component';
     BrowserAnimationsModule,
     AppCommonModule,
     AppRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    ItemsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

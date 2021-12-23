@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ITEMS } from 'src/app/data.service';
+import { IItem } from '../../../../../../../interfaces/Item.interface';
 
 @Component({
   selector: 'app-general-view-item',
@@ -8,10 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GeneralViewItemComponent implements OnInit {
 
+  item :IItem | any = {};
+  currentImg = '';
+
   constructor(private activeRoute: ActivatedRoute) {
     this.activeRoute.paramMap.subscribe((paramMap) => {
       
-      this.itemDetails(paramMap.get('itemId'));
+      this.itemDetails(paramMap.get('itemId')?.replace(/ITM/, ''));
     });
    }
 
@@ -19,6 +24,8 @@ export class GeneralViewItemComponent implements OnInit {
   }
 
   itemDetails(itemId: any){
-    console.log('loading item details')
+    this.item = ITEMS[itemId]; console.log(this.item);
+
+    this.currentImg = this.item.Images[0];
   }
 }
