@@ -9,10 +9,10 @@
             <div>
                 <mat-form-field>
 
-                    <input matInput placeholder="Full Name" formControlName="Name" required>
+                    <input matInput placeholder="Item Name" formControlName="Title" required>
                     <!-- <mat-error
-                        *ngIf="(newItemForm.get('Name').touched || newItemForm.get('Name').dirty) && newItemForm.get('Name').invalid">
-                        Enater valid customer name
+                        *ngIf="(newItemForm.get('Title').touched || newItemForm.get('Title').dirty) && newItemForm.get('Title').invalid">
+                        Enater valid Item name
                     </mat-error> -->
                 </mat-form-field>
             </div>
@@ -20,21 +20,20 @@
             <div>
                 <mat-form-field>
 
-                    <textarea matInput placeholder="Address" formControlName="Address" required rows="3"></textarea>
+                    <textarea matInput placeholder="Description" formControlName="Description" required rows="3"></textarea>
                     <!-- <mat-error
-                        *ngIf="(newItemForm.get('Address').touched || newItemForm.get('Address').dirty) && newItemForm.get('Address').invalid">
-                        Enater valid address
+                        *ngIf="(newItemForm.get('Description').touched || newItemForm.get('Description').dirty) && newItemForm.get('Description').invalid">
+                        Enater valid item description
                     </mat-error> -->
                 </mat-form-field>
             </div>
 
             <div>
                 <mat-form-field>
-
-                    <input matInput placeholder="City" formControlName="City" required>
+                    <textarea matInput placeholder="Info" formControlName="Info" required rows="4"></textarea>
                     <!-- <mat-error
-                        *ngIf="(newItemForm.get('City').touched || newItemForm.get('City').dirty) && newItemForm.get('City').invalid">
-                        Enater valid customer city
+                        *ngIf="(newItemForm.get('Info').touched || newItemForm.get('Info').dirty) && newItemForm.get('Info').invalid">
+                        Enater valid Item Info
                     </mat-error> -->
                 </mat-form-field>
             </div>
@@ -43,60 +42,64 @@
             <div>
                 <mat-form-field>
 
-                    <input matInput placeholder="NIC Number" formControlName="NIC" required>
+                    <input type="number" matInput placeholder="Price" formControlName="Price" required>
                     <!-- <mat-error
-                        *ngIf="(newItemForm.get('NIC').touched || newItemForm.get('NIC').dirty) && newItemForm.get('NIC').invalid">
-                        Enater valid customer NIC number
+                        *ngIf="(newItemForm.get('Price').touched || newItemForm.get('Price').dirty) && newItemForm.get('Price').invalid">
+                        Enater valid Item Price
                     </mat-error> -->
                 </mat-form-field>
             </div>
 
             <div>
-                <mat-form-field>
-                    <input matInput placeholder="Email Address" formControlName="Email" required>
-                    <!-- <mat-error
-                        *ngIf="(newItemForm.get('Email').touched || newItemForm.get('Email').dirty) && newItemForm.get('Email').invalid">
-                        Enater valid email address
+                <mat-form-field class="select">
+                    <mat-label>Unit</mat-label>
+                    <mat-select formControlName="Unit">
+                        <mat-option *ngFor="let item of itemUnits" [value]="item.id">
+                            {{item.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Unit').touched || newItemForm.get('Unit').dirty) && newItemForm.get('Unit').invalid">
+                        Select a item unit
                     </mat-error> -->
-                </mat-form-field>
             </div>
 
             <div>
-                <mat-form-field>
+                <mat-form-field class="select">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="Category">
+                        <mat-option *ngFor="let item of category" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <input matInput placeholder="Mobile Number" formControlName="Mobile" required>
-                    <!-- <mat-error
-                        *ngIf="(newItemForm.get('Mobile').touched || newItemForm.get('Mobile').dirty) && newItemForm.get('Mobile').invalid">
-                        Enater valid customer Mobile number
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Category').touched || newItemForm.get('Category').dirty) && newItemForm.get('Category').invalid">
+                        Select a item Category
                     </mat-error> -->
-                </mat-form-field>
             </div>
 
             <div>
-                <mat-form-field>
-
-                    <input matInput placeholder="Telephone number" formControlName="Telephone">
+                <mat-form-field class="select">
+                    <mat-label>Brand</mat-label>
+                    <mat-select formControlName="Brand">
+                        <mat-option *ngFor="let item of brand" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
-            </div>
 
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="Credit Limit" formControlName="CreditLimit">
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="Password" required>
-                    <!-- <mat-error
-                        *ngIf="(newItemForm.get('Password').touched || newItemForm.get('Password').dirty) && newItemForm.get('Password').invalid">
-                        Enater valid customer Mobile number
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Brand').touched || newItemForm.get('Brand').dirty) && newItemForm.get('Brand').invalid">
+                        Select a item Brand
                     </mat-error> -->
-                </mat-form-field>
             </div>
 
             <div>
-                <mat-form-field>
+                <mat-form-field class="select">
                     <mat-label>Status</mat-label>
                     <mat-select formControlName="Status">
                         <mat-option *ngFor="let item of itemstatuses" [value]="item.id">
@@ -104,6 +107,11 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+            </div>
+
+            <div>
+                <input type="file" formControlName="Images" hidden #file>
+                Picture (max 4) <button mat-stroked-button (click)="file.click()" color="primary" class="attachment-button">Choose files <mat-icon>attachment</mat-icon></button>
             </div>
 
             <div class="form-button-wrap">

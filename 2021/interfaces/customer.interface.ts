@@ -10,6 +10,7 @@ export interface ICustomer {
     password?: string;
     email: string
     status?: number
+    address?: string
 }
 
 let LIST: ICustomer[] = [];

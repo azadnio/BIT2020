@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IInovice } from '../../../../../../../interfaces/invoices.interface';
 
 @Component({
   selector: 'app-new-invoice',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewInvoiceComponent implements OnInit {
 
-  constructor() { }
+  invoice: IInovice;
+
+  constructor() { 
+    this.invoice = <IInovice> {};
+  }
 
   ngOnInit(): void {
   }

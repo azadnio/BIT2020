@@ -1,8 +1,21 @@
+import { ICustomer } from "./customer.interface";
+
 export interface IInovice {
 
     id: number
     date: string
-    customer: number
+    customer?: ICustomer
+    items?: InvoiceItem[]
+    note?: string
+    due?: string
+}
+
+export interface InvoiceItem {
+
+    InvoiceId?: number
+    ItemId: number
+    Price: number
+    Quantity: number
 }
 
 let LIST: IInovice[] = [];
