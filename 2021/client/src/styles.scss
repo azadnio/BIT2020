@@ -61,7 +61,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
                 padding-bottom: 12px;
             }
         }
-    }    
+    }
 }
 
 
@@ -78,7 +78,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             .mat-form-field-infix{
                 margin: 0;
             }
-        }        
+        }
     }
 
     .dashboard-content-wrap {
@@ -119,7 +119,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         border: 1px solid #f1ecec;
     }
 
-    
+
 }
 
 .center-paginator{
@@ -146,4 +146,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             color: red;
         }
     }
+}
+
+// in admin home
+.mat-expansion-panel-body {
+
+  padding-bottom: 0 !important;
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0 !important;
+}
+
+.mat-expansion-panel-header-title {
+  // margin-right: 0 !important;
 }

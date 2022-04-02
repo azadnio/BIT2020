@@ -1,25 +1,25 @@
 <div class="content">
     <div class="row">
-        <div matRipple class="col matripple">INVOICES</div>
-        <div matRipple class="col matripple">ORRDERS</div>
-        <div matRipple class="col matripple">PAYMENTS</div>
+        <div matRipple class="col matripple" routerLink="/admin/invoices">INVOICES</div>
+        <div matRipple class="col matripple" routerLink="/admin/orders">ORRDERS</div>
+        <div matRipple class="col matripple" routerLink="/admin/payments">PAYMENTS</div>
     </div>
 
     <div class="row">
-        <div matRipple class="col matripple">CUSTOMERS</div>
+        <div matRipple class="col matripple" routerLink="/admin/customers">CUSTOMERS</div>
         <div class="col"><img src="/assets/logo.png" alt="log"></div>
-        <div matRipple class="col matripple">ITEMS</div>
+        <div matRipple class="col matripple" routerLink="/admin/items">ITEMS</div>
     </div>
 
     <div class="row">
-        <div matRipple class="col matripple">ACCOUNTS</div>
-        <div matRipple class="col matripple">CHEQUES</div>
-        <div matRipple class="col matripple">SALES RETURN</div>
+        <div matRipple class="col matripple" routerLink="/admin/accounts">ACCOUNTS</div>
+        <div matRipple class="col matripple" routerLink="/admin/cheques">CHEQUES</div>
+        <div matRipple class="col matripple" routerLink="/admin/salesreturn">SALES RETURN</div>
     </div>
 </div>
 <div class="quick-buttons">
-    <button mat-flat-button color="primary">New Items</button>
-    <button mat-flat-button color="primary">New Invoice</button>
-    <button mat-flat-button color="primary">New Payment</button>
-    <button mat-flat-button color="primary">New Customer</button>
+    <button mat-flat-button color="primary" routerLink="/admin/items/new">New Items</button>
+    <button mat-flat-button color="primary" routerLink="/admin/invoices/new">New Invoice</button>
+    <button mat-flat-button color="primary" routerLink="/admin/payments/new">New Payment</button>
+    <button mat-flat-button color="primary" routerLink="/admin/customers//new">New Customer</button>
 </div>

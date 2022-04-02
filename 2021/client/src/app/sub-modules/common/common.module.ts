@@ -21,6 +21,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 //custom common component
 import { ReturnPageComponent } from './return-page.component';
@@ -79,7 +80,8 @@ const matModules = [
   MatDialogModule,
   MatDividerModule,
   MatListModule,
-  MatTabsModule
+  MatTabsModule,
+  MatExpansionModule
 ];
 
 @NgModule({

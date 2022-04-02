@@ -30,6 +30,7 @@ const routes: Routes = [
     CommonModule,
     AppCommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+
 })
 export class AdminModule { }
