@@ -15,7 +15,7 @@ export interface IPaymentDashboard {
     date:  Date,
     customer: string
     amount: number
-    status: number
+    paymentType : number
     invoiceNo: number
     comments: string
     customerId: number
@@ -30,7 +30,7 @@ for (let index = 1; index <= 100; index++)
         date: new Date(),
         amount: 10 * index,
         customerId: index,
-        status: index % 3,
+        paymentType: index % 3,
         invoiceNo: index * 100 + 1,
         comments: 'this is a comment' + index        
     });

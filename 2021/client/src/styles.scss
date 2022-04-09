@@ -1,151 +1,219 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 // common scss class used among application
 .flex-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .h-100 {
-    height: 100%;
+  height: 100%;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear-ipnut-icon {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
 .inline-flex-left {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 
-    button + button {
-        margin-left: 2%;
-    }
+  button+button {
+    margin-left: 2%;
+  }
 }
+
+.inline-flex-right {}
 
 // header nav bar customizing
 .header {
-    .mat-tab-link{
-        height: 40px;
-        min-width: 90px;
-    }
-    .mat-tab-label-active {
-        border: 1px solid #b7b7b7;
-        border-radius: 5px;
-        border-bottom: none;
-    }
+  .mat-tab-link {
+    height: 40px;
+    min-width: 90px;
+  }
 
-    // search element customizing
-    .mat-form-field-flex{
-        margin-top: 0.4em;
+  .mat-tab-label-active {
+    border: 1px solid #b7b7b7;
+    border-radius: 5px;
+    border-bottom: none;
+  }
 
-        .mat-form-field-infix{
-            padding: 0;
+  // search element customizing
+  .mat-form-field-flex {
+    margin-top: 0.4em;
 
-            .mat-input-element {
-                padding-bottom: 12px;
-            }
-        }
+    .mat-form-field-infix {
+      padding: 0;
+
+      .mat-input-element {
+        padding-bottom: 12px;
+      }
     }
+  }
 }
 
 
 .dash-board {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  .filter-panel {
+
+    mat-form-field {
+      width: 17%;
+      min-width: 207px;
+    }
+
+    .footer {
+      margin-top: 1%;
+    }
+
+    button+button,
+    mat-form-field+mat-form-field {
+      margin-left: 1%;
+    }
+
+  }
+
+  fieldset {
+    & + fieldset {
+      margin-top: 1%;
+    }
+    border: 1px solid gray;
+
+    legend {
+      display: flex;
+      align-items: center;
+      font-size: 1.3em;
+
+      mat-icon {
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  // .filter-wrap {
+  //   width: 20%;
+  //   padding-top: 1%;
+  //   min-width: 24em;
+
+  //   .filter-field-wrap {
+  //     .mat-form-field-infix {
+  //       margin: 0;
+  //     }
+  //   }
+  // }
+
+  // .dashboard-content-wrap {
+  //   flex: 1;
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin-top: 1%;
+  // }
+
+  // .filter {
+  //   mat-form-field {
+  //     width: 100%;
+  //   }
+  // }
+}
+
+.dashboard-content-wrap {
+  margin-top: 1%;
+  .header {
+    .flex-row {
+      align-items: center;
+      .header-text {
+        font-size: 1.8em;
+      }
+    }
+    mat-icon{
+      font-size: 1.6em;
+    }
+    small{
+      display: flex;
+    }
+  }
+}
+
+.dashboard-table-wrap {
+  display: inline-block;
+  width: 100%;
+
+  .header-note {
     display: flex;
-    height: 100%;
+    position: relative;
 
-    .filter-wrap {
-        width: 20%;
-        padding-top: 1%;
-        min-width: 24em;
-
-        .filter-field-wrap {
-            .mat-form-field-infix{
-                margin: 0;
-            }
-        }
+    span {
+      flex: 1 1 auto;
+      padding-bottom: 5px;
     }
 
-    .dashboard-content-wrap {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        margin-top: 1%;
+    .table-filter-field {
+      position: absolute;
+      right: 0;
+      bottom: -1em;
     }
+  }
 
-    .filter {
-        mat-form-field {
-            width: 100%;
-        }
-    }
-}
-
-.dashboard-table-wrap{
-    display: inline-block;
-    min-width: 80%;
-
-    .header-note {
-        display: flex;
-        position: relative;
-        span{
-            flex: 1 1 auto;
-            padding-bottom: 5px;
-        }
-        .table-filter-field {
-            position: absolute;
-            right: 0;
-            bottom: -1em;
-        }
-    }
-
-    table{
-        width: 100%;
-        min-height: 300px;
-        border: 1px solid #f1ecec;
-    }
+  table {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #f1ecec;
+  }
 
 
 }
 
-.center-paginator{
-    display: flex !important;
-    justify-content: center;
+.center-paginator {
+  display: flex !important;
+  justify-content: center;
 }
 
 .flex-spacer {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .margin-0 {
-    margin: 0;
+  margin: 0;
 }
 
 .modal {
-    position: relative;
-    .close {
-        position: absolute;
-        top: -24px;
-        right: -24px;
-        cursor: pointer;
-        &:hover {
-            color: red;
-        }
+  position: relative;
+
+  .close {
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
     }
+  }
 }
 
 // in admin home

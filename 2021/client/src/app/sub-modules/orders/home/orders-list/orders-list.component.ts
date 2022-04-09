@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterParams } from 'src/app/sub-modules/common/common.classes';
+import { OrderStatus } from 'src/app/sub-modules/common/common.enum';
 import { UtilsService } from 'src/app/utils.service';
 import { IOrderDashboard, DASHBORAD_ORDER_LIST } from '../../../../../../../interfaces/orders.interface';
 import { ModalViewComponent } from '../view-order/modal-view/modal-view.component';
@@ -27,6 +28,9 @@ export class OrdersListComponent implements OnInit {
   filterForm: any;
   searchId: any;
   subscriptions: Subscription[];
+  orderStatuses: any [];
+
+  test: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +58,8 @@ export class OrdersListComponent implements OnInit {
       });
 
     this.subscriptions.push(sub);
+
+    this.orderStatuses = this.utils.convertEnumToArray(OrderStatus, this.utils.oderStatusString);
   }
 
   ngAfterViewInit() {

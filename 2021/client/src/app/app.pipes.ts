@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { CURRENCY, DATE_FMT, DATE_TIME_FMT } from './app.constants';
 import { UtilsService } from 'src/app/utils.service';
-import { Status, PaymentStatus, OrderStatus, ChequeStatus, ItemUnit } from './sub-modules/common/common.enum';
+import { Status, PaymentStatus, OrderStatus, ChequeStatus, ItemUnit, PaymentType } from './sub-modules/common/common.enum';
 
 @Pipe({
     name: 'dateFormat'
@@ -29,7 +29,7 @@ export class DateTimeFormatPipe extends DatePipe implements PipeTransform {
 export class CurrencyFormatPipe extends CurrencyPipe implements PipeTransform {
     transform(value: any, args?: any): any {
         let val = super.transform(value.toString(), CURRENCY, 'code')?.split('.') || '0.00';
-        return val[0] + val[1] + '.<small>' + val[2] + '</small>'; 
+        return val[0] + val[1] + '.<small>' + val[2] + '</small>';
     }
 }
 
@@ -61,8 +61,8 @@ export class PaymentTypeStringPipe implements PipeTransform {
 
     constructor(private utils: UtilsService) { }
 
-    transform(value: PaymentStatus, args?: any): any {
-        return this.utils.paymentStatusString(value)
+    transform(value: PaymentType, args?: any): any {
+        return this.utils.paymentTypeString(value)
     }
 }
 

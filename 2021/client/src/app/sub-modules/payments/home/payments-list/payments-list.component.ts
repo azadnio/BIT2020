@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterParams } from 'src/app/sub-modules/common/common.classes';
-import { OrderStatus } from 'src/app/sub-modules/common/common.enum';
+import { OrderStatus, PaymentType } from 'src/app/sub-modules/common/common.enum';
 import { UtilsService } from 'src/app/utils.service';
 import { DASHBORAD_PAYMENTS_LIST, IPaymentDashboard } from '../../../../../../../interfaces/payments.interface';
 
@@ -28,6 +28,7 @@ export class PaymentsListComponent implements OnInit {
   filterForm: any;
   searchId: any;
   subscriptions: Subscription[];
+  paymentTypes: any [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +55,8 @@ export class PaymentsListComponent implements OnInit {
       });
 
     this.subscriptions.push(sub);
+    this.paymentTypes = this.utils.convertEnumToArray(PaymentType, this.utils.paymentTypeString);
+
   }
 
   ngAfterViewInit() {
@@ -69,7 +72,7 @@ export class PaymentsListComponent implements OnInit {
   }
 
   view(id: any) {
-    
+
   }
 
   restFilter() {

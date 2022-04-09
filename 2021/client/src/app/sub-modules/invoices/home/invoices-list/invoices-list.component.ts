@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterParams } from 'src/app/sub-modules/common/common.classes';
+import { PaymentStatus } from 'src/app/sub-modules/common/common.enum';
 import { UtilsService } from 'src/app/utils.service';
 import { IInvoiceDashboard, DASHBORAD_INVOICE_LIST } from '../../../../../../../interfaces/invoices.interface';
 
@@ -25,6 +26,7 @@ export class InvoicesListComponent implements OnInit {
   filterForm: any;
   searchId: any;
   subscriptions: Subscription[];
+  paymentStatuses: any [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,6 +53,8 @@ export class InvoicesListComponent implements OnInit {
       });
 
     this.subscriptions.push(sub);
+
+    this.paymentStatuses = this.utils.convertEnumToArray(PaymentStatus, this.utils.paymentStatusString);
   }
 
   ngAfterViewInit() {
@@ -66,12 +70,12 @@ export class InvoicesListComponent implements OnInit {
   }
 
   restFilter() {
-    
+
     this.filterParams = new FilterParams();
   }
 
   filter() {
-    
+
     let url = this.router.url.split('?');
     // this.utils.setSearchURL(this.filterParams, this.location, url[0], url[1])
   }

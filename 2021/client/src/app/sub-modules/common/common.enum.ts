@@ -17,7 +17,7 @@ export enum PaymentStatus {
 export enum PaymentType {
     cheque = 0,
     cash = 1,
-    cashAndCheque = 2
+    multiPay = 2
 }
 
 export enum OrderStatus {

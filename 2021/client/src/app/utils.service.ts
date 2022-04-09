@@ -79,7 +79,7 @@ export class UtilsService {
     switch (status) {
       case PaymentType.cash: return 'Cash';
       case PaymentType.cheque: return 'Cheque';
-      case PaymentType.cashAndCheque: return 'Cash and cheque'
+      case PaymentType.multiPay: return 'Multi Pay'
     }
   }
 
@@ -94,23 +94,23 @@ export class UtilsService {
   }
 
   convertEnumToArray(enumObj: any, toStringCallback:any = null){
-    const arrayObjects = []            
-    // Retrieve key and values using Object.entries() method. 
-    for (const [propertyKey, propertyValue] of Object.entries(enumObj)) { 
+    const arrayObjects = []
+    // Retrieve key and values using Object.entries() method.
+    for (const [propertyKey, propertyValue] of Object.entries(enumObj)) {
 
       // Ignore keys that are not numbers
-      if (!Number.isNaN(Number(propertyKey))) {  
-        continue;  
+      if (!Number.isNaN(Number(propertyKey))) {
+        continue;
       }
-      
+
       let label = '';
       if (toStringCallback)
         label = toStringCallback(propertyValue);
 
       // Add keys and values to array
-      arrayObjects.push({ id: propertyValue, name: propertyKey, label });  
-    }        
- 
+      arrayObjects.push({ id: propertyValue, name: propertyKey, label });
+    }
+
     return arrayObjects;
   }
 }
