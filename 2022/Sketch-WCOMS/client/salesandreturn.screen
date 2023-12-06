@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="895" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="895">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="48" y="536" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="429" x="73" y="240" text="Home, Sales and return" measuredWidth="142" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="85" height="23" text="Sales and return"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="430" x="321" y="272" measuredWidth="936" measuredHeight="427">
+    <widgets xsi:type="model:Label" id="431" x="63" text="Sales and returns" measuredWidth="143" measuredHeight="31">
+      <font size="17px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Text" id="432" y="48" width="936" height="379" text="THIS IS SOME INFO ABOUT SALES AND RETURN&#xD;&#xA;omized online retailing experience.&#xD;&#xA;&#xD;&#xA;Your information&#xD;&#xA;&#xD;&#xA;Your information is the information that’s required when you sign up for the site, as well as the information you choose to share.&#xD;&#xA;&#xD;&#xA;Registration information: When you sign up for agc.lk, you are required to provide information such as your name, email address, and phone number.&#xD;&#xA;Information you choose to share: Your information also includes the information you choose to share via social media sites such as Facebook and twitter, such as when you post a status update, upload a photo, or comment on a friend’s story.&#xD;&#xA;Information others share about you: We may receive information about you via social and offline competitions that we conduct on a regular basis. This information will be used by us to help us profile and target better offers to you." measuredWidth="936" measuredHeight="379">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,49 @@
+<div class="content">
+    <p>Items in My Order Cart</p>
+    <div class="cart-wrap">
+        <div class="items-list">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Price(Rs.)</th>
+                    <th>Discount(<small>Rs. %</small>)</th>
+                    <th>Quantity</th>
+                    <th>Subtotal(Rs.)</th>
+                </tr>
+                <tr *ngFor="let item of data.cart; let i = index">
+                    <td class="item-description">
+                        <mat-icon (click)="removeItemFromOrder(i)">delete</mat-icon>
+                        <img [src]="item.image"/>
+                        <span>{{item.description}}</span>
+                    </td>
+                    <td>{{item.price | number : '1.2-2'}}</td>
+                    <td>{{item.discount.toString().includes('%')? item.discount : (item.discount |  number : '1.2-2')}}</td>
+                    <td class="counter">
+                        <span class="wrap">
+                            <mat-icon (click)="changeQuantity(item, false)">remove</mat-icon>
+                            <span>{{item.quantity}}</span>
+                            <mat-icon (click)="changeQuantity(item, true)">add</mat-icon>
+                        </span>
+                    </td>
+                    <td>{{calcItemSubtotal(item) | number : '1.2-2'}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="items-total">
+            <div class="wrap">
+                <p>Cart Total</p>
+                <table>
+                    <tr>
+                        <td>No Of Items</td> <td> : {{data.cart.length}}</td>
+                    </tr>
+                    <tr style="font-weight: bold;">
+                    <td>Total</td> <td> : <span class="currency" [innerHtml]="getCartTotal() | currencyFormat"></span></td>
+                    </tr>
+                </table>
+                <div>
+                    <button mat-raised-button color="primary" (click)="proceedTheOrder()">Proceed the Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

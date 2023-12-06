@@ -1,0 +1,206 @@
+<div class="dash-board customers">
+    <fieldset class="search-id-panel">
+      <legend><mat-icon>search</mat-icon> Search by ID's</legend>
+      <div class="flex-row">
+        <div>
+          <mat-form-field>
+            <mat-label>Inovice ID</mat-label>
+            <input
+              matInput
+              placeholder="Enter Pyament ID"
+              id="searchId"
+              [(ngModel)]="searchId"
+            />
+            <span matPrefix>SR &nbsp;</span>
+            <mat-icon
+              matSuffix
+              *ngIf="searchId && searchId.trim()"
+              class="clear-ipnut-icon"
+              (click)="searchId = ''"
+              >close</mat-icon
+            >
+            <mat-hint>Search by Inovice ID</mat-hint>
+          </mat-form-field>
+          <button
+            mat-flat-button
+            class="btn-search-by-id"
+            color="primary"
+            (click)="searchById()"
+          >
+            <mat-icon>search</mat-icon> Search
+          </button>
+        </div>
+  
+        <span class="flex-spacer"></span>
+  
+        <div>
+          <mat-form-field>
+            <mat-label>Customer ID</mat-label>
+            <span matPrefix>CST &nbsp;</span>
+            <input
+              matInput
+              placeholder="Enter Customer ID"
+              [(ngModel)]="filterParams.CustId"
+              (change)="filterParams.CustName = ''"
+            />
+            <mat-icon
+              matSuffix
+              *ngIf="filterParams.CustId && filterParams.CustId.trim()"
+              class="clear-ipnut-icon"
+              (click)="filterParams.CustId = ''"
+              >close</mat-icon
+            >
+            <mat-hint>Search by Customer ID</mat-hint>
+          </mat-form-field>
+  
+          <button mat-stroked-button class="btn-filter" color="primary">
+            <mat-icon>search</mat-icon>
+            Search
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  
+    <fieldset class="filter-panel">
+      <legend><mat-icon>filter_alt</mat-icon> Filter Salesreturn</legend>
+      <mat-form-field appearance="outline">
+        <mat-label>Customer Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter Customer Name"
+          id="CustName"
+          [(ngModel)]="filterParams.CustName"
+          (change)="filterParams.CustId = ''"
+        />
+        <mat-icon
+          matSuffix
+          *ngIf="filterParams.CustName && filterParams.CustName.trim()"
+          class="clear-ipnut-icon"
+          (click)="filterParams.CustName = ''"
+          >close</mat-icon
+        >
+        <mat-hint>Search by Customer Name</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            placeholder="Start date"
+            [(ngModel)]="filterParams.From"
+          />
+          <input
+            matEndDate
+            placeholder="End date"
+            [(ngModel)]="filterParams.To"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-hint>Set a Date Range</mat-hint>
+      </mat-form-field>
+  
+      <div class="inline-flex-right footer">
+        <button
+          mat-stroked-button
+          class="btn-reset"
+          color="primary"
+          (click)="restFilter()"
+        >
+          Reset
+        </button>
+        <button
+          mat-stroked-button
+          class="btn-filter"
+          color="primary"
+          (click)="filter()"
+        >
+          Filter
+        </button>
+      </div>
+    </fieldset>
+  
+    <div class="dashboard-content-wrap">
+      <div class="header">
+        <div class="flex-row">
+          <div class="flex-col">
+            <div class="header-text">
+              Showing the list of Customer Sales Returns
+            </div>
+            <small
+              >You can Edit <mat-icon> edit </mat-icon> and view
+              <mat-icon> remove_red_eye </mat-icon> a Sales return
+            </small>
+          </div>
+          <span class="flex-spacer"></span>
+          <div>
+            <button mat-flat-button color="primary" routerLink="new">
+              Create New Invoice
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="list dashboard-table-wrap">
+        <table mat-table [dataSource]="dataSource">
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">
+              <a [routerLink]="element.id">SR{{ element.id }}</a>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.date | dateFormat }}
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="customer">
+            <th mat-header-cell *matHeaderCellDef>Customer</th>
+            <td mat-cell *matCellDef="let element">
+              <a [routerLink]="['/admin/customers/' + element.custId]">
+                {{ element.customer }}
+              </a>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let element">
+              <span
+                class="currency"
+                [innerHtml]="element.amount | currencyFormat"
+              ></span>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="createdBy">
+            <th mat-header-cell *matHeaderCellDef>Created By</th>
+            <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="commands">
+            <th mat-header-cell *matHeaderCellDef>Commands</th>
+            <td mat-cell *matCellDef="let element" class="commands-column">
+              <mat-icon (click)="view(element.id)"> remove_red_eye </mat-icon>
+              <mat-icon routerLink="{{ element.id + '/edit' }}"> edit </mat-icon>
+            </td>
+          </ng-container>
+  
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+  
+        <mat-paginator
+          class="center-paginator"
+          [pageSizeOptions]="[10, 15, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+  

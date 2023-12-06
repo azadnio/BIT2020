@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="1" width="1180" height="41" measuredWidth="1180" measuredHeight="41"/>
+  <widgets xsi:type="model:LinkBar" id="2" x="10" y="9" text="Doors,Nails,Mesh,Rods,Door Handles,Window items, Agri Items" measuredWidth="444" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Doors"/>
+    <items x="52" y="0" width="29" height="23" text="Nails"/>
+    <items x="99" y="0" width="32" height="23" text="Mesh"/>
+    <items x="149" y="0" width="29" height="23" text="Rods"/>
+    <items link="../client/category.screen" x="196" y="0" width="75" height="23" text="Door Handles"/>
+    <items x="289" y="0" width="79" height="23" text="Window items"/>
+    <items x="386" y="0" width="57" height="23" text="Agri Items"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

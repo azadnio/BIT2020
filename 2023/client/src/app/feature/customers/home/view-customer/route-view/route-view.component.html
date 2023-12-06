@@ -1,0 +1,22 @@
+<div class="router-wrap">
+    <return-page></return-page>
+    <div class="view-wrap">
+        <app-view-customer [id]="id"></app-view-customer>
+    </div>
+    <div class="transations">
+        <p>Last few transactions</p>
+        <table>
+            <tr class="title">
+                <td>Date</td>
+                <td>Transaction</td>
+                <td>Balance</td>
+            </tr>
+    
+            <tr *ngFor="let item of lastFewTransaction; let i = index" >
+                <td>{{ item.date ? (item.date | dateFormat) : ''}}</td>
+                <td>{{item.transactionId}}</td>
+                <td><span class="currency" [innerHtml]="item.amount | currencyFormat"></span> </td>
+            </tr>
+        </table>
+    </div>
+</div>

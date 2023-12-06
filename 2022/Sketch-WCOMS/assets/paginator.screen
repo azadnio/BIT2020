@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="10" y="10" text="Rows: ">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Combo" id="2" x="49" y="10" text="10">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="96" y="10" text="Page:">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="4" x="126" y="14" width="14" height="14" icon="filled-arrow-left (large)"/>
+  <widgets xsi:type="model:Icon" id="5" x="145" y="15" width="14" height="14" icon="filled-arrow-right (custom)"/>
+  <widgets xsi:type="model:Label" id="6" x="140" y="11" text="1">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="160" y="11" text="Of 10">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

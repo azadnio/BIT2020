@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="1" x="10" y="10" measuredWidth="1367" measuredHeight="354">
+    <widgets xsi:type="model:HLine" id="2" width="1367" measuredWidth="1367" measuredHeight="6"/>
+    <widgets xsi:type="model:Image" id="3" x="78" y="33" width="191" height="63" text="CH Logo" measuredWidth="191" measuredHeight="63"/>
+    <widgets xsi:type="model:Text" id="4" x="82" y="113" width="183" height="241" text="SOME DESCRIPTION ABOUT THIS ONLINE PORTAL, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." measuredWidth="183" measuredHeight="241">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="5" x="382" y="49" measuredWidth="100" measuredHeight="187">
+      <widgets xsi:type="model:Label" id="6" x="1" text="Account" measuredWidth="69" measuredHeight="29">
+        <font size="16px" bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="7" y="45" text="My Account" measuredWidth="71" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="8" y="67" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="9" y="79" text="Orders history" measuredWidth="80" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="10" y="101" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="11" y="119" text="My Cart" measuredWidth="48" measuredHeight="23" link="../client/cart.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="12" y="141" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="13" y="159" text="My Invoices" measuredWidth="69" measuredHeight="23">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="14" y="181" measuredWidth="100" measuredHeight="6"/>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="15" x="593" y="57" measuredWidth="119" measuredHeight="236">
+      <widgets xsi:type="model:Label" id="16" x="1" text="Information" measuredWidth="98" measuredHeight="29">
+        <font size="16px" bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="17" y="45" text="About" measuredWidth="39" measuredHeight="23" link="../about2.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="18" y="67" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="19" y="79" text="Contact" measuredWidth="48" measuredHeight="23" link="../contact2.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="20" y="101" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="21" y="119" text="Privacy Policy" measuredWidth="79" measuredHeight="23" link="../privacypolicy2.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="22" y="141" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="23" y="159" text="Terms and conditions" measuredWidth="119" measuredHeight="23" link="../termsandcondition2.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="24" y="181" measuredWidth="100" measuredHeight="6"/>
+      <widgets xsi:type="model:Label" id="25" y="208" text="Sales and returns" measuredWidth="95" measuredHeight="23" link="../salesandreturns.screen">
+        <font/>
+      </widgets>
+      <widgets xsi:type="model:HLine" id="26" y="230" measuredWidth="100" measuredHeight="6"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="27" x="849" y="65" text="How can we help you?" measuredWidth="176" measuredHeight="29">
+      <font size="16px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="28" x="848" y="110" text="Hotline: 0118215611" measuredWidth="111" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="29" x="848" y="144" text="Email: thisis @test.com" measuredWidth="128" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

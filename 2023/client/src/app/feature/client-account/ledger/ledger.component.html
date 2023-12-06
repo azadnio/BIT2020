@@ -1,0 +1,25 @@
+<p>Your account in Ledger Book</p>
+<p>TO DO add filter by month, </p>
+<div>
+    <table>
+        <tr class="title">
+            <td>#</td>
+            <td>Date</td>
+            <td>Transaction</td>
+            <td>Credit</td>
+            <td>Debit</td>
+            <td>Balance</td>
+        </tr>
+
+        <tbody *ngFor="let item of transactions">
+            <tr *ngFor="let transaction of item; let i = index" [ngClass]="{'brought-forward': transaction.bf}">
+                <td>{{transaction.bf ? '' : i + 1}}</td>
+                <td>{{ transaction.date ? (transaction.date | dateFormat) : ''}}</td>
+                <td>{{transaction.transactionId}}</td>
+                <td>{{(transaction.transactionType) ? transaction.amount : ''}}</td>
+                <td>{{(transaction.transactionType) ? '' : transaction.amount}}</td>
+                <td>{{transaction.balance || ''}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

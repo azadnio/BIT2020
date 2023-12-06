@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1079" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1079">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="48" y="744" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="429" x="107" y="256" text="Home, Contact" measuredWidth="100" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="43" height="23" text="Contact"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="430" x="410" y="312" text="Our store" measuredWidth="59" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="431" x="409" y="352" text="This is our store address" measuredWidth="147" measuredHeight="23" icon="download (small)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="432" x="594" y="312" text="Phone Number" measuredWidth="90" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="433" x="594" y="352" text="01012121 545" measuredWidth="75" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="434" x="594" y="384" text="01012121 545" measuredWidth="75" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="435" x="570" y="314" measuredWidth="6" measuredHeight="100"/>
+  <widgets xsi:type="model:VLine" id="436" x="722" y="314" measuredWidth="6" measuredHeight="100"/>
+  <widgets xsi:type="model:Label" id="437" x="770" y="312" text="Working Hours" measuredWidth="90" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="438" x="767" y="352" text="Mon - fri 9.00 am to 6.00 pm" measuredWidth="156" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="439" x="770" y="384" text="Sat - 9.00 am to 3.00 pm" measuredWidth="133" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="440" x="409" y="450" text="Your Name" measuredWidth="65" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="441" x="493" y="453" width="222" measuredWidth="222" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="442" x="409" y="493" text="Your Email" measuredWidth="62" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="443" x="493" y="496" width="222" measuredWidth="222" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="444" x="409" y="528" text="Subject" measuredWidth="45" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="445" x="493" y="531" width="222" measuredWidth="222" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="446" x="414" y="576" text="Message" measuredWidth="52" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="447" x="413" y="608" width="302" height="57" measuredWidth="302" measuredHeight="57">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="448" x="650" y="680" text="Submit" measuredWidth="58" measuredHeight="25">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

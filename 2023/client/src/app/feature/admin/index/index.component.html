@@ -1,0 +1,90 @@
+<div class="admin-content">
+    <div class="header">
+      <div class="logo-wrap">
+        <img src="/assets/logo.png" alt="logo" />
+        <!-- CAPITAL HARDWARE -->
+        <!-- <img class="header-img" src="/assets/header.png" alt="log">
+              <p>Sales And Account Management System</p> -->
+      </div>
+  
+      <mat-accordion>
+        <div *ngFor="let link of links">
+          <!-- for the rouite links with having its sub links to show the expansion panel -->
+          <div
+            *ngIf="link.sublinks && link.sublinks.length; else dissabledpanel"
+            class="test"
+          >
+            <mat-expansion-panel
+              class="mat-elevation-z0"
+              [ngClass]="{ selected: activeLink == link.path }"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <a [routerLink]="link.path" (click)="activeLink = link.path">
+                    <mat-icon>{{ link.icon }}</mat-icon>
+                    <span>{{ link.label }}</span>
+                  </a>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+  
+              <p
+                class="body-content"
+                *ngFor="let sublink of link.sublinks"
+                (click)="activeLink = link.path"
+              >
+                <a routerLink="{{ link.path }}/{{ sublink.path }}">
+                  {{ sublink.label }}
+                </a>
+              </p>
+            </mat-expansion-panel>
+          </div>
+  
+          <!-- dissable expansion panel for no sub links -->
+          <ng-template #dissabledpanel>
+            <mat-expansion-panel
+              class="mat-elevation-z0"
+              disabled
+              [ngClass]="{ selected: activeLink == link.path }"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <a [routerLink]="link.path" (click)="activeLink = link.path">
+                    <mat-icon>{{ link.icon }}</mat-icon>
+                    <span>{{ link.label }}</span>
+                  </a>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+  
+          </ng-template>
+        </div>
+      </mat-accordion>
+  
+      <!-- <nav mat-tab-nav-bar>
+              <a mat-tab-link (click)="activeLink = 'home'" [active]="activeLink == 'home'" [routerLink]="'home'"> Home </a>
+              <a mat-tab-link (click)="activeLink = 'items'" [active]="activeLink == 'items'" [routerLink]="'items'"> Items </a>
+              <a mat-tab-link (click)="activeLink = 'customers'" [active]="activeLink == 'customers'" [routerLink]="'customers'"> Customers </a>
+              <a mat-tab-link (click)="activeLink = 'orders'" [active]="activeLink == 'orders'" [routerLink]="'orders'"> Orders </a>
+              <a mat-tab-link (click)="activeLink = 'invoices'" [active]="activeLink == 'invoices'" [routerLink]="'invoices'"> Invoices </a>
+              <a mat-tab-link (click)="activeLink = 'payments'" [active]="activeLink == 'payments'" [routerLink]="'payments'"> Payments </a>
+              <a mat-tab-link (click)="activeLink = 'accounts'" [active]="activeLink == 'accounts'" [routerLink]="'accounts'"> Accounts </a>
+              <a mat-tab-link (click)="activeLink = 'cheques'" [active]="activeLink == 'cheques'" [routerLink]="'cheques'"> Cheques </a>
+              <a mat-tab-link (click)="activeLink = 'salesreturn'" [active]="activeLink == 'salesreturn'" [routerLink]="'salesreturn'"> Salesreturn </a>
+              <a mat-tab-link (click)="activeLink = 'reports'" [active]="activeLink == 'reports'" [routerLink]="'reports'"> Reports </a>
+              <div class="flex-spacer"></div>
+              <a (click)="activeLink = 'profile'" [routerLink]="'profile'"><mat-icon>person</mat-icon></a>
+              <a (click)="activeLink = 'settings'" [routerLink]="'settings'"><mat-icon>settings</mat-icon></a>
+          </nav> -->
+    </div>
+  
+    <div class="routes-wrap">
+      <div class="admin-tool-bar">
+        <p>Sales And Account Management System</p>
+        <span class="flex-spacer"></span>
+        <span class="date" style="margin-right: 2em;">{{ today | date }}</span>
+        <span class="user">{{ user }}</span>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

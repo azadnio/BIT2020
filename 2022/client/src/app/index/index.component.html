@@ -1,0 +1,76 @@
+<div class="header">
+    <div><a href="/"><img src="/assets/logo.png" alt="log"></a></div>
+    <div class="search-form-wrap">
+        <form (submit)="searchItems()">
+            <mat-form-field appearance="fill">
+                <input type="text" matInput placeholder="Search Items" name= "search" [(ngModel)]= "search">
+                <button type="submit" matSuffix mat-button><mat-icon >search</mat-icon></button>
+            </mat-form-field>
+        </form>
+    </div>
+    <nav mat-tab-nav-bar>
+        <!-- <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link.routePath"
+            [active]="activeLink == link.routePath" [routerLink]="link.routePath"> {{link.label}} 
+        </a> -->
+
+        <a mat-tab-link (click)="activeLink = 'about'" [active]="activeLink == 'about'" [routerLink]="'about'"> About </a>
+        <a mat-tab-link (click)="activeLink = 'promotion'" [active]="activeLink == 'promotion'" [routerLink]="'promotion'"> Promotions </a>
+        <a mat-tab-link (click)="activeLink = 'contact'" [active]="activeLink == 'about'" [routerLink]="'contact'"> Contact </a>
+        <a mat-tab-link (click)="activeLink = 'items'" [active]="activeLink == 'items'" [routerLink]="'items'"> Items </a>
+        <a mat-tab-link (click)="activeLink = 'account'" [active]="activeLink == 'account'" [routerLink]="'account'" [matMenuTriggerFor]="aboveMenu"> My Account 
+            <mat-icon>
+                expand_more
+            </mat-icon>
+        </a>
+        <a mat-tab-link (click)="activeLink = 'cart'" [active]="activeLink == 'cart'" [routerLink]="'cart'"> Cart </a>
+        <a mat-tab-link (click)="activeLink = 'profile'" [active]="activeLink == 'profile'" [routerLink]="'profile'"> Profile </a>
+
+        <mat-menu #aboveMenu="matMenu" yPosition="above" xPosition="after">
+            <a mat-menu-item [routerLink]="'/account/profile'">Profile</a>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+    </nav>
+</div>
+
+<div class="routes-wrap">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+    <div class="col intro">
+        <img class="logo-img" src="/assets/logo.png" alt="log">
+        <img class="header-img" src="/assets/header.png" alt="log">
+        <div>
+            this is some introduction of the shop asdassdsadsd
+            sasdfasd
+             adva
+              ad adf dfdfadf fsafeffdf sfadfasfasdf adfasfsdf 
+        </div>
+    </div>
+    <div class="col">
+        <p>Account</p>
+        <ul>
+            <li><a [routerLink]="['/account']" (click)="activeLink = 'account'">My Account</a></li>
+            <li><a [routerLink]="['/account/order']" (click)="activeLink = 'account'" >Orders history</a></li>
+            <li><a [routerLink]="['/cart']" (click)="activeLink = 'cart'" >Orders history</a></li>
+            <li><a [routerLink]="['/account/invoice']" (click)="activeLink = 'account'" >Orders history</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <p>Information</p>
+        <ul>
+            <li><a [routerLink]="['/about']" (click)="activeLink = 'about'" >About</a></li>
+            <li><a [routerLink]="['/contact']" (click)="activeLink = 'contact'" >Contact</a></li>
+            <li><a [routerLink]="['/privacypolicy']" (click)="activeLink = 'privacypolicy'" >Privacy Policy</a></li>
+            <li><a [routerLink]="['/termsandcondition']" (click)="activeLink = 'termsandcondition'" >Terms and Condition</a></li>
+            <li><a [routerLink]="['/salesandreturn']" (click)="activeLink = 'salesandreturn'" >Sales and return</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <p>How can we help you?</p>
+        <ul>
+            <li>Hotline: 0118215632</li>
+            <li>Eamil: capitalhardware@yahoo.com</li>
+        </ul>
+    </div>
+</div>

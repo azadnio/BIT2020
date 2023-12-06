@@ -1,0 +1,202 @@
+<div class="dash-board customers">
+  <fieldset class="search-id-panel">
+    <legend><mat-icon>search</mat-icon> Search by ID's</legend>
+    <div class="flex-row">
+      <div>
+        <mat-form-field>
+          <mat-label>Customer ID</mat-label>
+          <input
+            matInput
+            placeholder="Enter Customer ID"
+            id="searchId"
+            [(ngModel)]="searchId"
+          />
+          <span matPrefix>CST &nbsp;</span>
+          <mat-icon
+            matSuffix
+            *ngIf="searchId && searchId.trim()"
+            class="clear-ipnut-icon"
+            (click)="searchId = ''"
+            >close</mat-icon
+          >
+          <mat-hint>Search by Customer ID</mat-hint>
+        </mat-form-field>
+        <button
+          mat-flat-button
+          class="btn-search-by-id"
+          color="primary"
+          (click)="searchById()"
+        >
+          <mat-icon>search</mat-icon> Search
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="filter-panel">
+    <legend><mat-icon>filter_alt</mat-icon>Filter Customers</legend>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Customer Name</mat-label>
+      <input
+        matInput
+        placeholder="Enter Customer Name"
+        id="CustName"
+        [(ngModel)]="filterParams.CustName"
+        (change)="filterParams.CustId = ''"
+      />
+      <mat-icon
+        matSuffix
+        *ngIf="filterParams.CustName && filterParams.CustName.trim()"
+        class="clear-ipnut-icon"
+        (click)="filterParams.CustName = ''"
+        >close</mat-icon
+      >
+      <mat-hint>Search by Customer Name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <mat-select [(value)]="filterParams.City">
+        <mat-option value="">All cities</mat-option>
+        <mat-option value="1">Kandy</mat-option>
+        <mat-option value="2">Akurana</mat-option>
+        <mat-option value="3">Gampola</mat-option>
+      </mat-select>
+      <mat-hint>Set the Customer City</mat-hint>
+    </mat-form-field>
+
+    <div>
+      <mat-checkbox color="primary" [(ngModel)]="filterParams.IncludeDeleted"
+        >Include Deleted Customers</mat-checkbox
+      >
+    </div>
+
+    <div class="inline-flex-right footer">
+      <button
+        mat-stroked-button
+        class="btn-reset"
+        color="primary"
+        (click)="restFilter()"
+      >
+        Reset
+      </button>
+
+      <button
+        mat-stroked-button
+        class="btn-reset"
+        color="primary"
+        class="btn-filter"
+        (click)="filter()"
+      >
+        Filter
+      </button>
+    </div>
+  </fieldset>
+
+  <div class="dashboard-content-wrap">
+    <div class="header">
+      <div class="flex-row">
+        <div class="flex-col">
+          <div class="header-text">
+            Showing the list of Registered Customers
+          </div>
+          <small
+            >You can Edit <mat-icon> edit </mat-icon> and view
+            <mat-icon> remove_red_eye </mat-icon> Customer profile
+          </small>
+        </div>
+        <span class="flex-spacer"></span>
+        <div>
+          <a mat-flat-button color="primary" routerLink="new"
+            >Add New Customer</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="list dashboard-table-wrap">
+      <table mat-table [dataSource]="dataSource">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="element.Id">CST{{ element.Id }}</a>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let element">{{ element.City }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Mobile</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Mobile | phoneNumber }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pedingChaeques">
+          <th mat-header-cell *matHeaderCellDef>Pending Chques</th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              class="currency"
+              [innerHtml]="element.PedingChaeques | currencyFormat"
+            ></span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paymentBalance">
+          <th mat-header-cell *matHeaderCellDef>Payment Balance</th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              class="currency"
+              [innerHtml]="element.PaymentBalance | currencyFormat"
+            ></span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastPayment">
+          <th mat-header-cell *matHeaderCellDef>Last Payment</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.LastPayment | dateFormat }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{ deleted: element.Status == 0 }"
+          >
+            {{ element.Status | entityStatusString }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="commands">
+          <th mat-header-cell *matHeaderCellDef>Commands</th>
+          <td mat-cell *matCellDef="let element" class="commands-column">
+            <mat-icon (click)="view(element.Id)"> remove_red_eye </mat-icon>
+            <mat-icon routerLink="{{ element.Id + '/edit' }}"> edit </mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        class="center-paginator"
+        [pageSizeOptions]="[10, 15, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

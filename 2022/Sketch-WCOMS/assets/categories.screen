@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="1" measuredWidth="134" measuredHeight="449">
+    <widgets xsi:type="model:Label" id="2" y="41" text="Aluminium Rivets" measuredWidth="121" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="3" y="67" text="Doors" measuredWidth="46" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="4" y="94" text="Nails" measuredWidth="39" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="5" y="126" text="Mesh" measuredWidth="41" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="6" y="153" text="Rods" measuredWidth="39" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="7" y="185" text="Door Handles" measuredWidth="98" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="8" y="213" text="Agri Items" measuredWidth="74" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="9" y="249" text="Aluminium Rivets" measuredWidth="121" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="10" y="275" text="Doors" measuredWidth="46" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="11" y="302" text="Nails" measuredWidth="39" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="12" y="334" text="Mesh" measuredWidth="41" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="13" y="361" text="Rods" measuredWidth="39" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="14" y="393" text="Door Handles" measuredWidth="98" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="15" y="421" text="Agri Items" measuredWidth="74" measuredHeight="28">
+      <font size="15px"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="16" x="1" text="Item Categories" measuredWidth="133" measuredHeight="31">
+      <font size="17px" bold="true"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

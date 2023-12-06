@@ -1,0 +1,28 @@
+form {
+    min-width: 35em;
+    width: 50%;
+
+    mat-form-field:not(.select) {
+        width: 16em;
+        min-width: 100%;
+    }
+
+    .select{
+        width: 50%;
+    }
+
+    .form-button-wrap {
+        display: flex;
+        justify-content: flex-end;
+
+        button + button {
+            margin-left: 1em;
+        }
+    }
+
+    .attachment-button {
+        mat-icon{
+            transform: rotate(90deg);
+        }
+    }
+}

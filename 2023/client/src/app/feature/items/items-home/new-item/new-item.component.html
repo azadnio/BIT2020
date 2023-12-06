@@ -1,0 +1,123 @@
+<h2>Register New Item</h2>
+
+        <p class="info">
+            Required fields are marked with *
+        </p>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="newItemForm">
+
+            <div>
+                <mat-form-field>
+
+                    <input matInput placeholder="Item Name" formControlName="Title" required>
+                    <!-- <mat-error
+                        *ngIf="(newItemForm.get('Title').touched || newItemForm.get('Title').dirty) && newItemForm.get('Title').invalid">
+                        Enater valid Item name
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+
+                    <textarea matInput placeholder="Description" formControlName="Description" required rows="3"></textarea>
+                    <!-- <mat-error
+                        *ngIf="(newItemForm.get('Description').touched || newItemForm.get('Description').dirty) && newItemForm.get('Description').invalid">
+                        Enater valid item description
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <textarea matInput placeholder="Info" formControlName="Info" required rows="4"></textarea>
+                    <!-- <mat-error
+                        *ngIf="(newItemForm.get('Info').touched || newItemForm.get('Info').dirty) && newItemForm.get('Info').invalid">
+                        Enater valid Item Info
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <mat-form-field>
+
+                    <input type="number" matInput placeholder="Price" formControlName="Price" required>
+                    <!-- <mat-error
+                        *ngIf="(newItemForm.get('Price').touched || newItemForm.get('Price').dirty) && newItemForm.get('Price').invalid">
+                        Enater valid Item Price
+                    </mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="select">
+                    <mat-label>Unit</mat-label>
+                    <mat-select formControlName="Unit">
+                        <mat-option *ngFor="let item of itemUnits" [value]="item.id">
+                            {{item.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Unit').touched || newItemForm.get('Unit').dirty) && newItemForm.get('Unit').invalid">
+                        Select a item unit
+                    </mat-error> -->
+            </div>
+
+            <div>
+                <mat-form-field class="select">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="Category">
+                        <mat-option *ngFor="let item of category" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Category').touched || newItemForm.get('Category').dirty) && newItemForm.get('Category').invalid">
+                        Select a item Category
+                    </mat-error> -->
+            </div>
+
+            <div>
+                <mat-form-field class="select">
+                    <mat-label>Brand</mat-label>
+                    <mat-select formControlName="Brand">
+                        <mat-option *ngFor="let item of brand" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-error
+                        *ngIf="(newItemForm.get('Brand').touched || newItemForm.get('Brand').dirty) && newItemForm.get('Brand').invalid">
+                        Select a item Brand
+                    </mat-error> -->
+            </div>
+
+            <div>
+                <mat-form-field class="select">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="Status">
+                        <mat-option *ngFor="let item of itemstatuses" [value]="item.id">
+                            {{item.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <input type="file" formControlName="Images" hidden #file>
+                Picture (max 4) <button mat-stroked-button (click)="file.click()" color="primary" class="attachment-button">Choose files <mat-icon>attachment</mat-icon></button>
+            </div>
+
+            <div class="form-button-wrap">
+
+                <button type="reset" mat-raised-button>Reset</button>
+                <button type="submit" mat-raised-button color="primary">Register</button>
+            </div>
+
+        </form>

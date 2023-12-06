@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="80" y="183" width="46" measuredWidth="46" measuredHeight="30"/>
+    <widgets xsi:type="model:Breadcrumbs" id="52" x="59" y="240" text="Home, Items, New /ITM3" measuredWidth="166" measuredHeight="23">
+      <font/>
+      <items x="0" y="0" width="34" height="23" text="Home"/>
+      <items x="54" y="0" width="30" height="23" text="Items"/>
+      <items x="104" y="0" width="59" height="23" text="New /ITM3"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="75" x="403" y="272" text="Add new Item" measuredWidth="105" measuredHeight="28">
+      <font size="15px" bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:TextField" id="76" x="203" y="299" width="361" text="Item Name" measuredWidth="361" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:TextField" id="77" x="203" y="336" width="361" text="Item Price" measuredWidth="361" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Combo" id="78" x="203" y="376" width="361" text="Item Category" measuredWidth="361" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="79" x="203" y="420" width="369" height="61" text="Description" measuredWidth="369" measuredHeight="61">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:TextArea" id="80" x="203" y="496" width="369" height="61" text="Aditional Info" measuredWidth="369" measuredHeight="61">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Panel" id="81" x="207" y="601" width="365" height="96" measuredWidth="365" measuredHeight="96"/>
+    <widgets xsi:type="model:Label" id="82" x="206" y="571" text="Picture (max 4)" measuredWidth="86" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="83" x="291" y="570" text="Choose File" measuredWidth="81" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Image" id="84" x="218" y="618" width="74" height="62" text="Image 1" measuredWidth="74" measuredHeight="62"/>
+    <widgets xsi:type="model:Image" id="85" x="307" y="618" width="74" height="62" text="Image 2" measuredWidth="74" measuredHeight="62"/>
+    <widgets xsi:type="model:Image" id="86" x="395" y="618" width="74" height="62" text="Image 3" measuredWidth="74" measuredHeight="62"/>
+    <widgets xsi:type="model:Icon" id="87" x="460" y="611" width="24" height="24" measuredWidth="24" measuredHeight="24" icon="error (medium)"/>
+    <widgets xsi:type="model:Icon" id="88" x="376" y="611" measuredWidth="24" measuredHeight="24" icon="error (medium)"/>
+    <widgets xsi:type="model:Icon" id="89" x="284" y="611" measuredWidth="24" measuredHeight="24" icon="error (medium)"/>
+    <widgets xsi:type="model:Button" id="90" x="382" y="737" text="Back" measuredWidth="45" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="91" x="439" y="737" text="Reset" measuredWidth="48" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="92" x="499" y="737" text="Save/Edit" measuredWidth="69" measuredHeight="25">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

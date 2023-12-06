@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:WidgetGroup" id="8" x="-35" y="8" measuredWidth="1447" measuredHeight="863">
+    <widgets xsi:type="model:Browser" id="10" width="1447" height="863" text="Browser&#xA;http://..." measuredWidth="1447" measuredHeight="863">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Master" id="11" x="20" y="54" measuredWidth="1392" measuredHeight="169">
+      <screen xsi:type="model:Screen" href="../assets/admin-header.screen#/"/>
+      <overrides>
+        <widgets ref="6" text="sales and accounts management system"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Hotspot" id="51" x="139" y="183" width="65" measuredWidth="65" measuredHeight="30"/>
+    <widgets xsi:type="model:Breadcrumbs" id="71" x="76" y="243" text="Home, Customer,CST1" measuredWidth="157" measuredHeight="23">
+      <font/>
+      <items x="0" y="0" width="34" height="23" text="Home"/>
+      <items x="54" y="0" width="53" height="23" text="Customer"/>
+      <items x="127" y="0" width="27" height="23" text="CST1"/>
+    </widgets>
+    <widgets xsi:type="model:Panel" id="90" x="76" y="288" width="240" height="353" measuredWidth="240" measuredHeight="353"/>
+    <widgets xsi:type="model:Icon" id="72" x="105" y="298" width="182" height="176" measuredWidth="182" measuredHeight="176" icon="snapshot (large)"/>
+    <widgets xsi:type="model:Label" id="91" x="105" y="482" text="Contact" measuredWidth="49" measuredHeight="23">
+      <font bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="92" x="136" y="512" text="0777-311222" measuredWidth="71" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Icon" id="93" x="108" y="509" width="24" height="24" measuredWidth="24" measuredHeight="24" icon="phone (medium)"/>
+    <widgets xsi:type="model:Label" id="94" x="136" y="544" text="my email" measuredWidth="55" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Icon" id="95" x="108" y="541" measuredWidth="24" measuredHeight="24" icon="email (medium)"/>
+    <widgets xsi:type="model:Label" id="96" x="355" y="302" text="Customer ID        : CST1" measuredWidth="128" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="97" x="355" y="324" text="Full Name        : customer 1" measuredWidth="149" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="98" x="355" y="346" text="Address        : this is a address" measuredWidth="160" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="99" x="355" y="374" text="City        : this is city" measuredWidth="109" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="100" x="355" y="408" text="Mobile        : 07811352" measuredWidth="121" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="101" x="355" y="430" text="Telephone        : 46531" measuredWidth="120" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="102" x="351" y="460" text="email        : asfsad@sdfsd.cokd" measuredWidth="166" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="103" x="351" y="490" text="NIC        : 846154" measuredWidth="92" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="104" x="346" y="519" text="Credit Limit        : Rs. 1254.00" measuredWidth="155" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="105" x="346" y="544" text="Status        : ACTIVE" measuredWidth="106" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="106" x="346" y="576" text="Created At        : 12/11/2021" measuredWidth="150" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="107" x="346" y="600" text="Last updated        : 12/8/2012" measuredWidth="156" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="108" x="83" y="666" text="Last few transactions" measuredWidth="116" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="109" x="527" y="576" text="Created by: sataf1" measuredWidth="100" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="110" x="527" y="600" text="Updated by       : staff2" measuredWidth="123" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Table" id="111" x="83" y="688" width="577" text="Date, Transaction, amount&#xA;12/12/2021, [invoice], Rs. 15000.00&#xA;12/12/2021, [Payment], Rs. 15000.00&#xA;12/12/2021, [invoice], Rs. 15000.00&#xA;12/12/2021, [invoice], Rs. 15000.00&#xA;" measuredWidth="577" measuredHeight="109" alternative="#eee">
+      <font/>
+      <items x="191" y="24" width="38" height="15" text="invoice"/>
+      <items x="191" y="45" width="47" height="15" text="Payment"/>
+      <items x="191" y="66" width="38" height="15" text="invoice"/>
+      <items x="191" y="87" width="38" height="15" text="invoice"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" y="8" width="1417" height="1497" text="Browser&#xA;http://..." measuredWidth="1417" measuredHeight="1497">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="2" x="10" y="62" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="3" x="152" y="128" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="5" x="120" y="496" text="Promotions" measuredWidth="95" measuredHeight="29">
+    <font size="16px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="104" y="524" width="1273" measuredWidth="1273" measuredHeight="6"/>
+  <widgets xsi:type="model:Link" id="7" x="1323" y="499" text="View all" measuredWidth="43" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="8" x="104" y="544" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="9" x="344" y="544" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="10" x="584" y="544" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="11" x="825" y="544" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-promotion.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="13" x="1068" y="544" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="14" x="128" y="188" text="New arrivals" measuredWidth="101" measuredHeight="29">
+    <font size="16px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="15" x="112" y="216" width="1273" measuredWidth="1273" measuredHeight="6"/>
+  <widgets xsi:type="model:Master" id="16" x="112" y="232" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="17" x="344" y="232" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="18" x="584" y="232" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="19" x="825" y="232" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="20" x="1068" y="232" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="21" x="120" y="812" text="Some other categories" measuredWidth="177" measuredHeight="29">
+    <font size="16px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="22" x="104" y="840" width="1273" measuredWidth="1273" measuredHeight="6"/>
+  <widgets xsi:type="model:Master" id="23" x="104" y="856" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="24" x="336" y="856" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="25" x="576" y="856" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="26" x="817" y="856" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="27" x="1060" y="856" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Link" id="28" x="1331" y="815" text="View all" measuredWidth="43" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="29" x="26" y="1128" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

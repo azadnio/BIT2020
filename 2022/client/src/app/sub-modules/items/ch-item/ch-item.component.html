@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="img-wrap">
+        <img [src]="item.Images[0]" alt="">
+    </div>
+    <div class="description">
+        <a [routerLink]="itemURL" >{{item.Title}}</a>
+    </div>
+    <div class="price"><span class="currency" [innerHtml]="item.Price | currencyFormat"></span></div>
+    <div class="footer">
+        <span class="counter-wrap">
+            <mat-icon class="minus">remove</mat-icon>
+            <span>2</span>
+            <mat-icon class="plus">add</mat-icon>
+        </span>
+        <button >Add to Cart</button>
+    </div>
+</div>

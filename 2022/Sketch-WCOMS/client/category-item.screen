@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1551" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1551">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="415" x="73" y="288" measuredWidth="134" measuredHeight="449">
+    <screen xsi:type="model:Screen" href="../assets/categories.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="48" y="1184" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="425" x="73" y="240" text="Home, Categories, Door Handles, Bird Lock 808 china" measuredWidth="330" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="57" height="23" text="Categories"/>
+    <items x="131" y="0" width="73" height="23" text="Door Handles"/>
+    <items x="224" y="0" width="103" height="23" text="Bird Lock 808 china"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="426" x="344" y="320" width="450" height="357" text="Item Photo Slider" measuredWidth="450" measuredHeight="357"/>
+  <widgets xsi:type="model:Image" id="427" x="359" y="702" width="121" height="105" text="continueing photos" measuredWidth="121" measuredHeight="105"/>
+  <widgets xsi:type="model:Image" id="428" x="503" y="702" width="121" height="105" text="continueing photos" measuredWidth="121" measuredHeight="105"/>
+  <widgets xsi:type="model:Image" id="429" x="647" y="702" width="121" height="105" text="continueing photos" measuredWidth="121" measuredHeight="105"/>
+  <widgets xsi:type="model:Label" id="430" x="884" y="300" text="This is a item description" measuredWidth="206" measuredHeight="31" foreground="#3d85c6">
+    <font size="17px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="431" x="884" y="344" text="Rs. 1,000.00  (add strikeout if promotional item)" measuredWidth="255" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="432" x="885" y="388" text="Description :" measuredWidth="76" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Text" id="433" x="885" y="410" width="400" height="120" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." measuredWidth="400" measuredHeight="120">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="434" x="885" y="529" text="Unit :" measuredWidth="36" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="435" x="928" y="529" text="packet" measuredWidth="41" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:ButtonBar" id="436" x="881" y="576" text="+, 1, -" measuredWidth="84" measuredHeight="27" selection="0">
+    <font/>
+    <items x="0" y="0" width="30" height="27" text="+"/>
+    <items x="30" y="0" width="27" height="27" text="1"/>
+    <items x="57" y="0" width="27" height="27" text="-"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="437" x="997" y="577" text="Add to cart" measuredWidth="79" measuredHeight="25" style="round">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="438" x="884" y="629" text="Additional Info: " measuredWidth="94" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Text" id="439" x="885" y="651" width="400" height="52" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim " measuredWidth="400" measuredHeight="52">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="440" x="296" y="824" text="Related Products" measuredWidth="135" measuredHeight="29">
+    <font size="16px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="441" x="279" y="864" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="442" x="520" y="864" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart-discount.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="443" x="769" y="864" measuredWidth="201" measuredHeight="241">
+    <screen xsi:type="model:Screen" href="../assets/ch-item/ch-item-addtocart.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

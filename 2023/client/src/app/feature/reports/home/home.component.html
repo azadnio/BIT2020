@@ -1,0 +1,32 @@
+<div class="dash-board reports">
+
+    <div class="filter-wrap">
+
+        <mat-list>
+            
+            <mat-list-item routerLink="sales" routerLinkActive="router-link-active">sales</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="customer" routerLinkActive="router-link-active">customer</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="payments" routerLinkActive="router-link-active">payments</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="accounts" routerLinkActive="router-link-active">accounts</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="cheques" routerLinkActive="router-link-active">cheques</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item routerLink="other" routerLinkActive="router-link-active">other</mat-list-item>
+            
+        </mat-list>
+
+    </div>
+
+    <div class="dashboard-content-wrap">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="content">
+
+    <div class="panel left">
+        <div class="preview-img">
+            <img [src]="currentImg" alt="">
+        </div>
+    
+        <div class="images-wrap" *ngIf="item.Images">
+            <img [src]="image" *ngFor="let image of item.Images" (click)="currentImg = image" alt="">
+        </div>
+    </div>
+
+    <div class="panel right">
+        <p>{{item.Title}}</p>
+        <p><span class="currency" [innerHtml]="item.Price | currencyFormat"></span></p>
+        <p>Description:</p>
+        <p>
+            {{item.Description}}
+        </p>
+        <p>Unit: {{item.Unit | ItemUnitsToString }}</p>
+
+        <div class="counter">
+            <span class="counter-wrap">
+                <mat-icon class="minus">remove</mat-icon>
+                <span>2</span>
+                <mat-icon class="plus">add</mat-icon>
+            </span>
+            <button >Add to Cart</button>
+        </div>
+        <p>Additional Info:</p>
+        <p>{{item.Info}}</p>
+    </div>
+
+</div>
+<h4>Related Products</h4>

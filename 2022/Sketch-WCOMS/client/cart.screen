@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="10" y="10" width="1463" height="1103" text="Browser&#xA;http://..." measuredWidth="1463" measuredHeight="1103">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Breadcrumbs" id="352" x="73" y="240" text="Home, Cart" measuredWidth="80" measuredHeight="23">
+    <font/>
+    <items x="0" y="0" width="34" height="23" text="Home"/>
+    <items x="54" y="0" width="23" height="23" text="Cart"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="416" x="16" y="70" measuredWidth="1399" measuredHeight="61">
+    <screen xsi:type="model:Screen" href="../assets/header.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="417" x="107" y="160" measuredWidth="1180" measuredHeight="41">
+    <screen xsi:type="model:Screen" href="../assets/nav-bar.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="418" x="64" y="688" measuredWidth="1367" measuredHeight="354">
+    <screen xsi:type="model:Screen" href="../assets/footer.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="429" x="555" y="271" text="Items In My Cart" measuredWidth="123" measuredHeight="28">
+    <font size="15px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="430" x="320" y="336" text="Item" measuredWidth="33" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="431" x="555" y="336" text="Price" measuredWidth="34" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="432" x="768" y="336" text="Quantity" measuredWidth="54" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="433" x="872" y="336" text="Subtotal" measuredWidth="53" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="434" x="213" y="448" measuredWidth="730" measuredHeight="49">
+    <widgets xsi:type="model:Icon" id="435" y="9" measuredWidth="32" measuredHeight="32" icon="circled-mul (large)"/>
+    <widgets xsi:type="model:Image" id="436" x="48" width="57" height="49" text="itm img" measuredWidth="57" measuredHeight="49"/>
+    <widgets xsi:type="model:Label" id="437" x="125" y="18" text="This is a item description, per Pkt" measuredWidth="179" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="438" x="355" y="17" text="Rs. 1,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:ButtonBar" id="439" x="560" y="11" text="-, 2, +" measuredWidth="84" measuredHeight="27" selection="0">
+      <font/>
+      <items x="0" y="0" width="27" height="27" text="-"/>
+      <items x="27" y="0" width="27" height="27" text="2"/>
+      <items x="54" y="0" width="30" height="27" text="+"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="440" x="664" y="18" text="Rs. 2,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="441" x="464" y="17" text="0.00" measuredWidth="27" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="442" x="202" y="353" width="751" measuredWidth="751" measuredHeight="6"/>
+  <widgets xsi:type="model:VLine" id="443" x="984" y="320" height="327" measuredWidth="6" measuredHeight="327"/>
+  <widgets xsi:type="model:Label" id="444" x="648" y="336" text="Discount" measuredWidth="55" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="445" x="210" y="385" measuredWidth="730" measuredHeight="49">
+    <widgets xsi:type="model:Icon" id="446" y="9" measuredWidth="32" measuredHeight="32" icon="circled-mul (large)"/>
+    <widgets xsi:type="model:Image" id="447" x="48" width="57" height="49" text="itm img" measuredWidth="57" measuredHeight="49"/>
+    <widgets xsi:type="model:Label" id="448" x="125" y="18" text="This is a item description, per Pkt" measuredWidth="179" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="449" x="355" y="17" text="Rs. 1,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:ButtonBar" id="450" x="560" y="11" text="-, 2, +" measuredWidth="84" measuredHeight="27" selection="0">
+      <font/>
+      <items x="0" y="0" width="27" height="27" text="-"/>
+      <items x="27" y="0" width="27" height="27" text="2"/>
+      <items x="54" y="0" width="30" height="27" text="+"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="451" x="664" y="18" text="Rs. 2,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="452" x="464" y="17" text="0.00" measuredWidth="27" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="453" x="213" y="504" measuredWidth="730" measuredHeight="49">
+    <widgets xsi:type="model:Icon" id="454" y="9" measuredWidth="32" measuredHeight="32" icon="circled-mul (large)"/>
+    <widgets xsi:type="model:Image" id="455" x="48" width="57" height="49" text="itm img" measuredWidth="57" measuredHeight="49"/>
+    <widgets xsi:type="model:Label" id="456" x="125" y="18" text="This is a item description, per Pkt" measuredWidth="179" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="457" x="355" y="17" text="Rs. 1,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:ButtonBar" id="458" x="560" y="11" text="-, 2, +" measuredWidth="84" measuredHeight="27" selection="0">
+      <font/>
+      <items x="0" y="0" width="27" height="27" text="-"/>
+      <items x="27" y="0" width="27" height="27" text="2"/>
+      <items x="54" y="0" width="30" height="27" text="+"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="459" x="664" y="18" text="Rs. 2,000.00" measuredWidth="66" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="460" x="464" y="17" text="0.00" measuredWidth="27" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="461" x="1030" y="331" text="Cart Totals" measuredWidth="64" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="462" x="1001" y="376" text="No Of Items: 3" measuredWidth="82" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="463" x="1001" y="448" text="Total : Rs. 6,000.00" measuredWidth="109" measuredHeight="23">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="464" x="1001" y="416" text="Sub total : Rs. 6,000.00" measuredWidth="122" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="465" x="998" y="496" text="Proceed the Order" measuredWidth="116" measuredHeight="25" style="round">
+    <font/>
+  </widgets>
+  <hRuler>
+    <guides position="439"/>
+  </hRuler>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
