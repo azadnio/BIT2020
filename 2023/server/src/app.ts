@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { userRoutes } from './routes/userRoutes';
 
-dotenv.config();
+dotenv.config();  
 
 const app = express();
 const port = process.env.PORT || 3000;
