@@ -1,3 +1,0 @@
-
-
-wampserver distribution packages: https://wampserver.aviatechno.net/
