@@ -12,6 +12,8 @@
 
 # temp folders
 _*
+ui
+build
 
 # profiling files
 chrome-profiler-events*.json

@@ -1,0 +1,111 @@
+<div class="about-us-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><mat-icon>business</mat-icon> About Capital Hardware</h1>
+    <p>Your trusted partner for all hardware solutions since 1999</p>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div class="content-text">
+      <h3>About Capital Hardware</h3>
+      <div class="text">
+        <p>
+          Capital Hardware has been Sri Lanka's leading hardware supplier for over two decades, providing quality products and exceptional service to customers across the island. Established in 1999, we have built our reputation on trust, reliability, and an unwavering commitment to excellence.
+        </p>
+        
+        <p>
+          Our extensive product range includes everything from basic hand tools to sophisticated machinery, construction materials, electrical supplies, and plumbing equipment. We serve both individual customers and large-scale commercial projects, ensuring that everyone receives the same high standard of service and product quality.
+        </p>
+        
+        <p>
+          What sets Capital Hardware apart is our deep understanding of the local market combined with access to international quality standards. We carefully select our suppliers and products to ensure that our customers receive the best value for their investment. Our team of experienced professionals is always ready to provide expert advice and technical support.
+        </p>
+        
+        <p>
+          Located in the heart of Colombo, our flagship store at Old Moor Street has become a landmark for hardware enthusiasts and professionals alike. We continue to expand our services and product offerings to meet the evolving needs of Sri Lanka's construction and industrial sectors.
+        </p>
+      </div>
+    </div>
+    
+    <div class="image-section">
+      <img src="assets/shop.png" alt="Capital Hardware Store" class="store-image">
+      <div class="image-caption">
+        <p>Our flagship store in Colombo</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="stats-section">
+    <h2>Our Achievements</h2>
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <mat-icon>{{ stat.icon }}</mat-icon>
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values Section -->
+  <div class="values-section">
+    <h2>Our Core Values</h2>
+    <div class="values-grid">
+      <mat-card class="value-card" *ngFor="let value of values">
+        <mat-card-content>
+          <mat-icon>{{ value.icon }}</mat-icon>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <mat-card class="team-card" *ngFor="let member of team">
+        <div class="team-image">
+          <img [src]="member.image" [alt]="member.name" >
+        </div>
+        <mat-card-content>
+          <h3>{{ member.name }}</h3>
+          <p class="position">{{ member.position }}</p>
+          <p class="description">{{ member.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Mission Statement -->
+  <div class="mission-section">
+    <mat-card class="mission-card">
+      <mat-card-content>
+        <h2><mat-icon>flag</mat-icon> Our Mission</h2>
+        <p>
+          To be Sri Lanka's most trusted hardware partner by providing superior quality products, 
+          expert guidance, and exceptional customer service that empowers our customers to build 
+          their dreams and grow their businesses.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="cta-section">
+    <h2>Ready to Work With Us?</h2>
+    <p>Discover our wide range of quality hardware products and experience the Capital Hardware difference.</p>
+    <div class="cta-buttons">
+      <button mat-raised-button color="primary" routerLink="/products">
+        <mat-icon>inventory</mat-icon>
+        Browse Products
+      </button>
+      <button mat-stroked-button color="primary" routerLink="/contact">
+        <mat-icon>contact_support</mat-icon>
+        Contact Us
+      </button>
+    </div>
+  </div>
+</div>

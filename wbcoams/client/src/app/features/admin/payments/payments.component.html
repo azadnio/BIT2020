@@ -1,0 +1,268 @@
+<div class="payments-container">
+      <!-- Header -->
+      <div class="page-header">
+        <div class="header-content">
+          <div class="header-text">
+            <h1>Payment Management</h1>
+            <p>Make payments and manage your payment history</p>
+          </div>
+          <div class="header-actions">
+            <button mat-stroked-button routerLink="/admin/payments/cheques/add" class="new-cheque-btn">
+              <mat-icon>receipt</mat-icon>
+              New Cheque
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Form -->
+      <mat-card class="payment-form-card">
+        <mat-card-header>
+          <mat-card-title>Create New Payment</mat-card-title>
+          <mat-card-subtitle
+            >Important: (*) Fields are Required</mat-card-subtitle
+          >
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+              <!-- Customer Selection -->
+              <mat-form-field appearance="outline">
+                <mat-label>Customer ID</mat-label>
+                <input
+                  matInput
+                  formControlName="customerId"
+                  type="number"
+                  placeholder="0"
+                  readonly
+                />
+                @if (
+                  paymentForm.get('customerId')?.hasError('required') &&
+                  paymentForm.get('customerId')?.touched
+                ) {
+                  <mat-error>Customer ID is required</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Cash Amount -->
+              <mat-form-field appearance="outline">
+                <mat-label>Cash Amount</mat-label>
+                <input
+                  matInput
+                  formControlName="cash"
+                  type="number"
+                  placeholder="0"
+                  step="0.01"
+                />
+                @if (
+                  paymentForm.get('cash')?.hasError('required') &&
+                  paymentForm.get('cash')?.touched
+                ) {
+                  <mat-error>Cash amount is required</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Receive Date -->
+              <mat-form-field appearance="outline">
+                <mat-label>Receive Date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="paymentDate"
+                />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                @if (
+                  paymentForm.get('paymentDate')?.hasError('required') &&
+                  paymentForm.get('paymentDate')?.touched
+                ) {
+                  <mat-error>Receive date is required</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Payment Type -->
+              <mat-form-field appearance="outline">
+                <mat-label>Payment Type</mat-label>
+                <mat-select
+                  formControlName="type"
+                  (selectionChange)="onPaymentTypeChange($event.value)"
+                >
+                  <mat-option value="cash">Cash</mat-option>
+                  <mat-option value="cheque">Cheque</mat-option>
+                  <mat-option value="bank_transfer">Bank Transfer</mat-option>
+                  <mat-option value="cash_and_cheque"
+                    >Cash and Cheque</mat-option
+                  >
+                  <mat-option value="cash_and_bank_transfer"
+                    >Cash and Bank Transfer</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Cheques Section -->
+            @if (showChequesSection) {
+              <div class="cheques-section">
+                <div class="section-header">
+                  <h3>Cheques: $ 100.00</h3>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="button"
+                    (click)="addCheque()"
+                  >
+                    Add Cheques
+                  </button>
+                </div>
+
+                @if (cheques.length > 0) {
+                  <mat-table [dataSource]="cheques" class="cheques-table">
+                    <ng-container matColumnDef="number">
+                      <mat-header-cell *matHeaderCellDef
+                        >Number</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let cheque">{{
+                        cheque.chequeNumber
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="date">
+                      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                      <mat-cell *matCellDef="let cheque">{{
+                        cheque.chequeDate | date: 'shortDate'
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="amount">
+                      <mat-header-cell *matHeaderCellDef
+                        >Amount</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let cheque"
+                        >Rs. {{ cheque.amount | number: '1.2-2' }}</mat-cell
+                      >
+                    </ng-container>
+
+                    <ng-container matColumnDef="bank">
+                      <mat-header-cell *matHeaderCellDef>Bank</mat-header-cell>
+                      <mat-cell *matCellDef="let cheque">{{
+                        cheque.bankName
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="accNo">
+                      <mat-header-cell *matHeaderCellDef
+                        >Acc No</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let cheque">{{
+                        cheque.accountNumber
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="command">
+                      <mat-header-cell *matHeaderCellDef
+                        >Command</mat-header-cell
+                      >
+                      <mat-cell *matCellDef="let cheque; let i = index">
+                        <button
+                          mat-icon-button
+                          color="warn"
+                          (click)="removeCheque(i)"
+                        >
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row
+                      *matHeaderRowDef="chequeColumns"
+                    ></mat-header-row>
+                    <mat-row
+                      *matRowDef="let row; columns: chequeColumns"
+                    ></mat-row>
+                  </mat-table>
+                }
+              </div>
+            }
+
+            <!-- Remarks -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Remarks</mat-label>
+              <textarea
+                matInput
+                formControlName="remarks"
+                rows="3"
+                placeholder="Enter any additional remarks"
+              ></textarea>
+            </mat-form-field>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button mat-button type="button" (click)="resetForm()">
+                Reset
+              </button>
+              <button mat-button type="button">Back</button>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="paymentForm.invalid || isSubmitting"
+              >
+                @if (isSubmitting) {
+                  <mat-spinner diameter="20"></mat-spinner>
+                  Creating...
+                } @else {
+                  Create
+                }
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Payment History -->
+      <mat-card class="payment-history-card">
+        <mat-card-header>
+          <mat-card-title>Payment History</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (isLoadingPayments) {
+            <div class="loading-container">
+              <mat-spinner></mat-spinner>
+              <p>Loading payment history...</p>
+            </div>
+          } @else if (paymentHistory.length > 0) {
+            <div class="payments-list">
+              @for (payment of paymentHistory; track payment.id) {
+                <div class="payment-item">
+                  <div class="payment-info">
+                    <h4>Payment #{{ payment.id }}</h4>
+                    <p>
+                      <strong>Date:</strong>
+                      {{ payment.paymentDate | date: 'medium' }}
+                    </p>
+                    <p><strong>Type:</strong> {{ payment.type | titlecase }}</p>
+                    <p>
+                      <strong>Amount:</strong> Rs.
+                      {{ payment.cash | number: '1.2-2' }}
+                    </p>
+                  </div>
+                  <div class="payment-status">
+                    <span class="status-chip status-completed">Completed</span>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="no-payments">
+              <mat-icon>payment</mat-icon>
+              <p>No payment history found</p>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>

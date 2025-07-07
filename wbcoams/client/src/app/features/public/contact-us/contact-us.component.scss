@@ -1,0 +1,292 @@
+// Import shared styles
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/mixins' as *;
+
+.contact-us-container {
+  @include container();
+  @include padding('xl');
+  background-color: $color-background-light;
+  min-height: calc(100vh - 64px);
+
+  .page-header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+
+    h1 {
+      font-size: $font-size-4xl;
+      color: $color-text-primary;
+      font-weight: $font-weight-semibold;
+      margin: 0 0 $spacing-lg 0;
+      @include flex-center;
+      gap: $spacing-lg;
+
+      mat-icon {
+        font-size: $font-size-4xl;
+        width: $font-size-4xl;
+        height: $font-size-4xl;
+        color: $color-primary;
+      }
+    }
+
+    p {
+      font-size: $font-size-xl;
+      color: $color-text-secondary;
+      margin: 0;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    margin-bottom: $spacing-3xl;
+
+    @include media-down(md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-2xl;
+    }
+
+    .contact-info {
+      @include card();
+      @include padding('2xl');
+
+      .col {
+        margin-bottom: $spacing-2xl;
+        text-align: center;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        mat-icon {
+          font-size: $font-size-3xl;
+          width: $font-size-3xl;
+          height: $font-size-3xl;
+          color: $color-primary;
+          margin-bottom: $margin-lg;
+        }
+
+        .title {
+          font-size: $font-size-xl;
+          font-weight: $font-weight-semibold;
+          color: $color-text-primary;
+          margin: 0 0 $spacing-lg 0;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            padding: $padding-xs 0;
+            color: $color-text-secondary;
+            font-size: $font-size-base;
+
+            a {
+              color: $color-primary;
+              text-decoration: none;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: $color-primary-dark;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .contact-form-section {
+      @include card();
+      @include padding('2xl');
+
+      .form-header {
+        text-align: center;
+        margin-bottom: $spacing-2xl;
+
+        h2 {
+          font-size: $font-size-2xl;
+          color: $color-text-primary;
+          margin: 0 0 $spacing-sm 0;
+          @include flex-center;
+          gap: $spacing-md;
+
+          mat-icon {
+            color: $color-primary;
+          }
+        }
+
+        p {
+          color: $color-text-secondary;
+          margin: 0;
+        }
+      }
+
+      .contact-form {
+        .form-grid {
+          @include flex-column;
+          gap: $spacing-xl;
+
+          .full-width {
+            width: 100%;
+          }
+
+          .message-field {
+            textarea {
+              min-height: 120px;
+              resize: vertical;
+            }
+          }
+        }
+
+        .btn-wrap {
+          margin-top: $spacing-xl;
+          text-align: center;
+
+          button {
+            @include button-base;
+            @include button-size($button-height-standard, $spacing-2xl, $font-size-base);
+            border-radius: $border-radius-md;
+            min-width: 150px;
+
+            mat-icon {
+              margin-right: $spacing-sm;
+            }
+
+            &:disabled {
+              opacity: 0.6;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+    margin-top: $spacing-3xl;
+
+    .info-card {
+      @include card();
+      @include card-hover-effect;
+      @include padding('2xl');
+      text-align: center;
+
+      mat-icon {
+        font-size: $font-size-3xl;
+        width: $font-size-3xl;
+        height: $font-size-3xl;
+        color: $color-primary;
+        margin-bottom: $margin-lg;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        color: #2c3e50;
+        margin: 0 0 16px 0;
+        font-weight: 600;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-us-container {
+    padding: 16px;
+
+    .page-header {
+      margin-bottom: 32px;
+
+      h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 8px;
+
+        mat-icon {
+          font-size: 2rem;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .content {
+      .contact-info,
+      .contact-form-section {
+        padding: 24px;
+      }
+    }
+
+    .additional-info {
+      .info-card {
+        padding: 24px;
+
+        mat-icon {
+          font-size: 2.5rem;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+// Custom Snackbar Styles
+:host ::ng-deep {
+  .success-snackbar {
+    background-color: #4caf50 !important;
+    color: white !important;
+
+    .mat-mdc-snack-bar-action {
+      color: white !important;
+    }
+  }
+
+  .error-snackbar {
+    background-color: #f44336 !important;
+    color: white !important;
+
+    .mat-mdc-snack-bar-action {
+      color: white !important;
+    }
+  }
+
+  .warning-snackbar {
+    background-color: #ff9800 !important;
+    color: white !important;
+
+    .mat-mdc-snack-bar-action {
+      color: white !important;
+    }
+  }
+
+  // Loading button styles
+  .btn-wrap button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .btn-wrap mat-spinner {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

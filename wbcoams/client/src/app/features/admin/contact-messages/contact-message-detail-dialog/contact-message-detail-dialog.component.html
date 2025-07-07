@@ -1,0 +1,158 @@
+<div class="dialog-container">
+  <!-- Dialog Header -->
+  <div class="dialog-header">
+    <div class="header-info">
+      <h2>Contact Message Details</h2>
+      <mat-chip [color]="getStatusChipColor()" selected>
+        {{ getStatusText() }}
+      </mat-chip>
+    </div>
+    <button mat-icon-button (click)="onClose()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Message Information -->
+  <div class="dialog-content">
+    <mat-card class="message-info-card">
+      <mat-card-header>
+        <mat-card-title>Message Information</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Name:</label>
+            <span class="value">{{ message.name }}</span>
+          </div>
+
+          <div class="info-item">
+            <label>Email:</label>
+            <div class="email-value">
+              <span class="value">{{ message.email }}</span>
+              <button mat-icon-button (click)="copyEmail()" matTooltip="Copy email">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <label>Subject:</label>
+            <span class="value">{{ message.subject }}</span>
+          </div>
+
+          <div class="info-item">
+            <label>Received:</label>
+            <span class="value">{{ formatDate(message.createdAt) }}</span>
+          </div>
+
+          @if (message.respondedAt) {
+          <div class="info-item">
+            <label>Responded:</label>
+            <span class="value">{{ formatDate(message.respondedAt) }}</span>
+          </div>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Message Content -->
+    <mat-card class="message-content-card">
+      <mat-card-header>
+        <mat-card-title>Message Content</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="message-text">
+          {{ message.message }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Existing Response (if any) -->
+    @if (message.response) {
+    <mat-card class="response-card existing-response">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>reply</mat-icon>
+          Internal Response
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="response-text">
+          {{ message.response }}
+        </div>
+        <div class="response-date">
+          Responded on {{ formatDate(message.respondedAt) }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+
+    <!-- Add Response Form (if no response exists) -->
+    @if (!message.response) {
+    <mat-card class="response-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>reply</mat-icon>
+          Add Internal Response
+        </mat-card-title>
+        <mat-card-subtitle>
+          Add an internal response to track follow-up actions
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="responseForm" (ngSubmit)="submitResponse()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Response</mat-label>
+            <textarea matInput formControlName="response" rows="4"
+              placeholder="Enter your internal response or notes..."></textarea>
+            <mat-error>
+              @if (responseForm.get('response')?.hasError('required')) {
+              Response is required
+              }
+              @if (responseForm.get('response')?.hasError('minlength')) {
+              Response must be at least 10 characters long
+              }
+            </mat-error>
+          </mat-form-field>
+
+          <div class="response-actions">
+            <button type="submit" mat-raised-button color="primary"
+              [disabled]="responseForm.invalid || isSubmittingResponse">
+              @if (isSubmittingResponse) {
+              <mat-spinner diameter="20"></mat-spinner>
+              <span style="margin-left: 8px;">Adding Response...</span>
+              } @else {
+              <ng-container>
+                <mat-icon>save</mat-icon>
+                Add Response
+              </ng-container>
+              }
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+
+  <!-- Dialog Actions -->
+  <div class="dialog-actions">
+    @if (!message.isRead) {
+    <button mat-raised-button color="accent" (click)="markAsRead()" [disabled]="isMarkingAsRead">
+      @if (isMarkingAsRead) {
+      <mat-spinner diameter="20"></mat-spinner>
+      <span style="margin-left: 8px;">Marking as Read...</span>
+      } @else {
+      <ng-container>
+        <mat-icon>mark_email_read</mat-icon>
+        Mark as Read
+      </ng-container>
+      }
+    </button>
+    }
+
+    <button mat-button (click)="onClose()">
+      Close
+    </button>
+  </div>
+</div>

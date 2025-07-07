@@ -1,0 +1,54 @@
+<div class="invoices-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><mat-icon>receipt</mat-icon> Invoice Management</h1>
+    <p>Create and manage customer invoices</p>
+  </div>
+
+  <!-- Customer Selection Demo -->
+  <mat-card class="demo-card">
+    <mat-card-header>
+      <mat-card-title>Customer Selection Examples</mat-card-title>
+      <mat-card-subtitle>Demonstrations of the customer selection dialog</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Single Customer Selection -->
+      <div class="selection-section">
+        <h3>Single Customer Selection (for invoices)</h3>
+        <div class="customer-display">
+          @if (selectedCustomer) {
+          <div class="selected-customer">
+            <mat-icon>person</mat-icon>
+            <div class="customer-info">
+              <span class="customer-name">{{ selectedCustomer.name }}</span>
+              <span class="customer-details">{{ selectedCustomer.id }} • {{ selectedCustomer.city }} • {{ selectedCustomer.phoneNumber }}</span>
+            </div>
+          </div>
+          } @else {
+          <div class="no-customer">
+            <mat-icon>person_off</mat-icon>
+            <span>No customer selected</span>
+          </div>
+          }
+        </div>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" (click)="openCustomerSelectionDialog()">
+            <mat-icon>search</mat-icon>
+            Select Customer for Invoice
+          </button>
+        </div>
+      </div>
+
+      <!-- Multi Customer Selection -->
+      <div class="selection-section">
+        <h3>Multi Customer Selection (for bulk operations)</h3>
+        <div class="action-buttons">
+          <button mat-raised-button color="accent" (click)="openMultiCustomerSelectionDialog()">
+            <mat-icon>group</mat-icon>
+            Select Multiple Customers
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

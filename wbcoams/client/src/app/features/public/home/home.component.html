@@ -1,0 +1,203 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Capital Hardware</h1>
+        <h2>Wholesale Dealers of General Hardware Items</h2>
+        <p>
+          Your trusted partner for quality hardware solutions since decades.
+          From door locks to construction tools, we have everything you
+          need.
+        </p>
+        <div class="hero-actions">
+          <a mat-raised-button color="primary" routerLink="/products" class="shop-now-btn">
+            <mat-icon>shopping_cart</mat-icon>
+            Shop Now
+          </a>
+          <a mat-stroked-button routerLink="/contact-us" class="register-btn">
+            <mat-icon>person_add</mat-icon>
+            Create Account
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hardware-hero.jpg" alt="Hardware Store" />
+      </div>
+    </div>
+  </section>
+
+  <!-- <app-example-usage></app-example-usage> -->
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <h2>Why Choose Capital Hardware?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <mat-icon class="feature-icon">verified</mat-icon>
+          <h3>Quality Products</h3>
+          <p>Only the finest hardware items from trusted brands</p>
+        </div>
+        <div class="feature-card">
+          <mat-icon class="feature-icon">local_shipping</mat-icon>
+          <h3>Fast Delivery</h3>
+          <p>Quick and reliable delivery across Sri Lanka</p>
+        </div>
+        <div class="feature-card">
+          <mat-icon class="feature-icon">account_balance_wallet</mat-icon>
+          <h3>Credit Facilities</h3>
+          <p>Flexible payment options for registered customers</p>
+        </div>
+        <div class="feature-card">
+          <mat-icon class="feature-icon">support_agent</mat-icon>
+          <h3>Customer Support</h3>
+          <p>We're here to help you with any inquiries or issues</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <a mat-button routerLink="/products" class="view-all-btn">
+          View All Products
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+      </div>
+
+      @if (featuredProducts.length > 0) {
+      <div class="products-grid">
+        @for (product of featuredProducts; track product.id) {
+        <app-product-card [product]="product" >
+        </app-product-card>
+        <!-- <mat-card class="product-card">
+          <div class="product-image">`
+            @if (product.image) {
+            <img [src]="product.image" [alt]="product.description" />
+            } @else {
+            <div class="no-image">
+              <mat-icon>image</mat-icon>
+            </div>
+            }
+            @if (product.oldPrice && product.oldPrice > product.price) {
+            <mat-chip class="sale-chip">Sale</mat-chip>
+            }
+          </div>
+
+          <mat-card-content>
+            <h3 class="product-name">{{ product.description }}</h3>
+            <p class="product-info">{{ product.info }}</p>
+            <div class="product-pricing">
+              @if (
+              product.oldPrice && product.oldPrice > product.price
+              ) {
+              <span class="old-price">Rs. {{ product.oldPrice | number: '1.2-2' }}</span>
+              }
+              <span class="current-price">Rs. {{ product.price | number: '1.2-2' }}</span>
+              <span class="unit">/ {{ product.unit }}</span>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-raised-button color="primary" class="add-to-cart-btn">
+              <mat-icon>add_shopping_cart</mat-icon>
+              Add to Cart
+            </button>
+          </mat-card-actions>
+        </mat-card> -->
+        }
+      </div>
+      } @else {
+      <div class="loading-message">
+        <mat-icon>hourglass_empty</mat-icon>
+        Loading featured products...
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="container">
+      <h2>Shop by Category</h2>
+      <div class="categories-grid">
+        <div class="category-card" routerLink="/products" [queryParams]="{ category: 'door-locks' }">
+          <mat-icon class="category-icon">lock</mat-icon>
+          <h3>Door Locks</h3>
+          <p>Secure your property with our range of door locks</p>
+        </div>
+        <div class="category-card" routerLink="/products" [queryParams]="{ category: 'nails' }">
+          <mat-icon class="category-icon">construction</mat-icon>
+          <h3>Nails & Fasteners</h3>
+          <p>Quality nails and fasteners for all construction needs</p>
+        </div>
+        <div class="category-card" routerLink="/products" [queryParams]="{ category: 'roller-brush' }">
+          <mat-icon class="category-icon">brush</mat-icon>
+          <h3>Paint Brushes</h3>
+          <p>Professional painting tools and accessories</p>
+        </div>
+        <div class="category-card" routerLink="/products" [queryParams]="{ category: 'window-accessories' }">
+          <mat-icon class="category-icon">window</mat-icon>
+          <h3>Window Accessories</h3>
+          <p>Complete range of window hardware and fittings</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Visit Our Store</h2>
+          <div class="contact-details">
+            <div class="contact-item">
+              <mat-icon>location_on</mat-icon>
+              <div>
+                <strong>Address:</strong><br />
+                270, Old Moor Street<br />
+                Colombo - 12, Sri Lanka
+              </div>
+            </div>
+            <div class="contact-item">
+              <mat-icon>phone</mat-icon>
+              <div>
+                <strong>Phone:</strong><br />
+                +94 11 2424303
+              </div>
+            </div>
+            <div class="contact-item">
+              <mat-icon>fax</mat-icon>
+              <div>
+                <strong>Fax:</strong><br />
+                +94 11 2424304
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="store-hours">
+          <h3>Store Hours</h3>
+          <div class="hours-list">
+            <div class="hours-item">
+              <span>Monday - Friday:</span>
+              <span>8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Saturday:</span>
+              <span>8:00 AM - 4:00 PM</span>
+            </div>
+            <div class="hours-item">
+              <span>Sunday:</span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

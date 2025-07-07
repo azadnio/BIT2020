@@ -1,0 +1,114 @@
+<div class="add-order-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Create New Order</h1>
+        <p>Create a new customer order</p>
+      </div>
+      <button mat-stroked-button (click)="onCancel()" class="cancel-btn">
+        <mat-icon>arrow_back</mat-icon>
+        Back to Orders
+      </button>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Order Details</mat-card-title>
+      <mat-card-subtitle>Enter the basic order information</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (isLoading) {
+      <div class="loading-container">
+        <mat-spinner></mat-spinner>
+        <p>Loading customers...</p>
+      </div>
+      } @else {
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="order-form">
+        <div class="form-row">
+          <!-- Customer Selection -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Customer</mat-label>
+            <mat-select formControlName="customerId">
+              @for (customer of customers; track customer.id) {
+              <mat-option [value]="customer.id">
+                <div class="customer-option">
+                  <div class="customer-name">{{ customer.user?.name || customer.name }}</div>
+                  <div class="customer-details">{{ customer.user?.email || customer.email }}</div>
+                </div>
+              </mat-option>
+              }
+            </mat-select>
+            @if (isFieldInvalid('customerId')) {
+            <mat-error>{{ getFieldError('customerId') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <!-- Order Date -->
+          <mat-form-field appearance="outline">
+            <mat-label>Order Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="orderDate" readonly />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (isFieldInvalid('orderDate')) {
+            <mat-error>{{ getFieldError('orderDate') }}</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Status -->
+          <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              @for (status of orderStatuses; track status.value) {
+              <mat-option [value]="status.value">{{ status.label }}</mat-option>
+              }
+            </mat-select>
+            @if (isFieldInvalid('status')) {
+            <mat-error>{{ getFieldError('status') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <!-- Remarks -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Remarks (Optional)</mat-label>
+            <textarea matInput formControlName="remarks" placeholder="Any additional notes about this order..."
+              rows="3"></textarea>
+          </mat-form-field>
+        </div>
+
+        <!-- Info Note -->
+        <div class="info-note">
+          <mat-icon>info</mat-icon>
+          <p>After creating the order, you'll be able to add items to it.</p>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button type="button" mat-stroked-button (click)="onCancel()" [disabled]="isSubmitting">
+            Cancel
+          </button>
+          <button type="submit" mat-raised-button color="primary" [disabled]="orderForm.invalid || isSubmitting"
+            class="submit-btn">
+            @if (isSubmitting) {
+            <mat-spinner diameter="20"></mat-spinner>
+            Creating Order...
+            } @else {
+            <ng-container>
+              <mat-icon>add_shopping_cart</mat-icon>
+              Create Order
+            </ng-container>
+            }
+          </button>
+        </div>
+      </form>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

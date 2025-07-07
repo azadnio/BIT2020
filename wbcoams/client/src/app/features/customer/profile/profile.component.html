@@ -1,0 +1,291 @@
+<div class="profile-container">
+      <!-- Header -->
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="avatar-section">
+            <div class="avatar">
+              @if (currentUser?.photo) {
+                <img [src]="currentUser?.photo" [alt]="currentUser?.name" />
+              } @else {
+                <mat-icon>person</mat-icon>
+              }
+            </div>
+            <div class="user-info">
+              <h1>{{ currentUser?.name }}</h1>
+              <p class="user-role">
+                {{ currentUser?.role | titlecase }} Account
+              </p>
+              <p class="user-email">{{ currentUser?.email }}</p>
+            </div>
+          </div>
+
+          @if (customerData) {
+            <div class="account-info">
+              <div class="info-item">
+                <h3>Credit Limit</h3>
+                <p class="amount">
+                  Rs. {{ customerData.creditLimit | number: '1.2-2' }}
+                </p>
+              </div>
+              <div class="info-item">
+                <h3>Current Balance</h3>
+                <p
+                  class="amount"
+                  [class.negative]="customerData.creditBalance > 0"
+                >
+                  Rs. {{ customerData.creditBalance | number: '1.2-2' }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Profile Tabs -->
+      <mat-tab-group class="profile-tabs">
+        <mat-tab label="Personal Information">
+          <div class="tab-content">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Personal Information</mat-card-title>
+                <mat-card-subtitle
+                  >Update your personal details</mat-card-subtitle
+                >
+              </mat-card-header>
+
+              <mat-card-content>
+                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                  <div class="form-grid">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Full Name</mat-label>
+                      <input
+                        matInput
+                        formControlName="name"
+                        placeholder="Enter your full name"
+                      />
+                      <mat-icon matSuffix>person</mat-icon>
+                      @if (
+                        profileForm.get('name')?.hasError('required') &&
+                        profileForm.get('name')?.touched
+                      ) {
+                        <mat-error>Name is required</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input
+                        matInput
+                        formControlName="email"
+                        type="email"
+                        placeholder="Enter your email"
+                      />
+                      <mat-icon matSuffix>email</mat-icon>
+                      @if (
+                        profileForm.get('email')?.hasError('required') &&
+                        profileForm.get('email')?.touched
+                      ) {
+                        <mat-error>Email is required</mat-error>
+                      }
+                      @if (
+                        profileForm.get('email')?.hasError('email') &&
+                        profileForm.get('email')?.touched
+                      ) {
+                        <mat-error>Please enter a valid email</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>NIC Number</mat-label>
+                      <input
+                        matInput
+                        formControlName="nic"
+                        placeholder="Enter your NIC number"
+                      />
+                      <mat-icon matSuffix>badge</mat-icon>
+                      @if (
+                        profileForm.get('nic')?.hasError('required') &&
+                        profileForm.get('nic')?.touched
+                      ) {
+                        <mat-error>NIC is required</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>Mobile Number</mat-label>
+                      <input
+                        matInput
+                        formControlName="mobile"
+                        placeholder="Enter your mobile number"
+                      />
+                      <mat-icon matSuffix>phone</mat-icon>
+                      @if (
+                        profileForm.get('mobile')?.hasError('required') &&
+                        profileForm.get('mobile')?.touched
+                      ) {
+                        <mat-error>Mobile number is required</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>Telephone (Optional)</mat-label>
+                      <input
+                        matInput
+                        formControlName="telephone"
+                        placeholder="Enter your telephone"
+                      />
+                      <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-actions">
+                    <button mat-button type="button" (click)="resetForm()">
+                      Reset
+                    </button>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      type="submit"
+                      [disabled]="profileForm.invalid || isUpdating"
+                    >
+                      @if (isUpdating) {
+                        <mat-spinner diameter="20"></mat-spinner>
+                        Updating...
+                      } @else {
+                        Update Profile
+                      }
+                    </button>
+                  </div>
+                </form>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Address Information">
+          <div class="tab-content">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Address Information</mat-card-title>
+                <mat-card-subtitle
+                  >Update your address details</mat-card-subtitle
+                >
+              </mat-card-header>
+
+              <mat-card-content>
+                <form [formGroup]="addressForm" (ngSubmit)="updateAddress()">
+                  <div class="form-grid">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Address</mat-label>
+                      <input
+                        matInput
+                        formControlName="address"
+                        placeholder="Enter your address"
+                      />
+                      <mat-icon matSuffix>home</mat-icon>
+                      @if (
+                        addressForm.get('address')?.hasError('required') &&
+                        addressForm.get('address')?.touched
+                      ) {
+                        <mat-error>Address is required</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Address Line 2 (Optional)</mat-label>
+                      <input
+                        matInput
+                        formControlName="address2"
+                        placeholder="Apartment, suite, etc."
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>City</mat-label>
+                      <input
+                        matInput
+                        formControlName="city"
+                        placeholder="Enter your city"
+                      />
+                      <mat-icon matSuffix>location_city</mat-icon>
+                      @if (
+                        addressForm.get('city')?.hasError('required') &&
+                        addressForm.get('city')?.touched
+                      ) {
+                        <mat-error>City is required</mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-actions">
+                    <button
+                      mat-button
+                      type="button"
+                      (click)="resetAddressForm()"
+                    >
+                      Reset
+                    </button>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      type="submit"
+                      [disabled]="addressForm.invalid || isUpdating"
+                    >
+                      @if (isUpdating) {
+                        <mat-spinner diameter="20"></mat-spinner>
+                        Updating...
+                      } @else {
+                        Update Address
+                      }
+                    </button>
+                  </div>
+                </form>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Account Settings">
+          <div class="tab-content">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Account Settings</mat-card-title>
+                <mat-card-subtitle
+                  >Manage your account preferences</mat-card-subtitle
+                >
+              </mat-card-header>
+
+              <mat-card-content>
+                <div class="settings-list">
+                  <div class="setting-item">
+                    <div class="setting-info">
+                      <h3>Change Password</h3>
+                      <p>Update your account password for security</p>
+                    </div>
+                    <button mat-stroked-button>
+                      <mat-icon>lock</mat-icon>
+                      Change Password
+                    </button>
+                  </div>
+
+                  <div class="setting-item">
+                    <div class="setting-info">
+                      <h3>Account Status</h3>
+                      <p>Your account is active and in good standing</p>
+                    </div>
+                    <span class="status-badge active">Active</span>
+                  </div>
+
+                  <div class="setting-item">
+                    <div class="setting-info">
+                      <h3>Member Since</h3>
+                      <p>{{ currentUser?.createdAt | date: 'fullDate' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>

@@ -1,0 +1,290 @@
+// Variables (matching the customers component styles)
+$primary-gradient: linear-gradient(135deg, #3f51b5 0%, #2196f3 100%);
+$radius: 12px;
+$header-padding: 24px;
+$danger: #f44336;
+$success: #4caf50;
+$warning: #ff9800;
+$text-muted: #666;
+$text-light: #ddd;
+$border-color: #e0e0e0;
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Main container
+.add-customer-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Page header (matching customers component)
+.page-header {
+  margin-bottom: 24px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $header-padding;
+  background: $primary-gradient;
+  color: white;
+  border-radius: $radius;
+
+  .header-text {
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+    p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
+.cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Form container
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// Form cards
+.form-card {
+  border-radius: $radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+
+  mat-card-header {
+    background: #f8f9fa;
+    padding: 20px 24px;
+    
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+
+      mat-icon {
+        color: #3f51b5;
+      }
+    }
+
+    mat-card-subtitle {
+      margin: 8px 0 0 36px;
+      color: $text-muted;
+      font-size: 0.9rem;
+    }
+  }
+
+  mat-card-content {
+    padding: 24px;
+  }
+}
+
+// Form grid layout
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+// Form field styling
+mat-form-field {
+  width: 100%;
+
+  &.error {
+    mat-label {
+      color: $danger;
+    }
+  }
+
+  mat-icon[matSuffix] {
+    color: $text-muted;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    &:hover .mat-mdc-form-field-outline {
+      color: #3f51b5;
+    }
+  }
+
+  &.mat-focused {
+    mat-icon[matSuffix] {
+      color: #3f51b5;
+    }
+  }
+}
+
+// Form actions
+.form-actions {
+  margin-top: 32px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: $radius;
+  border: 1px solid $border-color;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  align-items: center;
+
+  .cancel-button {
+    color: $text-muted;
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .reset-button {
+    color: $warning;
+    border-color: $warning;
+    
+    &:hover {
+      background: rgba(255, 152, 0, 0.04);
+    }
+  }
+
+  .submit-button {
+    min-width: 160px;
+    
+    &:disabled {
+      opacity: 0.6;
+    }
+
+    .spinning {
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+// Loading states
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  color: $text-muted;
+
+  mat-spinner {
+    margin-bottom: 16px;
+  }
+}
+
+// Error states
+mat-error {
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+// Animations
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .add-customer-container {
+    padding: 16px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+
+    .header-text h1 {
+      font-size: 1.8rem;
+    }
+
+    .header-actions {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    .full-width {
+      grid-column: 1;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .form-card {
+    mat-card-header {
+      padding: 16px;
+      
+      mat-card-title {
+        font-size: 1.1rem;
+      }
+
+      mat-card-subtitle {
+        margin: 4px 0 0 32px;
+      }
+    }
+
+    mat-card-content {
+      padding: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 16px;
+  }
+
+  .form-actions {
+    padding: 16px;
+    margin-top: 24px;
+  }
+
+  .action-buttons {
+    gap: 12px;
+  }
+}

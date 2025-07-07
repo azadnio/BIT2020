@@ -1,0 +1,337 @@
+.contact-messages-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    .header-content {
+      h1 {
+        margin: 0 0 0.5rem 0;
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0;
+        color: #7f8c8d;
+        font-size: 1rem;
+      }
+    }
+
+    .header-actions {
+      button {
+        min-width: 120px;
+      }
+    }
+  }
+
+  .stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .stat-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .stat-icon {
+          width: 60px;
+          height: 60px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          mat-icon {
+            font-size: 28px;
+            width: 28px;
+            height: 28px;
+            color: white;
+          }
+
+          &.total {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+          }
+
+          &.unread {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+          }
+
+          &.responded {
+            background: linear-gradient(135deg, #27ae60, #229954);
+          }
+
+          &.today {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+          }
+        }
+
+        .stat-info {
+          h3 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+          }
+
+          p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .filters-section {
+    margin-bottom: 1.5rem;
+
+    mat-form-field {
+      width: 250px;
+    }
+  }
+
+  .table-section {
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      gap: 1rem;
+
+      p {
+        color: #7f8c8d;
+        font-size: 1rem;
+      }
+    }
+
+    .table-container {
+      overflow-x: auto;
+
+      .messages-table {
+        width: 100%;
+        
+        .message-row {
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: #f8f9fa;
+          }
+
+          &.unread {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+
+            &:hover {
+              background-color: #fff8f0;
+            }
+          }
+        }
+
+        .name-cell {
+          .name-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .name {
+              font-weight: 500;
+              color: #2c3e50;
+            }
+
+            .unread-indicator {
+              font-size: 8px;
+              width: 8px;
+              height: 8px;
+            }
+          }
+        }
+
+        .email-cell {
+          color: #3498db;
+          font-family: 'Courier New', monospace;
+          font-size: 0.9rem;
+        }
+
+        .subject-cell {
+          .subject-text {
+            display: block;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #2c3e50;
+            font-weight: 500;
+          }
+        }
+
+        .date-cell {
+          color: #7f8c8d;
+          font-size: 0.9rem;
+          white-space: nowrap;
+        }
+
+        .actions-cell {
+          width: 60px;
+          
+          button {
+            color: #7f8c8d;
+            
+            &:hover {
+              color: #2c3e50;
+            }
+          }
+        }
+
+        th {
+          background-color: #f8f9fa;
+          color: #2c3e50;
+          font-weight: 600;
+          border-bottom: 2px solid #e9ecef;
+        }
+      }
+    }
+
+    .no-messages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+
+      mat-icon {
+        font-size: 64px;
+        width: 64px;
+        height: 64px;
+        color: #bdc3c7;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        margin: 0 0 0.5rem 0;
+        color: #7f8c8d;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      p {
+        margin: 0;
+        color: #95a5a6;
+        max-width: 400px;
+      }
+    }
+
+    mat-paginator {
+      margin-top: 1rem;
+      border-top: 1px solid #e9ecef;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .contact-messages-container {
+    padding: 1rem;
+
+    .header-section {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+
+      .header-content h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .stats-section {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+
+      .stat-card .stat-content {
+        .stat-icon {
+          width: 50px;
+          height: 50px;
+
+          mat-icon {
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .stat-info h3 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .filters-section mat-form-field {
+      width: 100%;
+    }
+
+    .table-section .table-container {
+      .messages-table {
+        .subject-cell .subject-text {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-messages-container {
+    .stats-section {
+      grid-template-columns: 1fr;
+    }
+
+    .table-section .table-container .messages-table {
+      font-size: 0.8rem;
+
+      .subject-cell .subject-text {
+        max-width: 100px;
+      }
+    }
+  }
+}
+
+// Custom Snackbar Styles
+:host ::ng-deep {
+  .success-snackbar {
+    background-color: #4caf50 !important;
+    color: white !important;
+  }
+
+  .error-snackbar {
+    background-color: #f44336 !important;
+    color: white !important;
+  }
+
+  .warning-snackbar {
+    background-color: #ff9800 !important;
+    color: white !important;
+  }
+}

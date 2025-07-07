@@ -1,0 +1,143 @@
+<mat-card 
+  class="product-card" 
+  [class.compact]="compact"
+  [class.out-of-stock]="isOutOfStock"
+  (click)="onProductClick()"
+>
+  <!-- Product Image Section -->
+  <div class="product-image-container">
+    <img 
+      [src]="productImage" 
+      [alt]="product.description" 
+      class="product-image"
+      loading="lazy"
+    />
+    
+    <!-- Badges -->
+    <div class="product-badges">
+      @if (isNew) {
+        <mat-chip class="badge new-badge">NEW</mat-chip>
+      }
+      @if (hasDiscount) {
+        <mat-chip class="badge discount-badge">{{ discountPercentage }}% OFF</mat-chip>
+      }
+      @if (isOutOfStock) {
+        <mat-chip class="badge out-of-stock-badge">OUT OF STOCK</mat-chip>
+      }
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="quick-actions">
+      @if (showQuickView) {
+        <button 
+          mat-mini-fab 
+          color="primary" 
+          class="quick-action-btn"
+          (click)="onQuickView($event)"
+          matTooltip="Quick View"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      }
+      @if (showWishlist) {
+        <button 
+          mat-mini-fab 
+          class="quick-action-btn wishlist-btn"
+          (click)="onAddToWishlist($event)"
+          matTooltip="Add to Wishlist"
+        >
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Product Content -->
+  <mat-card-content class="product-content">
+    <!-- Brand and Category -->
+    <div class="product-meta">
+      <span class="brand">{{ brandName }}</span>
+      @if (!compact) {
+        <span class="category">{{ categoryName }}</span>
+      }
+    </div>
+
+    <!-- Product Name -->
+    <h3 class="product-name">{{ product.description }}</h3>
+
+    <!-- Product Description -->
+    @if (!compact && product.info) {
+      <p class="product-description">{{ product.info }}</p>
+    }
+
+    <!-- Price Section -->
+    <div class="price-section">
+      <div class="current-price">
+        Rs. {{ product.price | number:'1.2-2' }}
+        <span class="unit">/ {{ product.unit }}</span>
+      </div>
+      @if (hasDiscount) {
+        <div class="old-price">
+          Rs. {{ product.oldPrice | number:'1.2-2' }}
+        </div>
+        <div class="savings">
+          Save Rs. {{ discountAmount | number:'1.2-2' }}
+        </div>
+      }
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="card-actions">
+      @if (showAddToCart && !isOutOfStock) {
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="add-to-cart-btn"
+          (click)="addToCart($event)"
+        >
+          <mat-icon>add_shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+      } @else if (isOutOfStock) {
+        <button 
+          mat-stroked-button 
+          disabled
+          class="out-of-stock-btn"
+        >
+          <mat-icon>block</mat-icon>
+          Out of Stock
+        </button>
+      }
+      
+      @if (!showAddToCart) {
+        <button 
+          mat-stroked-button 
+          class="view-details-btn"
+          (click)="onProductClick()"
+        >
+          <mat-icon>info</mat-icon>
+          View Details
+        </button>
+      }
+    </div>
+  </mat-card-content>
+
+  <!-- Hover Overlay for Additional Info -->
+  <div class="hover-overlay">
+    <div class="overlay-content">
+      @if (!compact) {
+        <p class="overlay-description">{{ product.info }}</p>
+      }
+      <div class="overlay-actions">
+        <button mat-button color="primary" (click)="onQuickView($event)">
+          <mat-icon>visibility</mat-icon>
+          Quick View
+        </button>
+        <button mat-button (click)="onAddToWishlist($event)">
+          <mat-icon>favorite_border</mat-icon>
+          Wishlist
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

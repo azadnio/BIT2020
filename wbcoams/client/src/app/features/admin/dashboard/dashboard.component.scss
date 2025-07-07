@@ -1,0 +1,210 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/mixins' as *;
+
+.dashboard-container {
+  padding: $spacing-lg;
+  max-width: $max-width-xl;
+  margin: 0 auto;
+  background-color: $gray-100;
+  min-height: calc(100vh - 128px);
+}
+
+.dashboard-header {
+  @include flex-center-column;
+  margin-bottom: $spacing-xl;
+  background: linear-gradient(135deg, $primary-600 0%, $blue-500 100%);
+  color: $white;
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+}
+
+.dashboard-header h1 {
+  @include heading-xl;
+  margin-bottom: $margin-sm;
+  font-weight: $font-weight-bold;
+}
+
+.dashboard-header p {
+  @include text-lg;
+  opacity: 0.9;
+}
+
+.stats-grid {
+  @include grid-responsive(280px);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.stat-card {
+  @include card-interactive;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: $shadow-lg;
+}
+
+.stat-content {
+  @include flex-center;
+  gap: $spacing-md;
+  padding: $padding-xs;
+}
+
+.stat-icon {
+  @include flex-center;
+  flex-shrink: 0;
+  padding: $spacing-md;
+  border-radius: $border-radius-lg;
+}
+
+.stat-icon mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: $white;
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-details h2 {
+  @include text-sm;
+  font-weight: $font-weight-semibold;
+  margin: 0 0 $margin-xs 0;
+  color: $gray-600;
+  letter-spacing: 0.5px;
+}
+
+.stat-number {
+  @include heading-xl;
+  font-weight: $font-weight-bold;
+  margin: 0;
+  color: $gray-800;
+}
+
+.new-orders-chip {
+  margin-top: $margin-xs;
+  background-color: $success-500 !important;
+  color: $white !important;
+  font-size: 0.7rem;
+}
+
+/* Card-specific colors */
+.invoices-card .stat-icon {
+  background-color: $blue-400;
+}
+
+.orders-card .stat-icon {
+  background-color: $purple-400;
+}
+
+.payment-card .stat-icon {
+  background-color: $blue-400;
+}
+
+.customers-card .stat-icon {
+  background-color: $purple-400;
+}
+
+.items-card .stat-icon {
+  background-color: $purple-400;
+}
+
+.accounts-card .stat-icon {
+  background-color: $blue-400;
+}
+
+.cheques-card .stat-icon {
+  background-color: $purple-400;
+}
+
+.messages-card .stat-icon {
+  background-color: $orange-500;
+}
+
+.sales-return-card .stat-icon {
+  background-color: $blue-400;
+}
+
+.quick-actions {
+  margin-bottom: $spacing-xl;
+}
+
+.actions-header {
+  margin-bottom: $spacing-md;
+}
+
+.actions-header h2 {
+  color: $gray-800;
+  margin: 0;
+}
+
+.actions-buttons {
+  @include flex-wrap;
+  gap: $spacing-sm;
+}
+
+.action-button {
+  @include flex-center;
+  gap: $gap-xs;
+  height: 40px;
+  padding: 0 $spacing-md;
+}
+
+.recent-activity mat-card {
+  border-radius: $border-radius-lg;
+}
+
+.activity-list {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.activity-item {
+  @include flex-center;
+  gap: $spacing-md;
+  padding: $spacing-sm;
+  background-color: $gray-50;
+  border-radius: $border-radius-md;
+}
+
+.activity-icon {
+  color: $primary-600;
+}
+
+.activity-details p {
+  margin: 0 0 4px 0;
+  @include text-sm;
+}
+
+.activity-time {
+  @include text-xs;
+  color: $gray-600;
+}
+
+@include media-tablet {
+  .dashboard-container {
+    padding: $spacing-md;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    @include grid-responsive(250px);
+    gap: $spacing-md;
+  }
+
+  .actions-buttons {
+    justify-content: center;
+  }
+
+  .action-button {
+    flex: 1;
+    min-width: 140px;
+  }
+}

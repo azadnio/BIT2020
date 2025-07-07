@@ -1,0 +1,264 @@
+<div class="register-container">
+      <mat-card class="register-card">
+        <mat-card-header>
+          <h1>TO DO DELETE ME!!!</h1>
+          <mat-card-title>Create Your Account</mat-card-title>
+          <mat-card-subtitle>Join Capital Hardware today</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-stepper [linear]="true" #stepper>
+            <mat-step
+              [stepControl]="personalInfoForm"
+              label="Personal Information"
+            >
+              <form [formGroup]="personalInfoForm">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Full Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="name"
+                    placeholder="Enter your full name"
+                  />
+                  <mat-icon matSuffix>person</mat-icon>
+                  @if (
+                    personalInfoForm.get('name')?.hasError('required') &&
+                    personalInfoForm.get('name')?.touched
+                  ) {
+                    <mat-error>Name is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    type="email"
+                    formControlName="email"
+                    placeholder="Enter your email"
+                  />
+                  <mat-icon matSuffix>email</mat-icon>
+                  @if (
+                    personalInfoForm.get('email')?.hasError('required') &&
+                    personalInfoForm.get('email')?.touched
+                  ) {
+                    <mat-error>Email is required</mat-error>
+                  }
+                  @if (
+                    personalInfoForm.get('email')?.hasError('email') &&
+                    personalInfoForm.get('email')?.touched
+                  ) {
+                    <mat-error>Please enter a valid email</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>NIC Number</mat-label>
+                  <input
+                    matInput
+                    formControlName="nic"
+                    placeholder="Enter your NIC number"
+                  />
+                  <mat-icon matSuffix>badge</mat-icon>
+                  @if (
+                    personalInfoForm.get('nic')?.hasError('required') &&
+                    personalInfoForm.get('nic')?.touched
+                  ) {
+                    <mat-error>NIC is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Mobile Number</mat-label>
+                  <input
+                    matInput
+                    formControlName="mobile"
+                    placeholder="Enter your mobile number"
+                  />
+                  <mat-icon matSuffix>phone</mat-icon>
+                  @if (
+                    personalInfoForm.get('mobile')?.hasError('required') &&
+                    personalInfoForm.get('mobile')?.touched
+                  ) {
+                    <mat-error>Mobile number is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <div class="step-actions">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    matStepperNext
+                    [disabled]="personalInfoForm.invalid"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="addressForm" label="Address Information">
+              <form [formGroup]="addressForm">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Address</mat-label>
+                  <input
+                    matInput
+                    formControlName="address"
+                    placeholder="Enter your address"
+                  />
+                  <mat-icon matSuffix>home</mat-icon>
+                  @if (
+                    addressForm.get('address')?.hasError('required') &&
+                    addressForm.get('address')?.touched
+                  ) {
+                    <mat-error>Address is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Address Line 2 (Optional)</mat-label>
+                  <input
+                    matInput
+                    formControlName="address2"
+                    placeholder="Apartment, suite, etc."
+                  />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>City</mat-label>
+                  <input
+                    matInput
+                    formControlName="city"
+                    placeholder="Enter your city"
+                  />
+                  <mat-icon matSuffix>location_city</mat-icon>
+                  @if (
+                    addressForm.get('city')?.hasError('required') &&
+                    addressForm.get('city')?.touched
+                  ) {
+                    <mat-error>City is required</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Telephone (Optional)</mat-label>
+                  <input
+                    matInput
+                    formControlName="telephone"
+                    placeholder="Enter your telephone"
+                  />
+                  <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+
+                <div class="step-actions">
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    matStepperNext
+                    [disabled]="addressForm.invalid"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="passwordForm" label="Set Password">
+              <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    [type]="hidePassword ? 'password' : 'text'"
+                    formControlName="password"
+                    placeholder="Create a password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    type="button"
+                    (click)="hidePassword = !hidePassword"
+                  >
+                    <mat-icon>{{
+                      hidePassword ? 'visibility_off' : 'visibility'
+                    }}</mat-icon>
+                  </button>
+                  @if (
+                    passwordForm.get('password')?.hasError('required') &&
+                    passwordForm.get('password')?.touched
+                  ) {
+                    <mat-error>Password is required</mat-error>
+                  }
+                  @if (
+                    passwordForm.get('password')?.hasError('minlength') &&
+                    passwordForm.get('password')?.touched
+                  ) {
+                    <mat-error
+                      >Password must be at least 6 characters</mat-error
+                    >
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Confirm Password</mat-label>
+                  <input
+                    matInput
+                    [type]="hideConfirmPassword ? 'password' : 'text'"
+                    formControlName="confirmPassword"
+                    placeholder="Confirm your password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    type="button"
+                    (click)="hideConfirmPassword = !hideConfirmPassword"
+                  >
+                    <mat-icon>{{
+                      hideConfirmPassword ? 'visibility_off' : 'visibility'
+                    }}</mat-icon>
+                  </button>
+                  @if (
+                    passwordForm.get('confirmPassword')?.hasError('required') &&
+                    passwordForm.get('confirmPassword')?.touched
+                  ) {
+                    <mat-error>Please confirm your password</mat-error>
+                  }
+                  @if (
+                    passwordForm.hasError('passwordMismatch') &&
+                    passwordForm.get('confirmPassword')?.touched
+                  ) {
+                    <mat-error>Passwords do not match</mat-error>
+                  }
+                </mat-form-field>
+
+                <div class="step-actions">
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="passwordForm.invalid || isLoading"
+                    class="register-button"
+                  >
+                    @if (isLoading) {
+                      <mat-spinner diameter="20"></mat-spinner>
+                      Creating Account...
+                    } @else {
+                      Create Account
+                    }
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+          </mat-stepper>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <p class="login-link">
+            Already have an account?
+            <a routerLink="/login">Login here</a>
+          </p>
+        </mat-card-actions>
+      </mat-card>
+    </div>

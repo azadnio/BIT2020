@@ -1,0 +1,190 @@
+<div class="orders-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Order Management</h1>
+        <p>Manage customer orders and track order status</p>
+      </div>
+      <button mat-raised-button color="primary" class="new-order-btn" routerLink="/admin/orders/new">
+        <mat-icon>add_shopping_cart</mat-icon>
+        New Order
+      </button>
+    </div>
+  </div>
+
+  <!-- Filters and Search -->
+  <mat-card class="filters-card">
+    <mat-card-content>
+      <div class="filters-row">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Search Orders</mat-label>
+          <input
+            matInput
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="onFiltersChange()"
+            placeholder="Search by order ID, customer, or remarks"
+          />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Filter by Status</mat-label>
+          <mat-select
+            [(ngModel)]="statusFilter"
+            (ngModelChange)="onFiltersChange()"
+          >
+            @for (status of orderStatuses; track status.value) {
+              <mat-option [value]="status.value">{{ status.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-stroked-button (click)="clearFilters()">
+          <mat-icon>clear_all</mat-icon>
+          Clear
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Orders Table -->
+  <mat-card class="orders-table-card">
+    <mat-card-header>
+      <mat-card-title>Orders List</mat-card-title>
+      <mat-card-subtitle>
+        @if (totalOrders > 0) {
+          Showing {{ orders.length }} of {{ totalOrders }} orders
+        } @else {
+          No orders found
+        }
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (isLoading) {
+        <div class="loading-container">
+          <mat-spinner></mat-spinner>
+          <p>Loading orders...</p>
+        </div>
+      } @else if (orders.length > 0) {
+        <mat-table [dataSource]="orders" class="orders-table">
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>Order ID</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <strong>#{{ order.id }}</strong>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="customer">
+            <mat-header-cell *matHeaderCellDef>Customer</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <div class="customer-info">
+                <strong>{{ order.customer?.user?.name || order.customer?.name || 'Unknown Customer' }}</strong>
+                <small>{{ order.customer?.user?.email || order.customer?.email || '' }}</small>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="orderDate">
+            <mat-header-cell *matHeaderCellDef>Order Date</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              {{ order.orderDate | date: 'short' }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <strong>Rs. {{ order.total | number: '1.2-2' }}</strong>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <mat-chip [class]="getStatusClass(order.status)">
+                {{ getStatusLabel(order.status) }}
+              </mat-chip>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="items">
+            <mat-header-cell *matHeaderCellDef>Items</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <span class="items-count">
+                {{ getTotalItems(order) }} item{{ getTotalItems(order) !== 1 ? 's' : '' }}
+              </span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <button
+                mat-icon-button
+                (click)="viewOrder(order)"
+                [attr.aria-label]="'View order ' + order.id"
+                matTooltip="View Order"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                (click)="editOrder(order)"
+                [attr.aria-label]="'Edit order ' + order.id"
+                matTooltip="Edit Order"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteOrder(order)"
+                [attr.aria-label]="'Delete order ' + order.id"
+                matTooltip="Delete Order"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            class="order-row"
+          ></mat-row>
+        </mat-table>
+
+        <!-- Pagination -->
+        <mat-paginator
+          [length]="totalOrders"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[10, 25, 50]"
+          [pageIndex]="currentPage"
+          (page)="onPageChange($event)"
+          showFirstLastButtons
+        >
+        </mat-paginator>
+      } @else {
+        <div class="no-orders">
+          <mat-icon>shopping_cart</mat-icon>
+          <h3>No orders found</h3>
+          <p>
+            No orders match your current filters or no orders have been placed yet.
+          </p>
+          <div class="no-orders-actions">
+            <button mat-raised-button color="primary" routerLink="/admin/orders/new">
+              <mat-icon>add_shopping_cart</mat-icon>
+              Create New Order
+            </button>
+            <button mat-button (click)="clearFilters()">
+              <mat-icon>clear_all</mat-icon>
+              Clear Filters
+            </button>
+          </div>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

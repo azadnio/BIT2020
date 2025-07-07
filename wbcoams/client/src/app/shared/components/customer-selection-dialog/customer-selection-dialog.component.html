@@ -1,0 +1,159 @@
+<div class="customer-dialog-container">
+  <!-- Dialog Header -->
+  <div class="dialog-header">
+    <h2 mat-dialog-title>
+      <mat-icon>people</mat-icon>
+      {{ data.title || 'Select Customer' }}
+    </h2>
+    <button mat-icon-button (click)="onCancel()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search customers</mat-label>
+      <input matInput 
+             [(ngModel)]="searchQuery" 
+             (ngModelChange)="onSearchChange()"
+             placeholder="Search by ID, name, city, or phone">
+      <mat-icon matPrefix>search</mat-icon>
+      @if (searchQuery) {
+        <button matSuffix mat-icon-button (click)="searchQuery=''; onSearchChange()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <!-- Selection Info -->
+  @if (data.allowMultiSelect && selectedCustomers.length > 0) {
+    <div class="selection-info">
+      <span>{{ getSelectionText() }}</span>
+      <button mat-button color="warn" (click)="clearSelection()">
+        <mat-icon>clear_all</mat-icon>
+        Clear Selection
+      </button>
+    </div>
+  }
+
+  <!-- Loading Spinner -->
+  @if (isLoading) {
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Loading customers...</p>
+    </div>
+  } @else {
+    <!-- Customer Table -->
+    <div class="table-container">
+      <table mat-table [dataSource]="filteredCustomers" class="customers-table">
+        <!-- Selection Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef class="select-column">
+            @if (data.allowMultiSelect) {
+              Select
+            }
+          </th>
+          <td mat-cell *matCellDef="let customer" class="select-column">
+            <button mat-icon-button 
+                    [color]="isSelected(customer) ? 'primary' : ''" 
+                    (click)="toggleSelection(customer)"
+                    [matTooltip]="isSelected(customer) ? 'Remove from selection' : 'Add to selection'">
+              <mat-icon>{{ isSelected(customer) ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Customer ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+          <td mat-cell *matCellDef="let customer">
+            <span class="customer-id">{{ customer.id }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let customer">
+            <div class="customer-info">
+              <span class="customer-name">{{ customer.name }}</span>
+              @if (customer.email) {
+                <span class="customer-email">{{ customer.email }}</span>
+              }
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let customer">
+            <span class="customer-city">{{ customer.city }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Phone Number Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+          <td mat-cell *matCellDef="let customer">
+            <span class="customer-phone">{{ customer.phoneNumber }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="actions-column">Actions</th>
+          <td mat-cell *matCellDef="let customer" class="actions-column">
+            <button mat-button color="primary" (click)="selectCustomer(customer)">
+              @if (data.allowMultiSelect) {
+                {{ isSelected(customer) ? 'Selected' : 'Select' }}
+              } @else {
+                Choose
+              }
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+            [class.selected-row]="isSelected(row)"
+            (dblclick)="selectCustomer(row)"></tr>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator 
+      [length]="totalCustomers"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20, 50]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons>
+    </mat-paginator>
+
+    <!-- No Results -->
+    @if (filteredCustomers.length === 0 && !isLoading) {
+      <div class="no-results">
+        <mat-icon>search_off</mat-icon>
+        <p>No customers found</p>
+        @if (searchQuery) {
+          <p class="suggestion">Try adjusting your search criteria</p>
+        }
+      </div>
+    }
+  }
+
+  <!-- Dialog Actions -->
+  <div class="dialog-actions" mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    @if (data.allowMultiSelect) {
+      <button mat-raised-button 
+              color="primary" 
+              (click)="onConfirm()" 
+              [disabled]="selectedCustomers.length === 0">
+        Confirm Selection ({{ selectedCustomers.length }})
+      </button>
+    }
+  </div>
+</div>

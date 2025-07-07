@@ -1,0 +1,334 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "utilities" as *;
+
+.home-container {
+  overflow-x: hidden;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, $blue-600 0%, $purple-600 100%);
+  color: $white;
+  padding: $spacing-2xl 0;
+  @include flex-center;
+
+  .hero-content {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    @include grid-responsive(2, $spacing-4xl);
+    align-items: center;
+
+    @include media-down(md) {
+      @include grid-responsive(1, $spacing-xl);
+      text-align: center;
+    }
+
+    .hero-text {
+      h1 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-xs;
+        text-shadow: $shadow-text;
+      }
+      
+      h2 {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-xl;
+        opacity: 0.9;
+      }
+      
+      p {
+        font-size: $font-size-base;
+        line-height: $line-height-relaxed;
+        margin-bottom: $spacing-xl;
+        opacity: 0.9;
+      }
+    }
+
+    .hero-actions {
+      @include flex-row;
+      gap: $spacing-lg;
+
+      @include media-down(md) {
+        @include flex-center;
+      }
+    }
+
+    .hero-image {
+      img {
+        width: 80%;
+        height: 238px;
+        object-fit: cover;
+        border-radius: $border-radius-lg;
+        @include elevation(3);
+      }
+    }
+  }
+
+  .shop-now-btn,
+  .register-btn {
+    height: 48px;
+    font-size: $font-size-lg;
+    padding: 0 $spacing-xl;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.features-section {
+  padding: $spacing-3xl 0;
+  background-color: $gray-50;
+
+  h2 {
+    @include heading-section;
+    margin-bottom: $spacing-3xl;
+  }
+
+  .features-grid {
+    @include grid-responsive(auto-fit, $spacing-2xl, 250px);
+
+    .feature-card {
+      @include card;
+      @include text-center;
+      padding: $spacing-2xl;
+      @include transition(transform);
+
+      &:hover {
+        @include hover-lift;
+      }
+
+      .feature-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        color: $primary-600;
+        margin-bottom: $spacing-md;
+      }
+
+      h3 {
+        margin-bottom: $spacing-sm;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.featured-products {
+  padding: $spacing-3xl 0;
+
+  .section-header {
+    @include flex-between;
+    margin-bottom: $spacing-3xl;
+
+    @include media-down(md) {
+      @include flex-center-column;
+      gap: $spacing-md;
+    }
+
+    h2 {
+      @include heading-section;
+    }
+
+    .view-all-btn {
+      @include flex-center;
+      gap: $spacing-xs;
+    }
+  }
+
+  .products-grid {
+    @include grid-responsive(auto-fit, $spacing-lg, 280px);
+
+    .product-card {
+      @include transition(transform, box-shadow);
+
+      &:hover {
+        @include hover-lift;
+        @include elevation(3);
+      }
+
+      .product-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .no-image {
+          @include flex-center;
+          height: 100%;
+          background-color: $gray-100;
+          color: $gray-400;
+
+          mat-icon {
+            font-size: 64px;
+            width: 64px;
+            height: 64px;
+          }
+        }
+
+        .sale-chip {
+          position: absolute;
+          top: $spacing-xs;
+          right: $spacing-xs;
+          background-color: $red-500 !important;
+          color: $white !important;
+        }
+      }
+
+      .product-name {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        margin-bottom: $spacing-xs;
+        color: $text-color;
+      }
+
+      .product-info {
+        font-size: $font-size-sm;
+        color: $text-color-light;
+        margin-bottom: $spacing-sm;
+        @include line-clamp(2);
+      }
+
+      .product-pricing {
+        @include flex-center;
+        gap: $spacing-xs;
+        margin-bottom: $spacing-md;
+
+        .old-price {
+          text-decoration: line-through;
+          color: $gray-400;
+          font-size: $font-size-sm;
+        }
+
+        .current-price {
+          font-size: $font-size-xl;
+          font-weight: $font-weight-semibold;
+          color: $success-600;
+        }
+
+        .unit {
+          font-size: $font-size-sm;
+          color: $text-color-light;
+        }
+      }
+
+      .add-to-cart-btn {
+        width: 100%;
+        height: 40px;
+      }
+    }
+  }
+
+  .loading-message {
+    @include text-center;
+    padding: $spacing-3xl;
+    color: $text-color-light;
+    @include flex-center;
+    gap: $spacing-sm;
+  }
+}
+
+.categories-section {
+  padding: $spacing-3xl 0;
+  background-color: $gray-50;
+
+  h2 {
+    @include heading-section;
+    margin-bottom: $spacing-3xl;
+  }
+
+  .categories-grid {
+    @include grid-responsive(auto-fit, $spacing-lg, 250px);
+
+    .category-card {
+      @include card;
+      @include text-center;
+      padding: $spacing-2xl;
+      cursor: pointer;
+      @include transition(transform, box-shadow);
+
+      &:hover {
+        @include hover-lift;
+        @include elevation(3);
+      }
+
+      .category-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        color: $primary-600;
+        margin-bottom: $spacing-md;
+      }
+
+      h3 {
+        margin-bottom: $spacing-sm;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.contact-section {
+  padding: $spacing-2xl 0;
+  background-color: $gray-800;
+  color: $white;
+  border-bottom: 1px solid $white;
+
+  h2 {
+    margin-bottom: $spacing-2xl;
+    font-size: $font-size-3xl;
+  }
+
+  .contact-content {
+    @include grid-responsive(2fr 1fr, $spacing-3xl);
+
+    @include media-down(md) {
+      @include grid-responsive(1, $spacing-2xl);
+    }
+
+    .contact-details {
+      @include flex-column;
+      gap: $spacing-sm;
+
+      .contact-item {
+        @include flex-row;
+        align-items: flex-start;
+        gap: $spacing-md;
+
+        mat-icon {
+          color: $blue-400;
+          margin-top: $spacing-xs;
+        }
+      }
+    }
+
+    .store-hours {
+      @include flex-center-column;
+      justify-content: center;
+
+      h3 {
+        margin-bottom: $spacing-lg;
+        color: $gray-200;
+      }
+
+      .hours-list {
+        @include flex-column;
+        gap: $spacing-sm;
+
+        .hours-item {
+          @include flex-between;
+          padding: $spacing-xs 0;
+          border-bottom: 1px solid $gray-600;
+        }
+      }
+    }
+  }
+}

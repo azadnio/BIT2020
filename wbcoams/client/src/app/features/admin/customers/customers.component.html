@@ -1,0 +1,226 @@
+<div class="customers-container">
+      <!-- Header -->
+      <div class="page-header">
+        <div class="header-content">
+          <div class="header-text">
+            <h1>Customer Management</h1>
+            <p>Manage customer accounts and credit information</p>
+          </div>
+          <button mat-raised-button color="primary" class="new-customer-btn" routerLink="/admin/customers/add">
+            <mat-icon>person_add</mat-icon>
+            New Customer
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters and Search -->
+      <mat-card class="filters-card">
+        <mat-card-content>
+          <div class="filters-row">
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search Customers</mat-label>
+              <input
+                matInput
+                [(ngModel)]="searchQuery"
+                (ngModelChange)="onFiltersChange()"
+                placeholder="Search by name, email, or city"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Filter by Status</mat-label>
+              <mat-select
+                [(ngModel)]="statusFilter"
+                (ngModelChange)="onFiltersChange()"
+              >
+                <mat-option value="">All Customers</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Filter by City</mat-label>
+              <mat-select
+                [(ngModel)]="cityFilter"
+                (ngModelChange)="onFiltersChange()"
+              >
+                <mat-option value="">All Cities</mat-option>
+                @for (city of cities; track city) {
+                  <mat-option [value]="city">{{ city }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <button mat-stroked-button (click)="clearFilters()">
+              <mat-icon>clear_all</mat-icon>
+              Clear
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Customers Table -->
+      <mat-card class="customers-table-card">
+        <mat-card-header>
+          <mat-card-title>Registered Customers</mat-card-title>
+          <mat-card-subtitle>
+            @if (totalCustomers > 0) {
+              Showing {{ customers.length }} of {{ totalCustomers }} customers
+            } @else {
+              No customers found
+            }
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          @if (isLoading) {
+            <div class="loading-container">
+              <mat-spinner></mat-spinner>
+              <p>Loading customers...</p>
+            </div>
+          } @else if (customers.length > 0) {
+            <mat-table [dataSource]="customers" class="customers-table">
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                <mat-cell *matCellDef="let customer">{{
+                  customer.id
+                }}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                  <div class="customer-info">
+                    <strong>{{ customer?.name }}</strong>
+                    <small>{{ customer?.email }}</small>
+                  </div>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+                <mat-cell *matCellDef="let customer">{{
+                  customer?.city
+                }}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="mobile">
+                <mat-header-cell *matHeaderCellDef>Mobile</mat-header-cell>
+                <mat-cell *matCellDef="let customer">{{
+                  customer.mobile
+                }}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="creditLimit">
+                <mat-header-cell *matHeaderCellDef
+                  >Credit Limit</mat-header-cell
+                >
+                <mat-cell *matCellDef="let customer">
+                  <strong
+                    >Rs. {{ customer.creditLimit | number: '1.2-2' }}</strong
+                  >
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="creditBalance">
+                <mat-header-cell *matHeaderCellDef>Balance</mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                  <span
+                    [class]="
+                      customer.creditBalance > 0
+                        ? 'negative-balance'
+                        : 'positive-balance'
+                    "
+                  >
+                    Rs. {{ customer.creditBalance | number: '1.2-2' }}
+                  </span>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                  <mat-chip
+                    [class]="
+                      customer.user?.isActive
+                        ? 'status-active'
+                        : 'status-inactive'
+                    "
+                  >
+                    {{ customer.user?.isActive ? 'Active' : 'Inactive' }}
+                  </mat-chip>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let customer">
+                  <button
+                    mat-icon-button
+                    routerLink="/admin/customers/{{ customer.id }}"
+                    [attr.aria-label]="'View customer ' + customer.user?.name"
+                  >
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    (click)="editCustomer(customer)"
+                    [attr.aria-label]="'Edit customer ' + customer.user?.name"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    (click)="deleteCustomer(customer)"
+                    [attr.aria-label]="'Delete customer ' + customer.user?.name"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row
+                *matRowDef="let row; columns: displayedColumns"
+                class="customer-row"
+              ></mat-row>
+            </mat-table>
+
+            <!-- Pagination -->
+            <mat-paginator
+              [length]="totalCustomers"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[10, 25, 50]"
+              [pageIndex]="currentPage"
+              (page)="onPageChange($event)"
+              showFirstLastButtons
+            >
+            </mat-paginator>
+          } @else {
+            <div class="no-customers">
+              <mat-icon>people</mat-icon>
+              <h3>No customers found</h3>
+              <p>
+                No customers match your current filters or no customers have
+                been registered yet.
+              </p>
+              <div class="no-customers-actions">
+                <button mat-raised-button color="primary" routerLink="/admin/customers/add">
+                  <mat-icon>person_add</mat-icon>
+                  Add New Customer
+                </button>
+                <button mat-button (click)="clearFilters()">
+                  <mat-icon>clear_all</mat-icon>
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
