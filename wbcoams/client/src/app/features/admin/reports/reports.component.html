@@ -1,0 +1,317 @@
+<div class="reports-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1><mat-icon>assessment</mat-icon> Reports & Analytics</h1>
+        <p>Generate and export business reports</p>
+    </div>
+
+    <!-- Report Controls -->
+    <mat-card class="controls-card no-print">
+        <mat-card-header>
+            <mat-card-title>Report Parameters</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="controls-grid">
+                <mat-form-field appearance="outline">
+                    <mat-label>Report Type</mat-label>
+                    <mat-select [(ngModel)]="reportType">
+                        <mat-option value="customer-sales">Customer Sales Report</mat-option>
+                        <mat-option value="customer-payments">Customer Payments Report</mat-option>
+                        <mat-option value="customer-specific-sales">Sales Report (Specific Customer)</mat-option>
+                        <mat-option value="return-cheques">Return Cheques Report</mat-option>
+                        <mat-option value="sales-payment-comparison">Sales and Payment Comparison</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                @if (reportType === 'customer-specific-sales') {
+                <div class="customer-selection-field">
+                    <mat-form-field appearance="outline" class="selected-customer-display">
+                        <mat-label>Selected Customer</mat-label>
+                        <input matInput 
+                               [value]="selectedCustomerName" 
+                               readonly 
+                               placeholder="Click to select customer">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                    <button mat-raised-button 
+                            color="primary" 
+                            (click)="openCustomerSelectionDialog()"
+                            class="select-customer-btn">
+                        <mat-icon>search</mat-icon>
+                        Select Customer
+                    </button>
+                </div>
+                }
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
+                </mat-form-field>
+
+                <div class="action-buttons">
+                    <button mat-raised-button color="primary" (click)="generateReport()" [disabled]="isLoading">
+                        @if (isLoading) {
+                        <mat-spinner diameter="20"></mat-spinner>
+                        } @else {
+                        <mat-icon>play_arrow</mat-icon>
+                        }
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Export Actions -->
+    <div class="export-actions no-print">
+        <button mat-stroked-button (click)="printReport()">
+            <mat-icon>print</mat-icon>
+            Print
+        </button>
+        <!-- <button mat-stroked-button (click)="exportToPDF()">
+      <mat-icon>picture_as_pdf</mat-icon>
+      Export PDF
+    </button>
+    <button mat-stroked-button (click)="exportToExcel()">
+      <mat-icon>table_chart</mat-icon>
+      Export Excel
+    </button> -->
+    </div>
+
+    <!-- Report Content -->
+    <div id="report-content" class="report-content">
+        <!-- Letterhead -->
+        <div class="letterhead">
+            <img src="assets/test.jpg" 
+                 alt="Capital Hardware Letterhead" 
+                 class="letterhead-image"
+                 (error)="onLetterheadImageError($event)">
+        </div>
+
+        <!-- Report Header -->
+        <div class="report-header">
+            @switch (reportType) {
+            @case ('customer-sales') {
+            <h2>Customer's sales report</h2>
+            }
+            @case ('customer-payments') {
+            <h2>Customer payments report</h2>
+            }
+            @case ('customer-specific-sales') {
+            <h2>Sales Report</h2>
+            <p class="customer-info">Customer: {{getSelectedCustomerName()}}</p>
+            <p class="customer-info">Customer ID: {{selectedCustomer}}</p>
+            }
+            @case ('return-cheques') {
+            <h2>Return cheques</h2>
+            }
+            @case ('sales-payment-comparison') {
+            <h2>Sales and Payment Comparison</h2>
+            }
+            }
+            <p class="date-range">From: {{startDate | date:'dd-MM-yyyy'}} To: {{endDate | date:'dd-MM-yyyy'}}</p>
+        </div>
+
+        <!-- Customer Sales Report -->
+        @if (reportType === 'customer-sales') {
+        <div class="report-table-container">
+            <table mat-table [dataSource]="customerSalesData" class="report-table">
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="customerId">
+                    <th mat-header-cell *matHeaderCellDef>CUSTOMER ID</th>
+                    <td mat-cell *matCellDef="let customer">{{customer.customerId}}</td>
+                </ng-container>
+
+                <!-- Name & City Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>NAME & CITY</th>
+                    <td mat-cell *matCellDef="let customer">{{customer.name}}</td>
+                </ng-container>
+
+                <!-- Purchases Column -->
+                <ng-container matColumnDef="purchases">
+                    <th mat-header-cell *matHeaderCellDef>PURCHASES(Rs.)</th>
+                    <td mat-cell *matCellDef="let customer" class="amount">{{customer.purchases | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="customerSalesColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: customerSalesColumns;"></tr>
+            </table>
+
+            <!-- Total Row -->
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">{{getCustomerSalesTotal() | number:'1.2-2'}}</span>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Customer Payments Report -->
+        @if (reportType === 'customer-payments') {
+        <div class="report-table-container">
+            <table mat-table [dataSource]="customerPaymentsData" class="report-table">
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="customerId">
+                    <th mat-header-cell *matHeaderCellDef>CUSTOMER ID</th>
+                    <td mat-cell *matCellDef="let payment">{{payment.customerId}}</td>
+                </ng-container>
+
+                <!-- Name & City Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>NAME & CITY</th>
+                    <td mat-cell *matCellDef="let payment">{{payment.name}}</td>
+                </ng-container>
+
+                <!-- Amount Column -->
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>AMOUNT(Rs.)</th>
+                    <td mat-cell *matCellDef="let payment" class="amount">{{payment.amount | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="customerPaymentsColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: customerPaymentsColumns;"></tr>
+            </table>
+
+            <!-- Total Row -->
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">{{getCustomerPaymentsTotal() | number:'1.2-2'}}</span>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Customer Specific Sales Report -->
+        @if (reportType === 'customer-specific-sales') {
+        <div class="report-table-container">
+            <table mat-table [dataSource]="customerSpecificSalesData" class="report-table">
+                <!-- Invoice No Column -->
+                <ng-container matColumnDef="invoiceNo">
+                    <th mat-header-cell *matHeaderCellDef>INVOICE NO</th>
+                    <td mat-cell *matCellDef="let sale">{{sale.invoiceNo}}</td>
+                </ng-container>
+
+                <!-- Date Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>DATE</th>
+                    <td mat-cell *matCellDef="let sale">{{sale.date}}</td>
+                </ng-container>
+
+                <!-- Amount Column -->
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>AMOUNT(Rs.)</th>
+                    <td mat-cell *matCellDef="let sale" class="amount">{{sale.amount | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="customerSpecificSalesColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: customerSpecificSalesColumns;"></tr>
+            </table>
+
+            <!-- Total Row -->
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Total</span>
+                    <span class="total-amount">{{getCustomerSpecificSalesTotal() | number:'1.2-2'}}</span>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Return Cheques Report -->
+        @if (reportType === 'return-cheques') {
+        <div class="report-table-container">
+            <table mat-table [dataSource]="returnChequesData" class="report-table">
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="cusId">
+                    <th mat-header-cell *matHeaderCellDef>Cus ID</th>
+                    <td mat-cell *matCellDef="let cheque">{{cheque.cusId}}</td>
+                </ng-container>
+
+                <!-- Customer Name Column -->
+                <ng-container matColumnDef="customerName">
+                    <th mat-header-cell *matHeaderCellDef>CUSTOMER NAME AND CITY</th>
+                    <td mat-cell *matCellDef="let cheque">{{cheque.customerName}}</td>
+                </ng-container>
+
+                <!-- Cheque No Column -->
+                <ng-container matColumnDef="chequeNo">
+                    <th mat-header-cell *matHeaderCellDef>Cheque No</th>
+                    <td mat-cell *matCellDef="let cheque">{{cheque.chequeNo}}</td>
+                </ng-container>
+
+                <!-- Amount Column -->
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef>AMOUNT(Rs.)</th>
+                    <td mat-cell *matCellDef="let cheque" class="amount">{{cheque.amount | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="returnChequesColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: returnChequesColumns;"></tr>
+            </table>
+
+            <!-- Total Row -->
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Total:</span>
+                    <span class="total-amount">{{getReturnChequesTotal() | number:'1.2-2'}}</span>
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- Sales and Payment Comparison Report -->
+        @if (reportType === 'sales-payment-comparison') {
+        <div class="report-table-container">
+            <table mat-table [dataSource]="salesPaymentComparisonData" class="report-table">
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="cusId">
+                    <th mat-header-cell *matHeaderCellDef>Cus ID</th>
+                    <td mat-cell *matCellDef="let item">{{item.cusId}}</td>
+                </ng-container>
+
+                <!-- Customer Name Column -->
+                <ng-container matColumnDef="customerName">
+                    <th mat-header-cell *matHeaderCellDef>CUSTOMER NAME AND CITY</th>
+                    <td mat-cell *matCellDef="let item">{{item.customerName}}</td>
+                </ng-container>
+
+                <!-- Sales Column -->
+                <ng-container matColumnDef="sales">
+                    <th mat-header-cell *matHeaderCellDef>Sales(Rs.)</th>
+                    <td mat-cell *matCellDef="let item" class="amount">{{item.sales | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <!-- Payments Column -->
+                <ng-container matColumnDef="payments">
+                    <th mat-header-cell *matHeaderCellDef>Payments(Rs.)</th>
+                    <td mat-cell *matCellDef="let item" class="amount">{{item.payments | number:'1.2-2'}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="salesPaymentComparisonColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: salesPaymentComparisonColumns;"></tr>
+            </table>
+
+            <!-- Total Row -->
+            <div class="total-section">
+                <div class="total-row">
+                    <span class="total-label">Total</span>
+                    <span class="total-sales">{{getSalesPaymentComparisonTotals().sales | number:'1.2-2'}}</span>
+                    <span class="total-payments">{{getSalesPaymentComparisonTotals().payments | number:'1.2-2'}}</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

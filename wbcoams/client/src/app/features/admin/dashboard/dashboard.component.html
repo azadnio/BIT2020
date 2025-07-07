@@ -1,0 +1,213 @@
+<div class="dashboard-container">
+      <!-- Header -->
+      <div class="dashboard-header">
+        <h1>Capital Hardware Management Dashboard</h1>
+        <p>Comprehensive overview of your business operations</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <!-- Invoices Card -->
+        <mat-card class="stat-card invoices-card" routerLink="/admin/invoices">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>receipt</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>INVOICES</h2>
+                <p class="stat-number">{{ stats?.totalCustomers || 0 }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Orders Card -->
+        <mat-card class="stat-card orders-card" routerLink="/admin/orders">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>shopping_cart</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>ORDERS</h2>
+                <p class="stat-number">{{ stats?.pendingOrders || 0 }}</p>
+                <!-- @if (stats?.newOrdersToday && stats.newOrdersToday > 0) {
+                  <mat-chip class="new-orders-chip">{{ stats.newOrdersToday }} NEW ORDERS</mat-chip>
+                } -->
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Payment Card -->
+        <mat-card class="stat-card payment-card" routerLink="/admin/payments">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>payment</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>PAYMENT</h2>
+                <p class="stat-number">{{ stats?.pendingPayments || 0 }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Customers Card -->
+        <mat-card
+          class="stat-card customers-card"
+          routerLink="/admin/customers"
+        >
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>people</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>CUSTOMERS</h2>
+                <p class="stat-number">{{ stats?.totalCustomers || 0 }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Items Card -->
+        <mat-card class="stat-card items-card" routerLink="/admin/products">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>inventory</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>ITEMS</h2>
+                <p class="stat-number">{{ stats?.totalProducts || 0 }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Accounts Card -->
+        <mat-card class="stat-card accounts-card" routerLink="/admin/customers">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>account_balance</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>ACCOUNTS</h2>
+                <p class="stat-number">{{ stats?.totalCustomers || 0 }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Cheques Card -->
+        <mat-card class="stat-card cheques-card" routerLink="/admin/payments">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>receipt_long</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>CHEQUES</h2>
+                <p class="stat-number">0</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Contact Messages Card -->
+        <mat-card class="stat-card messages-card" routerLink="/admin/contact-messages">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>message</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>MESSAGES</h2>
+                <p class="stat-number">{{ stats?.totalMessages || 0 }}</p>
+                @if (stats && stats.unreadMessages && stats.unreadMessages > 0) {
+                  <p class="stat-subtitle">{{ stats.unreadMessages }} unread</p>
+                }
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Sales Return Card -->
+        <mat-card class="stat-card sales-return-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon">
+                <mat-icon>keyboard_return</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h2>SALES RETURN</h2>
+                <p class="stat-number">0</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <div class="actions-header">
+          <h2>Quick Actions</h2>
+        </div>
+        <div class="actions-buttons">
+          <button mat-raised-button color="primary" class="action-button">
+            <mat-icon>add</mat-icon>
+            New Item
+          </button>
+          <button mat-raised-button color="accent" class="action-button">
+            <mat-icon>person_add</mat-icon>
+            New Customer
+          </button>
+          <button mat-raised-button class="action-button">
+            <mat-icon>receipt</mat-icon>
+            New Invoice
+          </button>
+          <button mat-raised-button class="action-button">
+            <mat-icon>payment</mat-icon>
+            New Payment
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="recent-activity">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Recent Activity</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="activity-list">
+              <div class="activity-item">
+                <mat-icon class="activity-icon">shopping_cart</mat-icon>
+                <div class="activity-details">
+                  <p><strong>New order received</strong> from John Customer</p>
+                  <span class="activity-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <mat-icon class="activity-icon">payment</mat-icon>
+                <div class="activity-details">
+                  <p><strong>Payment processed</strong> for Invoice #001</p>
+                  <span class="activity-time">4 hours ago</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <mat-icon class="activity-icon">person_add</mat-icon>
+                <div class="activity-details">
+                  <p><strong>New customer registered</strong></p>
+                  <span class="activity-time">1 day ago</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>

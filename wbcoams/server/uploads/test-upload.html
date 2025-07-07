@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .upload-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+        .error {
+            background: #ffe7e7;
+            border-left-color: #dc3545;
+        }
+        .success {
+            background: #e7ffe7;
+            border-left-color: #28a745;
+        }
+        select, input[type="file"] {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Uploads Test Page</h1>
+        <p>Test the uploads functionality of your NestJS server.</p>
+
+        <!-- Test Connection -->
+        <div class="upload-section">
+            <h3>1. Test Connection</h3>
+            <button class="button" onclick="testConnection()">Test Uploads API</button>
+            <div id="connectionResult"></div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="upload-section">
+            <h3>2. Upload File</h3>
+            <div>
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="temp">Temporary</option>
+                    <option value="products">Products</option>
+                    <option value="users">Users</option>
+                    <option value="customer">Customer</option>
+                    <option value="brand">Brand</option>
+                    <option value="documents">Documents</option>
+                    <option value="invoices">Invoices</option>
+                    <option value="reports">Reports</option>
+                </select>
+            </div>
+            <div>
+                <label for="fileInput">Choose file:</label>
+                <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt">
+            </div>
+            <button class="button" onclick="uploadFile()">Upload File</button>
+            <div id="uploadResult"></div>
+        </div>
+
+        <!-- Test Access -->
+        <div class="upload-section">
+            <h3>3. Test File Access</h3>
+            <p>Try accessing the test file:</p>
+            <a href="http://localhost:3000/uploads/test.txt" target="_blank" class="button">Open Test File</a>
+            <div id="fileAccessResult"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000/api';
+
+        async function testConnection() {
+            const resultDiv = document.getElementById('connectionResult');
+            resultDiv.innerHTML = '<p>Testing connection...</p>';
+
+            try {
+                const response = await fetch(`${API_BASE}/uploads/test`);
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h4>✅ Connection Successful!</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h4>❌ Connection Failed</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Make sure your NestJS server is running on port 3000</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const category = document.getElementById('category').value;
+            const resultDiv = document.getElementById('uploadResult');
+
+            if (!fileInput.files[0]) {
+                resultDiv.innerHTML = '<div class="result error">Please select a file first.</div>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            resultDiv.innerHTML = '<p>Uploading file...</p>';
+
+            try {
+                const response = await fetch(`${API_BASE}/uploads/file/${category}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h4>✅ File Uploaded Successfully!</h4>
+                            <p><strong>File:</strong> ${data.file.originalName}</p>
+                            <p><strong>Size:</strong> ${Math.round(data.file.size / 1024)} KB</p>
+                            <p><strong>Category:</strong> ${data.file.category}</p>
+                            <p><strong>Public URL:</strong></p>
+                            <a href="${data.file.publicUrl}" target="_blank">${data.file.publicUrl}</a>
+                            <br><br>
+                            ${data.file.mimetype.startsWith('image/') ? 
+                                `<img src="${data.file.publicUrl}" style="max-width: 200px; border: 1px solid #ddd; border-radius: 5px;">` : 
+                                ''
+                            }
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <h4>❌ Upload Failed</h4>
+                            <p>${data.message || 'Unknown error occurred'}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h4>❌ Upload Error</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test connection on page load
+        window.onload = function() {
+            testConnection();
+        };
+    </script>
+</body>
+</html>

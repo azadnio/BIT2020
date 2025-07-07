@@ -1,0 +1,117 @@
+<div class="contact-us-container">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><mat-icon>contact_support</mat-icon> Contact Us</h1>
+    <p>Get in touch with Capital Hardware - We're here to help!</p>
+  </div>
+
+  <div class="content">
+    <div class="contact-info">
+      <div class="col">
+        <mat-icon>store</mat-icon>
+        <p class="title">Our Store</p>
+        <ul>
+          <li>207,</li>
+          <li>Old Moor Street,</li>
+          <li>Colombo 12.</li>
+          <li>Sri Lanka</li>
+        </ul>
+      </div>
+      
+      <div class="col">
+        <mat-icon>phone</mat-icon>
+        <p class="title">Phone Number</p>
+        <ul>
+          <li><a href="tel:+9411302302">+94 11 302 302</a></li>
+          <li><a href="tel:+94777217558">+94 77 721 7558</a></li>
+        </ul>
+      </div>
+      
+      <div class="col">
+        <mat-icon>schedule</mat-icon>
+        <p class="title">Working Hours</p>
+        <ul>
+          <li>Mon - Fri: 9:00 AM to 6:00 PM</li>
+          <li>Saturday: 9:00 AM to 3:00 PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="contact-form-section">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-header">
+          <h2><mat-icon>email</mat-icon> Send us a Message</h2>
+          <p>Have a question or need assistance? We'd love to hear from you!</p>
+        </div>
+
+        <div class="form-grid">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Name</mat-label>
+            <input matInput formControlName="name" placeholder="Enter your full name">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error>{{ getErrorMessage('name') }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="Enter your email address">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error>{{ getErrorMessage('email') }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Subject</mat-label>
+            <input matInput formControlName="subject" placeholder="What is this regarding?">
+            <mat-icon matSuffix>subject</mat-icon>
+            <mat-error>{{ getErrorMessage('subject') }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width message-field">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message" rows="6" placeholder="Tell us how we can help you..."></textarea>
+            <mat-icon matSuffix>message</mat-icon>
+            <mat-error>{{ getErrorMessage('message') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="btn-wrap">
+          <button type="submit" mat-raised-button color="primary" [disabled]="contactForm.invalid || isSubmitting">
+            @if (isSubmitting) {
+              <ng-container>
+                <mat-spinner diameter="20"></mat-spinner>
+                <span style="margin-left: 8px;">Sending...</span>
+              </ng-container>
+            } @else {
+              <ng-container>
+                <mat-icon>send</mat-icon>
+                Send Message
+              </ng-container>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Additional Information Section -->
+  <div class="additional-info">
+    <div class="info-card">
+      <mat-icon>location_on</mat-icon>
+      <h3>Visit Our Store</h3>
+      <p>Come visit our physical store to see our wide range of hardware products in person. Our knowledgeable staff is ready to assist you with all your hardware needs.</p>
+    </div>
+
+    <div class="info-card">
+      <mat-icon>support_agent</mat-icon>
+      <h3>Customer Support</h3>
+      <p>Our dedicated customer support team is available during business hours to help with product inquiries, order status, and technical support.</p>
+    </div>
+
+    <div class="info-card">
+      <mat-icon>local_shipping</mat-icon>
+      <h3>Delivery Services</h3>
+      <p>We offer reliable delivery services across Sri Lanka. Contact us to learn more about our delivery options and coverage areas.</p>
+    </div>
+  </div>
+</div>

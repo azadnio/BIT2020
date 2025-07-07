@@ -1,0 +1,191 @@
+  <div class="dashboard-container">
+      <!-- Header Section -->
+      <div class="dashboard-header">
+        <div class="welcome-section">
+          <h1>Welcome back, Anuruddha Distributors!</h1>
+          <p>Manage your orders, payments, and account information</p>
+        </div>
+
+        @if (customerData) {
+          <div class="account-summary">
+            <mat-card class="summary-card credit-card">
+              <mat-card-content>
+                <div class="summary-item">
+                  <mat-icon>account_balance_wallet</mat-icon>
+                  <div>
+                    <h3>Credit Limit</h3>
+                    <p class="amount">
+                      Rs. {{ customerData.creditLimit | number: '1.2-2' }}
+                    </p>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card class="summary-card balance-card">
+              <mat-card-content>
+                <div class="summary-item">
+                  <mat-icon>account_balance</mat-icon>
+                  <div>
+                    <h3>Current Balance</h3>
+                    <p
+                      class="amount"
+                      [class.negative]="customerData.creditBalance > 0"
+                    >
+                      Rs. {{ customerData.creditBalance | number: '1.2-2' }}
+                    </p>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card class="summary-card available-card">
+              <mat-card-content>
+                <div class="summary-item">
+                  <mat-icon>payments</mat-icon>
+                  <div>
+                    <h3>Available Credit</h3>
+                    <p class="amount positive">
+                      Rs.
+                      {{
+                        customerData.creditLimit - customerData.creditBalance
+                          | number: '1.2-2'
+                      }}
+                    </p>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        }
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="actions-grid">
+          <mat-card class="action-card" routerLink="/products">
+            <mat-card-content>
+              <mat-icon>shopping_cart</mat-icon>
+              <h3>Browse Products</h3>
+              <p>Explore our wide range of hardware items</p>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="action-card" routerLink="/customer/orders">
+            <mat-card-content>
+              <mat-icon>list_alt</mat-icon>
+              <h3>View Orders</h3>
+              <p>Track your order status and history</p>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="action-card" routerLink="/customer/payments">
+            <mat-card-content>
+              <mat-icon>payment</mat-icon>
+              <h3>My Account</h3>
+              <p>Check outstandings & accounts</p>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="action-card" routerLink="/customer/profile">
+            <mat-card-content>
+              <mat-icon>person</mat-icon>
+              <h3>Update Profile</h3>
+              <p>Manage your account information</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="recent-activity">
+        <mat-tab-group>
+          <mat-tab label="Recent Orders">
+            <div class="tab-content">
+              @if (isLoadingOrders) {
+                <div class="loading-container">
+                  <mat-spinner></mat-spinner>
+                  <p>Loading orders...</p>
+                </div>
+              } @else if (recentOrders.length > 0) {
+                <div class="orders-list">
+                  @for (order of recentOrders; track order.id) {
+                    <mat-card class="order-item">
+                      <mat-card-content>
+                        <div class="order-header">
+                          <h4>Order #{{ order.id }}</h4>
+                          <span
+                            class="status-chip"
+                            [class]="'status-' + order.status"
+                          >
+                            {{ order.status | titlecase }}
+                          </span>
+                        </div>
+                        <div class="order-details">
+                          <p>
+                            <strong>Date:</strong>
+                            {{ order.orderDate | date: 'medium' }}
+                          </p>
+                          <p>
+                            <strong>Total:</strong> Rs.
+                            {{ order.total | number: '1.2-2' }}
+                          </p>
+                          @if (order.remarks) {
+                            <p><strong>Remarks:</strong> {{ order.remarks }}</p>
+                          }
+                        </div>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button
+                          mat-button
+                          routerLink="/customer/orders/{{ order.id }}"
+                        >
+                          View Details
+                        </button>
+                      </mat-card-actions>
+                    </mat-card>
+                  }
+                </div>
+                <div class="view-all">
+                  <button mat-stroked-button routerLink="/customer/orders">
+                    View All Orders
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              } @else {
+                <div class="no-data">
+                  <mat-icon>shopping_cart</mat-icon>
+                  <p>No orders yet. Start shopping to see your orders here!</p>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    routerLink="/products"
+                  >
+                    Browse Products
+                  </button>
+                </div>
+              }
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Payment History">
+            <div class="tab-content">
+              <div class="no-data">
+                <mat-icon>payment</mat-icon>
+                <p>Payment history will appear here</p>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Recent Invoices">
+            <div class="tab-content">
+              <div class="no-data">
+                <mat-icon>receipt</mat-icon>
+                <p>Recent invoices will appear here</p>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>

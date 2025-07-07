@@ -10,6 +10,11 @@
 # dependencies
 /node_modules
 
+# temp folders
+_*
+ui
+build
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
@@ -17,6 +22,7 @@ speed-measure-plugin*.json
 # IDEs and editors
 /.idea
 .project
+.vs
 .classpath
 .c9/
 *.launch
@@ -50,3 +56,5 @@ Thumbs.db
 /server/node_modules
 /client/package-lock.json
 /client/node_modules
+/PPL/node_modules
+node_modules

@@ -1,0 +1,300 @@
+<div class="products-container">
+      <!-- Header -->
+      <div class="page-header">
+        <div class="header-content">
+          <div class="header-text">
+            <h1>Product Management</h1>
+            <p>Manage your product inventory and catalog</p>
+          </div>
+          <button
+            mat-raised-button
+            color="primary"
+            class="new-product-btn"
+            routerLink="/admin/products/new"
+          >
+            <mat-icon>add</mat-icon>
+            New Product
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <mat-icon class="stat-icon">inventory</mat-icon>
+              <div class="stat-details">
+                <h3>Total Products</h3>
+                <p class="stat-number">{{ totalProducts }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <mat-icon class="stat-icon active">check_circle</mat-icon>
+              <div class="stat-details">
+                <h3>Active Products</h3>
+                <p class="stat-number">{{ activeProducts }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <mat-icon class="stat-icon inactive">block</mat-icon>
+              <div class="stat-details">
+                <h3>Inactive Products</h3>
+                <p class="stat-number">{{ inactiveProducts }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <mat-icon class="stat-icon">category</mat-icon>
+              <div class="stat-details">
+                <h3>Categories</h3>
+                <p class="stat-number">{{ categories.length }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Filters and Search -->
+      <mat-card class="filters-card">
+        <mat-card-content>
+          <div class="filters-row">
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search Products</mat-label>
+              <input
+                matInput
+                [(ngModel)]="searchQuery"
+                (ngModelChange)="onFiltersChange()"
+                placeholder="Search by name or description"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select
+                [(ngModel)]="categoryFilter"
+                (ngModelChange)="onFiltersChange()"
+              >
+                <mat-option value="">All Categories</mat-option>
+                @for (category of categories; track category.id) {
+                  <mat-option [value]="category.id">{{
+                    category.name
+                  }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Brand</mat-label>
+              <mat-select
+                [(ngModel)]="brandFilter"
+                (ngModelChange)="onFiltersChange()"
+              >
+                <mat-option value="">All Brands</mat-option>
+                @for (brand of brands; track brand.id) {
+                  <mat-option [value]="brand.id">{{ brand.name }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select
+                [(ngModel)]="statusFilter"
+                (ngModelChange)="onFiltersChange()"
+              >
+                <mat-option value="">All Status</mat-option>
+                <mat-option value="active">Active</mat-option>
+                <mat-option value="inactive">Inactive</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button mat-stroked-button (click)="clearFilters()">
+              <mat-icon>clear_all</mat-icon>
+              Clear
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Products Table -->
+      <mat-card class="products-table-card">
+        <mat-card-header>
+          <mat-card-title>Product Inventory</mat-card-title>
+          <mat-card-subtitle>
+            @if (totalProducts > 0) {
+              Showing {{ products.length }} of {{ totalProducts }} products
+            } @else {
+              No products found
+            }
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          @if (isLoading) {
+            <div class="loading-container">
+              <mat-spinner></mat-spinner>
+              <p>Loading products...</p>
+            </div>
+          } @else if (products.length > 0) {
+            <mat-table [dataSource]="products" class="products-table">
+              <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                  <div class="product-image">
+                    @if (product.image) {
+                      <img [src]="product.image" [alt]="product.description" />
+                    } @else {
+                      <mat-icon>image</mat-icon>
+                    }
+                  </div>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef
+                  >Product Details</mat-header-cell
+                >
+                <mat-cell *matCellDef="let product">
+                  <div class="product-details">
+                    <strong class="product-name">{{
+                      product.description
+                    }}</strong>
+                    <p class="product-info">{{ product.info }}</p>
+                    <div class="product-meta">
+                      <mat-chip class="category-chip">{{
+                        product.category?.name || 'No Category'
+                      }}</mat-chip>
+                      <mat-chip class="brand-chip">{{
+                        product.brand?.name || 'No Brand'
+                      }}</mat-chip>
+                    </div>
+                  </div>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                  <div class="price-info">
+                    @if (product.oldPrice && product.oldPrice > product.price) {
+                      <span class="old-price"
+                        >Rs. {{ product.oldPrice | number: '1.2-2' }}</span
+                      >
+                    }
+                    <span class="current-price"
+                      >Rs. {{ product.price | number: '1.2-2' }}</span
+                    >
+                    <span class="unit">/ {{ product.unit }}</span>
+                  </div>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                  <!-- <mat-slide-toggle 
+                    [checked]="product.isActive" 
+                    (toggleChange)="toggleProductStatus(product, $event.checked)"
+                    [attr.aria-label]="'Toggle status for ' + product.description">
+                    {{ product.isActive ? 'Active' : 'Inactive' }}
+                  </mat-slide-toggle> -->
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="created">
+                <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                  {{ product.createdAt | date: 'shortDate' }}
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let product">
+                  <button
+                    mat-icon-button
+                    (click)="viewProduct(product)"
+                    [attr.aria-label]="'View product ' + product.description"
+                  >
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    (click)="editProduct(product)"
+                    [attr.aria-label]="'Edit product ' + product.description"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    (click)="deleteProduct(product)"
+                    [attr.aria-label]="'Delete product ' + product.description"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></mat-header-row>
+              <mat-row
+                *matRowDef="let row; columns: displayedColumns"
+                class="product-row"
+              ></mat-row>
+            </mat-table>
+
+            <!-- Pagination -->
+            <mat-paginator
+              [length]="totalProducts"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[10, 25, 50]"
+              [pageIndex]="currentPage"
+              (page)="onPageChange($event)"
+              showFirstLastButtons
+            >
+            </mat-paginator>
+          } @else {
+            <div class="no-products">
+              <mat-icon>inventory</mat-icon>
+              <h3>No products found</h3>
+              <p>
+                No products match your current filters or no products have been
+                added yet.
+              </p>
+              <div class="no-products-actions">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="addNewProduct()"
+                >
+                  <mat-icon>add</mat-icon>
+                  Add New Product
+                </button>
+                <button mat-button (click)="clearFilters()">
+                  <mat-icon>clear_all</mat-icon>
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>

@@ -1,0 +1,208 @@
+<div class="product-detail-container">
+  @if (isLoading) {
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Loading product details...</p>
+    </div>
+  } @else if (product) {
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="container">
+        <button mat-button (click)="goBack()" class="back-btn">
+          <mat-icon>arrow_back</mat-icon>
+          Back to Products
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Detail Content -->
+    <div class="product-detail-content">
+      <div class="container">
+        <!-- Product Image Section - Top -->
+        <div class="product-image-section-top">
+          <div class="main-image">
+            @if (product.image) {
+              <img [src]="product.image" [alt]="product.description" (error)="onImageError($event)" loading="lazy" />
+            } @else {
+              <div class="no-image">
+                <mat-icon>image</mat-icon>
+                <p>No image available</p>
+              </div>
+            }
+            
+            <!-- Sale/Status Badges -->
+            <div class="image-badges">
+              @if (product.oldPrice && product.oldPrice > product.price) {
+                <mat-chip class="sale-chip">Sale</mat-chip>
+              }
+              @if (!product.isActive) {
+                <mat-chip class="inactive-chip">Out of Stock</mat-chip>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info Section - Full Width -->
+        <div class="product-info-section-full">
+          <div class="product-meta">
+            <div class="category-brand">
+              <mat-chip>{{ product.category?.name || 'Uncategorized' }}</mat-chip>
+              <mat-chip class="brand-chip">{{ product.brand?.name || 'No Brand' }}</mat-chip>
+            </div>
+            
+            <!-- <button 
+              mat-icon-button 
+              (click)="shareProduct()"
+              class="share-btn"
+              matTooltip="Share this product"
+            >
+              <mat-icon>share</mat-icon>
+            </button> -->
+          </div>
+
+          <h1 class="product-title">{{ product.description }}</h1>
+          
+          @if (product.info) {
+            <p class="product-info">{{ product.info }}</p>
+          }
+
+          <mat-divider></mat-divider>
+
+          <!-- Pricing Section -->
+          <div class="pricing-section">
+            <div class="price-display">
+              @if (product.oldPrice && product.oldPrice > product.price) {
+                <span class="old-price">LKR {{ product.oldPrice | number: '1.2-2' }}</span>
+                <span class="discount-percentage">
+                  -{{ (((product.oldPrice - product.price) / product.oldPrice) * 100) | number: '1.0-0' }}%
+                </span>
+              }
+              <span class="current-price">LKR {{ product.price | number: '1.2-2' }}</span>
+              <span class="unit">/ {{ product.unit }}</span>
+            </div>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <!-- Quantity and Add to Cart Section -->
+          @if (product.isActive) {
+            <div class="purchase-section">
+              <div class="quantity-selector">
+                <label class="quantity-label">Quantity:</label>
+                <div class="quantity-controls">
+                  <button 
+                    mat-icon-button 
+                    (click)="decreaseQuantity()"
+                    [disabled]="quantity <= 1"
+                    class="quantity-btn"
+                  >
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span class="quantity-display">{{ quantity }}</span>
+                  <button 
+                    mat-icon-button 
+                    (click)="increaseQuantity()"
+                    class="quantity-btn"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <div>
+                    <button 
+                  mat-raised-button 
+                  color="primary" 
+                  class="add-to-cart-btn"
+                  (click)="addToCart()"
+                >
+                  <mat-icon>add_shopping_cart</mat-icon>
+                  Add to Cart
+                </button>
+                </div>
+                
+                <!-- <button 
+                  mat-stroked-button 
+                  color="primary"
+                  class="buy-now-btn"
+                  (click)="buyNow()"
+                >
+                  <mat-icon>flash_on</mat-icon>
+                  Buy Now
+                </button> -->
+              </div>
+            </div>
+          } @else {
+            <div class="out-of-stock-section">
+              <mat-chip class="out-of-stock-chip">
+                <mat-icon>block</mat-icon>
+                Out of Stock
+              </mat-chip>
+              <p>This product is currently unavailable.</p>
+            </div>
+          }
+
+          <mat-divider></mat-divider>
+
+          <!-- Product Details -->
+          <div class="product-details">
+            <h3>Product Details</h3>
+            <div class="details-list">
+              <div class="detail-item">
+                <span class="detail-label">Product ID:</span>
+                <span class="detail-value">#{{ product.id }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Category:</span>
+                <span class="detail-value">{{ product.category?.name || 'Uncategorized' }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Brand:</span>
+                <span class="detail-value">{{ product.brand?.name || 'No Brand' }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Unit:</span>
+                <span class="detail-value">{{ product.unit }}</span>
+              </div>
+              @if (product.createdAt) {
+                <div class="detail-item">
+                  <span class="detail-label">Added:</span>
+                  <span class="detail-value">{{ product.createdAt | date: 'mediumDate' }}</span>
+                </div>
+              }
+              @if (getCreatedByUser()) {
+                <div class="detail-item">
+                  <span class="detail-label">Added by:</span>
+                  <span class="detail-value">{{ getCreatedByUser().name }} ({{ getCreatedByUser().role }})</span>
+                </div>
+              }
+              @if (product.updatedAt) {
+                <div class="detail-item">
+                  <span class="detail-label">Last Updated:</span>
+                  <span class="detail-value">{{ product.updatedAt | date: 'medium' }}</span>
+                </div>
+              }
+              @if (getUpdatedByUser()) {
+                <div class="detail-item">
+                  <span class="detail-label">Updated by:</span>
+                  <span class="detail-value">{{ getUpdatedByUser().name }} ({{ getUpdatedByUser().role }})</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="error-container">
+      <div class="container">
+        <mat-icon>error_outline</mat-icon>
+        <h2>Product Not Found</h2>
+        <p>The product you're looking for doesn't exist or has been removed.</p>
+        <button mat-raised-button color="primary" (click)="goBack()">
+          Back to Products
+        </button>
+      </div>
+    </div>
+  }

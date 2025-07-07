@@ -1,0 +1,46 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.login-container {
+  @include flex-center;
+  min-height: calc(100vh - 128px);
+  padding: $padding-lg;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: $padding-xl;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: $margin-lg;
+}
+
+.login-button {
+  height: 48px;
+  font-size: $font-size-lg;
+  margin-top: $margin-lg;
+}
+
+.register-link {
+  text-align: center;
+  margin: $margin-lg 0 0 0;
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+    color: $color-anchor;
+    text-decoration: none;
+  }
+}
+
+mat-card-subtitle {
+  margin: $margin-lg 0;
+}
+
+mat-spinner {
+  margin-right: $margin-sm;
+}

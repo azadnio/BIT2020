@@ -1,0 +1,233 @@
+.privacy-policy-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 2rem 0;
+
+  .content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .last-updated {
+      color: #7f8c8d;
+      font-size: 1rem;
+      margin: 0;
+      font-style: italic;
+    }
+  }
+
+  .privacy-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    margin-bottom: 2rem;
+
+    .section {
+      margin-bottom: 2.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h2 {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #3498db;
+        display: inline-block;
+      }
+
+      h3 {
+        color: #34495e;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem 0;
+      }
+
+      p {
+        color: #555;
+        line-height: 1.7;
+        margin: 0 0 1rem 0;
+        font-size: 1rem;
+      }
+
+      ul {
+        margin: 1rem 0;
+        padding-left: 0;
+
+        li {
+          color: #555;
+          line-height: 1.6;
+          margin: 0.5rem 0;
+          padding-left: 1.5rem;
+          position: relative;
+          list-style: none;
+
+          &::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+          }
+        }
+      }
+
+      .contact-info {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+
+        p {
+          margin: 0.25rem 0;
+
+          &:first-child {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .policy-footer {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    p {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin: 0;
+      font-style: italic;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 1rem 0;
+
+    .content-wrapper {
+      padding: 0 1rem;
+    }
+
+    .page-header {
+      padding: 1.5rem 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .privacy-content {
+      padding: 2rem 1.5rem;
+
+      .section {
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        h3 {
+          font-size: 1.1rem;
+        }
+
+        ul li {
+          padding-left: 1.2rem;
+        }
+      }
+    }
+
+    .policy-footer {
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy-container {
+    .page-header {
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+
+    .privacy-content {
+      padding: 1.5rem 1rem;
+
+      .section {
+        margin-bottom: 2rem;
+
+        h2 {
+          font-size: 1.2rem;
+        }
+
+        p, li {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+// Print Styles
+@media print {
+  .privacy-policy-container {
+    background: white;
+    box-shadow: none;
+
+    .content-wrapper {
+      max-width: none;
+      padding: 0;
+    }
+
+    .page-header,
+    .privacy-content,
+    .policy-footer {
+      background: white;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .page-header h1 {
+      color: black;
+    }
+
+    .section h2 {
+      color: black;
+      border-bottom-color: black;
+    }
+
+    .section p,
+    .section li {
+      color: black;
+    }
+  }
+}

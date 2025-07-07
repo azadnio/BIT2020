@@ -1,0 +1,211 @@
+<div class="contact-messages-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1>Contact Messages Management</h1>
+      <p>Manage and respond to customer inquiries</p>
+    </div>
+    <div class="header-actions">
+      <button mat-raised-button color="primary" (click)="refreshData()">
+        <mat-icon>refresh</mat-icon>
+        Refresh
+      </button>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-section">
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon total">
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ isLoadingStats ? '...' : statistics.total }}</h3>
+            <p>Total Messages</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon unread">
+            <mat-icon [matBadge]="statistics.unread" matBadgeColor="warn" [matBadgeHidden]="statistics.unread === 0">mark_email_unread</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ isLoadingStats ? '...' : statistics.unread }}</h3>
+            <p>Unread Messages</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon responded">
+            <mat-icon>reply</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ isLoadingStats ? '...' : statistics.responded }}</h3>
+            <p>Responded</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-content">
+          <div class="stat-icon today">
+            <mat-icon>today</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ isLoadingStats ? '...' : statistics.todayCount }}</h3>
+            <p>Today's Messages</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="filters-section">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select [value]="statusFilter" (selectionChange)="onFilterChange($event.value)">
+        <mat-option value="all">All Messages</mat-option>
+        <mat-option value="false">Unread Only</mat-option>
+        <mat-option value="true">Read Only</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Messages Table -->
+  <div class="table-section">
+    <mat-card>
+      <mat-card-content>
+        @if (isLoading) {
+          <div class="loading-container">
+            <mat-spinner></mat-spinner>
+            <p>Loading messages...</p>
+          </div>
+        } @else {
+          <div class="table-container">
+            <table mat-table [dataSource]="messages" class="messages-table">
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let message">
+                  <mat-chip [color]="getStatusChipColor(message)" selected>
+                    {{ getStatusText(message) }}
+                  </mat-chip>
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let message" class="name-cell">
+                  <div class="name-info">
+                    <span class="name">{{ message.name }}</span>
+                    @if (!message.isRead) {
+                      <mat-icon class="unread-indicator" color="warn">fiber_manual_record</mat-icon>
+                    }
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Email Column -->
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let message" class="email-cell">
+                  {{ message.email }}
+                </td>
+              </ng-container>
+
+              <!-- Subject Column -->
+              <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef>Subject</th>
+                <td mat-cell *matCellDef="let message" class="subject-cell">
+                  <span class="subject-text" [title]="message.subject">{{ message.subject }}</span>
+                </td>
+              </ng-container>
+
+              <!-- Created At Column -->
+              <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let message" class="date-cell">
+                  {{ formatDate(message.createdAt) }}
+                </td>
+              </ng-container>
+
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let message" class="actions-cell">
+                  <button mat-icon-button 
+                          [matMenuTriggerFor]="actionsMenu" 
+                          [matMenuTriggerData]="{message: message}"
+                          aria-label="Message actions">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  
+                  <mat-menu #actionsMenu="matMenu">
+                    <ng-template matMenuContent let-message="message">
+                      <button mat-menu-item (click)="viewMessage(message)">
+                        <mat-icon>visibility</mat-icon>
+                        <span>View Details</span>
+                      </button>
+                      
+                      @if (!message.isRead) {
+                        <button mat-menu-item (click)="markAsRead(message, $event)">
+                          <mat-icon>mark_email_read</mat-icon>
+                          <span>Mark as Read</span>
+                        </button>
+                      }
+                      
+                      <button mat-menu-item (click)="viewMessage(message)">
+                        <mat-icon>reply</mat-icon>
+                        <span>Add Response</span>
+                      </button>
+                    </ng-template>
+                  </mat-menu>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let message; columns: displayedColumns;" 
+                  class="message-row"
+                  [class.unread]="!message.isRead"
+                  (click)="viewMessage(message)"></tr>
+            </table>
+
+            @if (messages.length === 0 && !isLoading) {
+              <div class="no-messages">
+                <mat-icon>inbox</mat-icon>
+                <h3>No messages found</h3>
+                <p>{{ statusFilter === 'all' ? 'No contact messages have been received yet.' : 'No messages match the current filter.' }}</p>
+              </div>
+            }
+          </div>
+
+          <!-- Pagination -->
+          @if (totalMessages > 0) {
+            <mat-paginator 
+              [length]="totalMessages"
+              [pageSize]="pageSize"
+              [pageIndex]="pageIndex"
+              [pageSizeOptions]="[10, 20, 50, 100]"
+              (page)="onPageChange($event)"
+              showFirstLastButtons>
+            </mat-paginator>
+          }
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

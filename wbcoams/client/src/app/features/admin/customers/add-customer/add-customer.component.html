@@ -1,0 +1,248 @@
+<div class="add-customer-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Add New Customer</h1>
+        <p>Create a new customer account with credit information</p>
+      </div>
+      <div class="header-actions">
+        <button mat-stroked-button (click)="onCancel()" class="cancel-btn">
+          <mat-icon>arrow_back</mat-icon>
+          Back to Customers
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Form -->
+  <div class="form-container">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <!-- Personal Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>person</mat-icon>
+            Personal Information
+          </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Name -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Full Name</mat-label>
+              <input 
+                matInput 
+                formControlName="name" 
+                placeholder="Enter customer's full name"
+                [class.error]="customerForm.get('name')?.invalid && customerForm.get('name')?.touched"
+              />
+              <mat-icon matSuffix>person</mat-icon>
+              @if (customerForm.get('name')?.invalid && customerForm.get('name')?.touched) {
+                <mat-error>{{ getErrorMessage('name') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email Address</mat-label>
+              <input 
+                matInput 
+                formControlName="email" 
+                type="email"
+                placeholder="customer@example.com"
+                [class.error]="customerForm.get('email')?.invalid && customerForm.get('email')?.touched"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              @if (customerForm.get('email')?.invalid && customerForm.get('email')?.touched) {
+                <mat-error>{{ getErrorMessage('email') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Mobile -->
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile Number</mat-label>
+              <input 
+                matInput 
+                formControlName="mobile" 
+                placeholder="0771234567"
+                maxlength="10"
+                [class.error]="customerForm.get('mobile')?.invalid && customerForm.get('mobile')?.touched"
+              />
+              <mat-icon matSuffix>phone</mat-icon>
+              @if (customerForm.get('mobile')?.invalid && customerForm.get('mobile')?.touched) {
+                <mat-error>{{ getErrorMessage('mobile') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Telephone -->
+            <mat-form-field appearance="outline">
+              <mat-label>Telephone (Optional)</mat-label>
+              <input 
+                matInput 
+                formControlName="telephone" 
+                placeholder="0112345678"
+              />
+              <mat-icon matSuffix>phone_android</mat-icon>
+            </mat-form-field>
+
+            <!-- NIC -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>NIC Number</mat-label>
+              <input 
+                matInput 
+                formControlName="nic" 
+                placeholder="123456789V or 123456789012"
+                [class.error]="customerForm.get('nic')?.invalid && customerForm.get('nic')?.touched"
+              />
+              <mat-icon matSuffix>badge</mat-icon>
+              @if (customerForm.get('nic')?.invalid && customerForm.get('nic')?.touched) {
+                <mat-error>{{ getErrorMessage('nic') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Address Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>location_on</mat-icon>
+            Address Information
+          </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Address -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Address Line 1</mat-label>
+              <textarea 
+                matInput 
+                formControlName="address" 
+                placeholder="Enter street address"
+                rows="2"
+                [class.error]="customerForm.get('address')?.invalid && customerForm.get('address')?.touched"
+              ></textarea>
+              <mat-icon matSuffix>home</mat-icon>
+              @if (customerForm.get('address')?.invalid && customerForm.get('address')?.touched) {
+                <mat-error>{{ getErrorMessage('address') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Address 2 -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Address Line 2 (Optional)</mat-label>
+              <textarea 
+                matInput 
+                formControlName="address2" 
+                placeholder="Apartment, suite, unit, building, floor, etc."
+                rows="2"
+              ></textarea>
+              <mat-icon matSuffix>business</mat-icon>
+            </mat-form-field>
+
+            <!-- City -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>City</mat-label>
+              <mat-select 
+                formControlName="city"
+                [class.error]="customerForm.get('city')?.invalid && customerForm.get('city')?.touched"
+              >
+                @for (city of cities; track city) {
+                  <mat-option [value]="city">{{ city }}</mat-option>
+                }
+              </mat-select>
+              <mat-icon matSuffix>location_city</mat-icon>
+              @if (customerForm.get('city')?.invalid && customerForm.get('city')?.touched) {
+                <mat-error>{{ getErrorMessage('city') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Credit Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>account_balance_wallet</mat-icon>
+            Credit Information
+          </mat-card-title>
+          <mat-card-subtitle>
+            Set the customer's credit limit for purchases
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Credit Limit -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Credit Limit</mat-label>
+              <input 
+                matInput 
+                formControlName="creditLimit" 
+                type="number"
+                placeholder="100000"
+                [class.error]="customerForm.get('creditLimit')?.invalid && customerForm.get('creditLimit')?.touched"
+              />
+              <span matTextPrefix>Rs. </span>
+              <mat-icon matSuffix>monetization_on</mat-icon>
+              @if (customerForm.get('creditLimit')?.invalid && customerForm.get('creditLimit')?.touched) {
+                <mat-error>{{ getErrorMessage('creditLimit') }}</mat-error>
+              }
+              <mat-hint>Default credit limit is Rs. 100,000</mat-hint>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <div class="action-buttons">
+          <button 
+            mat-button 
+            type="button" 
+            (click)="onCancel()"
+            class="cancel-button"
+          >
+            <mat-icon>close</mat-icon>
+            Cancel
+          </button>
+          
+          <button 
+            mat-stroked-button 
+            type="button" 
+            (click)="onReset()"
+            class="reset-button"
+          >
+            <mat-icon>refresh</mat-icon>
+            Reset Form
+          </button>
+          
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit"
+            [disabled]="customerForm.invalid || isSubmitting"
+            class="submit-button"
+          >
+            @if (isSubmitting) {
+              <ng-container>
+                <mat-icon class="spinning">hourglass_empty</mat-icon>
+                Creating...
+              </ng-container>
+            } @else {
+              <ng-container>
+                <mat-icon>person_add</mat-icon>
+                Create Customer
+              </ng-container>
+            }
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

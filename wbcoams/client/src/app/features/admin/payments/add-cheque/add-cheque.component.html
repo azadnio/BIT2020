@@ -1,0 +1,298 @@
+<div class="add-cheque-container">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Add New Cheque</h1>
+        <p>Record a new cheque transaction with customer and bank details</p>
+      </div>
+      <div class="header-actions">
+        <button mat-stroked-button (click)="onCancel()" class="cancel-btn">
+          <mat-icon>arrow_back</mat-icon>
+          Back to Payments
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cheque Form -->
+  <div class="form-container">
+    <form [formGroup]="chequeForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Cheque Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>receipt</mat-icon>
+            Cheque Information
+          </mat-card-title>
+          <mat-card-subtitle>
+            Enter the cheque details and amount
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Cheque Number -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Cheque Number</mat-label>
+              <input 
+                matInput 
+                formControlName="chequeNumber" 
+                placeholder="Enter cheque number"
+                [class.error]="chequeForm.get('chequeNumber')?.invalid && chequeForm.get('chequeNumber')?.touched"
+              />
+              <button 
+                mat-icon-button 
+                matSuffix 
+                type="button"
+                (click)="generateChequeNumber()"
+                matTooltip="Generate cheque number"
+              >
+                <mat-icon>refresh</mat-icon>
+              </button>
+              @if (chequeForm.get('chequeNumber')?.invalid && chequeForm.get('chequeNumber')?.touched) {
+                <mat-error>{{ getErrorMessage('chequeNumber') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Amount -->
+            <mat-form-field appearance="outline">
+              <mat-label>Amount</mat-label>
+              <input 
+                matInput 
+                formControlName="amount" 
+                type="number"
+                step="0.01"
+                min="0.01"
+                placeholder="0.00"
+                [class.error]="chequeForm.get('amount')?.invalid && chequeForm.get('amount')?.touched"
+              />
+              <span matTextPrefix>Rs. </span>
+              <mat-icon matSuffix>monetization_on</mat-icon>
+              @if (chequeForm.get('amount')?.invalid && chequeForm.get('amount')?.touched) {
+                <mat-error>{{ getErrorMessage('amount') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Cheque Date -->
+            <mat-form-field appearance="outline">
+              <mat-label>Cheque Date</mat-label>
+              <input 
+                matInput 
+                [matDatepicker]="picker"
+                formControlName="chequeDate"
+                [class.error]="chequeForm.get('chequeDate')?.invalid && chequeForm.get('chequeDate')?.touched"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              @if (chequeForm.get('chequeDate')?.invalid && chequeForm.get('chequeDate')?.touched) {
+                <mat-error>{{ getErrorMessage('chequeDate') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Status -->
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select 
+                formControlName="status"
+                [class.error]="chequeForm.get('status')?.invalid && chequeForm.get('status')?.touched"
+              >
+                @for (status of chequeStatuses; track status.value) {
+                  <mat-option [value]="status.value">{{ status.label }}</mat-option>
+                }
+              </mat-select>
+              <mat-icon matSuffix>check_circle</mat-icon>
+              @if (chequeForm.get('status')?.invalid && chequeForm.get('status')?.touched) {
+                <mat-error>{{ getErrorMessage('status') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Customer Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>person</mat-icon>
+            Customer Information
+          </mat-card-title>
+          <mat-card-subtitle>
+            Select the customer associated with this cheque
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Customer Selection -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Customer</mat-label>
+              <mat-select 
+                formControlName="customerId"
+                [class.error]="chequeForm.get('customerId')?.invalid && chequeForm.get('customerId')?.touched"
+              >
+                @if (isLoadingCustomers) {
+                  <mat-option disabled>Loading customers...</mat-option>
+                } @else {
+                  @for (customer of customers; track customer.id) {
+                    <mat-option [value]="customer.id">
+                      {{ getCustomerDisplayName(customer) }}
+                    </mat-option>
+                  }
+                }
+              </mat-select>
+              <mat-icon matSuffix>people</mat-icon>
+              @if (chequeForm.get('customerId')?.invalid && chequeForm.get('customerId')?.touched) {
+                <mat-error>{{ getErrorMessage('customerId') }}</mat-error>
+              }
+              @if (isLoadingCustomers) {
+                <mat-hint>Loading customer list...</mat-hint>
+              }
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Bank Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>account_balance</mat-icon>
+            Bank Information
+          </mat-card-title>
+          <mat-card-subtitle>
+            Enter the bank details for the cheque
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Bank Name -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Bank Name</mat-label>
+              <mat-select 
+                formControlName="bankName"
+                [class.error]="chequeForm.get('bankName')?.invalid && chequeForm.get('bankName')?.touched"
+              >
+                @for (bank of banks; track bank) {
+                  <mat-option [value]="bank">{{ bank }}</mat-option>
+                }
+              </mat-select>
+              <mat-icon matSuffix>account_balance</mat-icon>
+              @if (chequeForm.get('bankName')?.invalid && chequeForm.get('bankName')?.touched) {
+                <mat-error>{{ getErrorMessage('bankName') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Bank Branch -->
+            <mat-form-field appearance="outline">
+              <mat-label>Bank Branch</mat-label>
+              <input 
+                matInput 
+                formControlName="bankBranch" 
+                placeholder="Enter branch name"
+                [class.error]="chequeForm.get('bankBranch')?.invalid && chequeForm.get('bankBranch')?.touched"
+              />
+              <mat-icon matSuffix>location_on</mat-icon>
+              @if (chequeForm.get('bankBranch')?.invalid && chequeForm.get('bankBranch')?.touched) {
+                <mat-error>{{ getErrorMessage('bankBranch') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Account Number -->
+            <mat-form-field appearance="outline">
+              <mat-label>Account Number</mat-label>
+              <input 
+                matInput 
+                formControlName="accountNumber" 
+                placeholder="Enter account number"
+                maxlength="20"
+                [class.error]="chequeForm.get('accountNumber')?.invalid && chequeForm.get('accountNumber')?.touched"
+              />
+              <mat-icon matSuffix>credit_card</mat-icon>
+              @if (chequeForm.get('accountNumber')?.invalid && chequeForm.get('accountNumber')?.touched) {
+                <mat-error>{{ getErrorMessage('accountNumber') }}</mat-error>
+              }
+              <mat-hint>8-20 digits</mat-hint>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Additional Information Card -->
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>note</mat-icon>
+            Additional Information
+          </mat-card-title>
+          <mat-card-subtitle>
+            Add any additional notes or remarks (optional)
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="form-grid">
+            <!-- Remarks -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Remarks (Optional)</mat-label>
+              <textarea 
+                matInput 
+                formControlName="remarks" 
+                placeholder="Enter any additional notes about this cheque"
+                rows="3"
+              ></textarea>
+              <mat-icon matSuffix>comment</mat-icon>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <div class="action-buttons">
+          <button 
+            mat-button 
+            type="button" 
+            (click)="onCancel()"
+            class="cancel-button"
+          >
+            <mat-icon>close</mat-icon>
+            Cancel
+          </button>
+          
+          <button 
+            mat-stroked-button 
+            type="button" 
+            (click)="onReset()"
+            class="reset-button"
+          >
+            <mat-icon>refresh</mat-icon>
+            Reset Form
+          </button>
+          
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit"
+            [disabled]="chequeForm.invalid || isSubmitting"
+            class="submit-button"
+          >
+            @if (isSubmitting) {
+              <ng-container>
+                <mat-icon class="spinning">hourglass_empty</mat-icon>
+              </ng-container>
+              Creating...
+            } @else {
+              <ng-container>
+                <mat-icon>receipt</mat-icon>
+              </ng-container>
+              Create Cheque
+            }
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
